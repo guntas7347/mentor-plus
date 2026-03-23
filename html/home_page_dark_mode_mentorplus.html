@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MentorPlus - Master Your Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174d",
+              "inverse-surface": "#27313e",
+              "inverse-primary": "#b5c4ff",
+              "outline": "#737686",
+              "on-background": "#121c28",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#005137",
+              "secondary": "#006c4a",
+              "secondary-fixed": "#85f8c4",
+              "primary-fixed-dim": "#b5c4ff",
+              "background": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "tertiary-fixed": "#89f5e7",
+              "surface-dim": "#d1dbec",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#d9e3f4",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#84f0e2",
+              "on-primary-container": "#d4dcff",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#00714e",
+              "on-tertiary-fixed-variant": "#005049",
+              "error": "#ba1a1a",
+              "primary-container": "#1a56db",
+              "on-tertiary-fixed": "#00201d",
+              "primary-fixed": "#dbe1ff",
+              "surface-bright": "#f8f9ff",
+              "secondary-container": "#82f5c1",
+              "surface-tint": "#1353d8",
+              "on-surface": "#121c28",
+              "outline-variant": "#c3c5d7",
+              "on-primary-fixed-variant": "#003dab",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#002114",
+              "surface": "#f8f9ff",
+              "tertiary-container": "#006e65",
+              "on-surface-variant": "#434654",
+              "primary": "#003fb1",
+              "surface-container-high": "#dfe9fa",
+              "tertiary-fixed-dim": "#6bd8cb",
+              "surface-variant": "#d9e3f4",
+              "surface-container-low": "#eef4ff",
+              "secondary-fixed-dim": "#68dba9",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "tertiary": "#00544c",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Public Sans"],
+              "label": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .ambient-shadow {
+        box-shadow: 0 20px 40px -10px rgba(18, 28, 40, 0.06);
+      }
+      .dark .ambient-shadow {
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+      }
+      .hero-gradient {
+        background: linear-gradient(135deg, #003fb1 0%, #1a56db 100%);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+</head>
+<body class="bg-surface dark:bg-[#0a0f18] font-body text-on-surface dark:text-inverse-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<nav class="docked full-width top-0 sticky z-50 bg-surface/80 dark:bg-[#0a0f18]/80 glass-nav border-b border-transparent dark:border-white/5">
+<div class="flex justify-between items-center w-full px-8 max-w-7xl mx-auto h-20">
+<div class="text-2xl font-extrabold text-primary dark:text-inverse-primary tracking-tight font-headline">MentorPlus</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-label text-sm tracking-widest" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest" href="#">Courses</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest" href="#">Syllabus</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest" href="#">Test Series</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest" href="#">Gallery</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest px-4 py-2">Login</button>
+<button class="bg-primary-container dark:bg-primary text-white px-6 py-2.5 rounded-md font-label text-sm tracking-widest active:scale-[0.98] duration-200 transition-all">Register</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<span class="inline-block text-primary dark:text-inverse-primary font-label text-xs tracking-[0.3em] uppercase mb-4">India's Premium Coaching Hub</span>
+<h1 class="text-5xl md:text-7xl font-extrabold font-headline text-on-surface dark:text-white leading-tight mb-8">
+                    Master Your Future with <span class="text-primary dark:text-inverse-primary">MentorPlus</span>
+</h1>
+<p class="text-lg text-on-surface-variant dark:text-outline-variant max-w-xl mb-10 leading-relaxed">
+                    Join the sanctuary of elite learning. We provide comprehensive preparation for SSC, Banking, and Punjab State Exams with a focus on conceptual clarity and rigorous practice.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="hero-gradient text-white px-10 py-4 rounded-md font-bold text-lg shadow-lg shadow-primary/20 dark:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Join Now
+                    </button>
+<button class="bg-surface-container-high dark:bg-white/10 text-on-primary-fixed-variant dark:text-inverse-on-surface px-10 py-4 rounded-md font-bold text-lg hover:bg-surface-container-highest dark:hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                        Free Demo
+                    </button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container/30 dark:bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-primary-fixed/30 dark:bg-primary/20 rounded-full blur-3xl"></div>
+<div class="relative bg-surface-container-lowest dark:bg-white/5 rounded-3xl p-4 ambient-shadow overflow-hidden border border-transparent dark:border-white/10">
+<img alt="Academic Sanctuary" class="w-full h-[500px] object-cover rounded-2xl grayscale dark:grayscale-0 dark:brightness-90" data-alt="Modern students studying together in a bright library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnDKbwYR9mcKD43HFuBY8IZqGa12antZgf3cECsTxtGl-hz9Dy0ZO5XRSSeEOMvWsZSQT7mwFqwc0uBZbkbRh_-4Zqi7iM_vkwghW_ZMvdUq7zcupWU3dtbs2AzQ16vktf95smSTb34R_jttA48B3e-wl32tzvtGXSHYiPyBhsireWz05DRott-OONNxob_8CROwRmM3Tpre-9otDThA3d7i38QMP-L-l6O60tYgLNe0bKHKD3S_LdLCL1oYSKJbsPDvFrufjFGp0h"/>
+<div class="absolute bottom-10 left-10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-6 rounded-xl shadow-xl max-w-xs border border-transparent dark:border-white/10">
+<div class="flex items-center gap-1 text-secondary dark:text-secondary-fixed-dim mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-sm font-semibold text-on-surface dark:text-inverse-on-surface italic">"The best decision for my Punjab Govt exam prep. The mentors are unmatched."</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Success Stats -->
+<section class="bg-surface-container-low dark:bg-[#111827] py-12 transition-colors">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="text-4xl font-extrabold font-headline text-primary dark:text-inverse-primary mb-2">5000+</div>
+<div class="text-on-surface-variant dark:text-outline-variant font-label text-xs tracking-widest uppercase">Students Selected</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-extrabold font-headline text-primary dark:text-inverse-primary mb-2">100+</div>
+<div class="text-on-surface-variant dark:text-outline-variant font-label text-xs tracking-widest uppercase">Ongoing Batches</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-extrabold font-headline text-primary dark:text-inverse-primary mb-2">15+</div>
+<div class="text-on-surface-variant dark:text-outline-variant font-label text-xs tracking-widest uppercase">Expert Mentors</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-extrabold font-headline text-primary dark:text-inverse-primary mb-2">98%</div>
+<div class="text-on-surface-variant dark:text-outline-variant font-label text-xs tracking-widest uppercase">Success Rate</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Courses Section -->
+<section class="py-24 bg-surface dark:bg-[#0a0f18]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div class="max-w-xl">
+<span class="text-secondary dark:text-secondary-fixed-dim font-label text-xs tracking-[0.3em] uppercase mb-4 block">Excellence in Education</span>
+<h2 class="text-4xl font-extrabold font-headline text-on-surface dark:text-white">Featured Exam Programs</h2>
+</div>
+<a class="text-primary dark:text-inverse-primary font-bold flex items-center gap-2 hover:underline underline-offset-8" href="#">
+                    View All Courses <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- SSC Course -->
+<div class="bg-surface-container-lowest dark:bg-white/5 rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group ambient-shadow border border-transparent dark:border-white/10">
+<div class="h-48 overflow-hidden">
+<img alt="SSC Exams" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 brightness-95 dark:brightness-75" data-alt="Conceptual image of books and stationary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb44t-ouHYyI-sMvbC53Py_WJmMGH72G8Up8Ii9WJtKDfAp6Ey78NTCklM9hXGP2r6NcQ5TynwkzDr9MkPgZU-skBMbQeauCEsehz6wxI0CHIxwOOkCSq2yFSJ_GrmPHegG7QpVww6Bbwc1GhigT112vTFTNtT_-VB0mVUNWFy6GWQMxI7gRT7daDiJmCMjR0YZHOrbwp7vyCTfLnwlyTgQRMoSjC9jTpEYSyqQtAlJRPa61jyoEvF75-vOG9BAAOWUohQ8tMwwB8S"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-primary/10 dark:bg-primary/20 text-primary dark:text-inverse-primary text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">New Batch</span>
+<div class="flex items-center text-secondary dark:text-secondary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="ml-1 text-xs">6 Months</span>
+</div>
+</div>
+<h3 class="text-xl font-bold font-headline mb-4 text-on-surface dark:text-white">SSC CGL/CHSL Mastery</h3>
+<p class="text-on-surface-variant dark:text-outline-variant text-sm mb-6 leading-relaxed">Complete tier-1 &amp; tier-2 coverage with daily practice sets and weekly full-length mocks.</p>
+<button class="w-full py-3 bg-surface-container-high dark:bg-white/10 text-primary dark:text-inverse-primary font-bold rounded-md hover:bg-primary hover:text-white transition-all">Enroll Now</button>
+</div>
+</div>
+<!-- Banking Course -->
+<div class="bg-surface-container-lowest dark:bg-white/5 rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group ambient-shadow border border-transparent dark:border-white/10">
+<div class="h-48 overflow-hidden">
+<img alt="Banking Exams" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 brightness-95 dark:brightness-75" data-alt="Close up of a calculator and financial papers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkuGpk3A2LhyFCKWs272DmeBDC27oWLe1Ki6xGdqe5bD4k04JahD1DCPQtstw_EVfYdYqROxuaTDWtuKOQE8yo4k2kkWOAyiA0q9t2ATgW2qOMObI849cRpcOsf_6fVrAMZ1aeWKdgH1hTCuXLTUVUMtukUVhizWYVP-nm_F8IXai-HbPy9rHrtajjHjJj6g3GhlE22teLOq7UgR8b44buqv9o3pA8PnwZ4QLZ_Peose1oEodz5Rz9rWBlrA6gosYKOkk_6LoAIUKC"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary-container/30 dark:bg-secondary/20 text-secondary dark:text-secondary-fixed-dim text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">Banking Special</span>
+<div class="flex items-center text-secondary dark:text-secondary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="ml-1 text-xs">4 Months</span>
+</div>
+</div>
+<h3 class="text-xl font-bold font-headline mb-4 text-on-surface dark:text-white">IBPS PO &amp; Clerk Elite</h3>
+<p class="text-on-surface-variant dark:text-outline-variant text-sm mb-6 leading-relaxed">Special focus on Data Interpretation and Logical Reasoning with shortcuts from experts.</p>
+<button class="w-full py-3 bg-surface-container-high dark:bg-white/10 text-primary dark:text-inverse-primary font-bold rounded-md hover:bg-primary hover:text-white transition-all">Enroll Now</button>
+</div>
+</div>
+<!-- Punjab Govt Course -->
+<div class="bg-surface-container-lowest dark:bg-white/5 rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group ambient-shadow border border-transparent dark:border-white/10">
+<div class="h-48 overflow-hidden relative">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary dark:bg-secondary-fixed-dim"></div>
+<img alt="Punjab Exams" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 brightness-95 dark:brightness-75" data-alt="Architectural detail of an academic building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYsuJ2787JA-u28z1NluMjf6cNh4pJQy9QSbM5Il4bmSiyTgZVx6uDKuQTgNURkuMq5E6h_M_0kea-w3eG7o-6yHzDyj8PjGdSmS2rlyO9xRO3CdCxPIBlLk4wE6UcxJL9HLYVih61lM9GxKrkAQ6U0siDcJSb8lbvbajfF1PK8Nm2XUtEeAoOmKpJF7YBHU2UA_2c1vP7lzfbO0Riqid-yoET4RfBUmf3T4QmsZckiUs8AL-Kehqc7tL_M49ObwjG4dz6u6CELM0R"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-tertiary-fixed dark:bg-tertiary/20 text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">Punjab State</span>
+<div class="flex items-center text-secondary dark:text-secondary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="ml-1 text-xs">Lifetime Access</span>
+</div>
+</div>
+<h3 class="text-xl font-bold font-headline mb-4 text-on-surface dark:text-white">PSSSB &amp; PPSC Comprehensive</h3>
+<p class="text-on-surface-variant dark:text-outline-variant text-sm mb-6 leading-relaxed">Dedicated modules for Punjab GK, History, and Punjabi Language. Tailored for local exams.</p>
+<button class="w-full py-3 bg-surface-container-high dark:bg-white/10 text-primary dark:text-inverse-primary font-bold rounded-md hover:bg-primary hover:text-white transition-all">Enroll Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-24 bg-surface-container-low dark:bg-[#111827]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-lowest dark:bg-white/5 p-8 rounded-2xl ambient-shadow space-y-4 border border-transparent dark:border-white/10">
+<div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center text-primary dark:text-inverse-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h4 class="text-lg font-bold text-on-surface dark:text-white">Experienced Mentors</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant leading-relaxed">Learn from educators who have cleared these exams themselves and know the strategy.</p>
+</div>
+<div class="bg-surface-container-lowest dark:bg-white/5 p-8 rounded-2xl ambient-shadow space-y-4 md:translate-y-8 border border-transparent dark:border-white/10">
+<div class="w-12 h-12 bg-secondary-container/50 dark:bg-secondary/20 rounded-lg flex items-center justify-center text-secondary dark:text-secondary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<h4 class="text-lg font-bold text-on-surface dark:text-white">Premium Material</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant leading-relaxed">Comprehensive study notes updated according to the latest 2024 exam patterns.</p>
+</div>
+<div class="bg-surface-container-lowest dark:bg-white/5 p-8 rounded-2xl ambient-shadow space-y-4 border border-transparent dark:border-white/10">
+<div class="w-12 h-12 bg-tertiary-fixed dark:bg-tertiary/20 rounded-lg flex items-center justify-center text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quiz</span>
+</div>
+<h4 class="text-lg font-bold text-on-surface dark:text-white">Weekly Mock Tests</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant leading-relaxed">Real-time exam simulations with detailed performance analytics for every student.</p>
+</div>
+<div class="bg-surface-container-lowest dark:bg-white/5 p-8 rounded-2xl ambient-shadow space-y-4 md:translate-y-8 border border-transparent dark:border-white/10">
+<div class="w-12 h-12 bg-primary-fixed dark:bg-primary/20 rounded-lg flex items-center justify-center text-primary dark:text-inverse-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+<h4 class="text-lg font-bold text-on-surface dark:text-white">Doubt Support</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant leading-relaxed">24/7 dedicated doubt clearing sessions via our community app and offline center.</p>
+</div>
+</div>
+<div>
+<span class="text-primary dark:text-inverse-primary font-label text-xs tracking-[0.3em] uppercase mb-4 block">The MentorPlus Advantage</span>
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline mb-8 leading-tight text-on-surface dark:text-white">Why students choose our sanctuary?</h2>
+<p class="text-on-surface-variant dark:text-outline-variant text-lg leading-relaxed mb-8">
+                        We don't just teach subjects; we build mindsets. Our approach focuses on long-term retention and the psychology of exam-taking, ensuring you stay calm and focused on D-day.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim mt-1">check_circle</span>
+<span class="font-semibold text-on-surface dark:text-inverse-on-surface">Personalized learning paths for every student.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim mt-1">check_circle</span>
+<span class="font-semibold text-on-surface dark:text-inverse-on-surface">Regular parent-teacher updates and tracking.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim mt-1">check_circle</span>
+<span class="font-semibold text-on-surface dark:text-inverse-on-surface">Integrated offline and online learning modules.</span>
+</li>
+</ul>
+<button class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary/20 dark:border-inverse-primary/20 hover:border-primary dark:hover:border-inverse-primary transition-all pb-1">Learn more about our philosophy</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Mentor Highlights -->
+<section class="py-24 bg-surface dark:bg-[#0a0f18]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<span class="text-secondary dark:text-secondary-fixed-dim font-label text-xs tracking-[0.3em] uppercase mb-4 block">Expert Educators</span>
+<h2 class="text-4xl font-extrabold font-headline text-on-surface dark:text-white">Meet Your Mentors</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="text-center group">
+<div class="relative mb-6 inline-block">
+<div class="absolute inset-0 bg-primary/20 dark:bg-primary/30 rounded-2xl rotate-6 group-hover:rotate-0 transition-transform duration-300"></div>
+<img alt="Mentor 1" class="w-48 h-56 object-cover rounded-2xl relative z-10 grayscale group-hover:grayscale-0 dark:grayscale-0 dark:brightness-90" data-alt="Professional male educator portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4e7aR1700FNNE2hg4XAkvS8Js0e_YkHaEc3hkyODnIUilO-6rs8KhzmWgJV1wxf7RJ4KlhcXbxIGsD3q1GeU_MjGGBN5rL7U5rUzYSjILP81108B8danJc4vYO3ElaS5CwRtFrD6mrhbtmC12srO1EhpUJmgQeZaZ_evfrQErKQrZ_Cr66y2Axk9aQz985hk7MSugJAGRvxmLAsT_qI8HyeXmPDFmCfarT4COxEtFOXn0Nbcmiah21ulIoy8zbc7a49g1g_qxvgsu"/>
+</div>
+<h4 class="text-xl font-bold font-headline text-on-surface dark:text-white">Rajesh Khanna</h4>
+<p class="text-primary dark:text-inverse-primary text-sm font-semibold mb-2">Quants Expert (Ex-Bank PO)</p>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant px-4">12+ years of experience in making math simple.</p>
+</div>
+<div class="text-center group">
+<div class="relative mb-6 inline-block">
+<div class="absolute inset-0 bg-secondary/20 dark:bg-secondary/30 rounded-2xl -rotate-6 group-hover:rotate-0 transition-transform duration-300"></div>
+<img alt="Mentor 2" class="w-48 h-56 object-cover rounded-2xl relative z-10 grayscale group-hover:grayscale-0 dark:grayscale-0 dark:brightness-90" data-alt="Professional female educator portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiCfz8lyaSr4wUd30Y1CDqGVySttPUmUDuj5Fdhle3kv7h_GTsOlkDTJ_cSr29ne8XDaxDvHXEGWhI0kOUgODOoks6-QrEwc4wWg0Z46FFPlR-5rw3x3Pz9RCokY2vYeLwWxUWpUkAghxUVbsdv8HGUN8kuNbCKLLNPjSftIiDLIJK1Uy2oBUPRP5uO3-HQnS3Wbd6f39fQisYr6sTWgk9g-gDvHcg2ceWJc-yJcVuo1AynYkh70jFf5LzUM0uZ_2e1J0lN5FQlMmZ"/>
+</div>
+<h4 class="text-xl font-bold font-headline text-on-surface dark:text-white">Simran Kaur</h4>
+<p class="text-primary dark:text-inverse-primary text-sm font-semibold mb-2">English &amp; Punjab GK</p>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant px-4">Helping students master language and local context.</p>
+</div>
+<div class="text-center group">
+<div class="relative mb-6 inline-block">
+<div class="absolute inset-0 bg-primary/20 dark:bg-primary/30 rounded-2xl rotate-6 group-hover:rotate-0 transition-transform duration-300"></div>
+<img alt="Mentor 3" class="w-48 h-56 object-cover rounded-2xl relative z-10 grayscale group-hover:grayscale-0 dark:grayscale-0 dark:brightness-90" data-alt="Experienced academic mentor portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD253xpOOHC5n6D_WJCE3J4pOZ5oEy4zs0sgYanDmX6B2k5QVI_nd2crVdYf0CjF2-J9dFvMFKXSrBMYGVJKr_R5wEkMAT4oUjFmm8s26XIJNRg-xhUfXYaZyMkZMN5wnyXmQizM4sh-oKZJw4lcwl6sXMDx4wuFEnYaD9FZfgn9tUI4_2OhUxu1SYUpv1CTNqnK3-r9hT4Q5Lgpb7KVCvwH8CrkUA8LOHf9wzr_RxD4GMx09d8lcwPBdebdBUN9n8lw5nhdlHWAy5a"/>
+</div>
+<h4 class="text-xl font-bold font-headline text-on-surface dark:text-white">Vikram Singh</h4>
+<p class="text-primary dark:text-inverse-primary text-sm font-semibold mb-2">Reasoning Specialist</p>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant px-4">Known for innovative shortcuts and logical flow.</p>
+</div>
+<div class="text-center group">
+<div class="relative mb-6 inline-block">
+<div class="absolute inset-0 bg-secondary/20 dark:bg-secondary/30 rounded-2xl -rotate-6 group-hover:rotate-0 transition-transform duration-300"></div>
+<img alt="Mentor 4" class="w-48 h-56 object-cover rounded-2xl relative z-10 grayscale group-hover:grayscale-0 dark:grayscale-0 dark:brightness-90" data-alt="Female teacher smiling in professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbIqwk1JeU-6GQA2qMXDN_sK2bxUKsEUUiy5Bx6aeht7z3L-hxcd0Ffuxv4DiwMuUX_bSqIPC7csRazANVasRU4cOIH7HQzP5R1vEtex_XSBF7ylqQ_DcsuPz4RfDMGKo0tHinx8KU9U0GEO6CJKy8D1q4kjNlndtpu0dLA4papbJ9OpNKnaYjp-ZnzihiNhPZVNbSkaTrxKfqftVLVV78xDL3NIhrg2LMQxr2rT1b6PvfTUBQaExQpQJy_5GyUOsk-D1ZwJY8h-qw"/>
+</div>
+<h4 class="text-xl font-bold font-headline text-on-surface dark:text-white">Priya Mehta</h4>
+<p class="text-primary dark:text-inverse-primary text-sm font-semibold mb-2">General Awareness</p>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant px-4">Making current affairs relevant and easy to recall.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-low dark:bg-[#111827] overflow-hidden">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<span class="text-primary dark:text-inverse-primary font-label text-xs tracking-[0.3em] uppercase mb-4 block">Student Stories</span>
+<h2 class="text-4xl font-extrabold font-headline text-on-surface dark:text-white">What our achievers say</h2>
+</div>
+<div class="flex space-x-8 pb-8 overflow-x-auto no-scrollbar">
+<div class="min-w-[400px] bg-surface-container-lowest dark:bg-white/5 p-10 rounded-2xl ambient-shadow border border-transparent dark:border-white/10">
+<div class="flex gap-1 text-secondary dark:text-secondary-fixed-dim mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant dark:text-outline-variant leading-relaxed mb-8 italic">"MentorPlus changed my entire preparation strategy. The test series is very close to the actual SSC pattern. I cleared CGL 2023 only because of Vikram Sir's reasoning tricks."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-fixed dark:bg-primary/20 rounded-full flex items-center justify-center font-bold text-primary dark:text-inverse-primary">AM</div>
+<div>
+<h5 class="font-bold text-on-surface dark:text-white">Aman Malik</h5>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant">Cleared SSC CGL 2023</p>
+</div>
+</div>
+</div>
+<div class="min-w-[400px] bg-surface-container-lowest dark:bg-white/5 p-10 rounded-2xl ambient-shadow border border-transparent dark:border-white/10">
+<div class="flex gap-1 text-secondary dark:text-secondary-fixed-dim mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant dark:text-outline-variant leading-relaxed mb-8 italic">"Punjab Govt exams can be tricky, but the focus on Punjab GK here is unmatched. Simran ma'am makes even the toughest historical facts easy to remember."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary-container dark:bg-secondary/20 rounded-full flex items-center justify-center font-bold text-secondary dark:text-secondary-fixed-dim">HK</div>
+<div>
+<h5 class="font-bold text-on-surface dark:text-white">Harman Kaur</h5>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant">Selected, Punjab Revenue Dept</p>
+</div>
+</div>
+</div>
+<div class="min-w-[400px] bg-surface-container-lowest dark:bg-white/5 p-10 rounded-2xl ambient-shadow border border-transparent dark:border-white/10">
+<div class="flex gap-1 text-secondary dark:text-secondary-fixed-dim mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant dark:text-outline-variant leading-relaxed mb-8 italic">"The study material provided for IBPS PO is excellent. I didn't need any other books. The mock interview sessions really helped me gain confidence."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-tertiary-fixed dark:bg-tertiary/20 rounded-full flex items-center justify-center font-bold text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim">RS</div>
+<div>
+<h5 class="font-bold text-on-surface dark:text-white">Rahul Sharma</h5>
+<p class="text-xs text-on-surface-variant dark:text-outline-variant">Probationary Officer, PNB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest Updates / Announcements -->
+<section class="py-24 bg-surface dark:bg-[#0a0f18]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-12">
+<div class="md:w-1/3">
+<h2 class="text-3xl font-extrabold font-headline mb-6 text-on-surface dark:text-white">Latest Updates</h2>
+<p class="text-on-surface-variant dark:text-outline-variant mb-8">Stay informed about upcoming exams, batch start dates, and result announcements.</p>
+<div class="p-6 bg-secondary-container/20 dark:bg-secondary/10 rounded-xl border-l-4 border-secondary dark:border-secondary-fixed-dim">
+<h4 class="font-bold text-secondary dark:text-secondary-fixed-dim mb-2">New Batch Alert!</h4>
+<p class="text-sm text-on-surface dark:text-inverse-on-surface">Offline SSC CGL Crash Course starting next Monday at our Ludhiana center.</p>
+</div>
+</div>
+<div class="md:w-2/3 space-y-4">
+<div class="group flex items-center gap-6 p-6 rounded-xl hover:bg-surface-container-low dark:hover:bg-white/5 transition-all cursor-pointer border border-transparent dark:hover:border-white/10">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-highest dark:bg-white/10 rounded-lg flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-primary dark:text-inverse-primary uppercase">June</span>
+<span class="text-xl font-bold dark:text-white">15</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-lg group-hover:text-primary dark:group-hover:text-inverse-primary transition-colors text-on-surface dark:text-white">Notification for PSSSB Clerk recruitment released.</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant">Check eligibility and exam pattern details here.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="group flex items-center gap-6 p-6 rounded-xl hover:bg-surface-container-low dark:hover:bg-white/5 transition-all cursor-pointer border border-transparent dark:hover:border-white/10">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-highest dark:bg-white/10 rounded-lg flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-primary dark:text-inverse-primary uppercase">June</span>
+<span class="text-xl font-bold dark:text-white">12</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-lg group-hover:text-primary dark:group-hover:text-inverse-primary transition-colors text-on-surface dark:text-white">MentorPlus All-India Open Mock Test result.</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant">Download the merit list and expert analysis PDF.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="group flex items-center gap-6 p-6 rounded-xl hover:bg-surface-container-low dark:hover:bg-white/5 transition-all cursor-pointer border border-transparent dark:hover:border-white/10">
+<div class="flex-shrink-0 w-16 h-16 bg-surface-container-highest dark:bg-white/10 rounded-lg flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-primary dark:text-inverse-primary uppercase">June</span>
+<span class="text-xl font-bold dark:text-white">08</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-lg group-hover:text-primary dark:group-hover:text-inverse-primary transition-colors text-on-surface dark:text-white">New 'Current Affairs' capsule for Banking exams.</h4>
+<p class="text-sm text-on-surface-variant dark:text-outline-variant">Download the monthly digest for May 2024.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="px-8 pb-24">
+<div class="max-w-7xl mx-auto rounded-3xl hero-gradient p-12 md:p-20 relative overflow-hidden text-center text-white">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10">
+<span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline mb-8">Ready to secure your government job?</h2>
+<p class="text-lg text-primary-fixed mb-12">Take the first step towards a stable and prestigious career. Get a free counseling session today.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-white text-primary px-10 py-4 rounded-md font-bold text-lg shadow-xl hover:bg-surface-bright transition-all">Book Counseling</button>
+<button class="border-2 border-white/30 text-white px-10 py-4 rounded-md font-bold text-lg hover:bg-white/10 transition-all">Download Brochure</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-[#0a0f18] border-t dark:border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold text-primary dark:text-inverse-primary font-headline">MentorPlus</div>
+<p class="text-on-surface-variant dark:text-outline-variant text-sm leading-relaxed">The premier academic sanctuary for competitive exam preparation in North India. Dedicated to excellence and integrity.</p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-surface-container-high dark:bg-white/10 flex items-center justify-center text-primary dark:text-inverse-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">social_leaderboard</span>
+</a>
+<a class="w-8 h-8 rounded-full bg-surface-container-high dark:bg-white/10 flex items-center justify-center text-primary dark:text-inverse-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</a>
+<a class="w-8 h-8 rounded-full bg-surface-container-high dark:bg-white/10 flex items-center justify-center text-primary dark:text-inverse-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-bold mb-6 font-headline text-on-surface dark:text-white">Quick Links</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant dark:text-outline-variant">
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Courses</a></li>
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Test Series</a></li>
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Syllabus</a></li>
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Exam Calendar</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 font-headline text-on-surface dark:text-white">Legal</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant dark:text-outline-variant">
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Refund Policy</a></li>
+<li><a class="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 font-headline text-on-surface dark:text-white">Contact Info</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant dark:text-outline-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-lg">call</span>
+                        9417775320
+                    </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-lg">mail</span>
+                        contact@mentorplus.edu
+                    </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary text-lg">location_on</span>
+                        SCF 45, Model Town, Ludhiana, Punjab - 141002
+                    </li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-outline-variant/10 dark:border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant dark:text-outline-variant">
+<p>© 2024 MentorPlus Coaching. All rights reserved.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>ISO 9001:2015 Certified Institution</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // System dark mode listener (optional, but good for demo)
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
+</body></html>

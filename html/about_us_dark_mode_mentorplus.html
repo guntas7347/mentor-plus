@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174d",
+              "inverse-surface": "#27313e",
+              "inverse-primary": "#b5c4ff",
+              "outline": "#737686",
+              "on-background": "#121c28",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#005137",
+              "secondary": "#006c4a",
+              "secondary-fixed": "#85f8c4",
+              "primary-fixed-dim": "#b5c4ff",
+              "background": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "tertiary-fixed": "#89f5e7",
+              "surface-dim": "#d1dbec",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#d9e3f4",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#84f0e2",
+              "on-primary-container": "#d4dcff",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#00714e",
+              "on-tertiary-fixed-variant": "#005049",
+              "error": "#ba1a1a",
+              "primary-container": "#1a56db",
+              "on-tertiary-fixed": "#00201d",
+              "primary-fixed": "#dbe1ff",
+              "surface-bright": "#f8f9ff",
+              "secondary-container": "#82f5c1",
+              "surface-tint": "#1353d8",
+              "on-surface": "#121c28",
+              "outline-variant": "#c3c5d7",
+              "on-primary-fixed-variant": "#003dab",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#002114",
+              "surface": "#f8f9ff",
+              "tertiary-container": "#006e65",
+              "on-surface-variant": "#434654",
+              "primary": "#003fb1",
+              "surface-container-high": "#dfe9fa",
+              "tertiary-fixed-dim": "#6bd8cb",
+              "surface-variant": "#d9e3f4",
+              "surface-container-low": "#eef4ff",
+              "secondary-fixed-dim": "#68dba9",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "tertiary": "#00544c",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Public Sans"],
+              "label": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background dark:bg-[#0b1117] font-body text-on-surface dark:text-[#eaf1ff] transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<nav class="docked full-width top-0 sticky z-50 bg-surface/80 dark:bg-[#0b1117]/80 glass-nav shadow-sm border-b dark:border-[#1e293b]">
+<div class="flex justify-between items-center w-full px-8 max-w-7xl mx-auto py-4">
+<div class="text-2xl font-extrabold text-primary dark:text-[#b5c4ff] tracking-tight font-headline">MentorPlus</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] transition-colors font-label text-[0.75rem] tracking-widest" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] transition-colors font-label text-[0.75rem] tracking-widest" href="#">Courses</a>
+<a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] transition-colors font-label text-[0.75rem] tracking-widest" href="#">Syllabus</a>
+<a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] transition-colors font-label text-[0.75rem] tracking-widest" href="#">Test Series</a>
+<a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] transition-colors font-label text-[0.75rem] tracking-widest" href="#">Gallery</a>
+<a class="text-primary dark:text-[#b5c4ff] font-bold border-b-2 border-primary dark:border-[#b5c4ff] pb-1 font-label text-[0.75rem] tracking-widest" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] transition-colors font-label text-[0.75rem] tracking-widest" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant dark:text-[#94a3b8] font-semibold font-label text-sm hover:text-primary dark:hover:text-[#b5c4ff]">Login</button>
+<button class="bg-primary-container dark:bg-[#1e40af] text-white px-6 py-2 rounded-md font-semibold hover:scale-[0.98] transition-all duration-200 shadow-md">Register</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="max-w-3xl">
+<span class="font-label text-primary dark:text-[#b5c4ff] font-bold tracking-widest uppercase text-xs mb-4 block">PUNJAB GOVERNMENT EXAMS</span>
+<h1 class="text-6xl font-extrabold font-headline text-on-surface dark:text-white leading-tight mb-6">
+                        Empowering Aspirants <br/>
+<span class="text-primary dark:text-[#b5c4ff]">Shaping Futures.</span>
+</h1>
+<p class="text-lg text-on-surface-variant dark:text-[#94a3b8] leading-relaxed mb-8">
+                        MentorPlus Coaching is Punjab's premier institute dedicated to preparing students for high-stakes government examinations. Our sanctuary of learning focuses on depth, discipline, and definitive results.
+                    </p>
+</div>
+</div>
+<!-- Asymmetric abstract background element -->
+<div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-br from-primary-fixed to-surface-container dark:from-[#1e293b] dark:to-[#0b1117] opacity-20 dark:opacity-40 -z-0 rounded-bl-[200px]"></div>
+</section>
+<!-- Institute Introduction -->
+<section class="py-20 bg-surface-container-low dark:bg-[#0f172a]">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-xl" style="border-radius: 40px 0 40px 40px;">
+<img alt="Learning Environment" class="w-full h-full object-cover" data-alt="Modern classroom with students studying" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo2Bd3eQUuBq9EKH1XeK5B6Ttub7xRfMeJS92Sl6diQsTxscRyMOSDiVsuUoaga8Hgdf2x2ZtoKxuEBZrX-x6JI9_ijzDTyI4VC3ZD62xhW-HA_8u-RXl_YKNbu8eGGbRHStAEc-O3Qm8tYvX6qYiOVOCAYieYRozg0X3MtqsN28a64YGMrKZoO8caTyaSvMaciuyCLHrKQtBfBDCY7IaYU352YfWbsZpIrXusGxa5V22NNvR5M4QEI2VcR4vVou8T7K8TasByFxK5"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-2xl max-w-xs border-l-4 border-secondary dark:border-[#10b981]">
+<p class="text-on-surface dark:text-white font-headline font-bold text-xl italic leading-tight">
+                            "Where education meets excellence and dreams meet destiny."
+                        </p>
+</div>
+</div>
+<div class="space-y-8">
+<h2 class="text-3xl font-bold font-headline dark:text-white">A Legacy of Excellence</h2>
+<div class="space-y-4 text-on-surface-variant dark:text-[#94a3b8] leading-relaxed">
+<p>Founded on the principles of integrity and rigorous academic standards, MentorPlus has emerged as a beacon of hope for thousands of aspirants in Punjab. We don't just teach; we mentor.</p>
+<p>Our methodology combines traditional pedagogical depth with modern analytical tools, ensuring that every student is equipped with the knowledge and the confidence to excel in competitive environments.</p>
+</div>
+<div class="grid grid-cols-2 gap-8 pt-4">
+<div>
+<span class="text-4xl font-extrabold text-primary dark:text-[#b5c4ff] font-headline block">94%</span>
+<span class="text-sm font-label tracking-wider uppercase dark:text-[#94a3b8]">Success Rate</span>
+</div>
+<div>
+<span class="text-4xl font-extrabold text-secondary dark:text-[#10b981] font-headline block">1200+</span>
+<span class="text-sm font-label tracking-wider uppercase dark:text-[#94a3b8]">Selected Officers</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission & Vision Bento Grid -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-7 bg-primary-container dark:bg-[#1e3a8a] p-12 rounded-xl text-white relative overflow-hidden flex flex-col justify-end min-h-[400px]">
+<span class="material-symbols-outlined absolute top-12 left-12 text-6xl opacity-20" data-icon="rocket_launch">rocket_launch</span>
+<div class="relative z-10">
+<h3 class="text-3xl font-headline font-bold mb-4">Our Mission</h3>
+<p class="text-lg opacity-90 leading-relaxed">
+                            To democratize high-quality coaching and provide an unparalleled learning ecosystem that empowers every Punjab student to achieve their goal of serving in the government sector.
+                        </p>
+</div>
+</div>
+<div class="md:col-span-5 bg-surface-container-high dark:bg-[#1e293b] p-12 rounded-xl flex flex-col justify-between shadow-sm">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary dark:text-[#b5c4ff] mb-6" data-icon="visibility">visibility</span>
+<h3 class="text-2xl font-headline font-bold mb-4 dark:text-white">Our Vision</h3>
+<p class="text-on-surface-variant dark:text-[#94a3b8]">
+                            To be recognized globally as the most student-centric exam preparation institute, fostering a culture of curiosity and relentless perseverance.
+                        </p>
+</div>
+<div class="pt-8">
+<hr class="border-outline-variant/30 dark:border-[#334155] mb-6"/>
+<div class="flex items-center space-x-2 text-primary dark:text-[#b5c4ff] font-bold cursor-pointer group">
+<span>Learn more about our values</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mentor Profiles -->
+<section class="py-24 bg-surface dark:bg-[#0b1117]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<span class="font-label text-secondary dark:text-[#10b981] font-bold tracking-widest uppercase text-xs mb-4 block">EXPERT FACULTY</span>
+<h2 class="text-4xl font-extrabold font-headline mb-4 dark:text-white">Meet Your Mentors</h2>
+<p class="text-on-surface-variant dark:text-[#94a3b8] max-w-2xl mx-auto">Our teachers are more than just subject experts; they are architects of success with decades of collective experience in government exam training.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Mentor 1 -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] border dark:border-[#334155]">
+<div class="aspect-square rounded-xl mb-6 overflow-hidden relative">
+<img alt="Mentor Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional male teacher smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjFIJF70n0e-m71FApt1tswMsxKZrA0hOt7ZYaQ9skDMmzdfeRHT4SxDkYXX2jcMOPaVWjYcU4839z-hX1vvt-X9n6sAX4ETO6smt3OMWHNwpPRSlQ40z2ojSTXLEVsyc5y375zTflTfcUrbw1sAdxFCpWrAqXVXaEHOhYeaSg2Q-xlTgQnmEJchPVf-1w7isnexjz3iHwwPVJ_PesKunw9wXnEfrGAz8QH4KSVZeYthMk1UqmTz1eHg519N3yZyEZA02dD735Cg3T"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-secondary-container dark:bg-[#064e3b] text-on-secondary-container dark:text-[#85f8c4] px-3 py-1 rounded-full text-xs font-bold font-label">Lead Faculty</span>
+</div>
+</div>
+<h4 class="text-xl font-bold font-headline mb-1 dark:text-white">Dr. Rajesh Khanna</h4>
+<p class="text-primary dark:text-[#b5c4ff] font-semibold mb-3">General Studies &amp; Policy</p>
+<div class="flex items-center text-sm text-on-surface-variant dark:text-[#94a3b8] space-x-4 border-t border-surface-variant dark:border-[#334155] pt-4">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="history_edu">history_edu</span>
+<span>15+ Years Exp.</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="stars">stars</span>
+<span>PhD, Political Science</span>
+</div>
+</div>
+</div>
+<!-- Mentor 2 -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] border dark:border-[#334155]">
+<div class="aspect-square rounded-xl mb-6 overflow-hidden relative">
+<img alt="Mentor Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional female teacher in a formal attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3ZBaqRfhLzytJJznDuxjEmokhBAwLO7_HiSQsKAAZ49NeCTzxvT63F-upONiFljBl7yls9SAj8KsjZzTjV2khbFTn8vtOIeZ3uBifqmX7AO71piO8vcYh6a9zgQYVpZV2a8vNm1E1_7hr1bTnCPvvtdbaG4srmIy7igmRQi-C0CXAtjBC60xRUxqTI73Fvcq_mgoSRDaM32JSwYXU7ZgsVKHf7RD5B12rvewNLAsOYVATtdl816oYJdAQqGnSlTOCoGJHYj2FwA3"/>
+</div>
+<h4 class="text-xl font-bold font-headline mb-1 dark:text-white">Ms. Simran Kaur</h4>
+<p class="text-primary dark:text-[#b5c4ff] font-semibold mb-3">Quantitative Aptitude</p>
+<div class="flex items-center text-sm text-on-surface-variant dark:text-[#94a3b8] space-x-4 border-t border-surface-variant dark:border-[#334155] pt-4">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="history_edu">history_edu</span>
+<span>10+ Years Exp.</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="stars">stars</span>
+<span>M.Sc. Mathematics</span>
+</div>
+</div>
+</div>
+<!-- Mentor 3 -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] border dark:border-[#334155]">
+<div class="aspect-square rounded-xl mb-6 overflow-hidden relative" style="border-radius: 0.75rem 0.75rem 0 0.75rem;">
+<img alt="Mentor Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional male teacher with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnUA2H9bOvZpbrqm6-UwLtoOE-6hwLCodprwsAwlNmqskfUWIZsGaJb3ZU0qS_TLJS0xiotGasFwQRloWAIT9698kAGT2Xf4Ie2-iExUi3a1RGyqAY9JWTEH42VviIum4oet_Dm3DuCb7qIlLwfF8tLGMyWXZoyyw4bQVD-dWFFDz3m6u130XWN1-wGnqMa7L3DcRi_ZDON5teglinLtO4gg_6CLhKix2kHPJpgVPRzb5_4xKpeSFDFBbHEBYOwuZaQL5Odty7kZvK"/>
+</div>
+<h4 class="text-xl font-bold font-headline mb-1 dark:text-white">Mr. Amanpreet Singh</h4>
+<p class="text-primary dark:text-[#b5c4ff] font-semibold mb-3">Logical Reasoning</p>
+<div class="flex items-center text-sm text-on-surface-variant dark:text-[#94a3b8] space-x-4 border-t border-surface-variant dark:border-[#334155] pt-4">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="history_edu">history_edu</span>
+<span>12+ Years Exp.</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="stars">stars</span>
+<span>Ex-Bank Manager</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-background dark:bg-[#0b1117]">
+<div class="max-w-5xl mx-auto px-8">
+<div class="bg-surface-container-highest dark:bg-[#1e293b] p-12 rounded-3xl text-center shadow-lg">
+<h2 class="text-3xl font-headline font-extrabold mb-6 dark:text-white">Ready to start your journey with us?</h2>
+<p class="text-on-surface-variant dark:text-[#94a3b8] mb-10 text-lg">Join MentorPlus today and experience the difference of structured learning and professional mentorship.</p>
+<div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+<button class="bg-primary-container dark:bg-[#1e40af] text-white px-10 py-4 rounded-md font-bold text-lg hover:scale-[0.98] transition-all shadow-md">Book a Free Consultation</button>
+<button class="text-primary dark:text-[#b5c4ff] font-bold px-10 py-4 flex items-center group">
+                            Contact Us Today
+                            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_right_alt">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<footer class="bg-surface-container-low dark:bg-[#0f172a] border-t dark:border-[#1e293b]">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold text-primary dark:text-[#b5c4ff]">MentorPlus</div>
+<p class="text-on-surface-variant dark:text-[#94a3b8] text-sm leading-relaxed">
+                    Punjab's leading institute for comprehensive government exam preparation. Building futures through dedicated mentorship.
+                </p>
+<div class="flex space-x-4">
+<span class="material-symbols-outlined text-outline dark:text-[#64748b] cursor-pointer hover:text-primary dark:hover:text-[#b5c4ff]" data-icon="public">public</span>
+<span class="material-symbols-outlined text-outline dark:text-[#64748b] cursor-pointer hover:text-primary dark:hover:text-[#b5c4ff]" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-on-surface dark:text-white">Explore</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] hover:underline underline-offset-4 transition-all" href="#">Courses</a></li>
+<li><a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] hover:underline underline-offset-4 transition-all" href="#">Test Series</a></li>
+<li><a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] hover:underline underline-offset-4 transition-all" href="#">Syllabus</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-on-surface dark:text-white">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] hover:underline underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-[#94a3b8] hover:text-primary dark:hover:text-[#b5c4ff] hover:underline underline-offset-4 transition-all" href="#">Terms of Service</a></li>
+<li class="text-on-surface-variant dark:text-[#94a3b8]">Contact: 9417775320</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-on-surface dark:text-white">Newsletter</h4>
+<p class="text-sm text-on-surface-variant dark:text-[#94a3b8]">Get the latest exam updates directly in your inbox.</p>
+<div class="flex">
+<input class="bg-surface-container-lowest dark:bg-[#1e293b] border-none rounded-l-md w-full focus:ring-1 focus:ring-primary dark:focus:ring-[#b5c4ff] dark:text-white dark:placeholder-[#64748b]" placeholder="Email address" type="email"/>
+<button class="bg-primary dark:bg-[#1e40af] text-white p-2 rounded-r-md">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 pb-8 flex flex-col md:flex-row justify-between items-center text-sm text-outline dark:text-[#64748b]">
+<p>© 2024 MentorPlus Coaching. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-primary dark:hover:text-[#b5c4ff]" href="#">Facebook</a>
+<a class="hover:text-primary dark:hover:text-[#b5c4ff]" href="#">Instagram</a>
+<a class="hover:text-primary dark:hover:text-[#b5c4ff]" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+<script>
+    // Minimal logic to toggle dark mode for preview if needed
+    // document.documentElement.classList.add('dark');
+</script>
+</body></html>

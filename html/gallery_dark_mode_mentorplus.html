@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174d",
+              "inverse-surface": "#27313e",
+              "inverse-primary": "#b5c4ff",
+              "outline": "#737686",
+              "on-background": "#121c28",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#005137",
+              "secondary": "#006c4a",
+              "secondary-fixed": "#85f8c4",
+              "primary-fixed-dim": "#b5c4ff",
+              "background": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "tertiary-fixed": "#89f5e7",
+              "surface-dim": "#d1dbec",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#d9e3f4",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#84f0e2",
+              "on-primary-container": "#d4dcff",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#00714e",
+              "on-tertiary-fixed-variant": "#005049",
+              "error": "#ba1a1a",
+              "primary-container": "#1a56db",
+              "on-tertiary-fixed": "#00201d",
+              "primary-fixed": "#dbe1ff",
+              "surface-bright": "#f8f9ff",
+              "secondary-container": "#82f5c1",
+              "surface-tint": "#1353d8",
+              "on-surface": "#121c28",
+              "outline-variant": "#c3c5d7",
+              "on-primary-fixed-variant": "#003dab",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#002114",
+              "surface": "#f8f9ff",
+              "tertiary-container": "#006e65",
+              "on-surface-variant": "#434654",
+              "primary": "#003fb1",
+              "surface-container-high": "#dfe9fa",
+              "tertiary-fixed-dim": "#6bd8cb",
+              "surface-variant": "#d9e3f4",
+              "surface-container-low": "#eef4ff",
+              "secondary-fixed-dim": "#68dba9",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "tertiary": "#00544c",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Public Sans"],
+              "label": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Public Sans', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface dark:bg-[#0a0e14] dark:text-gray-100 transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<nav class="bg-surface/80 dark:bg-[#0a0e14]/80 backdrop-blur-md docked full-width top-0 sticky z-50 border-b border-transparent dark:border-gray-800">
+<div class="flex justify-between items-center w-full px-8 max-w-7xl mx-auto h-20">
+<div class="text-2xl font-extrabold text-primary dark:text-blue-400 tracking-tight">MentorPlus</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors font-body text-sm font-semibold" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors font-body text-sm font-semibold" href="#">Courses</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors font-body text-sm font-semibold" href="#">Syllabus</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors font-body text-sm font-semibold" href="#">Test Series</a>
+<a class="text-primary dark:text-blue-400 font-bold border-b-2 border-primary dark:border-blue-400 pb-1 font-body text-sm" href="#">Gallery</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors font-body text-sm font-semibold" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transition-colors font-body text-sm font-semibold" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant dark:text-gray-300 font-semibold hover:text-primary dark:hover:text-blue-400 transition-all duration-300">Login</button>
+<button class="bg-primary-container dark:bg-primary text-white px-6 py-2 rounded-xl font-bold hover:scale-[0.98] transition-all duration-200">Register</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-8 py-16">
+<!-- Hero Header -->
+<header class="mb-20 text-center">
+<span class="text-primary dark:text-blue-400 font-label font-semibold tracking-widest text-xs uppercase mb-4 block">Visual Journey</span>
+<h1 class="text-5xl md:text-6xl font-extrabold text-on-surface dark:text-white mb-6 tracking-tight">Our Academic Sanctuary</h1>
+<p class="text-on-surface-variant dark:text-gray-400 text-lg max-w-2xl mx-auto font-body">
+                Explore the environment where future civil servants are forged. From intensive classroom sessions to celebratory result moments.
+            </p>
+</header>
+<!-- Category Filters -->
+<div class="flex flex-wrap justify-center gap-4 mb-12">
+<button class="px-8 py-3 bg-primary text-white rounded-full font-semibold shadow-sm hover:scale-[0.98] transition-all">All Photos</button>
+<button class="px-8 py-3 bg-surface-container-high dark:bg-gray-800 text-on-surface-variant dark:text-gray-300 rounded-full font-semibold hover:bg-surface-container-highest dark:hover:bg-gray-700 transition-all">Classroom</button>
+<button class="px-8 py-3 bg-surface-container-high dark:bg-gray-800 text-on-surface-variant dark:text-gray-300 rounded-full font-semibold hover:bg-surface-container-highest dark:hover:bg-gray-700 transition-all">Events</button>
+<button class="px-8 py-3 bg-surface-container-high dark:bg-gray-800 text-on-surface-variant dark:text-gray-300 rounded-full font-semibold hover:bg-surface-container-highest dark:hover:bg-gray-700 transition-all">Results</button>
+</div>
+<!-- Bento Grid Gallery -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Featured Item -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low dark:bg-gray-900 h-[500px] cursor-zoom-in shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Students studying in a modern well-lit library classroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRDOKZsNAjFXgbkpHLDk26f4gPg3Ie7a3HyRxhvp_7Th6ZCyKRcrVvuVPFMjz8jIRqgULeVMEsFc6iZu4fBCv-F8eVNhRVrWYLx4yHPFNrJJFgn8t1u3c1UzK0T6bIyO6QBByGSmRf7cvV0LsY3-PDuDHszBD8NkgQLW1Ct9_1DXS9mgrxZLDDwgMzIa6AvObNAcOEMeXLW3lZjBN_fDbuDOAysRB0x3nfQOhUom2y6qHXKlPa7MSZ0VFqj6B9aF_DNcb_9-DvahA1"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/80 dark:from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-secondary-fixed dark:text-teal-400 text-xs font-bold tracking-widest uppercase mb-2">Classroom</span>
+<h3 class="text-white text-2xl font-bold">Interactive Learning Sessions</h3>
+</div>
+</div>
+<!-- Vertical Item -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low dark:bg-gray-900 h-[500px] cursor-zoom-in shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A group of students collaborating on a project" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCehfHWdRItLSk3tWGBC91cL6729TofRt_M2FyBcWxurNVSd2lbe2MWTJiIhZKrzLm50lqBZivsWjePDxz_2rdQ0PGghi1uuWi9dtaX6hG59PyrAalT_9lrT7Twg5euNiPmUf_0OZaTswNdsaG5oCfOp5TEsk7ZZxq4DWH0g7SlCILWAm2Z-cKwg7Q3KUM9paTMvy7TNu1ygIoloEiDsmifiiS0agiTmZyHxBl2TVOOD660oldbz7ndTRhzepPlqHtjzpGnnXIZQ2_U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/80 dark:from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-secondary-fixed dark:text-teal-400 text-xs font-bold tracking-widest uppercase mb-2">Events</span>
+<h3 class="text-white text-xl font-bold">Annual Mentor Meetup 2023</h3>
+</div>
+</div>
+<!-- Small Items Grid -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low dark:bg-gray-900 h-[300px] cursor-zoom-in shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a student taking notes during a lecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_7qF1-8mdpdVUZYMcsmxNwHLo4MWuHlARxMO9V6XC59sEFr5xQmvGhVdzbXShBWHE2bClnUqk26x4kBbs5kqCovP_ss00L_6cb4KIlWR9kS2nayW-Kl918JQamlHdNEi2BtVcSdsVk4ko7-Tqj6Vh-DcRwEp-XTosRXpT4mbmndYpJPdk6iP-Rx9MUxi8kr_M2Ht7GuH6zBuErV1xi_Qx63Oob6TicRjtMC-TASdPSfXvII6bDIbBMKXkdSQD2QAjUn9SRYia318j"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/80 dark:from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<span class="text-secondary-fixed dark:text-teal-400 text-xs font-bold tracking-widest uppercase mb-1">Classroom</span>
+<h3 class="text-white text-lg font-bold">Focus &amp; Discipline</h3>
+</div>
+</div>
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low dark:bg-gray-900 h-[300px] cursor-zoom-in shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Successful students celebrating their results with teachers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbxdjF0tRgFzxO_RkKXNH-HdmSf15mxDDxfwtKyMNnzWqp50E9kKbVlpfZPaVkWRgqOXUuT3oyuL_L088XpmZVE4bhtM_EiNjMRzWEURTNhfLoOfrlm4gFDVx-A6FfrxhvRz09uBK-JJq5duNczVTNGgReNJkY2akUvno4PVaAtJ73BCm6cFFJhUSAK-mkaQhlfkJ3x6nICqsyW00DkU-dGrbP96jUo27L3IkaqH4oq-8iYdwWJa4LXTr04jAaDRTBDipme44Z-LEs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/80 dark:from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<span class="text-secondary-fixed dark:text-teal-400 text-xs font-bold tracking-widest uppercase mb-1">Results</span>
+<h3 class="text-white text-lg font-bold">Wall of Excellence</h3>
+</div>
+</div>
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low dark:bg-gray-900 h-[300px] cursor-zoom-in shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A teacher mentoring a student individually" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhYgEzggypQBK-Zl5EU7SUGJbGld5TtD-Q6IpjQKHlDmShkjj2-4YfgpeXvk_4VGXzji168FtSH2zUHGbr3PSA-qJe04Ak_rFbi_2LXGpWMdJon9SX_dUp63mIHo2G1j1-8jcZSa3GPfB7slMG9mYHjwJhqKBLhftT8l7EEAnBHY0wzZYZATXbYHZLFuM2xiHP8o86LFRTBV9pkSUrH6hTq5TzaAdzoYdVqbTyRc0EhjuXheyCJ1B9IjORE-N3Bt86WyQOua17t3pk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/80 dark:from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<span class="text-secondary-fixed dark:text-teal-400 text-xs font-bold tracking-widest uppercase mb-1">Classroom</span>
+<h3 class="text-white text-lg font-bold">1-on-1 Mentorship</h3>
+</div>
+</div>
+<!-- Wide Bottom Item -->
+<div class="md:col-span-12 group relative overflow-hidden rounded-xl bg-surface-container-low dark:bg-gray-900 h-[400px] cursor-zoom-in shadow-sm hover:shadow-xl transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Wide shot of a large seminar hall filled with students" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRnV4bObm1S7GWhLHF-TIobJgirnpsRMk5e5ZPcB_YLXEJXyw8A4tWjCzq0UNHjj-7MX82365c5bcgJ6JkZSEULYWKiHN-QWVsExWRyqcHnEor0i9RiG-71DkMMmgpVbPeKw897ICyO2nf1PpANNamr3LuCg216hnKInTvyXNymZNE13NlgPLl8o67grSZynDL-gNt0YV3nT7pIq5aI94dkeGjBXjyQnYEbJAfk9CObAbFJoKDpLmVOEddDj18kSSgPiS0mEKB71XE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/80 dark:from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
+<span class="text-secondary-fixed dark:text-teal-400 text-xs font-bold tracking-widest uppercase mb-2">Events</span>
+<h3 class="text-white text-3xl font-bold">State-level Mock Interview Seminar</h3>
+</div>
+</div>
+</div>
+<!-- Lightbox Placeholder UI -->
+<div class="mt-16 bg-surface-container-low dark:bg-gray-900/50 border border-transparent dark:border-gray-800 rounded-2xl p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-outline dark:text-gray-500 cursor-pointer hover:text-primary dark:hover:text-blue-400 transition-colors">close</span>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="aspect-video bg-black/5 dark:bg-white/5 rounded-xl flex items-center justify-center mb-8 border-2 border-dashed border-outline-variant/30 dark:border-gray-700">
+<div class="flex flex-col items-center gap-4">
+<span class="material-symbols-outlined text-5xl text-primary/40 dark:text-blue-400/30">photo_library</span>
+<p class="text-on-surface-variant dark:text-gray-400 font-medium">Click any photo to enter focus mode</p>
+</div>
+</div>
+<div class="flex justify-between items-center px-4">
+<div class="text-left">
+<h4 class="font-bold text-xl text-on-surface dark:text-white">Sample Lightbox View</h4>
+<p class="text-sm text-on-surface-variant dark:text-gray-500">Classroom Sessions • October 2023</p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full bg-surface-container-highest dark:bg-gray-800 flex items-center justify-center text-primary dark:text-blue-400 hover:bg-primary dark:hover:bg-blue-500 hover:text-white transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container-highest dark:bg-gray-800 flex items-center justify-center text-primary dark:text-blue-400 hover:bg-primary dark:hover:bg-blue-500 hover:text-white transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-[#0f141d] full-width rounded-t-none border-t dark:border-gray-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-bold text-primary dark:text-blue-400 mb-6">MentorPlus</div>
+<p class="text-on-surface-variant dark:text-gray-400 text-sm leading-relaxed mb-6">
+                    Leading coaching institute for Punjab Government Exams and Civil Services preparation. Empowering dreams since 2018.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary dark:text-blue-400 cursor-pointer">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary dark:text-blue-400 cursor-pointer">smart_display</span>
+<span class="material-symbols-outlined text-primary dark:text-blue-400 cursor-pointer">share</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface dark:text-white mb-6">Explore</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 underline-offset-4 hover:underline transition-all" href="#">Courses</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 underline-offset-4 hover:underline transition-all" href="#">Test Series</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 underline-offset-4 hover:underline transition-all" href="#">Syllabus</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface dark:text-white mb-6">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 underline-offset-4 hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 underline-offset-4 hover:underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 underline-offset-4 hover:underline transition-all" href="#">Gallery</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface dark:text-white mb-6">Contact Us</h4>
+<p class="text-on-surface-variant dark:text-gray-400 text-sm mb-4">SCO 45-46, Phase 7, Mohali, Punjab</p>
+<p class="text-primary dark:text-blue-400 font-bold">Contact: 9417775320</p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-outline-variant/10 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant dark:text-gray-500 text-sm">© 2024 MentorPlus Coaching. All rights reserved.</p>
+<button class="text-primary dark:text-blue-400 text-sm font-semibold flex items-center gap-2 group">
+                Back to top
+                <span class="material-symbols-outlined text-sm group-hover:-translate-y-1 transition-transform">arrow_upward</span>
+</button>
+</div>
+</footer>
+<script>
+        // Optional: Script to toggle dark mode for previewing
+        // document.documentElement.classList.add('dark');
+    </script>
+</body></html>

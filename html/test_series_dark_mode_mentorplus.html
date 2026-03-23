@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MentorPlus | Test Series Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Public+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174d",
+              "inverse-surface": "#27313e",
+              "inverse-primary": "#b5c4ff",
+              "outline": "#737686",
+              "on-background": "#121c28",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#005137",
+              "secondary": "#006c4a",
+              "secondary-fixed": "#85f8c4",
+              "primary-fixed-dim": "#b5c4ff",
+              "background": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "tertiary-fixed": "#89f5e7",
+              "surface-dim": "#d1dbec",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#d9e3f4",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#84f0e2",
+              "on-primary-container": "#d4dcff",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#00714e",
+              "on-tertiary-fixed-variant": "#005049",
+              "error": "#ba1a1a",
+              "primary-container": "#1a56db",
+              "on-tertiary-fixed": "#00201d",
+              "primary-fixed": "#dbe1ff",
+              "surface-bright": "#f8f9ff",
+              "secondary-container": "#82f5c1",
+              "surface-tint": "#1353d8",
+              "on-surface": "#121c28",
+              "outline-variant": "#c3c5d7",
+              "on-primary-fixed-variant": "#003dab",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#002114",
+              "surface": "#f8f9ff",
+              "tertiary-container": "#006e65",
+              "on-surface-variant": "#434654",
+              "primary": "#003fb1",
+              "surface-container-high": "#dfe9fa",
+              "tertiary-fixed-dim": "#6bd8cb",
+              "surface-variant": "#d9e3f4",
+              "surface-container-low": "#eef4ff",
+              "secondary-fixed-dim": "#68dba9",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "tertiary": "#00544c",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Public Sans"],
+              "label": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body { font-family: 'Public Sans', sans-serif; }
+      h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background dark:bg-[#0a0e14] text-on-surface dark:text-[#e2e8f0] transition-colors duration-300">
+<!-- Top Navigation Shell -->
+<nav class="bg-surface/80 dark:bg-[#0f172a]/80 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-sm border-b border-outline-variant/10 dark:border-white/5">
+<div class="flex justify-between items-center w-full px-8 max-w-7xl mx-auto h-20">
+<div class="text-2xl font-extrabold text-primary dark:text-[#60a5fa] tracking-tight">MentorPlus</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] transition-colors font-body" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] transition-colors font-body" href="#">Courses</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] transition-colors font-body" href="#">Syllabus</a>
+<a class="text-primary dark:text-[#60a5fa] font-bold border-b-2 border-primary dark:border-[#60a5fa] pb-1 font-body" href="#">Test Series</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] transition-colors font-body" href="#">Gallery</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] transition-colors font-body" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] transition-colors font-body" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<!-- UI-Only Cart Icon -->
+<button class="relative p-2 text-on-surface-variant dark:text-gray-400 hover:bg-surface-container-highest/50 dark:hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-primary dark:bg-[#3b82f6] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-surface dark:ring-[#0f172a]">2</span>
+</button>
+<div class="hidden md:flex items-center space-x-4">
+<button class="text-on-surface-variant dark:text-gray-300 hover:text-primary dark:hover:text-[#60a5fa] font-semibold transition-colors">Login</button>
+<button class="bg-primary-container dark:bg-[#2563eb] text-white px-6 py-2.5 rounded-xl font-bold hover:scale-[0.98] transition-all duration-200">Register</button>
+</div>
+<button class="md:hidden text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-8 py-12">
+<!-- Header Section -->
+<header class="mb-16">
+<div class="flex flex-col space-y-4">
+<span class="text-secondary dark:text-[#4ade80] font-label font-semibold tracking-widest text-xs uppercase">Premium Exam Resources</span>
+<h1 class="text-5xl md:text-6xl font-extrabold text-on-surface dark:text-white leading-tight tracking-tight">Store <span class="text-primary dark:text-[#60a5fa]">&amp;</span> Assessment</h1>
+<p class="text-on-surface-variant dark:text-gray-400 max-w-2xl text-lg font-body leading-relaxed">
+                    Exhaustive practice materials curated by top mentors to ensure you are exam-ready for Punjab Government and National Level competitions.
+                </p>
+</div>
+</header>
+<!-- Tab Switching UI -->
+<div class="flex items-center space-x-2 mb-12 p-1.5 bg-surface-container-low dark:bg-[#1e293b] rounded-xl w-fit">
+<button class="px-8 py-3 bg-surface-container-lowest dark:bg-[#334155] text-primary dark:text-[#60a5fa] font-bold rounded-lg shadow-sm transition-all duration-300">
+                Test Series
+            </button>
+<button class="px-8 py-3 text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] font-semibold rounded-lg transition-all duration-300">
+                Study Material
+            </button>
+</div>
+<!-- Filter & Search Bar (Visual Anchor) -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+<div class="flex items-center space-x-4">
+<span class="font-label text-sm text-outline dark:text-gray-500 font-semibold uppercase">Filter by:</span>
+<div class="flex gap-2 overflow-x-auto pb-2 md:pb-0">
+<span class="px-4 py-1.5 bg-primary/10 dark:bg-[#3b82f6]/10 text-primary dark:text-[#60a5fa] text-sm font-bold rounded-full border border-primary/20 dark:border-[#3b82f6]/20 whitespace-nowrap">All Exams</span>
+<span class="px-4 py-1.5 bg-surface-container-high dark:bg-[#1e293b] text-on-surface-variant dark:text-gray-400 text-sm font-semibold rounded-full whitespace-nowrap hover:bg-surface-container-highest dark:hover:bg-[#334155] cursor-pointer transition-colors">PSSSB</span>
+<span class="px-4 py-1.5 bg-surface-container-high dark:bg-[#1e293b] text-on-surface-variant dark:text-gray-400 text-sm font-semibold rounded-full whitespace-nowrap hover:bg-surface-container-highest dark:hover:bg-[#334155] cursor-pointer transition-colors">PPSC</span>
+<span class="px-4 py-1.5 bg-surface-container-high dark:bg-[#1e293b] text-on-surface-variant dark:text-gray-400 text-sm font-semibold rounded-full whitespace-nowrap hover:bg-surface-container-highest dark:hover:bg-[#334155] cursor-pointer transition-colors">Banking</span>
+</div>
+</div>
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline dark:text-gray-500">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest dark:bg-[#1e293b] border-none rounded-xl focus:ring-2 focus:ring-primary/20 dark:focus:ring-[#3b82f6]/20 text-on-surface dark:text-white placeholder:dark:text-gray-500" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<!-- Store Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Punjab Patwari -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col relative">
+<div class="absolute top-4 left-4 z-10">
+<span class="bg-secondary-container dark:bg-[#059669]/20 text-on-secondary-container dark:text-[#34d399] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter ring-1 ring-secondary/20 dark:ring-[#059669]/30">Active Now</span>
+</div>
+<div class="h-48 bg-gradient-to-br from-primary to-primary-container dark:from-[#1e40af] dark:to-[#1e3a8a] p-8 flex flex-col justify-end overflow-hidden" data-alt="Abstract geometric blue background with subtle gradients">
+<h3 class="text-white text-2xl font-bold font-headline leading-tight">Punjab Patwari 2024 Ultimate Mock Test Pack</h3>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex items-center space-x-4 mb-6">
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">description</span>
+<span class="text-sm font-semibold">25 Full Tests</span>
+</div>
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">schedule</span>
+<span class="text-sm font-semibold">12 Months</span>
+</div>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Latest PSSSB Exam Pattern
+                        </li>
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Detailed Video Solutions
+                        </li>
+</ul>
+</div>
+<div class="p-6 pt-0 flex items-center justify-between border-t border-outline-variant/10 dark:border-white/5">
+<div class="flex flex-col">
+<span class="text-xs text-outline dark:text-gray-500 line-through">₹1,499</span>
+<span class="text-2xl font-extrabold text-on-surface dark:text-white">₹499</span>
+</div>
+<button class="bg-primary dark:bg-[#2563eb] text-white px-6 py-3 rounded-lg font-bold flex items-center hover:bg-primary-container dark:hover:bg-[#1d4ed8] transition-all">
+                        Buy Now
+                        <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: PPSC Inspector -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col relative">
+<div class="h-4 bg-secondary dark:bg-[#059669]"></div>
+<div class="h-44 bg-surface-container-high dark:bg-[#334155] p-8 flex flex-col justify-end" data-alt="Light grey professional background pattern with educational icons">
+<h3 class="text-on-surface dark:text-white text-2xl font-bold font-headline leading-tight">PPSC Inspector Cooperative Societies</h3>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex items-center space-x-4 mb-6">
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">description</span>
+<span class="text-sm font-semibold">15 Sectional Tests</span>
+</div>
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">history</span>
+<span class="text-sm font-semibold">Previous Year Papers</span>
+</div>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Current Affairs Special Focus
+                        </li>
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            AI-Powered Performance Analysis
+                        </li>
+</ul>
+</div>
+<div class="p-6 pt-0 flex items-center justify-between border-t border-outline-variant/10 dark:border-white/5">
+<div class="flex flex-col">
+<span class="text-xs text-outline dark:text-gray-500 line-through">₹2,999</span>
+<span class="text-2xl font-extrabold text-on-surface dark:text-white">₹999</span>
+</div>
+<button class="bg-primary dark:bg-[#2563eb] text-white px-6 py-3 rounded-lg font-bold flex items-center hover:bg-primary-container dark:hover:bg-[#1d4ed8] transition-all">
+                        Buy Now
+                        <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Quantitative Aptitude -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col relative">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-primary dark:bg-[#3b82f6] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">Bestseller</span>
+</div>
+<div class="h-48 bg-gradient-to-br from-secondary to-on-secondary-container dark:from-[#065f46] dark:to-[#047857] p-8 flex flex-col justify-end overflow-hidden" data-alt="Green forest inspired abstract gradient design">
+<h3 class="text-white text-2xl font-bold font-headline leading-tight">Quantitative Aptitude Master Series</h3>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex items-center space-x-4 mb-6">
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">description</span>
+<span class="text-sm font-semibold">50+ Practice Sets</span>
+</div>
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">movie</span>
+<span class="text-sm font-semibold">Trick Videos Included</span>
+</div>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Vedic Math Short Tricks
+                        </li>
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Level-wise Question Banking
+                        </li>
+</ul>
+</div>
+<div class="p-6 pt-0 flex items-center justify-between border-t border-outline-variant/10 dark:border-white/5">
+<div class="flex flex-col">
+<span class="text-xs text-outline dark:text-gray-500 line-through">₹999</span>
+<span class="text-2xl font-extrabold text-on-surface dark:text-white">₹299</span>
+</div>
+<button class="bg-primary dark:bg-[#2563eb] text-white px-6 py-3 rounded-lg font-bold flex items-center hover:bg-primary-container dark:hover:bg-[#1d4ed8] transition-all">
+                        Buy Now
+                        <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Reasoning Ability -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col">
+<div class="h-44 bg-surface-container-high dark:bg-[#334155] p-8 flex flex-col justify-end" data-alt="Clean corporate pattern with grid lines and dots">
+<h3 class="text-on-surface dark:text-white text-2xl font-bold font-headline leading-tight">Reasoning Ability Booster Pack</h3>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex items-center space-x-4 mb-6">
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">description</span>
+<span class="text-sm font-semibold">30 Logic Sets</span>
+</div>
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">lightbulb</span>
+<span class="text-sm font-semibold">Concept Notes</span>
+</div>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Puzzle &amp; Seating Specialist
+                        </li>
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Updated 2024 Question Types
+                        </li>
+</ul>
+</div>
+<div class="p-6 pt-0 flex items-center justify-between border-t border-outline-variant/10 dark:border-white/5">
+<div class="flex flex-col">
+<span class="text-xs text-outline dark:text-gray-500 line-through">₹1,199</span>
+<span class="text-2xl font-extrabold text-on-surface dark:text-white">₹599</span>
+</div>
+<button class="bg-primary dark:bg-[#2563eb] text-white px-6 py-3 rounded-lg font-bold flex items-center hover:bg-primary-container dark:hover:bg-[#1d4ed8] transition-all">
+                        Buy Now
+                        <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 5: Full Punjab Exam Combo -->
+<div class="group bg-surface-container-lowest dark:bg-[#1e293b] rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] flex flex-col relative md:col-span-2 lg:col-span-1">
+<div class="absolute top-4 left-4 z-10">
+<span class="bg-error dark:bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">Limited Offer</span>
+</div>
+<div class="h-48 bg-gradient-to-r from-on-primary-fixed to-primary-container dark:from-[#0f172a] dark:to-[#1e40af] p-8 flex flex-col justify-end overflow-hidden" data-alt="Deep dark blue gradient with glowing aura effects">
+<h3 class="text-white text-2xl font-bold font-headline leading-tight">Master Punjab Govt. Exams Combo</h3>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex items-center space-x-4 mb-6">
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">description</span>
+<span class="text-sm font-semibold">150+ Total Tests</span>
+</div>
+<div class="flex items-center text-on-surface-variant dark:text-gray-400">
+<span class="material-symbols-outlined text-xl mr-2">workspace_premium</span>
+<span class="text-sm font-semibold">Mentor Access</span>
+</div>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            All PSSSB, PPSC &amp; Punjab Police
+                        </li>
+<li class="flex items-center text-sm text-on-surface-variant dark:text-gray-400 italic">
+<span class="material-symbols-outlined text-secondary dark:text-[#4ade80] text-sm mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Lifetime Updates for 2024-25
+                        </li>
+</ul>
+</div>
+<div class="p-6 pt-0 flex items-center justify-between border-t border-outline-variant/10 dark:border-white/5">
+<div class="flex flex-col">
+<span class="text-xs text-outline dark:text-gray-500 line-through">₹5,999</span>
+<span class="text-2xl font-extrabold text-on-surface dark:text-white">₹2,499</span>
+</div>
+<button class="bg-primary dark:bg-[#2563eb] text-white px-6 py-3 rounded-lg font-bold flex items-center hover:bg-primary-container dark:hover:bg-[#1d4ed8] transition-all">
+                        Buy Now
+                        <span class="material-symbols-outlined ml-2 text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Empty State / Coming Soon Placeholder -->
+<div class="bg-surface-container-low/50 dark:bg-[#0f172a]/40 rounded-xl border-2 border-dashed border-outline-variant/30 dark:border-white/10 flex flex-col items-center justify-center p-12 text-center group">
+<div class="w-16 h-16 bg-surface-container-highest dark:bg-[#1e293b] rounded-full flex items-center justify-center mb-4 transition-transform group-hover:rotate-12">
+<span class="material-symbols-outlined text-outline dark:text-gray-500 text-3xl">add</span>
+</div>
+<h4 class="font-bold text-on-surface dark:text-white">New Series Coming Soon</h4>
+<p class="text-sm text-on-surface-variant dark:text-gray-400 mt-2">Sign up for notifications to be the first to know about new arrivals.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-[#0f172a] mt-24 border-t border-outline-variant/10 dark:border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold text-primary dark:text-[#60a5fa]">MentorPlus</div>
+<p class="text-on-surface-variant dark:text-gray-400 text-sm font-body leading-relaxed">
+                    Building the future of Punjab's civil services through dedicated mentorship and precision assessment.
+                </p>
+<div class="flex space-x-4">
+<div class="w-10 h-10 bg-surface-container-high dark:bg-[#1e293b] rounded-full flex items-center justify-center text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] cursor-pointer transition-colors">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="w-10 h-10 bg-surface-container-high dark:bg-[#1e293b] rounded-full flex items-center justify-center text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] cursor-pointer transition-colors">
+<span class="material-symbols-outlined">call</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface dark:text-white mb-6 font-headline">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] underline-offset-4 hover:underline transition-all" href="#">Courses</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] underline-offset-4 hover:underline transition-all" href="#">Test Series</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] underline-offset-4 hover:underline transition-all" href="#">Syllabus</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface dark:text-white mb-6 font-headline">Policy</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] underline-offset-4 hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-[#60a5fa] underline-offset-4 hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface dark:text-white mb-6 font-headline">Contact Support</h4>
+<div class="space-y-4">
+<p class="text-on-surface-variant dark:text-gray-400 text-sm flex items-center">
+<span class="material-symbols-outlined mr-2 text-primary dark:text-[#60a5fa]">call</span>
+                        9417775320
+                    </p>
+<p class="text-on-surface-variant dark:text-gray-400 text-sm flex items-center">
+<span class="material-symbols-outlined mr-2 text-primary dark:text-[#60a5fa]">location_on</span>
+                        Chandigarh, Punjab
+                    </p>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-outline-variant/10 dark:border-white/5 text-center">
+<p class="text-on-surface-variant dark:text-gray-500 text-xs">© 2024 MentorPlus Coaching. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
