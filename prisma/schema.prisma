@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../prisma/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  STUDENT
+}
+
+enum PurchaseStatus {
+  PENDING // order created, not paid yet
+  SUCCESS // payment completed, access granted
+  FAILED // payment attempt failed
+  CANCELLED // user abandoned or explicitly cancelled
+  EXPIRED // pending payment timed out (optional but useful)
+  REFUNDED // money returned after success (future-proof)
+}
+
+model User {
+  id    String  @id @default(uuid())
+  name  String
+  email String  @unique
+  image String?
+  role  Role    @default(STUDENT)
+
+  phone   String?
+  address String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  // Relation restricted to TestSeries and Purchases as requested
+  testSeries TestSeries[] @relation("UserTestSeries")
+  purchases  Purchase[]
+
+  @@map("users")
+}
+
+model Course {
+  id              String    @id @default(uuid())
+  title           String    @default("Untitled Course")
+  slug            String    @unique @default(uuid())
+  subtitle        String?   @default("Untitled Subtitle")
+  description     String    @default("Untitled Description")
+  thumbnailUrl    String?
+  tags            String[]  @default([])
+  currency        String    @default("INR") // INR, USD
+  fullPrice       Int       @default(0)
+  discountedPrice Int       @default(0)
+  validTill       DateTime?
+  durationMonths  Int       @default(1)
+  category        String    @default("Other")
+  status          String    @default("draft")
+  hotTag          String? // Best Seller, New, etc.
+  instructors     String[]  @default([])
+  isPublished     Boolean   @default(false)
+
+  // Expected structure: [{ title: string, desc: string, icon: string }]
+  learningOutcomes Json?
+
+  // Expected structure: [{ title: string }]
+  curriculum Json?
+
+  // Expected structure: [{ text: string, icon: string }]
+  features Json?
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  deletedAt DateTime?
+  purchases Purchase[]
+}
+
+model TestSeries {
+  id           String  @id @default(uuid())
+  title        String
+  slug         String  @unique @default(uuid())
+  category     String
+  description  String?
+  thumbnailUrl String?
+
+  currency        String    @default("INR") // INR, USD
+  fullPrice       Int
+  discountedPrice Int
+  validTill       DateTime?
+  validityMonths  Int
+
+  status      String  @default("draft")
+  isPublished Boolean @default(false)
+
+  // Expected: [{ icon: string, value: string, label: string, highlight: boolean }]
+  stats Json?
+
+  // Expected: [{ icon: string, title: string, desc: string }]
+  analytics Json?
+
+  // Expected: [{ title: string, desc: string }] (We will auto-generate the 01, 02 prefix in the UI)
+  phases Json?
+
+  // Expected: [{ name: string, role: string, comment: string }]
+  reviews Json?
+
+  // Expected: [{ icon: string, text: string }]
+  features   Json?
+  accessLink String?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  users     User[]     @relation("UserTestSeries")
+  purchases Purchase[]
+}
+
+model Syllabus {
+  id            String  @id @default(uuid())
+  categoryId    String  @unique // Acts as the slug/anchor (e.g., "SSC-CGL")
+  categoryTitle String // e.g., "SSC & Central Government Exams"
+  status        String  @default("draft") // "active", "draft", "archived"
+  isPublished   Boolean @default(false)
+
+  // Expected structure: [{ name: string, description: string, icon: string, pdfLink: string }]
+  items Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Purchase {
+  id String @id @default(uuid())
+
+  userId       String
+  testSeriesId String?
+  courseId     String?
+
+  amount        Int
+  paymentMethod String // Razorpay, Stripe, UPI
+  paymentId     String?
+
+  expiresAt DateTime?
+
+  status PurchaseStatus @default(PENDING)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  testSeries TestSeries? @relation(fields: [testSeriesId], references: [id], onDelete: Cascade)
+  course     Course?     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, testSeriesId]) // prevent duplicate purchases
+  @@map("purchases")
+}
+
+model Config {
+  id String @id @default(uuid())
+
+  key   String @unique
+  value Json
+
+  isPublic Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

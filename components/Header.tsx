@@ -1,101 +1,90 @@
 "use client";
 
-import Link from "next/link";
-import { useTheme } from "@/lib/useTheme";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { Sun, Moon, LogOut } from "lucide-react";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/courses", label: "Courses" },
-  { href: "/syllabus", label: "Syllabus" },
-  { href: "/test-series", label: "Test Series" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
-];
+// Helper to get initials if the user doesn't have a profile image
+function getInitials(name?: string | null) {
+  if (!name) return "U";
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .substring(0, 2)
+    .toUpperCase();
+}
 
 export default function Header() {
-  const { theme, toggleTheme } = useTheme();
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const { data: session } = useSession();
+  const [isDark, setIsDark] = useState(false);
+
+  // Check initial theme state on mount
+  useEffect(() => {
+    if (document.documentElement.classList.contains("dark")) {
+      setIsDark(true);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
-    <nav className="docked full-width top-0 sticky z-50 bg-surface/80 dark:bg-[#0a0f18]/80 glass-nav border-b border-transparent dark:border-white/5 transition-colors duration-300">
-      <div className="flex justify-between items-center w-full px-8 max-w-7xl mx-auto h-20">
-        <Link
-          href="/"
-          className="text-2xl font-extrabold text-primary dark:text-inverse-primary tracking-tight font-headline"
+    <header className="h-16 glass-nav border-b border-outline-variant/30 sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between bg-surface/80 backdrop-blur-md dark:bg-[#121c28]/80">
+      <div>
+        <h2 className="text-xl font-headline font-bold text-on-surface dark:text-white">
+          Dashboard
+        </h2>
+      </div>
+
+      <div className="flex items-center gap-2 sm:gap-4">
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full hover:bg-surface-variant dark:hover:bg-white/10 text-on-surface-variant dark:text-gray-300 transition-colors"
+          aria-label="Toggle Dark Mode"
         >
-          MentorPlus
-        </Link>
+          {isDark ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest first:text-primary first:dark:text-inverse-primary first:border-b-2 first:border-primary first:dark:border-inverse-primary first:pb-1"
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
+        {/* Divider */}
+        <div className="w-px h-6 bg-outline-variant/30 dark:bg-white/10 mx-1 hidden sm:block"></div>
 
-        {/* Right controls */}
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-white/10 transition-colors text-on-surface-variant dark:text-outline-variant"
-            aria-label="Toggle dark mode"
-          >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button className="hidden md:inline-flex text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest px-4 py-2">
-            Login
-          </button>
-          <button className="hidden md:inline-flex bg-primary-container dark:bg-primary text-white px-6 py-2.5 rounded-md font-label text-sm tracking-widest active:scale-[0.98] duration-200 transition-all">
-            Register
-          </button>
-
-          {/* Hamburger button — mobile only */}
-          <button
-            onClick={() => setMobileOpen((prev) => !prev)}
-            className="md:hidden p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-white/10 transition-colors text-on-surface-variant dark:text-outline-variant"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile drawer */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-        } bg-surface/95 dark:bg-[#0a0f18]/95 border-t border-transparent dark:border-white/5`}
-      >
-        <div className="flex flex-col px-6 py-4 space-y-1 max-w-7xl mx-auto">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setMobileOpen(false)}
-              className="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest py-3 border-b border-surface-container-high dark:border-white/5 last:border-0"
-            >
-              {label}
-            </Link>
-          ))}
-          <div className="flex items-center gap-3 pt-4">
-            <button className="flex-1 text-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest border border-surface-container-high dark:border-white/10 px-4 py-2.5 rounded-md">
-              Login
-            </button>
-            <button className="flex-1 bg-primary-container dark:bg-primary text-white px-4 py-2.5 rounded-md font-label text-sm tracking-widest active:scale-[0.98] duration-200 transition-all">
-              Register
-            </button>
+        {/* User Profile Info */}
+        <div className="flex items-center gap-3 pl-1 sm:pl-0">
+          <div className="w-9 h-9 rounded-full overflow-hidden bg-primary/10 dark:bg-[#1a56db]/20 border border-primary/20 dark:border-white/10 flex items-center justify-center text-primary dark:text-[#b5c4ff] font-bold text-sm shrink-0">
+            {session?.user?.image ? (
+              <img
+                src={session.user.image}
+                alt={session.user.name || "User"}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              getInitials(session?.user?.name)
+            )}
           </div>
+          <span className="text-sm font-semibold text-on-surface dark:text-white hidden md:block">
+            {session?.user?.name?.split(" ")[0] || "User"}
+          </span>
         </div>
+
+        {/* Logout Button */}
+        <button
+          onClick={() => {
+            const confirmLogout = confirm("Are you sure you want to logout?");
+            if (confirmLogout) {
+              signOut({ callbackUrl: "/" });
+            }
+          }}
+          className="p-2 sm:px-3 sm:py-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-900/20 text-on-surface-variant dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors flex items-center gap-2"
+          title="Sign Out"
+        >
+          <LogOut size={18} />
+          <span className="hidden sm:block text-sm font-bold">Logout</span>
+        </button>
       </div>
-    </nav>
+    </header>
   );
 }
