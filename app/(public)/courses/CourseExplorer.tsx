@@ -8,7 +8,7 @@ import { Course } from "@/prisma/generated/client";
 export default function CourseExplorer({
   initialCourses,
 }: {
-  initialCourses: Course[];
+  initialCourses: any;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All Courses");
@@ -27,7 +27,7 @@ export default function CourseExplorer({
 
   // Real-time filtering logic
   const filteredCourses = useMemo(() => {
-    return initialCourses.filter((course) => {
+    return initialCourses.filter((course: any) => {
       const matchesSearch =
         course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (course.description &&
@@ -103,7 +103,7 @@ export default function CourseExplorer({
       {/* Course Grid */}
       {filteredCourses.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCourses.map((course) => (
+          {filteredCourses.map((course: any) => (
             <div
               key={course.id}
               className="bg-surface-container-lowest dark:bg-[#121c28] rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col border border-outline-variant/30 dark:border-white/5 hover:shadow-2xl hover:shadow-primary/10"

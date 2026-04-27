@@ -45,7 +45,7 @@ export default function CoursesPage() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const data = await getAllCourses();
+        const data: any = await getAllCourses();
         setCourses(data);
       } finally {
         setLoading(false);

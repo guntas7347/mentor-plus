@@ -137,7 +137,7 @@ export default function CourseEditPage() {
     async function load() {
       if (isNew) return;
       try {
-        const courseCategories = await getConfig("course_categories");
+        const courseCategories: any = await getConfig("course_categories");
         setCourseCategories(courseCategories?.value?.categories || []);
         const data = await getCourseById(id as string);
         if (data) {

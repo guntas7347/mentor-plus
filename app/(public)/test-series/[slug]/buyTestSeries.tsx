@@ -20,7 +20,7 @@ const BuyTestSeries = ({
 
   useEffect(() => {
     (async () => {
-      const data = await getMyEnrolledTestSeries();
+      const data: any = await getMyEnrolledTestSeries();
 
       const alreadyPurchased = data.some(
         (item: any) =>
