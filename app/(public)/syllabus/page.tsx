@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 
 // --- Dynamic Icon Mapping ---
-// Maps the string saved in the database to the actual Lucide component
 const ICON_MAP: Record<string, React.ElementType> = {
   Calculator,
   FileText,
@@ -24,8 +23,15 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default async function SyllabusPage() {
-  // Fetch real data from the database
-  const syllabusData = await getAllPublishedSyllabus();
+  // 1. Safe data fetching with fallback to prevent null `.map()` crashes
+  let syllabusData: any[] = [];
+  try {
+    const data = await getAllPublishedSyllabus();
+    syllabusData = Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("Failed to load syllabus data:", error);
+    syllabusData = []; // Fallback to empty state on error
+  }
 
   return (
     <>
@@ -51,16 +57,21 @@ export default async function SyllabusPage() {
           {/* Dynamic Anchor Links to Categories */}
           {syllabusData.length > 0 && (
             <div className="flex flex-wrap gap-4">
-              {syllabusData.map((cat: any) => (
-                <a
-                  key={cat.categoryId}
-                  href={`#${cat.categoryId}`}
-                  className="px-6 py-3 bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 rounded-xl font-semibold hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white transition-colors border border-transparent dark:border-white/5 shadow-sm"
-                >
-                  {/* Grabs the first word (e.g., "SSC" from "SSC & Central Govt") */}
-                  {cat.categoryTitle.split(" ")[0]}
-                </a>
-              ))}
+              {syllabusData.map((cat: any) => {
+                // 2. Safe string splitting: Fallback to "General" if category is null
+                const categoryName = cat?.category || "General";
+                const shortName = categoryName.split(" ")[0];
+
+                return (
+                  <a
+                    key={cat.id}
+                    href={`#${shortName}`}
+                    className="px-6 py-3 bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 rounded-xl font-semibold hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white transition-colors border border-transparent dark:border-white/5 shadow-sm"
+                  >
+                    {shortName}
+                  </a>
+                );
+              })}
             </div>
           )}
         </div>
@@ -84,19 +95,20 @@ export default async function SyllabusPage() {
           </div>
         ) : (
           syllabusData.map((category: any) => {
-            // Ensure items is treated as an array to prevent runtime crashes
-            const items = Array.isArray(category.items) ? category.items : [];
-
+            // 3. Safe array parsing for the JSON field
+            const items = Array.isArray(category?.items) ? category.items : [];
+            const categoryName = category?.category || "General";
+            const shortName = categoryName.split(" ")[0];
             return (
               <section
-                key={category.categoryId}
-                id={category.categoryId}
+                key={category.id}
+                id={shortName}
                 className="scroll-mt-32"
               >
                 {/* Section Header */}
                 <div className="mb-10 border-b border-outline-variant/30 dark:border-white/10 pb-4">
                   <h2 className="text-3xl font-headline font-bold text-on-surface dark:text-white">
-                    {category.categoryTitle}
+                    {category?.category || "Uncategorized"}
                   </h2>
                 </div>
 
@@ -108,10 +120,12 @@ export default async function SyllabusPage() {
                     </p>
                   ) : (
                     items.map((item: any, idx: number) => {
-                      // Fallback to FileText if icon is missing or invalid
-                      const Icon = ICON_MAP[item.icon] || FileText;
+                      // 4. Safe property access for individual items
+                      const Icon = ICON_MAP[item?.icon as string] || FileText;
                       const hasPdf = Boolean(
-                        item.pdfLink && item.pdfLink.trim() !== "",
+                        item?.pdfLink &&
+                        typeof item.pdfLink === "string" &&
+                        item.pdfLink.trim() !== "",
                       );
 
                       return (
@@ -125,13 +139,13 @@ export default async function SyllabusPage() {
                               <Icon size={24} />
                             </div>
                             <h3 className="font-bold text-xl text-on-surface dark:text-white pt-1 leading-tight">
-                              {item.name || "Untitled Syllabus"}
+                              {item?.name || "Untitled Syllabus"}
                             </h3>
                           </div>
 
                           {/* Card Description */}
                           <p className="text-on-surface-variant dark:text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
-                            {item.description}
+                            {item?.description || "No description provided."}
                           </p>
 
                           {/* Download Button */}

@@ -6,6 +6,7 @@ import { verifyPayment } from "@/lib/razorpay";
 import { useRouter } from "next/navigation";
 import { createTestSeriesOrder } from "@/lib/actions/createTestSeriesOrder";
 import { getMyEnrolledTestSeries } from "@/lib/actions/test-series";
+import { notify } from "@/lib/toast";
 
 const BuyTestSeries = ({
   testSeriesId,
@@ -36,15 +37,16 @@ const BuyTestSeries = ({
 
     try {
       const res = await createTestSeriesOrder(testSeriesId);
+
       if (res?.error === "Login Required") {
         router.push(`/login?callback=test-series/${slug}`);
         return;
       }
-      if (res?.error) return alert(res.error);
+      if (res?.error) return notify.error(res.error);
 
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: res.amount,
+        amount: Number(res.amount) * 100,
         currency: "INR",
         order_id: res.orderId,
         handler: async function (response: any) {
@@ -55,7 +57,7 @@ const BuyTestSeries = ({
       const rzp = new (window as any).Razorpay(options);
       rzp.open();
     } catch (error: any) {
-      console.log(error);
+    } finally {
       setLoading(false);
     }
   };

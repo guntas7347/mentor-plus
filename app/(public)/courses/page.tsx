@@ -1,5 +1,5 @@
 import { getAllPublishedCourses } from "@/lib/actions/courses";
-import CourseExplorer from "./CourseExplorer"; // Adjust path as needed
+import CourseExplorer from "../../../components/CourseExplorer"; // Adjust path as needed
 
 export default async function CoursesPage() {
   const courses = await getAllPublishedCourses();

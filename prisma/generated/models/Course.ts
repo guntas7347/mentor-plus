@@ -43,9 +43,10 @@ export type CourseMinAggregateOutputType = {
   title: string | null
   slug: string | null
   subtitle: string | null
+  summary: string | null
   description: string | null
   thumbnailUrl: string | null
-  currency: string | null
+  brochureUrl: string | null
   fullPrice: number | null
   discountedPrice: number | null
   validTill: Date | null
@@ -54,6 +55,7 @@ export type CourseMinAggregateOutputType = {
   status: string | null
   hotTag: string | null
   isPublished: boolean | null
+  medium: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -64,9 +66,10 @@ export type CourseMaxAggregateOutputType = {
   title: string | null
   slug: string | null
   subtitle: string | null
+  summary: string | null
   description: string | null
   thumbnailUrl: string | null
-  currency: string | null
+  brochureUrl: string | null
   fullPrice: number | null
   discountedPrice: number | null
   validTill: Date | null
@@ -75,6 +78,7 @@ export type CourseMaxAggregateOutputType = {
   status: string | null
   hotTag: string | null
   isPublished: boolean | null
+  medium: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -85,10 +89,11 @@ export type CourseCountAggregateOutputType = {
   title: number
   slug: number
   subtitle: number
+  summary: number
   description: number
   thumbnailUrl: number
+  brochureUrl: number
   tags: number
-  currency: number
   fullPrice: number
   discountedPrice: number
   validTill: number
@@ -98,6 +103,7 @@ export type CourseCountAggregateOutputType = {
   hotTag: number
   instructors: number
   isPublished: number
+  medium: number
   learningOutcomes: number
   curriculum: number
   features: number
@@ -125,9 +131,10 @@ export type CourseMinAggregateInputType = {
   title?: true
   slug?: true
   subtitle?: true
+  summary?: true
   description?: true
   thumbnailUrl?: true
-  currency?: true
+  brochureUrl?: true
   fullPrice?: true
   discountedPrice?: true
   validTill?: true
@@ -136,6 +143,7 @@ export type CourseMinAggregateInputType = {
   status?: true
   hotTag?: true
   isPublished?: true
+  medium?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -146,9 +154,10 @@ export type CourseMaxAggregateInputType = {
   title?: true
   slug?: true
   subtitle?: true
+  summary?: true
   description?: true
   thumbnailUrl?: true
-  currency?: true
+  brochureUrl?: true
   fullPrice?: true
   discountedPrice?: true
   validTill?: true
@@ -157,6 +166,7 @@ export type CourseMaxAggregateInputType = {
   status?: true
   hotTag?: true
   isPublished?: true
+  medium?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -167,10 +177,11 @@ export type CourseCountAggregateInputType = {
   title?: true
   slug?: true
   subtitle?: true
+  summary?: true
   description?: true
   thumbnailUrl?: true
+  brochureUrl?: true
   tags?: true
-  currency?: true
   fullPrice?: true
   discountedPrice?: true
   validTill?: true
@@ -180,6 +191,7 @@ export type CourseCountAggregateInputType = {
   hotTag?: true
   instructors?: true
   isPublished?: true
+  medium?: true
   learningOutcomes?: true
   curriculum?: true
   features?: true
@@ -279,20 +291,22 @@ export type CourseGroupByOutputType = {
   id: string
   title: string
   slug: string
-  subtitle: string | null
-  description: string
+  subtitle: string
+  summary: string
+  description: string | null
   thumbnailUrl: string | null
+  brochureUrl: string | null
   tags: string[]
-  currency: string
   fullPrice: number
   discountedPrice: number
   validTill: Date | null
   durationMonths: number
   category: string
   status: string
-  hotTag: string | null
+  hotTag: string
   instructors: string[]
   isPublished: boolean
+  medium: string
   learningOutcomes: runtime.JsonValue | null
   curriculum: runtime.JsonValue | null
   features: runtime.JsonValue | null
@@ -328,20 +342,22 @@ export type CourseWhereInput = {
   id?: Prisma.StringFilter<"Course"> | string
   title?: Prisma.StringFilter<"Course"> | string
   slug?: Prisma.StringFilter<"Course"> | string
-  subtitle?: Prisma.StringNullableFilter<"Course"> | string | null
-  description?: Prisma.StringFilter<"Course"> | string
+  subtitle?: Prisma.StringFilter<"Course"> | string
+  summary?: Prisma.StringFilter<"Course"> | string
+  description?: Prisma.StringNullableFilter<"Course"> | string | null
   thumbnailUrl?: Prisma.StringNullableFilter<"Course"> | string | null
+  brochureUrl?: Prisma.StringNullableFilter<"Course"> | string | null
   tags?: Prisma.StringNullableListFilter<"Course">
-  currency?: Prisma.StringFilter<"Course"> | string
   fullPrice?: Prisma.IntFilter<"Course"> | number
   discountedPrice?: Prisma.IntFilter<"Course"> | number
   validTill?: Prisma.DateTimeNullableFilter<"Course"> | Date | string | null
   durationMonths?: Prisma.IntFilter<"Course"> | number
   category?: Prisma.StringFilter<"Course"> | string
   status?: Prisma.StringFilter<"Course"> | string
-  hotTag?: Prisma.StringNullableFilter<"Course"> | string | null
+  hotTag?: Prisma.StringFilter<"Course"> | string
   instructors?: Prisma.StringNullableListFilter<"Course">
   isPublished?: Prisma.BoolFilter<"Course"> | boolean
+  medium?: Prisma.StringFilter<"Course"> | string
   learningOutcomes?: Prisma.JsonNullableFilter<"Course">
   curriculum?: Prisma.JsonNullableFilter<"Course">
   features?: Prisma.JsonNullableFilter<"Course">
@@ -355,20 +371,22 @@ export type CourseOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrderInput | Prisma.SortOrder
-  description?: Prisma.SortOrder
+  subtitle?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  brochureUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrderInput | Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hotTag?: Prisma.SortOrderInput | Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   instructors?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
   learningOutcomes?: Prisma.SortOrderInput | Prisma.SortOrder
   curriculum?: Prisma.SortOrderInput | Prisma.SortOrder
   features?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -385,20 +403,22 @@ export type CourseWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CourseWhereInput[]
   NOT?: Prisma.CourseWhereInput | Prisma.CourseWhereInput[]
   title?: Prisma.StringFilter<"Course"> | string
-  subtitle?: Prisma.StringNullableFilter<"Course"> | string | null
-  description?: Prisma.StringFilter<"Course"> | string
+  subtitle?: Prisma.StringFilter<"Course"> | string
+  summary?: Prisma.StringFilter<"Course"> | string
+  description?: Prisma.StringNullableFilter<"Course"> | string | null
   thumbnailUrl?: Prisma.StringNullableFilter<"Course"> | string | null
+  brochureUrl?: Prisma.StringNullableFilter<"Course"> | string | null
   tags?: Prisma.StringNullableListFilter<"Course">
-  currency?: Prisma.StringFilter<"Course"> | string
   fullPrice?: Prisma.IntFilter<"Course"> | number
   discountedPrice?: Prisma.IntFilter<"Course"> | number
   validTill?: Prisma.DateTimeNullableFilter<"Course"> | Date | string | null
   durationMonths?: Prisma.IntFilter<"Course"> | number
   category?: Prisma.StringFilter<"Course"> | string
   status?: Prisma.StringFilter<"Course"> | string
-  hotTag?: Prisma.StringNullableFilter<"Course"> | string | null
+  hotTag?: Prisma.StringFilter<"Course"> | string
   instructors?: Prisma.StringNullableListFilter<"Course">
   isPublished?: Prisma.BoolFilter<"Course"> | boolean
+  medium?: Prisma.StringFilter<"Course"> | string
   learningOutcomes?: Prisma.JsonNullableFilter<"Course">
   curriculum?: Prisma.JsonNullableFilter<"Course">
   features?: Prisma.JsonNullableFilter<"Course">
@@ -412,20 +432,22 @@ export type CourseOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrderInput | Prisma.SortOrder
-  description?: Prisma.SortOrder
+  subtitle?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  brochureUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrderInput | Prisma.SortOrder
   durationMonths?: Prisma.SortOrder
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hotTag?: Prisma.SortOrderInput | Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   instructors?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
   learningOutcomes?: Prisma.SortOrderInput | Prisma.SortOrder
   curriculum?: Prisma.SortOrderInput | Prisma.SortOrder
   features?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -446,20 +468,22 @@ export type CourseScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Course"> | string
   title?: Prisma.StringWithAggregatesFilter<"Course"> | string
   slug?: Prisma.StringWithAggregatesFilter<"Course"> | string
-  subtitle?: Prisma.StringNullableWithAggregatesFilter<"Course"> | string | null
-  description?: Prisma.StringWithAggregatesFilter<"Course"> | string
+  subtitle?: Prisma.StringWithAggregatesFilter<"Course"> | string
+  summary?: Prisma.StringWithAggregatesFilter<"Course"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Course"> | string | null
   thumbnailUrl?: Prisma.StringNullableWithAggregatesFilter<"Course"> | string | null
+  brochureUrl?: Prisma.StringNullableWithAggregatesFilter<"Course"> | string | null
   tags?: Prisma.StringNullableListFilter<"Course">
-  currency?: Prisma.StringWithAggregatesFilter<"Course"> | string
   fullPrice?: Prisma.IntWithAggregatesFilter<"Course"> | number
   discountedPrice?: Prisma.IntWithAggregatesFilter<"Course"> | number
   validTill?: Prisma.DateTimeNullableWithAggregatesFilter<"Course"> | Date | string | null
   durationMonths?: Prisma.IntWithAggregatesFilter<"Course"> | number
   category?: Prisma.StringWithAggregatesFilter<"Course"> | string
   status?: Prisma.StringWithAggregatesFilter<"Course"> | string
-  hotTag?: Prisma.StringNullableWithAggregatesFilter<"Course"> | string | null
+  hotTag?: Prisma.StringWithAggregatesFilter<"Course"> | string
   instructors?: Prisma.StringNullableListFilter<"Course">
   isPublished?: Prisma.BoolWithAggregatesFilter<"Course"> | boolean
+  medium?: Prisma.StringWithAggregatesFilter<"Course"> | string
   learningOutcomes?: Prisma.JsonNullableWithAggregatesFilter<"Course">
   curriculum?: Prisma.JsonNullableWithAggregatesFilter<"Course">
   features?: Prisma.JsonNullableWithAggregatesFilter<"Course">
@@ -472,20 +496,22 @@ export type CourseCreateInput = {
   id?: string
   title?: string
   slug?: string
-  subtitle?: string | null
-  description?: string
+  subtitle?: string
+  summary?: string
+  description?: string | null
   thumbnailUrl?: string | null
+  brochureUrl?: string | null
   tags?: Prisma.CourseCreatetagsInput | string[]
-  currency?: string
   fullPrice?: number
   discountedPrice?: number
   validTill?: Date | string | null
   durationMonths?: number
   category?: string
   status?: string
-  hotTag?: string | null
+  hotTag?: string
   instructors?: Prisma.CourseCreateinstructorsInput | string[]
   isPublished?: boolean
+  medium?: string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -499,20 +525,22 @@ export type CourseUncheckedCreateInput = {
   id?: string
   title?: string
   slug?: string
-  subtitle?: string | null
-  description?: string
+  subtitle?: string
+  summary?: string
+  description?: string | null
   thumbnailUrl?: string | null
+  brochureUrl?: string | null
   tags?: Prisma.CourseCreatetagsInput | string[]
-  currency?: string
   fullPrice?: number
   discountedPrice?: number
   validTill?: Date | string | null
   durationMonths?: number
   category?: string
   status?: string
-  hotTag?: string | null
+  hotTag?: string
   instructors?: Prisma.CourseCreateinstructorsInput | string[]
   isPublished?: boolean
+  medium?: string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -526,20 +554,22 @@ export type CourseUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CourseUpdatetagsInput | string[]
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hotTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   instructors?: Prisma.CourseUpdateinstructorsInput | string[]
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -553,20 +583,22 @@ export type CourseUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CourseUpdatetagsInput | string[]
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hotTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   instructors?: Prisma.CourseUpdateinstructorsInput | string[]
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -580,20 +612,22 @@ export type CourseCreateManyInput = {
   id?: string
   title?: string
   slug?: string
-  subtitle?: string | null
-  description?: string
+  subtitle?: string
+  summary?: string
+  description?: string | null
   thumbnailUrl?: string | null
+  brochureUrl?: string | null
   tags?: Prisma.CourseCreatetagsInput | string[]
-  currency?: string
   fullPrice?: number
   discountedPrice?: number
   validTill?: Date | string | null
   durationMonths?: number
   category?: string
   status?: string
-  hotTag?: string | null
+  hotTag?: string
   instructors?: Prisma.CourseCreateinstructorsInput | string[]
   isPublished?: boolean
+  medium?: string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -606,20 +640,22 @@ export type CourseUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CourseUpdatetagsInput | string[]
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hotTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   instructors?: Prisma.CourseUpdateinstructorsInput | string[]
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -632,20 +668,22 @@ export type CourseUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CourseUpdatetagsInput | string[]
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hotTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   instructors?: Prisma.CourseUpdateinstructorsInput | string[]
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -667,10 +705,11 @@ export type CourseCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   subtitle?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
   description?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrder
+  brochureUrl?: Prisma.SortOrder
   tags?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrder
@@ -680,6 +719,7 @@ export type CourseCountOrderByAggregateInput = {
   hotTag?: Prisma.SortOrder
   instructors?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
   learningOutcomes?: Prisma.SortOrder
   curriculum?: Prisma.SortOrder
   features?: Prisma.SortOrder
@@ -699,9 +739,10 @@ export type CourseMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   subtitle?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
   description?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  brochureUrl?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrder
@@ -710,6 +751,7 @@ export type CourseMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   hotTag?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -720,9 +762,10 @@ export type CourseMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   subtitle?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
   description?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  brochureUrl?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrder
@@ -731,6 +774,7 @@ export type CourseMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   hotTag?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -797,20 +841,22 @@ export type CourseCreateWithoutPurchasesInput = {
   id?: string
   title?: string
   slug?: string
-  subtitle?: string | null
-  description?: string
+  subtitle?: string
+  summary?: string
+  description?: string | null
   thumbnailUrl?: string | null
+  brochureUrl?: string | null
   tags?: Prisma.CourseCreatetagsInput | string[]
-  currency?: string
   fullPrice?: number
   discountedPrice?: number
   validTill?: Date | string | null
   durationMonths?: number
   category?: string
   status?: string
-  hotTag?: string | null
+  hotTag?: string
   instructors?: Prisma.CourseCreateinstructorsInput | string[]
   isPublished?: boolean
+  medium?: string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -823,20 +869,22 @@ export type CourseUncheckedCreateWithoutPurchasesInput = {
   id?: string
   title?: string
   slug?: string
-  subtitle?: string | null
-  description?: string
+  subtitle?: string
+  summary?: string
+  description?: string | null
   thumbnailUrl?: string | null
+  brochureUrl?: string | null
   tags?: Prisma.CourseCreatetagsInput | string[]
-  currency?: string
   fullPrice?: number
   discountedPrice?: number
   validTill?: Date | string | null
   durationMonths?: number
   category?: string
   status?: string
-  hotTag?: string | null
+  hotTag?: string
   instructors?: Prisma.CourseCreateinstructorsInput | string[]
   isPublished?: boolean
+  medium?: string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -865,20 +913,22 @@ export type CourseUpdateWithoutPurchasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CourseUpdatetagsInput | string[]
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hotTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   instructors?: Prisma.CourseUpdateinstructorsInput | string[]
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -891,20 +941,22 @@ export type CourseUncheckedUpdateWithoutPurchasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.CourseUpdatetagsInput | string[]
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   durationMonths?: Prisma.IntFieldUpdateOperationsInput | number
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hotTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   instructors?: Prisma.CourseUpdateinstructorsInput | string[]
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
   learningOutcomes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   curriculum?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -949,10 +1001,11 @@ export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   title?: boolean
   slug?: boolean
   subtitle?: boolean
+  summary?: boolean
   description?: boolean
   thumbnailUrl?: boolean
+  brochureUrl?: boolean
   tags?: boolean
-  currency?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -962,6 +1015,7 @@ export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   hotTag?: boolean
   instructors?: boolean
   isPublished?: boolean
+  medium?: boolean
   learningOutcomes?: boolean
   curriculum?: boolean
   features?: boolean
@@ -977,10 +1031,11 @@ export type CourseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   title?: boolean
   slug?: boolean
   subtitle?: boolean
+  summary?: boolean
   description?: boolean
   thumbnailUrl?: boolean
+  brochureUrl?: boolean
   tags?: boolean
-  currency?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -990,6 +1045,7 @@ export type CourseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   hotTag?: boolean
   instructors?: boolean
   isPublished?: boolean
+  medium?: boolean
   learningOutcomes?: boolean
   curriculum?: boolean
   features?: boolean
@@ -1003,10 +1059,11 @@ export type CourseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   title?: boolean
   slug?: boolean
   subtitle?: boolean
+  summary?: boolean
   description?: boolean
   thumbnailUrl?: boolean
+  brochureUrl?: boolean
   tags?: boolean
-  currency?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -1016,6 +1073,7 @@ export type CourseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   hotTag?: boolean
   instructors?: boolean
   isPublished?: boolean
+  medium?: boolean
   learningOutcomes?: boolean
   curriculum?: boolean
   features?: boolean
@@ -1029,10 +1087,11 @@ export type CourseSelectScalar = {
   title?: boolean
   slug?: boolean
   subtitle?: boolean
+  summary?: boolean
   description?: boolean
   thumbnailUrl?: boolean
+  brochureUrl?: boolean
   tags?: boolean
-  currency?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -1042,6 +1101,7 @@ export type CourseSelectScalar = {
   hotTag?: boolean
   instructors?: boolean
   isPublished?: boolean
+  medium?: boolean
   learningOutcomes?: boolean
   curriculum?: boolean
   features?: boolean
@@ -1050,7 +1110,7 @@ export type CourseSelectScalar = {
   deletedAt?: boolean
 }
 
-export type CourseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "subtitle" | "description" | "thumbnailUrl" | "tags" | "currency" | "fullPrice" | "discountedPrice" | "validTill" | "durationMonths" | "category" | "status" | "hotTag" | "instructors" | "isPublished" | "learningOutcomes" | "curriculum" | "features" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["course"]>
+export type CourseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "subtitle" | "summary" | "description" | "thumbnailUrl" | "brochureUrl" | "tags" | "fullPrice" | "discountedPrice" | "validTill" | "durationMonths" | "category" | "status" | "hotTag" | "instructors" | "isPublished" | "medium" | "learningOutcomes" | "curriculum" | "features" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["course"]>
 export type CourseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   purchases?: boolean | Prisma.Course$purchasesArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
@@ -1067,20 +1127,22 @@ export type $CoursePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     id: string
     title: string
     slug: string
-    subtitle: string | null
-    description: string
+    subtitle: string
+    summary: string
+    description: string | null
     thumbnailUrl: string | null
+    brochureUrl: string | null
     tags: string[]
-    currency: string
     fullPrice: number
     discountedPrice: number
     validTill: Date | null
     durationMonths: number
     category: string
     status: string
-    hotTag: string | null
+    hotTag: string
     instructors: string[]
     isPublished: boolean
+    medium: string
     learningOutcomes: runtime.JsonValue | null
     curriculum: runtime.JsonValue | null
     features: runtime.JsonValue | null
@@ -1515,10 +1577,11 @@ export interface CourseFieldRefs {
   readonly title: Prisma.FieldRef<"Course", 'String'>
   readonly slug: Prisma.FieldRef<"Course", 'String'>
   readonly subtitle: Prisma.FieldRef<"Course", 'String'>
+  readonly summary: Prisma.FieldRef<"Course", 'String'>
   readonly description: Prisma.FieldRef<"Course", 'String'>
   readonly thumbnailUrl: Prisma.FieldRef<"Course", 'String'>
+  readonly brochureUrl: Prisma.FieldRef<"Course", 'String'>
   readonly tags: Prisma.FieldRef<"Course", 'String[]'>
-  readonly currency: Prisma.FieldRef<"Course", 'String'>
   readonly fullPrice: Prisma.FieldRef<"Course", 'Int'>
   readonly discountedPrice: Prisma.FieldRef<"Course", 'Int'>
   readonly validTill: Prisma.FieldRef<"Course", 'DateTime'>
@@ -1528,6 +1591,7 @@ export interface CourseFieldRefs {
   readonly hotTag: Prisma.FieldRef<"Course", 'String'>
   readonly instructors: Prisma.FieldRef<"Course", 'String[]'>
   readonly isPublished: Prisma.FieldRef<"Course", 'Boolean'>
+  readonly medium: Prisma.FieldRef<"Course", 'String'>
   readonly learningOutcomes: Prisma.FieldRef<"Course", 'Json'>
   readonly curriculum: Prisma.FieldRef<"Course", 'Json'>
   readonly features: Prisma.FieldRef<"Course", 'Json'>

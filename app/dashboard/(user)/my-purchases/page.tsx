@@ -14,6 +14,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { getMyEnrolledTestSeries } from "@/lib/actions/test-series";
+import { formatRupees } from "@/lib/helpers";
 
 // --- Types based on your API response ---
 interface EnrolledTestSeries {
@@ -44,15 +45,6 @@ function formatDate(dateStr: string | Date | null | undefined) {
   });
 }
 
-function formatPrice(amountInPaise: number) {
-  // Amount is in paise, divide by 100
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(amountInPaise / 100);
-}
-
 export default function MyTestSeriesPage() {
   const [enrollments, setEnrollments] = useState<EnrolledTestSeries[]>([]);
   const [loading, setLoading] = useState(true);
@@ -60,7 +52,7 @@ export default function MyTestSeriesPage() {
   useEffect(() => {
     const fetchEnrollments = async () => {
       try {
-        const data = await getMyEnrolledTestSeries();
+        const data: any = await getMyEnrolledTestSeries();
         setEnrollments(data || []);
       } catch (error) {
         console.error("Failed to fetch enrollments:", error);
@@ -196,7 +188,7 @@ export default function MyTestSeriesPage() {
                         <span>Amount Paid:</span>
                       </div>
                       <span className="font-semibold text-on-surface dark:text-gray-200">
-                        {formatPrice(enrollment.amount)}
+                        {formatRupees(enrollment.amount)}
                       </span>
                     </div>
 

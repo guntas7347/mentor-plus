@@ -1,12 +1,12 @@
 // app/(student)/layout.tsx
-import { requireStudent } from "@/lib/auth";
+import { requireStudent, requireUser } from "@/lib/auth";
 
 export default async function StudentLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  await requireStudent();
+  await requireUser();
 
   return <>{children}</>;
 }

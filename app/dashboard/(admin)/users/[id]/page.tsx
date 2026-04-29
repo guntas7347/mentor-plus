@@ -20,6 +20,7 @@ import {
 import { getUserById, updateUserRole } from "@/lib/actions/users";
 import { notify } from "@/lib/toast";
 import Link from "next/link";
+import { formatRupees } from "@/lib/helpers";
 
 // --- Types ---
 type Role = "STUDENT" | "ADMIN";
@@ -87,14 +88,6 @@ function formatDate(dateStr: string) {
     month: "short",
     year: "numeric",
   });
-}
-
-function formatCurrency(amountInPaise: number) {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(amountInPaise / 100);
 }
 
 function getInitials(name: string | null) {
@@ -287,7 +280,7 @@ export default function UserProfilePage() {
                 <IndianRupee size={18} /> Total Spent
               </div>
               <span className="font-extrabold text-emerald-800 dark:text-emerald-300 text-lg">
-                {formatCurrency(totalSpent)}
+                {formatRupees(totalSpent)}
               </span>
             </div>
 

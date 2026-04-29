@@ -44,8 +44,10 @@ export type TestSeriesMinAggregateOutputType = {
   slug: string | null
   category: string | null
   description: string | null
+  summary: string | null
   thumbnailUrl: string | null
-  currency: string | null
+  medium: string | null
+  hotTag: string | null
   fullPrice: number | null
   discountedPrice: number | null
   validTill: Date | null
@@ -53,6 +55,7 @@ export type TestSeriesMinAggregateOutputType = {
   status: string | null
   isPublished: boolean | null
   accessLink: string | null
+  sampleLink: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -64,8 +67,10 @@ export type TestSeriesMaxAggregateOutputType = {
   slug: string | null
   category: string | null
   description: string | null
+  summary: string | null
   thumbnailUrl: string | null
-  currency: string | null
+  medium: string | null
+  hotTag: string | null
   fullPrice: number | null
   discountedPrice: number | null
   validTill: Date | null
@@ -73,6 +78,7 @@ export type TestSeriesMaxAggregateOutputType = {
   status: string | null
   isPublished: boolean | null
   accessLink: string | null
+  sampleLink: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -84,8 +90,10 @@ export type TestSeriesCountAggregateOutputType = {
   slug: number
   category: number
   description: number
+  summary: number
   thumbnailUrl: number
-  currency: number
+  medium: number
+  hotTag: number
   fullPrice: number
   discountedPrice: number
   validTill: number
@@ -98,6 +106,7 @@ export type TestSeriesCountAggregateOutputType = {
   reviews: number
   features: number
   accessLink: number
+  sampleLink: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -123,8 +132,10 @@ export type TestSeriesMinAggregateInputType = {
   slug?: true
   category?: true
   description?: true
+  summary?: true
   thumbnailUrl?: true
-  currency?: true
+  medium?: true
+  hotTag?: true
   fullPrice?: true
   discountedPrice?: true
   validTill?: true
@@ -132,6 +143,7 @@ export type TestSeriesMinAggregateInputType = {
   status?: true
   isPublished?: true
   accessLink?: true
+  sampleLink?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -143,8 +155,10 @@ export type TestSeriesMaxAggregateInputType = {
   slug?: true
   category?: true
   description?: true
+  summary?: true
   thumbnailUrl?: true
-  currency?: true
+  medium?: true
+  hotTag?: true
   fullPrice?: true
   discountedPrice?: true
   validTill?: true
@@ -152,6 +166,7 @@ export type TestSeriesMaxAggregateInputType = {
   status?: true
   isPublished?: true
   accessLink?: true
+  sampleLink?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -163,8 +178,10 @@ export type TestSeriesCountAggregateInputType = {
   slug?: true
   category?: true
   description?: true
+  summary?: true
   thumbnailUrl?: true
-  currency?: true
+  medium?: true
+  hotTag?: true
   fullPrice?: true
   discountedPrice?: true
   validTill?: true
@@ -177,6 +194,7 @@ export type TestSeriesCountAggregateInputType = {
   reviews?: true
   features?: true
   accessLink?: true
+  sampleLink?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -275,8 +293,10 @@ export type TestSeriesGroupByOutputType = {
   slug: string
   category: string
   description: string | null
+  summary: string
   thumbnailUrl: string | null
-  currency: string
+  medium: string
+  hotTag: string
   fullPrice: number
   discountedPrice: number
   validTill: Date | null
@@ -289,6 +309,7 @@ export type TestSeriesGroupByOutputType = {
   reviews: runtime.JsonValue | null
   features: runtime.JsonValue | null
   accessLink: string | null
+  sampleLink: string | null
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -323,8 +344,10 @@ export type TestSeriesWhereInput = {
   slug?: Prisma.StringFilter<"TestSeries"> | string
   category?: Prisma.StringFilter<"TestSeries"> | string
   description?: Prisma.StringNullableFilter<"TestSeries"> | string | null
+  summary?: Prisma.StringFilter<"TestSeries"> | string
   thumbnailUrl?: Prisma.StringNullableFilter<"TestSeries"> | string | null
-  currency?: Prisma.StringFilter<"TestSeries"> | string
+  medium?: Prisma.StringFilter<"TestSeries"> | string
+  hotTag?: Prisma.StringFilter<"TestSeries"> | string
   fullPrice?: Prisma.IntFilter<"TestSeries"> | number
   discountedPrice?: Prisma.IntFilter<"TestSeries"> | number
   validTill?: Prisma.DateTimeNullableFilter<"TestSeries"> | Date | string | null
@@ -337,6 +360,7 @@ export type TestSeriesWhereInput = {
   reviews?: Prisma.JsonNullableFilter<"TestSeries">
   features?: Prisma.JsonNullableFilter<"TestSeries">
   accessLink?: Prisma.StringNullableFilter<"TestSeries"> | string | null
+  sampleLink?: Prisma.StringNullableFilter<"TestSeries"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TestSeries"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TestSeries"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"TestSeries"> | Date | string | null
@@ -350,8 +374,10 @@ export type TestSeriesOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  summary?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -364,6 +390,7 @@ export type TestSeriesOrderByWithRelationInput = {
   reviews?: Prisma.SortOrderInput | Prisma.SortOrder
   features?: Prisma.SortOrderInput | Prisma.SortOrder
   accessLink?: Prisma.SortOrderInput | Prisma.SortOrder
+  sampleLink?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -380,8 +407,10 @@ export type TestSeriesWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"TestSeries"> | string
   category?: Prisma.StringFilter<"TestSeries"> | string
   description?: Prisma.StringNullableFilter<"TestSeries"> | string | null
+  summary?: Prisma.StringFilter<"TestSeries"> | string
   thumbnailUrl?: Prisma.StringNullableFilter<"TestSeries"> | string | null
-  currency?: Prisma.StringFilter<"TestSeries"> | string
+  medium?: Prisma.StringFilter<"TestSeries"> | string
+  hotTag?: Prisma.StringFilter<"TestSeries"> | string
   fullPrice?: Prisma.IntFilter<"TestSeries"> | number
   discountedPrice?: Prisma.IntFilter<"TestSeries"> | number
   validTill?: Prisma.DateTimeNullableFilter<"TestSeries"> | Date | string | null
@@ -394,6 +423,7 @@ export type TestSeriesWhereUniqueInput = Prisma.AtLeast<{
   reviews?: Prisma.JsonNullableFilter<"TestSeries">
   features?: Prisma.JsonNullableFilter<"TestSeries">
   accessLink?: Prisma.StringNullableFilter<"TestSeries"> | string | null
+  sampleLink?: Prisma.StringNullableFilter<"TestSeries"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TestSeries"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TestSeries"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"TestSeries"> | Date | string | null
@@ -407,8 +437,10 @@ export type TestSeriesOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  summary?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -421,6 +453,7 @@ export type TestSeriesOrderByWithAggregationInput = {
   reviews?: Prisma.SortOrderInput | Prisma.SortOrder
   features?: Prisma.SortOrderInput | Prisma.SortOrder
   accessLink?: Prisma.SortOrderInput | Prisma.SortOrder
+  sampleLink?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -440,8 +473,10 @@ export type TestSeriesScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"TestSeries"> | string
   category?: Prisma.StringWithAggregatesFilter<"TestSeries"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"TestSeries"> | string | null
+  summary?: Prisma.StringWithAggregatesFilter<"TestSeries"> | string
   thumbnailUrl?: Prisma.StringNullableWithAggregatesFilter<"TestSeries"> | string | null
-  currency?: Prisma.StringWithAggregatesFilter<"TestSeries"> | string
+  medium?: Prisma.StringWithAggregatesFilter<"TestSeries"> | string
+  hotTag?: Prisma.StringWithAggregatesFilter<"TestSeries"> | string
   fullPrice?: Prisma.IntWithAggregatesFilter<"TestSeries"> | number
   discountedPrice?: Prisma.IntWithAggregatesFilter<"TestSeries"> | number
   validTill?: Prisma.DateTimeNullableWithAggregatesFilter<"TestSeries"> | Date | string | null
@@ -454,6 +489,7 @@ export type TestSeriesScalarWhereWithAggregatesInput = {
   reviews?: Prisma.JsonNullableWithAggregatesFilter<"TestSeries">
   features?: Prisma.JsonNullableWithAggregatesFilter<"TestSeries">
   accessLink?: Prisma.StringNullableWithAggregatesFilter<"TestSeries"> | string | null
+  sampleLink?: Prisma.StringNullableWithAggregatesFilter<"TestSeries"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TestSeries"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TestSeries"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"TestSeries"> | Date | string | null
@@ -465,8 +501,10 @@ export type TestSeriesCreateInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -479,6 +517,7 @@ export type TestSeriesCreateInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -492,8 +531,10 @@ export type TestSeriesUncheckedCreateInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -506,6 +547,7 @@ export type TestSeriesUncheckedCreateInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -519,8 +561,10 @@ export type TestSeriesUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -533,6 +577,7 @@ export type TestSeriesUpdateInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -546,8 +591,10 @@ export type TestSeriesUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -560,6 +607,7 @@ export type TestSeriesUncheckedUpdateInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -573,8 +621,10 @@ export type TestSeriesCreateManyInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -587,6 +637,7 @@ export type TestSeriesCreateManyInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -598,8 +649,10 @@ export type TestSeriesUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -612,6 +665,7 @@ export type TestSeriesUpdateManyMutationInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -623,8 +677,10 @@ export type TestSeriesUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -637,6 +693,7 @@ export type TestSeriesUncheckedUpdateManyInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -658,8 +715,10 @@ export type TestSeriesCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrder
@@ -672,6 +731,7 @@ export type TestSeriesCountOrderByAggregateInput = {
   reviews?: Prisma.SortOrder
   features?: Prisma.SortOrder
   accessLink?: Prisma.SortOrder
+  sampleLink?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -689,8 +749,10 @@ export type TestSeriesMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrder
@@ -698,6 +760,7 @@ export type TestSeriesMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   accessLink?: Prisma.SortOrder
+  sampleLink?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -709,8 +772,10 @@ export type TestSeriesMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   category?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
   thumbnailUrl?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  medium?: Prisma.SortOrder
+  hotTag?: Prisma.SortOrder
   fullPrice?: Prisma.SortOrder
   discountedPrice?: Prisma.SortOrder
   validTill?: Prisma.SortOrder
@@ -718,6 +783,7 @@ export type TestSeriesMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   accessLink?: Prisma.SortOrder
+  sampleLink?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -794,8 +860,10 @@ export type TestSeriesCreateWithoutUsersInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -808,6 +876,7 @@ export type TestSeriesCreateWithoutUsersInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -820,8 +889,10 @@ export type TestSeriesUncheckedCreateWithoutUsersInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -834,6 +905,7 @@ export type TestSeriesUncheckedCreateWithoutUsersInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -870,8 +942,10 @@ export type TestSeriesScalarWhereInput = {
   slug?: Prisma.StringFilter<"TestSeries"> | string
   category?: Prisma.StringFilter<"TestSeries"> | string
   description?: Prisma.StringNullableFilter<"TestSeries"> | string | null
+  summary?: Prisma.StringFilter<"TestSeries"> | string
   thumbnailUrl?: Prisma.StringNullableFilter<"TestSeries"> | string | null
-  currency?: Prisma.StringFilter<"TestSeries"> | string
+  medium?: Prisma.StringFilter<"TestSeries"> | string
+  hotTag?: Prisma.StringFilter<"TestSeries"> | string
   fullPrice?: Prisma.IntFilter<"TestSeries"> | number
   discountedPrice?: Prisma.IntFilter<"TestSeries"> | number
   validTill?: Prisma.DateTimeNullableFilter<"TestSeries"> | Date | string | null
@@ -884,6 +958,7 @@ export type TestSeriesScalarWhereInput = {
   reviews?: Prisma.JsonNullableFilter<"TestSeries">
   features?: Prisma.JsonNullableFilter<"TestSeries">
   accessLink?: Prisma.StringNullableFilter<"TestSeries"> | string | null
+  sampleLink?: Prisma.StringNullableFilter<"TestSeries"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TestSeries"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TestSeries"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"TestSeries"> | Date | string | null
@@ -895,8 +970,10 @@ export type TestSeriesCreateWithoutPurchasesInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -909,6 +986,7 @@ export type TestSeriesCreateWithoutPurchasesInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -921,8 +999,10 @@ export type TestSeriesUncheckedCreateWithoutPurchasesInput = {
   slug?: string
   category: string
   description?: string | null
+  summary?: string
   thumbnailUrl?: string | null
-  currency?: string
+  medium?: string
+  hotTag?: string
   fullPrice: number
   discountedPrice: number
   validTill?: Date | string | null
@@ -935,6 +1015,7 @@ export type TestSeriesUncheckedCreateWithoutPurchasesInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: string | null
+  sampleLink?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -963,8 +1044,10 @@ export type TestSeriesUpdateWithoutPurchasesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -977,6 +1060,7 @@ export type TestSeriesUpdateWithoutPurchasesInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -989,8 +1073,10 @@ export type TestSeriesUncheckedUpdateWithoutPurchasesInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1003,6 +1089,7 @@ export type TestSeriesUncheckedUpdateWithoutPurchasesInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1015,8 +1102,10 @@ export type TestSeriesUpdateWithoutUsersInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1029,6 +1118,7 @@ export type TestSeriesUpdateWithoutUsersInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1041,8 +1131,10 @@ export type TestSeriesUncheckedUpdateWithoutUsersInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1055,6 +1147,7 @@ export type TestSeriesUncheckedUpdateWithoutUsersInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1067,8 +1160,10 @@ export type TestSeriesUncheckedUpdateManyWithoutUsersInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  medium?: Prisma.StringFieldUpdateOperationsInput | string
+  hotTag?: Prisma.StringFieldUpdateOperationsInput | string
   fullPrice?: Prisma.IntFieldUpdateOperationsInput | number
   discountedPrice?: Prisma.IntFieldUpdateOperationsInput | number
   validTill?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1081,6 +1176,7 @@ export type TestSeriesUncheckedUpdateManyWithoutUsersInput = {
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   features?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   accessLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sampleLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1132,8 +1228,10 @@ export type TestSeriesSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   slug?: boolean
   category?: boolean
   description?: boolean
+  summary?: boolean
   thumbnailUrl?: boolean
-  currency?: boolean
+  medium?: boolean
+  hotTag?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -1146,6 +1244,7 @@ export type TestSeriesSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   reviews?: boolean
   features?: boolean
   accessLink?: boolean
+  sampleLink?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -1160,8 +1259,10 @@ export type TestSeriesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   slug?: boolean
   category?: boolean
   description?: boolean
+  summary?: boolean
   thumbnailUrl?: boolean
-  currency?: boolean
+  medium?: boolean
+  hotTag?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -1174,6 +1275,7 @@ export type TestSeriesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   reviews?: boolean
   features?: boolean
   accessLink?: boolean
+  sampleLink?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -1185,8 +1287,10 @@ export type TestSeriesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   slug?: boolean
   category?: boolean
   description?: boolean
+  summary?: boolean
   thumbnailUrl?: boolean
-  currency?: boolean
+  medium?: boolean
+  hotTag?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -1199,6 +1303,7 @@ export type TestSeriesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   reviews?: boolean
   features?: boolean
   accessLink?: boolean
+  sampleLink?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -1210,8 +1315,10 @@ export type TestSeriesSelectScalar = {
   slug?: boolean
   category?: boolean
   description?: boolean
+  summary?: boolean
   thumbnailUrl?: boolean
-  currency?: boolean
+  medium?: boolean
+  hotTag?: boolean
   fullPrice?: boolean
   discountedPrice?: boolean
   validTill?: boolean
@@ -1224,12 +1331,13 @@ export type TestSeriesSelectScalar = {
   reviews?: boolean
   features?: boolean
   accessLink?: boolean
+  sampleLink?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type TestSeriesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "category" | "description" | "thumbnailUrl" | "currency" | "fullPrice" | "discountedPrice" | "validTill" | "validityMonths" | "status" | "isPublished" | "stats" | "analytics" | "phases" | "reviews" | "features" | "accessLink" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["testSeries"]>
+export type TestSeriesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "category" | "description" | "summary" | "thumbnailUrl" | "medium" | "hotTag" | "fullPrice" | "discountedPrice" | "validTill" | "validityMonths" | "status" | "isPublished" | "stats" | "analytics" | "phases" | "reviews" | "features" | "accessLink" | "sampleLink" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["testSeries"]>
 export type TestSeriesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | Prisma.TestSeries$usersArgs<ExtArgs>
   purchases?: boolean | Prisma.TestSeries$purchasesArgs<ExtArgs>
@@ -1250,8 +1358,10 @@ export type $TestSeriesPayload<ExtArgs extends runtime.Types.Extensions.Internal
     slug: string
     category: string
     description: string | null
+    summary: string
     thumbnailUrl: string | null
-    currency: string
+    medium: string
+    hotTag: string
     fullPrice: number
     discountedPrice: number
     validTill: Date | null
@@ -1264,6 +1374,7 @@ export type $TestSeriesPayload<ExtArgs extends runtime.Types.Extensions.Internal
     reviews: runtime.JsonValue | null
     features: runtime.JsonValue | null
     accessLink: string | null
+    sampleLink: string | null
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -1697,8 +1808,10 @@ export interface TestSeriesFieldRefs {
   readonly slug: Prisma.FieldRef<"TestSeries", 'String'>
   readonly category: Prisma.FieldRef<"TestSeries", 'String'>
   readonly description: Prisma.FieldRef<"TestSeries", 'String'>
+  readonly summary: Prisma.FieldRef<"TestSeries", 'String'>
   readonly thumbnailUrl: Prisma.FieldRef<"TestSeries", 'String'>
-  readonly currency: Prisma.FieldRef<"TestSeries", 'String'>
+  readonly medium: Prisma.FieldRef<"TestSeries", 'String'>
+  readonly hotTag: Prisma.FieldRef<"TestSeries", 'String'>
   readonly fullPrice: Prisma.FieldRef<"TestSeries", 'Int'>
   readonly discountedPrice: Prisma.FieldRef<"TestSeries", 'Int'>
   readonly validTill: Prisma.FieldRef<"TestSeries", 'DateTime'>
@@ -1711,6 +1824,7 @@ export interface TestSeriesFieldRefs {
   readonly reviews: Prisma.FieldRef<"TestSeries", 'Json'>
   readonly features: Prisma.FieldRef<"TestSeries", 'Json'>
   readonly accessLink: Prisma.FieldRef<"TestSeries", 'String'>
+  readonly sampleLink: Prisma.FieldRef<"TestSeries", 'String'>
   readonly createdAt: Prisma.FieldRef<"TestSeries", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TestSeries", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"TestSeries", 'DateTime'>

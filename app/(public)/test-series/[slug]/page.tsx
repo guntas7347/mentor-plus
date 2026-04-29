@@ -19,6 +19,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import BuyTestSeries from "./buyTestSeries";
+import { formatRupees } from "@/lib/helpers";
 
 // --- Dynamic Icon Mapping ---
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -59,19 +60,11 @@ const REVIEW_COLORS = [
   "bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300",
 ];
 
-// --- Helpers ---
-function formatPrice(price: number, currency: string) {
-  if (price === 0) return "Free";
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: currency || "INR",
-    maximumFractionDigits: 0,
-  }).format(price);
-}
-
-function getInitials(name: string) {
-  if (!name) return "S";
+// Crash-proof initials generator
+function getInitials(name?: string) {
+  if (!name || typeof name !== "string" || !name.trim()) return "A";
   return name
+    .trim()
     .split(" ")
     .map((n) => n[0])
     .join("")
@@ -85,28 +78,33 @@ export default async function TestSeriesPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const data = await getTestSeriesBySlug(slug);
+  const data: any = await getTestSeriesBySlug(slug);
 
   if (!data) {
     notFound();
   }
 
-  // Safe Calculations
+  // --- Safe Calculations ---
+  const fullPrice = Number(data.fullPrice) || 0;
+  const discountedPrice = Number(data.discountedPrice) || 0;
   const discountPercentage =
-    data.fullPrice > 0
-      ? Math.round(
-          ((data.fullPrice - data.discountedPrice) / data.fullPrice) * 100,
-        )
+    fullPrice > discountedPrice && fullPrice > 0
+      ? Math.round(((fullPrice - discountedPrice) / fullPrice) * 100)
       : 0;
 
-  const isOfferValid = data.validTill && new Date(data.validTill) > new Date();
+  // Safe Date Validation
+  const validTillDate = data.validTill ? new Date(data.validTill) : null;
+  const isOfferValid =
+    validTillDate &&
+    !isNaN(validTillDate.getTime()) &&
+    validTillDate > new Date();
 
-  // Safely parse JSON fields
-  const stats = (data.stats as any[]) || [];
-  const analytics = (data.analytics as any[]) || [];
-  const phases = (data.phases as any[]) || [];
-  const reviews = (data.reviews as any[]) || [];
-  const features = (data.features as any[]) || [];
+  // --- Safe JSON Array Parsing (Protects against DB corruption) ---
+  const stats = Array.isArray(data.stats) ? data.stats : [];
+  const analytics = Array.isArray(data.analytics) ? data.analytics : [];
+  const phases = Array.isArray(data.phases) ? data.phases : [];
+  const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+  const features = Array.isArray(data.features) ? data.features : [];
 
   return (
     <main className="pt-24 pb-32 max-w-7xl mx-auto px-6 lg:px-8">
@@ -116,28 +114,28 @@ export default async function TestSeriesPage({
           {/* Hero Section */}
           <section>
             <span className="inline-block px-3 py-1 mb-6 text-[10px] font-bold uppercase tracking-widest text-primary dark:text-[#b5c4ff] bg-primary/10 dark:bg-[#1a56db]/20 rounded-full">
-              {data.category}
+              {data.category || "Uncategorized"}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface dark:text-white tracking-tight leading-tight mb-6">
-              {data.title}
+              {data.title || "Untitled Test Series"}
             </h1>
             <p className="text-lg text-on-surface-variant dark:text-gray-300 max-w-2xl leading-relaxed mb-10">
-              {data.description}
+              {data.description || "No description provided."}
             </p>
 
             {/* Bento Stats Grid */}
             {stats.length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {stats.map((stat, idx) => {
-                  const Icon = ICON_MAP[stat.icon] || FileText;
+                {stats.map((stat: any, idx: any) => {
+                  const Icon = ICON_MAP[stat?.icon as string] || FileText;
                   const colorTheme = STAT_COLORS[idx % STAT_COLORS.length];
 
                   return (
                     <div
                       key={idx}
-                      className={`bg-surface-container-low dark:bg-[#121c28] p-6 rounded-2xl text-center border border-outline-variant/20 dark:border-white/5 shadow-sm hover:shadow-md transition-shadow ${stat.highlight ? "border-b-4 border-b-emerald-500 dark:border-b-emerald-400 relative overflow-hidden" : ""}`}
+                      className={`bg-surface-container-low dark:bg-[#121c28] p-6 rounded-2xl text-center border border-outline-variant/20 dark:border-white/5 shadow-sm hover:shadow-md transition-shadow ${stat?.highlight ? "border-b-4 border-b-emerald-500 dark:border-b-emerald-400 relative overflow-hidden" : ""}`}
                     >
-                      {stat.highlight && (
+                      {stat?.highlight && (
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-emerald-600" />
                       )}
                       <Icon
@@ -145,10 +143,10 @@ export default async function TestSeriesPage({
                         size={28}
                       />
                       <div className="text-2xl font-extrabold text-on-surface dark:text-white mb-1">
-                        {stat.value}
+                        {stat?.value || "-"}
                       </div>
                       <div className="text-[11px] font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-widest">
-                        {stat.label}
+                        {stat?.label || "Stat"}
                       </div>
                     </div>
                   );
@@ -165,8 +163,8 @@ export default async function TestSeriesPage({
                   Beyond Just Scorecards
                 </h2>
                 <div className="grid md:grid-cols-3 gap-8">
-                  {analytics.map((item, idx) => {
-                    const Icon = ICON_MAP[item.icon] || BrainCircuit;
+                  {analytics.map((item: any, idx: any) => {
+                    const Icon = ICON_MAP[item?.icon as string] || BrainCircuit;
                     const colorTheme =
                       ANALYTICS_COLORS[idx % ANALYTICS_COLORS.length];
 
@@ -178,10 +176,10 @@ export default async function TestSeriesPage({
                           <Icon size={24} />
                         </div>
                         <h3 className="font-bold text-lg text-on-surface dark:text-white">
-                          {item.title}
+                          {item?.title || "Analytics Feature"}
                         </h3>
                         <p className="text-sm text-on-surface-variant dark:text-gray-400 leading-relaxed">
-                          {item.desc}
+                          {item?.desc || ""}
                         </p>
                       </div>
                     );
@@ -207,7 +205,7 @@ export default async function TestSeriesPage({
               </div>
 
               <div className="space-y-2">
-                {phases.map((phase, idx) => (
+                {phases.map((phase: any, idx: any) => (
                   <div
                     key={idx}
                     className="group cursor-pointer border-b border-outline-variant/10 dark:border-white/5 last:border-0 pb-4"
@@ -219,10 +217,10 @@ export default async function TestSeriesPage({
                         </span>
                         <div>
                           <h4 className="font-bold text-lg text-on-surface dark:text-gray-200 group-hover:text-primary dark:group-hover:text-[#b5c4ff] transition-colors mb-1">
-                            {phase.title}
+                            {phase?.title || "Phase"}
                           </h4>
                           <p className="text-sm text-on-surface-variant dark:text-gray-400">
-                            {phase.desc}
+                            {phase?.desc || ""}
                           </p>
                         </div>
                       </div>
@@ -262,7 +260,7 @@ export default async function TestSeriesPage({
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {reviews.map((review, idx) => {
+                {reviews.map((review: any, idx: any) => {
                   const colorTheme = REVIEW_COLORS[idx % REVIEW_COLORS.length];
                   return (
                     <div
@@ -273,19 +271,21 @@ export default async function TestSeriesPage({
                         <div
                           className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shrink-0 ${colorTheme}`}
                         >
-                          {getInitials(review.name)}
+                          {getInitials(review?.name)}
                         </div>
                         <div>
                           <h5 className="font-bold text-on-surface dark:text-white">
-                            {review.name}
+                            {review?.name || "Anonymous User"}
                           </h5>
-                          <p className="text-[10px] text-primary dark:text-[#85f8c4] font-bold uppercase tracking-widest mt-0.5">
-                            {review.role}
-                          </p>
+                          {review?.role && (
+                            <p className="text-[10px] text-primary dark:text-[#85f8c4] font-bold uppercase tracking-widest mt-0.5">
+                              {review.role}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <p className="text-sm text-on-surface-variant dark:text-gray-300 italic leading-relaxed flex-grow">
-                        "{review.comment}"
+                        "{review?.comment || "Great experience!"}"
                       </p>
                     </div>
                   );
@@ -303,7 +303,7 @@ export default async function TestSeriesPage({
               <div className="relative h-48 bg-surface-container dark:bg-gray-800">
                 {data.thumbnailUrl ? (
                   <img
-                    alt={data.title}
+                    alt={data.title || "Thumbnail"}
                     className="w-full h-full object-cover opacity-90"
                     src={data.thumbnailUrl}
                   />
@@ -327,13 +327,13 @@ export default async function TestSeriesPage({
               <div className="p-8">
                 <div className="flex items-baseline gap-3 mb-6 flex-wrap">
                   <span className="text-4xl font-extrabold text-on-surface dark:text-white">
-                    {formatPrice(data.discountedPrice, data.currency)}
+                    {formatRupees(discountedPrice)}
                   </span>
 
-                  {data.fullPrice > data.discountedPrice && (
+                  {fullPrice > discountedPrice && (
                     <>
                       <span className="text-lg text-on-surface-variant dark:text-gray-500 line-through font-medium">
-                        {formatPrice(data.fullPrice, data.currency)}
+                        {formatRupees(fullPrice)}
                       </span>
                       <span className="text-emerald-700 dark:text-emerald-400 font-bold text-xs bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 rounded-md tracking-wide">
                         {discountPercentage}% OFF
@@ -344,8 +344,9 @@ export default async function TestSeriesPage({
 
                 {features.length > 0 && (
                   <div className="space-y-4 mb-8 pt-2">
-                    {features.map((feature, idx) => {
-                      const Icon = ICON_MAP[feature.icon] || CheckCircle;
+                    {features.map((feature: any, idx: any) => {
+                      const Icon =
+                        ICON_MAP[feature?.icon as string] || CheckCircle;
                       return (
                         <div
                           key={idx}
@@ -355,7 +356,7 @@ export default async function TestSeriesPage({
                             size={18}
                             className="text-primary dark:text-[#b5c4ff]"
                           />
-                          <span>{feature.text}</span>
+                          <span>{feature?.text || "Included Feature"}</span>
                         </div>
                       );
                     })}
@@ -364,9 +365,18 @@ export default async function TestSeriesPage({
 
                 <div className="flex flex-col gap-3">
                   <BuyTestSeries testSeriesId={data.id} slug={data.slug} />
-                  <button className="w-full py-3.5 rounded-xl font-bold bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 border border-outline-variant/20 dark:border-white/5 hover:bg-surface-container-highest dark:hover:bg-white/10 transition-colors text-sm">
-                    View Sample Test
-                  </button>
+
+                  {/* Safely Render Sample Link as an Anchor Tag */}
+                  {(data as any).sampleLink && (
+                    <a
+                      href={(data as any).sampleLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-center py-3.5 rounded-xl font-bold bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 border border-outline-variant/20 dark:border-white/5 hover:bg-surface-container-highest dark:hover:bg-white/10 transition-colors text-sm"
+                    >
+                      View Sample Test
+                    </a>
+                  )}
                 </div>
 
                 <div className="mt-6 flex items-start gap-2 bg-surface-container-low dark:bg-white/5 p-3 rounded-lg border border-outline-variant/10 dark:border-white/5">

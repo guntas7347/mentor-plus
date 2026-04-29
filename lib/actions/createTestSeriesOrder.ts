@@ -34,7 +34,7 @@ export const createTestSeriesOrder = async (testSeriesId: string) => {
   }
 
   const order = await razorpay.orders.create({
-    amount: testSeries.discountedPrice * 100,
+    amount: testSeries.discountedPrice * 100, // it accepts in paisa
     currency: "INR",
     receipt: `ts_${testSeries.id}`,
   });
@@ -62,5 +62,5 @@ export const createTestSeriesOrder = async (testSeriesId: string) => {
     },
   });
 
-  return { orderId: order.id, amount: order.amount };
+  return { orderId: order.id, amount: Number(order.amount) };
 };

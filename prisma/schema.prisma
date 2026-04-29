@@ -46,20 +46,22 @@ model Course {
   id              String    @id @default(uuid())
   title           String    @default("Untitled Course")
   slug            String    @unique @default(uuid())
-  subtitle        String?   @default("Untitled Subtitle")
-  description     String    @default("Untitled Description")
+  subtitle        String    @default("Untitled Subtitle")
+  summary         String    @default("Untitled Summary")
+  description     String?
   thumbnailUrl    String?
+  brochureUrl     String?
   tags            String[]  @default([])
-  currency        String    @default("INR") // INR, USD
   fullPrice       Int       @default(0)
   discountedPrice Int       @default(0)
   validTill       DateTime?
   durationMonths  Int       @default(1)
   category        String    @default("Other")
-  status          String    @default("draft")
-  hotTag          String? // Best Seller, New, etc.
+  status          String    @default("Draft")
+  hotTag          String    @default("None")
   instructors     String[]  @default([])
   isPublished     Boolean   @default(false)
+  medium          String    @default("Other")
 
   // Expected structure: [{ title: string, desc: string, icon: string }]
   learningOutcomes Json?
@@ -77,14 +79,17 @@ model Course {
 }
 
 model TestSeries {
-  id           String  @id @default(uuid())
-  title        String
-  slug         String  @unique @default(uuid())
-  category     String
-  description  String?
-  thumbnailUrl String?
+  id          String  @id @default(uuid())
+  title       String
+  slug        String  @unique @default(uuid())
+  category    String
+  description String?
+  summary     String  @default("Untitled Summary")
 
-  currency        String    @default("INR") // INR, USD
+  thumbnailUrl String?
+  medium       String  @default("Other")
+  hotTag       String  @default("None")
+
   fullPrice       Int
   discountedPrice Int
   validTill       DateTime?
@@ -108,6 +113,7 @@ model TestSeries {
   // Expected: [{ icon: string, text: string }]
   features   Json?
   accessLink String?
+  sampleLink String?
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -118,11 +124,9 @@ model TestSeries {
 }
 
 model Syllabus {
-  id            String  @id @default(uuid())
-  categoryId    String  @unique // Acts as the slug/anchor (e.g., "SSC-CGL")
-  categoryTitle String // e.g., "SSC & Central Government Exams"
-  status        String  @default("draft") // "active", "draft", "archived"
-  isPublished   Boolean @default(false)
+  id          String  @id @default(uuid())
+  category    String  @default("Other")
+  isPublished Boolean @default(false)
 
   // Expected structure: [{ name: string, description: string, icon: string, pdfLink: string }]
   items Json?

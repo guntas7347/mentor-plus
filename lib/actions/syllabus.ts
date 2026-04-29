@@ -5,11 +5,16 @@ import prisma from "../prisma";
 
 export async function getAllSyllabus() {
   await requireAuth();
-  return prisma.syllabus.findMany();
+  return prisma.syllabus.findMany({
+    orderBy: { createdAt: "desc" }, // Optional: keeps newest at the top
+  });
 }
 
 export async function getAllPublishedSyllabus() {
-  return prisma.syllabus.findMany({ where: { isPublished: true } });
+  return prisma.syllabus.findMany({
+    where: { isPublished: true },
+    orderBy: { createdAt: "asc" },
+  });
 }
 
 export async function getSyllabusById(id: string) {
@@ -17,25 +22,23 @@ export async function getSyllabusById(id: string) {
   return prisma.syllabus.findUnique({ where: { id } });
 }
 
-export async function createSyllabus() {
+export async function updateSyllabus(id: string | null | undefined, data: any) {
   await requireAuth();
-  return prisma.syllabus.create({
-    data: {
-      categoryId: "new-cat",
-      categoryTitle: "New Category",
-    },
-  });
-}
 
-export async function updateSyllabus(id: string, data: any) {
-  await requireAuth();
+  // If there is no valid ID, or the ID is explicitly "new", CREATE a new record
+  if (!id || id === "new") {
+    return prisma.syllabus.create({
+      data,
+    });
+  }
+
+  // If a valid ID exists, UPDATE the existing record
   return prisma.syllabus.update({
     where: { id },
     data,
   });
 }
-
-export async function deleteSyllabus(id: string) {
+export async function deleteSyllabusCategory(id: string) {
   await requireAuth();
   return prisma.syllabus.delete({ where: { id } });
 }

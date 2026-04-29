@@ -13,6 +13,7 @@ import {
   Settings,
   DollarSign,
   Trophy,
+  Files,
 } from "lucide-react";
 
 export default function Sidebar({ role = "student" }) {
@@ -24,10 +25,10 @@ export default function Sidebar({ role = "student" }) {
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Courses", href: "/courses", icon: BookOpen },
     { name: "Test Series", href: "/test-series", icon: FileText },
-    { name: "Syllabus", href: "/syllabus", icon: FileText },
+    { name: "Syllabus", href: "/syllabus", icon: Files },
     { name: "Users", href: "/users", icon: Users },
     { name: "Purchases", href: "/purchases", icon: DollarSign },
-    { name: "Configs", href: "/configs", icon: Settings },
+    { name: "My Purchases", href: "/my-purchases", icon: Trophy },
     { name: "Profile", href: "/profile", icon: User },
   ];
 

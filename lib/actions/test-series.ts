@@ -68,7 +68,6 @@ export async function getTestSeriesBySlug(slug: string) {
       analytics: true,
       stats: true,
       validTill: true,
-      currency: true,
       slug: true,
     },
   });

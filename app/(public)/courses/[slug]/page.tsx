@@ -16,8 +16,57 @@ import {
   Smartphone,
 } from "lucide-react";
 import { getCourseBySlug } from "@/lib/actions/courses";
+import { formatRupees } from "@/lib/helpers";
+import Link from "next/link";
 
-// Map string names from database to actual Lucide components
+// --- Reusable Media Component ---
+// Automatically detects and renders video or image based on URL extension
+export function CourseMedia({
+  url,
+  alt,
+  className = "",
+}: {
+  url?: string | null;
+  alt: string;
+  className?: string;
+}) {
+  if (!url) {
+    return (
+      <div
+        className={`w-full h-full flex items-center justify-center bg-surface-container dark:bg-gray-800 text-on-surface-variant/30 ${className}`}
+      >
+        <MonitorPlay size={48} />
+      </div>
+    );
+  }
+
+  const isVideo = /\.(mp4|webm|ogg)$/i.test(url);
+
+  if (isVideo) {
+    return (
+      <video
+        src={url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={`w-full h-full object-cover ${className}`}
+      />
+    );
+  }
+
+  return (
+    <img
+      src={url}
+      alt={alt}
+      className={`w-full h-full object-cover ${className}`}
+    />
+  );
+}
+
+// --- Helpers ---
+// Formats integer values to INR string without decimals
+
 const ICON_MAP: Record<string, React.ElementType> = {
   BookOpen,
   Calculator,
@@ -30,17 +79,6 @@ const ICON_MAP: Record<string, React.ElementType> = {
   ShieldCheck,
 };
 
-// --- Helpers ---
-function formatPrice(price: number, currency: string) {
-  if (price === 0) return "Free";
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: currency || "INR",
-    maximumFractionDigits: 0,
-  }).format(price);
-}
-
-// Fallback colors for Learning Outcomes to keep the UI vibrant
 const OUTCOME_COLORS = [
   {
     text: "text-blue-600 dark:text-blue-400",
@@ -81,7 +119,6 @@ export default async function CoursePage({
         )
       : 0;
 
-  // Format the expiration date if it exists
   const isOfferValid =
     course.validTill && new Date(course.validTill) > new Date();
   const validTillFormatted = course.validTill
@@ -94,10 +131,11 @@ export default async function CoursePage({
       })
     : null;
 
-  // Parse JSON fields safely (assuming your Prisma client types them as generic JsonValue, we cast them)
   const outcomes = (course.learningOutcomes as any[]) || [];
   const curriculum = (course.curriculum as any[]) || [];
   const features = (course.features as any[]) || [];
+
+  const url = `https://wa.me/919876543210?text=${encodeURIComponent(`Hi, I am interested in ${course.title}`)}`;
 
   return (
     <main className="pt-24 pb-32">
@@ -108,22 +146,30 @@ export default async function CoursePage({
           <section className="space-y-6">
             <div className="flex flex-wrap gap-3 items-center">
               <span className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary dark:bg-[#1a56db]/20 dark:text-[#b5c4ff] text-[10px] font-bold uppercase tracking-widest rounded-full">
-                {course.subtitle || course.category}
+                {course.category || "Other"}
               </span>
-              {course.hotTag && (
+              {course.hotTag !== "None" && (
                 <span className="inline-flex items-center px-3 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-widest rounded-full">
                   {course.hotTag}
                 </span>
               )}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface dark:text-white leading-tight tracking-tight">
-              {course.title}
-            </h1>
+            <div className="space-y-2">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface dark:text-white leading-tight tracking-tight">
+                {course.title}
+              </h1>
+              {/* Subtitle moved directly below the title */}
+              {course.subtitle && (
+                <p className="text-xl md:text-2xl text-primary/80 dark:text-[#b5c4ff]/80 font-medium tracking-wide">
+                  {course.subtitle}
+                </p>
+              )}
+            </div>
 
             <div className="flex flex-wrap items-center gap-6 pt-2">
               <div className="flex items-center bg-surface-container-low dark:bg-gray-800/50 px-4 py-2 rounded-xl border border-outline-variant/20 dark:border-gray-700">
-                <Star
+                {/* <Star
                   className="text-amber-500 mr-2 fill-amber-500"
                   size={18}
                 />
@@ -132,10 +178,10 @@ export default async function CoursePage({
                 </span>
                 <span className="text-on-surface-variant dark:text-gray-400 ml-1.5 text-sm">
                   (2.4k Reviews)
-                </span>
+                </span> */}
+                Course Medium: {course.medium}
               </div>
 
-              {/* Dynamically render multiple instructors */}
               {course.instructors && course.instructors.length > 0 && (
                 <div className="flex items-center space-x-3">
                   <div className="flex -space-x-2">
@@ -234,7 +280,6 @@ export default async function CoursePage({
                         className="text-outline dark:text-gray-500 transition-transform group-hover:rotate-90 group-hover:text-primary"
                       />
                     </div>
-                    {/* Render sub-lessons if they exist */}
                     {module.lessons && module.lessons.length > 0 && (
                       <div className="pl-16 space-y-2 mt-2 hidden group-hover:block transition-all">
                         {module.lessons.map((lesson: any, lIdx: number) => (
@@ -260,21 +305,16 @@ export default async function CoursePage({
           <div className="lg:sticky lg:top-28 space-y-6">
             {/* Main Action Card */}
             <div className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/20 dark:border-white/10">
+              {/* Media Container */}
               <div className="relative h-56 group overflow-hidden bg-surface-container dark:bg-gray-800">
-                {course.thumbnailUrl ? (
-                  <img
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    alt={course.title}
-                    src={course.thumbnailUrl}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-on-surface-variant/30">
-                    <MonitorPlay size={48} />
-                  </div>
-                )}
+                <CourseMedia
+                  url={course.thumbnailUrl}
+                  alt={course.title}
+                  className="transition-transform duration-700 group-hover:scale-105"
+                />
 
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                  <button className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white ring-2 ring-white/40 group-hover:scale-110 transition-transform shadow-xl">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center pointer-events-none">
+                  <button className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white ring-2 ring-white/40 group-hover:scale-110 transition-transform shadow-xl pointer-events-auto">
                     <Play size={28} className="ml-1 fill-white" />
                   </button>
                 </div>
@@ -284,12 +324,12 @@ export default async function CoursePage({
                 <div className="space-y-2">
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="text-4xl font-extrabold text-on-surface dark:text-white">
-                      {formatPrice(course.discountedPrice, course.currency)}
+                      {formatRupees(course.discountedPrice)}
                     </span>
                     {course.fullPrice > course.discountedPrice && (
                       <>
                         <span className="text-on-surface-variant dark:text-gray-500 line-through font-medium text-lg">
-                          {formatPrice(course.fullPrice, course.currency)}
+                          {formatRupees(course.fullPrice)}
                         </span>
                         <span className="text-emerald-700 dark:text-emerald-400 font-bold text-xs bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 rounded-md tracking-wide">
                           {discountPercentage}% OFF
@@ -307,16 +347,25 @@ export default async function CoursePage({
                 </div>
 
                 <div className="space-y-3 pt-2">
-                  <button className="w-full bg-primary dark:bg-[#1a56db] text-white py-4 rounded-xl font-extrabold text-base transition-all hover:opacity-90 active:scale-[0.98] shadow-lg shadow-primary/20">
+                  <Link
+                    href={url}
+                    target="_blank"
+                    className="w-full inline-block bg-primary text-center dark:bg-[#1a56db] text-white py-4 rounded-xl font-extrabold text-base transition-all hover:opacity-90 active:scale-[0.98] shadow-lg shadow-primary/20"
+                  >
                     Enroll Now
-                  </button>
-                  <button className="w-full bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors hover:bg-surface-container-highest dark:hover:bg-white/10 text-sm border border-outline-variant/20 dark:border-white/5">
-                    <Download size={18} />
-                    Download Syllabus PDF
-                  </button>
+                  </Link>
+                  {course.brochureUrl && (
+                    <Link
+                      href={course.brochureUrl}
+                      target="_blank"
+                      className="w-full bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors hover:bg-surface-container-highest dark:hover:bg-white/10 text-sm border border-outline-variant/20 dark:border-white/5"
+                    >
+                      <Download size={18} />
+                      Download Broucher
+                    </Link>
+                  )}
                 </div>
 
-                {/* Dynamic Features */}
                 {features.length > 0 && (
                   <div className="space-y-4 pt-6 border-t border-outline-variant/20 dark:border-white/10">
                     <h4 className="font-bold text-on-surface dark:text-white text-xs uppercase tracking-widest">
@@ -344,7 +393,7 @@ export default async function CoursePage({
               </div>
             </div>
 
-            <div className="p-5 bg-surface-container-low dark:bg-[#1e2a3b] rounded-2xl border border-outline-variant/20 dark:border-white/5 flex items-center gap-4">
+            {/* <div className="p-5 bg-surface-container-low dark:bg-[#1e2a3b] rounded-2xl border border-outline-variant/20 dark:border-white/5 flex items-center gap-4">
               <div className="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-xl text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck size={24} />
               </div>
@@ -356,7 +405,7 @@ export default async function CoursePage({
                   Not satisfied? Get a full refund, no questions asked.
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </aside>
       </div>

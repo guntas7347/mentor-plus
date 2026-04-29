@@ -21,7 +21,7 @@ export const getAllCourses = async () => {
 };
 
 export const getAllPublishedCourses = async () => {
-  return prisma.course.findMany({
+  const courses = prisma.course.findMany({
     where: { isPublished: true },
     select: {
       id: true,
@@ -38,9 +38,9 @@ export const getAllPublishedCourses = async () => {
       discountedPrice: true,
       fullPrice: true,
       validTill: true,
-      currency: true,
     },
   });
+  return courses;
 };
 
 export const getCourseById = async (id: string) => {

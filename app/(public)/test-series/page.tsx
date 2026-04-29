@@ -1,5 +1,5 @@
 import { getAllPublishedTestSeries } from "@/lib/actions/test-series";
-import TestSeriesExplorer from "./TestSeriesExplorer"; // Adjust import path
+import TestSeriesExplorer from "../../../components/TestSeriesExplorer"; // Adjust import path
 
 export default async function TestSeriesPage() {
   const testSeriesData = await getAllPublishedTestSeries();

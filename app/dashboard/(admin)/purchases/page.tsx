@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { getAllPurchases } from "@/lib/actions/purchases";
 import { Purchase } from "@/prisma/generated/client";
+import { formatRupees } from "@/lib/helpers";
 
 // --- Types based on your Prisma Schema & API Response ---
 type PurchaseStatus =
@@ -91,15 +92,6 @@ function formatDate(dateStr: string) {
     hour: "2-digit",
     minute: "2-digit",
   });
-}
-
-function formatCurrency(amount: number) {
-  // Amount is stored in paise (e.g. 40000 = ₹400), so we divide by 100
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 2,
-  }).format(amount / 100);
 }
 
 export default function PurchasesPage() {
@@ -317,7 +309,7 @@ export default function PurchasesPage() {
                         {/* Amount */}
                         <td className="px-6 py-4 text-right">
                           <span className="font-extrabold text-on-surface dark:text-white text-base">
-                            {formatCurrency(purchase.amount)}
+                            {formatRupees(purchase.amount)}
                           </span>
                         </td>
                       </tr>

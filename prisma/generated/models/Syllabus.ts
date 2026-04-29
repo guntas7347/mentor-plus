@@ -26,9 +26,7 @@ export type AggregateSyllabus = {
 
 export type SyllabusMinAggregateOutputType = {
   id: string | null
-  categoryId: string | null
-  categoryTitle: string | null
-  status: string | null
+  category: string | null
   isPublished: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -36,9 +34,7 @@ export type SyllabusMinAggregateOutputType = {
 
 export type SyllabusMaxAggregateOutputType = {
   id: string | null
-  categoryId: string | null
-  categoryTitle: string | null
-  status: string | null
+  category: string | null
   isPublished: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -46,9 +42,7 @@ export type SyllabusMaxAggregateOutputType = {
 
 export type SyllabusCountAggregateOutputType = {
   id: number
-  categoryId: number
-  categoryTitle: number
-  status: number
+  category: number
   isPublished: number
   items: number
   createdAt: number
@@ -59,9 +53,7 @@ export type SyllabusCountAggregateOutputType = {
 
 export type SyllabusMinAggregateInputType = {
   id?: true
-  categoryId?: true
-  categoryTitle?: true
-  status?: true
+  category?: true
   isPublished?: true
   createdAt?: true
   updatedAt?: true
@@ -69,9 +61,7 @@ export type SyllabusMinAggregateInputType = {
 
 export type SyllabusMaxAggregateInputType = {
   id?: true
-  categoryId?: true
-  categoryTitle?: true
-  status?: true
+  category?: true
   isPublished?: true
   createdAt?: true
   updatedAt?: true
@@ -79,9 +69,7 @@ export type SyllabusMaxAggregateInputType = {
 
 export type SyllabusCountAggregateInputType = {
   id?: true
-  categoryId?: true
-  categoryTitle?: true
-  status?: true
+  category?: true
   isPublished?: true
   items?: true
   createdAt?: true
@@ -163,9 +151,7 @@ export type SyllabusGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type SyllabusGroupByOutputType = {
   id: string
-  categoryId: string
-  categoryTitle: string
-  status: string
+  category: string
   isPublished: boolean
   items: runtime.JsonValue | null
   createdAt: Date
@@ -195,9 +181,7 @@ export type SyllabusWhereInput = {
   OR?: Prisma.SyllabusWhereInput[]
   NOT?: Prisma.SyllabusWhereInput | Prisma.SyllabusWhereInput[]
   id?: Prisma.StringFilter<"Syllabus"> | string
-  categoryId?: Prisma.StringFilter<"Syllabus"> | string
-  categoryTitle?: Prisma.StringFilter<"Syllabus"> | string
-  status?: Prisma.StringFilter<"Syllabus"> | string
+  category?: Prisma.StringFilter<"Syllabus"> | string
   isPublished?: Prisma.BoolFilter<"Syllabus"> | boolean
   items?: Prisma.JsonNullableFilter<"Syllabus">
   createdAt?: Prisma.DateTimeFilter<"Syllabus"> | Date | string
@@ -206,9 +190,7 @@ export type SyllabusWhereInput = {
 
 export type SyllabusOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  categoryTitle?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   items?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -217,23 +199,19 @@ export type SyllabusOrderByWithRelationInput = {
 
 export type SyllabusWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  categoryId?: string
   AND?: Prisma.SyllabusWhereInput | Prisma.SyllabusWhereInput[]
   OR?: Prisma.SyllabusWhereInput[]
   NOT?: Prisma.SyllabusWhereInput | Prisma.SyllabusWhereInput[]
-  categoryTitle?: Prisma.StringFilter<"Syllabus"> | string
-  status?: Prisma.StringFilter<"Syllabus"> | string
+  category?: Prisma.StringFilter<"Syllabus"> | string
   isPublished?: Prisma.BoolFilter<"Syllabus"> | boolean
   items?: Prisma.JsonNullableFilter<"Syllabus">
   createdAt?: Prisma.DateTimeFilter<"Syllabus"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Syllabus"> | Date | string
-}, "id" | "categoryId">
+}, "id">
 
 export type SyllabusOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  categoryTitle?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   items?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -248,9 +226,7 @@ export type SyllabusScalarWhereWithAggregatesInput = {
   OR?: Prisma.SyllabusScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SyllabusScalarWhereWithAggregatesInput | Prisma.SyllabusScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Syllabus"> | string
-  categoryId?: Prisma.StringWithAggregatesFilter<"Syllabus"> | string
-  categoryTitle?: Prisma.StringWithAggregatesFilter<"Syllabus"> | string
-  status?: Prisma.StringWithAggregatesFilter<"Syllabus"> | string
+  category?: Prisma.StringWithAggregatesFilter<"Syllabus"> | string
   isPublished?: Prisma.BoolWithAggregatesFilter<"Syllabus"> | boolean
   items?: Prisma.JsonNullableWithAggregatesFilter<"Syllabus">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Syllabus"> | Date | string
@@ -259,9 +235,7 @@ export type SyllabusScalarWhereWithAggregatesInput = {
 
 export type SyllabusCreateInput = {
   id?: string
-  categoryId: string
-  categoryTitle: string
-  status?: string
+  category?: string
   isPublished?: boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
@@ -270,9 +244,7 @@ export type SyllabusCreateInput = {
 
 export type SyllabusUncheckedCreateInput = {
   id?: string
-  categoryId: string
-  categoryTitle: string
-  status?: string
+  category?: string
   isPublished?: boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
@@ -281,9 +253,7 @@ export type SyllabusUncheckedCreateInput = {
 
 export type SyllabusUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryTitle?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -292,9 +262,7 @@ export type SyllabusUpdateInput = {
 
 export type SyllabusUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryTitle?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -303,9 +271,7 @@ export type SyllabusUncheckedUpdateInput = {
 
 export type SyllabusCreateManyInput = {
   id?: string
-  categoryId: string
-  categoryTitle: string
-  status?: string
+  category?: string
   isPublished?: boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
@@ -314,9 +280,7 @@ export type SyllabusCreateManyInput = {
 
 export type SyllabusUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryTitle?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -325,9 +289,7 @@ export type SyllabusUpdateManyMutationInput = {
 
 export type SyllabusUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  categoryTitle?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   items?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -336,9 +298,7 @@ export type SyllabusUncheckedUpdateManyInput = {
 
 export type SyllabusCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  categoryTitle?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   items?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -347,9 +307,7 @@ export type SyllabusCountOrderByAggregateInput = {
 
 export type SyllabusMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  categoryTitle?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -357,9 +315,7 @@ export type SyllabusMaxOrderByAggregateInput = {
 
 export type SyllabusMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  categoryTitle?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -369,9 +325,7 @@ export type SyllabusMinOrderByAggregateInput = {
 
 export type SyllabusSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  categoryId?: boolean
-  categoryTitle?: boolean
-  status?: boolean
+  category?: boolean
   isPublished?: boolean
   items?: boolean
   createdAt?: boolean
@@ -380,9 +334,7 @@ export type SyllabusSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type SyllabusSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  categoryId?: boolean
-  categoryTitle?: boolean
-  status?: boolean
+  category?: boolean
   isPublished?: boolean
   items?: boolean
   createdAt?: boolean
@@ -391,9 +343,7 @@ export type SyllabusSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type SyllabusSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  categoryId?: boolean
-  categoryTitle?: boolean
-  status?: boolean
+  category?: boolean
   isPublished?: boolean
   items?: boolean
   createdAt?: boolean
@@ -402,25 +352,21 @@ export type SyllabusSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type SyllabusSelectScalar = {
   id?: boolean
-  categoryId?: boolean
-  categoryTitle?: boolean
-  status?: boolean
+  category?: boolean
   isPublished?: boolean
   items?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SyllabusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "categoryId" | "categoryTitle" | "status" | "isPublished" | "items" | "createdAt" | "updatedAt", ExtArgs["result"]["syllabus"]>
+export type SyllabusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "category" | "isPublished" | "items" | "createdAt" | "updatedAt", ExtArgs["result"]["syllabus"]>
 
 export type $SyllabusPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Syllabus"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    categoryId: string
-    categoryTitle: string
-    status: string
+    category: string
     isPublished: boolean
     items: runtime.JsonValue | null
     createdAt: Date
@@ -849,9 +795,7 @@ export interface Prisma__SyllabusClient<T, Null = never, ExtArgs extends runtime
  */
 export interface SyllabusFieldRefs {
   readonly id: Prisma.FieldRef<"Syllabus", 'String'>
-  readonly categoryId: Prisma.FieldRef<"Syllabus", 'String'>
-  readonly categoryTitle: Prisma.FieldRef<"Syllabus", 'String'>
-  readonly status: Prisma.FieldRef<"Syllabus", 'String'>
+  readonly category: Prisma.FieldRef<"Syllabus", 'String'>
   readonly isPublished: Prisma.FieldRef<"Syllabus", 'Boolean'>
   readonly items: Prisma.FieldRef<"Syllabus", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Syllabus", 'DateTime'>
