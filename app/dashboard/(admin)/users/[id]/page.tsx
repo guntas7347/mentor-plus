@@ -434,7 +434,7 @@ export default function UserProfilePage() {
                             </span>
                           </td>
                           <td className="px-6 py-4 text-right font-extrabold text-on-surface dark:text-white">
-                            {formatCurrency(purchase.amount)}
+                            {formatRupees(purchase.amount)}
                           </td>
                         </tr>
                       );

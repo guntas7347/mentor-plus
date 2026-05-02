@@ -2,6 +2,7 @@
 
 import { getSessionUser, requireAuth } from "../auth";
 import prisma from "../prisma";
+import { revalidatePaths } from "../revalidatePath";
 
 export async function getAllTestSeries() {
   await requireAuth();
@@ -14,12 +15,14 @@ export async function getAllPublishedTestSeries() {
 
 export async function deleteTestSeries(id: string) {
   await requireAuth();
-  return prisma.testSeries.delete({ where: { id } });
+  const testSeries= await prisma.testSeries.delete({ where: { id } });
+  revalidatePaths(["/dashboard/test-series", `/dashboard/test-series/${testSeries.slug}`]);
+  return testSeries;
 }
 
 export async function createTestSeries() {
   await requireAuth();
-  return prisma.testSeries.create({
+  return await prisma.testSeries.create({
     data: {
       title: "New Test Series",
       status: "draft",
@@ -29,15 +32,18 @@ export async function createTestSeries() {
       validityMonths: 0,
     },
   });
+  
 }
 
 export async function updateTestSeries(id: string, data: any) {
   await requireAuth();
 
-  return prisma.testSeries.update({
+  const testSeries= await prisma.testSeries.update({
     where: { id },
     data,
   });
+  revalidatePaths(["/dashboard/test-series", `/dashboard/test-series/${testSeries.slug}`]);
+  return testSeries;
 }
 
 export async function getTestSeriesById(id: string) {
