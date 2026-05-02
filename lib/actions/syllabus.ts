@@ -31,7 +31,7 @@ export async function updateSyllabus(id: string | null | undefined, data: any) {
     const syllabus=await prisma.syllabus.create({
       data,
     });
-    revalidatePaths(["/dashboard/syllabus"]);
+    revalidatePaths(["/syllabus"]);
     return syllabus;
   }
 
@@ -40,12 +40,12 @@ export async function updateSyllabus(id: string | null | undefined, data: any) {
     where: { id },
     data,
   });
-  revalidatePaths(["/dashboard/syllabus"]);
+  revalidatePaths(["/syllabus"]);
   return syllabus;
 }
 export async function deleteSyllabusCategory(id: string) {
   await requireAuth();
   const syllabus=await prisma.syllabus.delete({ where: { id } });
-  revalidatePaths(["/dashboard/syllabus"]);
+  revalidatePaths(["/syllabus"]);
   return syllabus;
 }
