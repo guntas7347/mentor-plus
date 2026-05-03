@@ -4,6 +4,8 @@ import Razorpay from "razorpay";
 import { getSessionUser } from "../auth";
 import prisma from "../prisma";
 
+import { revalidatePaths } from "../revalidatePath";
+
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID!,
   key_secret: process.env.RAZORPAY_KEY_SECRET!,
@@ -62,5 +64,6 @@ export const createTestSeriesOrder = async (testSeriesId: string) => {
     },
   });
 
+  revalidatePaths(["/dashboard/my-purchases"]);
   return { orderId: order.id, amount: Number(order.amount) };
 };

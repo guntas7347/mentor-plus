@@ -24,39 +24,9 @@ import { formatRupees } from "@/lib/helpers";
 
 // --- Types ---
 type Role = "STUDENT" | "ADMIN";
-
-interface TestSeries {
-  id: string;
-  title: string;
-  slug: string;
-  category: string;
-  thumbnailUrl: string | null;
-}
-
-interface Purchase {
-  id: string;
-  amount: number;
-  paymentMethod: string;
-  paymentId: string;
-  status: string;
-  createdAt: string;
-  testSeries?: TestSeries | null;
-  course?: {
-    id: string;
-    title: string;
-    category?: string;
-  } | null;
-}
-
-interface UserProfile {
-  id: string;
-  name: string | null;
-  email: string;
-  image: string | null;
-  role: Role;
-  createdAt: string;
-  purchases: Purchase[];
-}
+type UserProfile = NonNullable<Awaited<ReturnType<typeof getUserById>>>;
+type Purchase = UserProfile["purchases"][number];
+type TestSeries = NonNullable<Purchase["testSeries"]>;
 
 // --- Helpers ---
 const STATUS_STYLES: Record<string, { bg: string; text: string; icon: any }> = {
@@ -320,7 +290,7 @@ export default function UserProfilePage() {
                   {enrolledTestSeries.map((ts) => (
                     <Link
                       key={ts.id}
-                      href={`/dashboard/test-series/${ts.id}`}
+                      href={`/test-series/${ts.slug}`}
                       className="group flex items-center gap-4 p-3 bg-surface dark:bg-[#1f2937] rounded-xl border border-outline-variant/20 dark:border-gray-700 hover:border-primary/40 transition-colors"
                     >
                       <div className="w-16 h-16 rounded-lg overflow-hidden bg-surface-container dark:bg-gray-800 shrink-0">
@@ -369,6 +339,12 @@ export default function UserProfilePage() {
                     </th>
                     <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
                       Item
+                    </th>
+                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                      Order ID
+                    </th>
+                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                      Method
                     </th>
                     <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
                       Status
@@ -424,6 +400,16 @@ export default function UserProfilePage() {
                                 {productCategory}
                               </span>
                             </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className="text-xs font-mono text-on-surface-variant dark:text-gray-400">
+                              {purchase.paymentId || "N/A"}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className="text-xs font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-tight">
+                              {purchase.paymentMethod}
+                            </span>
                           </td>
                           <td className="px-6 py-4">
                             <span

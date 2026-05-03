@@ -10,6 +10,7 @@ export const createCourse = async () => {
     data: {},
   });
 
+  revalidatePaths(["/dashboard/courses"]);
   return course;
 };
 
@@ -62,7 +63,12 @@ export const updateCourse = async (id: string, data: any) => {
     where: { id },
     data,
   });
-  revalidatePaths(["/courses", `/courses/${course.slug}`]);
+  revalidatePaths([
+    "/dashboard/courses",
+    `/dashboard/courses/${id}`,
+    "/courses",
+    `/courses/${course.slug}`,
+  ]);
   return course;
 };
 
@@ -72,6 +78,6 @@ export const deleteCourse = async (id: string) => {
   const course = await prisma.course.delete({
     where: { id },
   });
-  revalidatePaths(["/courses", `/courses/${course.slug}`]);
+  revalidatePaths(["/dashboard/courses", "/courses", `/courses/${course.slug}`]);
   return course;
 };

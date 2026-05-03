@@ -72,3 +72,46 @@ export async function getDashboardStats() {
     throw new Error("Failed to load dashboard statistics");
   }
 }
+export async function getDashboardRawData() {
+  await requireAuth();
+
+  try {
+    const [users, courses, testSeries, purchases, syllabus] = await Promise.all([
+      prisma.user.findMany({
+        select: { createdAt: true, role: true },
+      }),
+      prisma.course.findMany({
+        select: { createdAt: true, isPublished: true },
+      }),
+      prisma.testSeries.findMany({
+        select: { createdAt: true, isPublished: true },
+      }),
+      prisma.purchase.findMany({
+        select: {
+          id: true,
+          createdAt: true,
+          amount: true,
+          status: true,
+          user: { select: { name: true, image: true, email: true } },
+          testSeries: { select: { title: true } },
+          course: { select: { title: true } },
+        },
+        orderBy: { createdAt: "desc" },
+      }),
+      prisma.syllabus.findMany({
+        select: { createdAt: true, isPublished: true },
+      }),
+    ]);
+
+    return {
+      users,
+      courses,
+      testSeries,
+      purchases,
+      syllabus,
+    };
+  } catch (error) {
+    console.error("Failed to fetch raw dashboard data:", error);
+    throw new Error("Failed to load platform data");
+  }
+}

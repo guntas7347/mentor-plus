@@ -6,23 +6,44 @@ import { revalidatePaths } from "../revalidatePath";
 
 export async function getAllTestSeries() {
   await requireAuth();
-  return prisma.testSeries.findMany();
+  return prisma.testSeries.findMany({
+    include: {
+      _count: {
+        select: { purchases: { where: { status: "SUCCESS" } } },
+      },
+    },
+  });
 }
 
 export async function getAllPublishedTestSeries() {
-  return prisma.testSeries.findMany({ where: { isPublished: true } });
+  return prisma.testSeries.findMany({
+    where: { isPublished: true },
+    select: {
+      id: true,
+      title: true,
+      category: true,
+      thumbnailUrl: true,
+      summary: true,
+      description: true,
+      fullPrice: true,
+      discountedPrice: true,
+      validityMonths: true,
+      hotTag: true,
+      slug: true,
+    },
+  });
 }
 
 export async function deleteTestSeries(id: string) {
   await requireAuth();
-  const testSeries= await prisma.testSeries.delete({ where: { id } });
-  revalidatePaths(["/test-series", `/test-series/${testSeries.slug}`]);
+  const testSeries = await prisma.testSeries.delete({ where: { id } });
+  revalidatePaths(["/dashboard/test-series", "/test-series", `/test-series/${testSeries.slug}`]);
   return testSeries;
 }
 
 export async function createTestSeries() {
   await requireAuth();
-  return await prisma.testSeries.create({
+  const testSeries = await prisma.testSeries.create({
     data: {
       title: "New Test Series",
       status: "draft",
@@ -32,17 +53,24 @@ export async function createTestSeries() {
       validityMonths: 0,
     },
   });
-  
+
+  revalidatePaths(["/dashboard/test-series"]);
+  return testSeries;
 }
 
 export async function updateTestSeries(id: string, data: any) {
   await requireAuth();
 
-  const testSeries= await prisma.testSeries.update({
+  const testSeries = await prisma.testSeries.update({
     where: { id },
     data,
   });
-  revalidatePaths(["/test-series", `/test-series/${testSeries.slug}`]);
+  revalidatePaths([
+    "/dashboard/test-series",
+    `/dashboard/test-series/${id}`,
+    "/test-series",
+    `/test-series/${testSeries.slug}`,
+  ]);
   return testSeries;
 }
 
@@ -75,6 +103,7 @@ export async function getTestSeriesBySlug(slug: string) {
       stats: true,
       validTill: true,
       slug: true,
+      sampleLink: true,
     },
   });
 }
@@ -96,6 +125,8 @@ export async function getMyEnrolledTestSeries() {
           title: true,
           category: true,
           thumbnailUrl: true,
+          accessLink: true,
+          slug: true,
         },
       },
     },

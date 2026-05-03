@@ -1,6 +1,7 @@
 "use server";
 import { getSessionUser, requireAuth } from "../auth";
 import prisma from "../prisma";
+import { revalidatePaths } from "../revalidatePath";
 
 export async function updateUserProfile(data: {
   name: string;
@@ -24,6 +25,7 @@ export async function updateUserProfile(data: {
     },
   });
 
+  revalidatePaths(["/dashboard/settings", "/dashboard/profile"]);
   return updatedUser;
 }
 
@@ -109,6 +111,7 @@ export async function updateUserRole(id: string, role: "STUDENT" | "ADMIN") {
       where: { id },
       data: { role },
     });
+    revalidatePaths(["/dashboard/users", `/dashboard/users/${id}`]);
     return updatedUser;
   } catch (error) {
     console.error("Error updating user role:", error);

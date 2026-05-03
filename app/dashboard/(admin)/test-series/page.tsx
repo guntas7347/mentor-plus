@@ -10,15 +10,8 @@ import {
   getAllTestSeries,
 } from "@/lib/actions/test-series";
 
-type TestSeriesStatus = "active" | "draft" | "archived" | "upcoming";
-
-interface TestSeries {
-  id: string;
-  title: string;
-  createdAt: string;
-  status: TestSeriesStatus;
-  enrollments?: number; // Keeping this if you track students per test series
-}
+type TestSeriesListResponse = Awaited<ReturnType<typeof getAllTestSeries>>;
+type TestSeries = TestSeriesListResponse[number];
 
 const statusStyles: Record<string, string> = {
   active:
@@ -31,7 +24,7 @@ const statusStyles: Record<string, string> = {
     "bg-surface-variant text-on-surface-variant dark:bg-outline/20 dark:text-outline",
 };
 
-function formatDate(dateStr: string) {
+function formatDate(dateStr: string | Date) {
   return new Date(dateStr).toLocaleDateString("en-IN", {
     day: "2-digit",
     month: "short",
@@ -194,7 +187,7 @@ export default function TestSeriesListPage() {
                     {/* Enrollments */}
                     <td className="px-6 py-4">
                       <span className="font-semibold text-on-surface dark:text-inverse-on-surface">
-                        {ts.enrollments || 0}
+                        {ts._count?.purchases || 0}
                       </span>
                       <span className="ml-1 text-xs text-on-surface-variant dark:text-outline">
                         students

@@ -17,23 +17,8 @@ import { getMyEnrolledTestSeries } from "@/lib/actions/test-series";
 import { formatRupees } from "@/lib/helpers";
 
 // --- Types based on your API response ---
-interface EnrolledTestSeries {
-  id: string;
-  testSeriesId: string;
-  amount: number;
-  paymentMethod: string;
-  paymentId: string;
-  expiresAt: string | null;
-  status: string;
-  createdAt: string;
-  testSeries: {
-    id: string;
-    title: string;
-    category: string;
-    thumbnailUrl: string | null;
-  };
-  progressPercentage?: number; // Assuming you might inject this later
-}
+type EnrolledTestSeriesResponse = Awaited<ReturnType<typeof getMyEnrolledTestSeries>>;
+type EnrolledTestSeries = Exclude<EnrolledTestSeriesResponse, { error: string }>[number];
 
 // --- Helpers ---
 function formatDate(dateStr: string | Date | null | undefined) {
@@ -52,10 +37,15 @@ export default function MyTestSeriesPage() {
   useEffect(() => {
     const fetchEnrollments = async () => {
       try {
-        const data: any = await getMyEnrolledTestSeries();
-        setEnrollments(data || []);
+        const response = await getMyEnrolledTestSeries();
+        if (response && !("error" in response)) {
+          setEnrollments(response);
+        } else {
+          setEnrollments([]);
+        }
       } catch (error) {
         console.error("Failed to fetch enrollments:", error);
+        setEnrollments([]);
       } finally {
         setLoading(false);
       }
@@ -213,14 +203,16 @@ export default function MyTestSeriesPage() {
                   {/* Action Button */}
                   {isExpired ? (
                     <Link
-                      href={`/test-series/${enrollment.testSeriesId}`}
+                      href={`/test-series/${enrollment.testSeries.slug}`}
                       className="w-full py-3.5 bg-surface-container-high dark:bg-gray-800 text-on-surface dark:text-gray-300 font-bold rounded-xl flex items-center justify-center transition-colors hover:bg-surface-container-highest"
                     >
                       Renew Subscription
                     </Link>
                   ) : (
-                    <Link
-                      href={`/test-series/play/${enrollment.testSeriesId}`}
+                    <a
+                      href={enrollment.testSeries.accessLink || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full py-3.5 bg-primary/10 dark:bg-[#1a56db]/20 text-primary dark:text-[#b5c4ff] hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all group relative overflow-hidden"
                     >
                       <PlayCircle
@@ -232,7 +224,7 @@ export default function MyTestSeriesPage() {
                         size={16}
                         className="opacity-0 group-hover:opacity-100 group-hover:-translate-x-1 transition-all absolute right-6 z-10"
                       />
-                    </Link>
+                    </a>
                   )}
                 </div>
               </div>

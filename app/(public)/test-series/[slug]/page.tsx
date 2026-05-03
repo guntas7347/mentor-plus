@@ -72,13 +72,17 @@ function getInitials(name?: string) {
     .toUpperCase();
 }
 
+type TestSeriesData = NonNullable<
+  Awaited<ReturnType<typeof getTestSeriesBySlug>>
+>;
+
 export default async function TestSeriesPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const data: any = await getTestSeriesBySlug(slug);
+  const data: TestSeriesData | null = await getTestSeriesBySlug(slug);
 
   if (!data) {
     notFound();
@@ -367,9 +371,9 @@ export default async function TestSeriesPage({
                   <BuyTestSeries testSeriesId={data.id} slug={data.slug} />
 
                   {/* Safely Render Sample Link as an Anchor Tag */}
-                  {(data as any).sampleLink && (
+                  {data.sampleLink && (
                     <a
-                      href={(data as any).sampleLink}
+                      href={data.sampleLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full flex items-center justify-center py-3.5 rounded-xl font-bold bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 border border-outline-variant/20 dark:border-white/5 hover:bg-surface-container-highest dark:hover:bg-white/10 transition-colors text-sm"
