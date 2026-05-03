@@ -36,6 +36,7 @@ import {
   TEST_SERIES_CATEGORIES,
 } from "@/lib/configs";
 import SectionCard from "@/components/SectionCard";
+import PdfUploader from "@/components/PdfUploader";
 
 const AVAILABLE_ICONS = {
   FileText,
@@ -690,7 +691,12 @@ export default function TestSeriesEditPage() {
             </Field>
           </SectionCard>
 
-          <SectionCard title="Access Links">
+          <SectionCard title="Access Links & PDF">
+            <PdfUploader
+              onUploadSuccess={(id) => {
+                set("accessLink", id);
+              }}
+            />
             <Field label="Access Link">
               <div className="relative">
                 <LinkIcon

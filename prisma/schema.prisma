@@ -22,7 +22,7 @@ enum PurchaseStatus {
 }
 
 model User {
-  id    String  @id @default(uuid())
+  id    String  @id @default(cuid())
   name  String
   email String  @unique
   image String?
@@ -43,9 +43,9 @@ model User {
 }
 
 model Course {
-  id              String    @id @default(uuid())
+  id              String    @id @default(cuid())
   title           String    @default("Untitled Course")
-  slug            String    @unique @default(uuid())
+  slug            String    @unique @default(cuid())
   subtitle        String    @default("Untitled Subtitle")
   summary         String    @default("Untitled Summary")
   description     String?
@@ -79,9 +79,9 @@ model Course {
 }
 
 model TestSeries {
-  id          String  @id @default(uuid())
+  id          String  @id @default(cuid())
   title       String
-  slug        String  @unique @default(uuid())
+  slug        String  @unique @default(cuid())
   category    String
   description String?
   summary     String  @default("Untitled Summary")
@@ -124,7 +124,7 @@ model TestSeries {
 }
 
 model Syllabus {
-  id          String  @id @default(uuid())
+  id          String  @id @default(cuid())
   category    String  @default("Other")
   isPublished Boolean @default(false)
 
@@ -136,7 +136,7 @@ model Syllabus {
 }
 
 model Purchase {
-  id String @id @default(uuid())
+  id String @id @default(cuid())
 
   userId       String
   testSeriesId String?
@@ -163,7 +163,7 @@ model Purchase {
 }
 
 model Config {
-  id String @id @default(uuid())
+  id String @id @default(cuid())
 
   key   String @unique
   value Json
@@ -172,4 +172,12 @@ model Config {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Pdf {
+  id        String    @id @default(cuid())
+  key       String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 }

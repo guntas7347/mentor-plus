@@ -17,8 +17,13 @@ import { getMyEnrolledTestSeries } from "@/lib/actions/test-series";
 import { formatRupees } from "@/lib/helpers";
 
 // --- Types based on your API response ---
-type EnrolledTestSeriesResponse = Awaited<ReturnType<typeof getMyEnrolledTestSeries>>;
-type EnrolledTestSeries = Exclude<EnrolledTestSeriesResponse, { error: string }>[number];
+type EnrolledTestSeriesResponse = Awaited<
+  ReturnType<typeof getMyEnrolledTestSeries>
+>;
+type EnrolledTestSeries = Exclude<
+  EnrolledTestSeriesResponse,
+  { error: string }
+>[number];
 
 // --- Helpers ---
 function formatDate(dateStr: string | Date | null | undefined) {
@@ -108,7 +113,7 @@ export default function MyTestSeriesPage() {
       ) : (
         // Grid Layout
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {enrollments.map((enrollment) => {
+          {enrollments.map((enrollment: any) => {
             // Treat null expiresAt as indefinite (never expires)
             const isExpired = enrollment.expiresAt
               ? new Date(enrollment.expiresAt) < new Date()
@@ -210,9 +215,7 @@ export default function MyTestSeriesPage() {
                     </Link>
                   ) : (
                     <a
-                      href={enrollment.testSeries.accessLink || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`/dashboard/play/${enrollment.testSeries.accessLink}`}
                       className="w-full py-3.5 bg-primary/10 dark:bg-[#1a56db]/20 text-primary dark:text-[#b5c4ff] hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all group relative overflow-hidden"
                     >
                       <PlayCircle

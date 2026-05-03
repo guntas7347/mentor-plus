@@ -26,6 +26,7 @@ export default function Sidebar({ role = "student" }) {
     { name: "Courses", href: "/courses", icon: BookOpen },
     { name: "Test Series", href: "/test-series", icon: FileText },
     { name: "Syllabus", href: "/syllabus", icon: Files },
+    { name: "PDFs", href: "/pdfs", icon: Files },
     { name: "Users", href: "/users", icon: Users },
     { name: "Purchases", href: "/purchases", icon: DollarSign },
     { name: "My Purchases", href: "/my-purchases", icon: Trophy },

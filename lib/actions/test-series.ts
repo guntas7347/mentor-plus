@@ -37,7 +37,11 @@ export async function getAllPublishedTestSeries() {
 export async function deleteTestSeries(id: string) {
   await requireAuth();
   const testSeries = await prisma.testSeries.delete({ where: { id } });
-  revalidatePaths(["/dashboard/test-series", "/test-series", `/test-series/${testSeries.slug}`]);
+  revalidatePaths([
+    "/dashboard/test-series",
+    "/test-series",
+    `/test-series/${testSeries.slug}`,
+  ]);
   return testSeries;
 }
 

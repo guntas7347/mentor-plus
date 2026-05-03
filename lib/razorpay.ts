@@ -19,13 +19,42 @@ export const verifyPayment = async (body: any) => {
     return { error: "Invalid payment" };
   }
 
-  await prisma.purchase.updateMany({
+  // 1. Get purchase FIRST
+  const purchase = await prisma.purchase.findFirst({
     where: { paymentId: razorpay_order_id },
+    select: {
+      id: true,
+      testSeriesId: true,
+      userId: true,
+    },
+  });
+
+  if (!purchase) {
+    return { error: "Purchase not found" };
+  }
+
+  // 2. Update purchase
+  await prisma.purchase.update({
+    where: { id: purchase.id },
     data: {
       status: "SUCCESS",
       paymentId: razorpay_payment_id,
     },
   });
+
+  // 3. Attach TestSeries to User
+  if (purchase.testSeriesId) {
+    await prisma.user.update({
+      where: { id: purchase.userId },
+      data: {
+        testSeries: {
+          connect: {
+            id: purchase.testSeriesId,
+          },
+        },
+      },
+    });
+  }
 
   await revalidatePaths(["/dashboard/my-purchases"]);
 

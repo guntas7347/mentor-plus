@@ -71,3 +71,8 @@ export type Purchase = Prisma.PurchaseModel
  * 
  */
 export type Config = Prisma.ConfigModel
+/**
+ * Model Pdf
+ * 
+ */
+export type Pdf = Prisma.PdfModel
