@@ -23,11 +23,11 @@
 
 // const statusStyles: Record<SyllabusStatus, string> = {
 //   active:
-//     "bg-primary-container text-on-primary-container dark:bg-primary/20 dark:text-primary",
+//     "bg-primary-dark text-primary-dark dark:bg-primary/20 dark:text-primary",
 //   draft:
-//     "bg-secondary-container text-on-secondary-container dark:bg-secondary/20 dark:text-secondary-fixed",
+//     "bg-secondary-dark text-secondary-dark dark:bg-secondary/20 dark:text-secondary-fixed",
 //   archived:
-//     "bg-surface-variant text-on-surface-variant dark:bg-outline/20 dark:text-outline",
+//     "bg-surface text-text-muted dark:bg-outline/20 dark:text-text-muted",
 // };
 
 // function formatDate(dateStr: string) {
@@ -71,7 +71,7 @@
 
 //   if (loading)
 //     return (
-//       <div className="p-6 text-sm text-on-surface-variant">
+//       <div className="p-6 text-sm text-text-muted">
 //         Loading syllabus data...
 //       </div>
 //     );
@@ -80,30 +80,30 @@
 //     <>
 //       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
 //         <div>
-//           <h1 className="text-3xl font-headline font-bold text-on-surface dark:text-inverse-primary mb-1">
+//           <h1 className="text-3xl font-headline font-bold text-text dark:text-inverse-primary mb-1">
 //             Syllabus Manager
 //           </h1>
-//           <p className="font-body text-sm text-on-surface-variant dark:text-outline">
+//           <p className="font-body text-sm text-text-muted dark:text-text-muted">
 //             Manage exam categories and their downloadable PDF resources.
 //           </p>
 //         </div>
 
 //         <button
 //           onClick={handleCreate}
-//           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-label font-semibold text-sm hover:opacity-90 active:scale-95 transition-all duration-150 shadow-md"
+//           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-body font-semibold text-sm hover:opacity-90 active:scale-95 transition-all duration-150 shadow-md"
 //         >
 //           <Plus size={18} />
 //           Create Category
 //         </button>
 //       </div>
 
-//       <div className="bg-surface-container-lowest dark:bg-[#1f2937] rounded-2xl ambient-shadow border border-outline-variant/20 overflow-hidden">
-//         <div className="flex items-center gap-3 px-6 py-4 border-b border-outline-variant/15 dark:border-white/5">
+//       <div className="bg-background dark:bg-[#1f2937] rounded-2xl ambient-shadow border border-gray-200/20 overflow-hidden">
+//         <div className="flex items-center gap-3 px-6 py-4 border-b border-gray-200/15 dark:border-white/5">
 //           <FileStack
 //             size={18}
 //             className="text-primary dark:text-inverse-primary"
 //           />
-//           <span className="font-label text-sm font-semibold text-on-surface dark:text-inverse-on-surface">
+//           <span className="font-body text-sm font-semibold text-text dark:text-gray-100">
 //             {syllabusList.length} Categories Total
 //           </span>
 //         </div>
@@ -111,20 +111,20 @@
 //         <div className="overflow-x-auto">
 //           <table className="w-full text-sm font-body">
 //             <thead>
-//               <tr className="border-b border-outline-variant/15 dark:border-white/5 bg-surface-container-low dark:bg-[#182030]">
-//                 <th className="text-left px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-outline text-xs uppercase tracking-wide">
+//               <tr className="border-b border-gray-200/15 dark:border-white/5 bg-surface dark:bg-[#182030]">
+//                 <th className="text-left px-6 py-3 font-body font-semibold text-text-muted dark:text-text-muted text-xs uppercase tracking-wide">
 //                   Category Title
 //                 </th>
-//                 <th className="text-left px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-outline text-xs uppercase tracking-wide">
+//                 <th className="text-left px-6 py-3 font-body font-semibold text-text-muted dark:text-text-muted text-xs uppercase tracking-wide">
 //                   Category ID (Anchor)
 //                 </th>
-//                 <th className="text-center px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-outline text-xs uppercase tracking-wide">
+//                 <th className="text-center px-6 py-3 font-body font-semibold text-text-muted dark:text-text-muted text-xs uppercase tracking-wide">
 //                   PDFs Attached
 //                 </th>
-//                 <th className="text-left px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-outline text-xs uppercase tracking-wide">
+//                 <th className="text-left px-6 py-3 font-body font-semibold text-text-muted dark:text-text-muted text-xs uppercase tracking-wide">
 //                   Status
 //                 </th>
-//                 <th className="text-right px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-outline text-xs uppercase tracking-wide">
+//                 <th className="text-right px-6 py-3 font-body font-semibold text-text-muted dark:text-text-muted text-xs uppercase tracking-wide">
 //                   Actions
 //                 </th>
 //               </tr>
@@ -133,25 +133,25 @@
 //               {syllabusList.map((syllabus) => (
 //                 <tr
 //                   key={syllabus.id}
-//                   className="hover:bg-surface-container-low dark:hover:bg-[#182030] transition-colors duration-150 group"
+//                   className="hover:bg-surface dark:hover:bg-[#182030] transition-colors duration-150 group"
 //                 >
 //                   <td className="px-6 py-4">
 //                     <div className="flex items-center gap-3">
-//                       <div className="w-8 h-8 rounded-lg bg-primary-container dark:bg-primary/20 flex items-center justify-center shrink-0">
+//                       <div className="w-8 h-8 rounded-lg bg-primary-dark dark:bg-primary/20 flex items-center justify-center shrink-0">
 //                         <FileStack
 //                           size={15}
 //                           className="text-primary dark:text-inverse-primary"
 //                         />
 //                       </div>
-//                       <span className="font-semibold text-on-surface dark:text-inverse-on-surface">
+//                       <span className="font-semibold text-text dark:text-gray-100">
 //                         {syllabus.categoryTitle || "Untitled Category"}
 //                       </span>
 //                     </div>
 //                   </td>
-//                   <td className="px-6 py-4 text-on-surface-variant dark:text-outline font-mono text-xs">
+//                   <td className="px-6 py-4 text-text-muted dark:text-text-muted font-mono text-xs">
 //                     #{syllabus.categoryId}
 //                   </td>
-//                   <td className="px-6 py-4 text-center font-bold text-on-surface dark:text-white">
+//                   <td className="px-6 py-4 text-center font-bold text-text dark:text-white">
 //                     {syllabus.items?.length || 0}
 //                   </td>
 //                   <td className="px-6 py-4">
@@ -165,13 +165,13 @@
 //                     <div className="flex items-center justify-end gap-1">
 //                       <Link
 //                         href={`/dashboard/syllabus/${syllabus.id}`}
-//                         className="p-2 rounded-lg hover:bg-surface-container dark:hover:bg-outline/20 text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+//                         className="p-2 rounded-lg hover:bg-surface dark:hover:bg-outline/20 text-text-muted dark:text-text-muted hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
 //                       >
 //                         <Pencil size={16} />
 //                       </Link>
 //                       <button
 //                         onClick={() => handleDelete(syllabus.id)}
-//                         className="p-2 rounded-lg hover:bg-error-container/40 text-on-surface-variant dark:text-outline hover:text-error transition-colors"
+//                         className="p-2 rounded-lg hover:bg-red-100/40 text-text-muted dark:text-text-muted hover:text-error transition-colors"
 //                       >
 //                         <Trash2 size={16} />
 //                       </button>
@@ -183,7 +183,7 @@
 //                 <tr>
 //                   <td
 //                     colSpan={5}
-//                     className="px-6 py-8 text-center text-on-surface-variant"
+//                     className="px-6 py-8 text-center text-text-muted"
 //                   >
 //                     No syllabus categories found.
 //                   </td>
@@ -237,7 +237,7 @@ const AVAILABLE_ICONS = {
 type IconName = keyof typeof AVAILABLE_ICONS;
 
 const inputClass =
-  "w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface dark:bg-[#374151] text-on-surface dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
+  "w-full px-3.5 py-2.5 rounded-xl border border-gray-200/50 bg-surface dark:bg-[#374151] text-text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
 export default function SyllabusDashboard() {
   const [syllabuses, setSyllabuses] = useState<any[]>([]);
@@ -379,7 +379,7 @@ export default function SyllabusDashboard() {
       {/* Left Sidebar: List of Categories */}
       <div className="w-full lg:w-1/3 flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-on-surface dark:text-white">
+          <h2 className="text-xl font-bold text-text dark:text-white">
             Categories
           </h2>
           <button
@@ -398,7 +398,7 @@ export default function SyllabusDashboard() {
               className={`text-left px-4 py-3 rounded-xl border transition-all ${
                 activeId === cat.id
                   ? "bg-primary text-white border-primary shadow-md"
-                  : "bg-surface-container-lowest dark:bg-[#121c28] border-outline-variant/30 dark:border-white/5 hover:border-primary/50 text-on-surface dark:text-gray-300"
+                  : "bg-background dark:bg-[#121c28] border-gray-200 dark:border-white/5 hover:border-primary/50 text-text dark:text-gray-300"
               }`}
             >
               <div className="font-bold truncate">{cat.category}</div>
@@ -427,9 +427,9 @@ export default function SyllabusDashboard() {
       {/* Right Content Area: Editor */}
       <div className="w-full lg:w-2/3">
         {form ? (
-          <div className="bg-surface-container-lowest dark:bg-[#1f2937] border border-outline-variant/20 shadow-sm rounded-3xl overflow-hidden flex flex-col">
+          <div className="bg-background dark:bg-[#1f2937] border border-gray-200/20 shadow-sm rounded-3xl overflow-hidden flex flex-col">
             {/* Editor Header */}
-            <div className="p-6 border-b border-outline-variant/20 dark:border-gray-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface-container-low dark:bg-gray-800/50">
+            <div className="p-6 border-b border-gray-200/20 dark:border-gray-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface dark:bg-gray-800/50">
               <h2 className="text-2xl font-bold dark:text-white">
                 {form.id === "new" ? "Create Category" : "Edit Category"}
               </h2>
@@ -518,10 +518,10 @@ export default function SyllabusDashboard() {
                     return (
                       <div
                         key={index}
-                        className="p-4 bg-surface dark:bg-[#374151]/30 border border-outline-variant/30 dark:border-gray-700 rounded-2xl relative group"
+                        className="p-4 bg-surface dark:bg-[#374151]/30 border border-gray-200 dark:border-gray-700 rounded-2xl relative group"
                       >
                         {/* Reorder & Delete Controls */}
-                        <div className="absolute right-3 top-3 flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity bg-surface dark:bg-gray-800 p-1 rounded-lg shadow-sm border border-outline-variant/20 dark:border-gray-600">
+                        <div className="absolute right-3 top-3 flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity bg-surface dark:bg-gray-800 p-1 rounded-lg shadow-sm border border-gray-200/20 dark:border-gray-600">
                           <button
                             onClick={() => moveItem(index, "up")}
                             disabled={index === 0}
@@ -637,7 +637,7 @@ export default function SyllabusDashboard() {
                         ],
                       })
                     }
-                    className="w-full py-4 border-2 border-dashed border-outline-variant/50 dark:border-gray-600 rounded-xl font-bold text-gray-500 hover:text-primary hover:bg-primary/5 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-4 border-2 border-dashed border-gray-200/50 dark:border-gray-600 rounded-xl font-bold text-gray-500 hover:text-primary hover:bg-primary/5 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
                   >
                     <Plus size={18} /> Add Document
                   </button>

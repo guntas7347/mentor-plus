@@ -38,17 +38,17 @@ export default async function SyllabusPage() {
       {/* Hero / Header Section */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 mb-20 pt-16">
         <div className="max-w-3xl">
-          <span className="text-primary dark:text-[#b5c4ff] font-label text-sm font-bold tracking-widest uppercase block mb-4">
+          <span className="text-primary dark:text-[#b5c4ff] font-body text-sm font-bold tracking-widest uppercase block mb-4">
             Exam Preparation Guide
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-extrabold text-on-surface dark:text-white tracking-tight leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-extrabold text-text dark:text-white tracking-tight leading-tight mb-6">
             Master the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container dark:from-[#b5c4ff] dark:to-[#1a56db]">
               Curriculum
             </span>{" "}
             with Authority.
           </h1>
-          <p className="text-lg text-on-surface-variant dark:text-gray-300 leading-relaxed mb-8">
+          <p className="text-lg text-text-muted dark:text-gray-300 leading-relaxed mb-8">
             Detailed breakdown of exam patterns and subject-wise syllabus for
             Punjab Government, Banking, and Central Government exams. Stay ahead
             with our structured learning path.
@@ -66,7 +66,7 @@ export default async function SyllabusPage() {
                   <a
                     key={cat.id}
                     href={`#${shortName}`}
-                    className="px-6 py-3 bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 rounded-xl font-semibold hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white transition-colors border border-transparent dark:border-white/5 shadow-sm"
+                    className="px-6 py-3 bg-surface dark:bg-white/5 text-text dark:text-gray-200 rounded-xl font-semibold hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white transition-colors border border-transparent dark:border-white/5 shadow-sm"
                   >
                     {shortName}
                   </a>
@@ -81,15 +81,15 @@ export default async function SyllabusPage() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-24 mb-24">
         {syllabusData.length === 0 ? (
           // Empty State
-          <div className="text-center py-20 bg-surface-container-low dark:bg-[#121c28] rounded-3xl border border-outline-variant/20 dark:border-white/5">
+          <div className="text-center py-20 bg-surface dark:bg-[#121c28] rounded-3xl border border-gray-200/20 dark:border-white/5">
             <AlertCircle
-              className="mx-auto text-outline dark:text-gray-500 mb-4"
+              className="mx-auto text-text-muted dark:text-gray-500 mb-4"
               size={48}
             />
-            <h3 className="text-2xl font-bold text-on-surface dark:text-white mb-2">
+            <h3 className="text-2xl font-bold text-text dark:text-white mb-2">
               Check Back Soon
             </h3>
-            <p className="text-on-surface-variant dark:text-gray-400">
+            <p className="text-text-muted dark:text-gray-400">
               Our experts are currently updating the syllabus resources.
             </p>
           </div>
@@ -106,8 +106,8 @@ export default async function SyllabusPage() {
                 className="scroll-mt-32"
               >
                 {/* Section Header */}
-                <div className="mb-10 border-b border-outline-variant/30 dark:border-white/10 pb-4">
-                  <h2 className="text-3xl font-headline font-bold text-on-surface dark:text-white">
+                <div className="mb-10 border-b border-gray-200 dark:border-white/10 pb-4">
+                  <h2 className="text-3xl font-headline font-bold text-text dark:text-white">
                     {category?.category || "Uncategorized"}
                   </h2>
                 </div>
@@ -115,7 +115,7 @@ export default async function SyllabusPage() {
                 {/* Syllabus Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {items.length === 0 ? (
-                    <p className="text-on-surface-variant dark:text-gray-500 italic">
+                    <p className="text-text-muted dark:text-gray-500 italic">
                       No syllabus documents added to this category yet.
                     </p>
                   ) : (
@@ -131,20 +131,20 @@ export default async function SyllabusPage() {
                       return (
                         <div
                           key={idx}
-                          className="bg-surface-container-lowest dark:bg-[#121c28] p-8 rounded-2xl border border-outline-variant/30 dark:border-white/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group"
+                          className="bg-background dark:bg-[#121c28] p-8 rounded-2xl border border-gray-200 dark:border-white/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group"
                         >
                           {/* Card Header */}
                           <div className="flex items-start gap-4 mb-4">
                             <div className="p-3 bg-primary/10 dark:bg-[#1a56db]/20 text-primary dark:text-[#b5c4ff] rounded-xl group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                               <Icon size={24} />
                             </div>
-                            <h3 className="font-bold text-xl text-on-surface dark:text-white pt-1 leading-tight">
+                            <h3 className="font-bold text-xl text-text dark:text-white pt-1 leading-tight">
                               {item?.name || "Untitled Syllabus"}
                             </h3>
                           </div>
 
                           {/* Card Description */}
-                          <p className="text-on-surface-variant dark:text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                          <p className="text-text-muted dark:text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
                             {item?.description || "No description provided."}
                           </p>
 
@@ -154,7 +154,7 @@ export default async function SyllabusPage() {
                               href={item.pdfLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2 w-full py-3.5 bg-surface-container dark:bg-white/5 text-on-surface dark:text-gray-200 font-bold rounded-xl hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white transition-colors border border-outline-variant/20 dark:border-transparent"
+                              className="flex items-center justify-center gap-2 w-full py-3.5 bg-surface dark:bg-white/5 text-text dark:text-gray-200 font-bold rounded-xl hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white transition-colors border border-gray-200/20 dark:border-transparent"
                             >
                               <Download
                                 size={18}
@@ -165,7 +165,7 @@ export default async function SyllabusPage() {
                           ) : (
                             <button
                               disabled
-                              className="flex items-center justify-center gap-2 w-full py-3.5 bg-surface-variant/30 dark:bg-white/5 text-on-surface-variant/50 dark:text-gray-600 font-bold rounded-xl cursor-not-allowed border border-outline-variant/10 dark:border-transparent"
+                              className="flex items-center justify-center gap-2 w-full py-3.5 bg-surface/30 dark:bg-white/5 text-text-muted/50 dark:text-gray-600 font-bold rounded-xl cursor-not-allowed border border-gray-200 dark:border-transparent"
                             >
                               <Download size={18} />
                               PDF Unavailable

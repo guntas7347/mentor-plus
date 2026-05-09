@@ -1,9 +1,10 @@
 "use server";
 
 import prisma from "../prisma";
+import { revalidatePaths } from "../revalidatePath";
 
 const createMeta = async (key: string, value: any, isPublic = true) => {
-  return await prisma.metaData.upsert({
+  const meta = await prisma.metaData.upsert({
     where: {
       key,
     },
@@ -17,10 +18,16 @@ const createMeta = async (key: string, value: any, isPublic = true) => {
       isPublic,
     },
   });
+  if (key === "homepage_gallery") {
+    revalidatePaths(["/gallery"]);
+  } else if (key === "tutors") {
+    revalidatePaths(["/", "/about"]);
+  }
+  return meta;
 };
 
 const updateMeta = async (key: string, value: any, isPublic: boolean) => {
-  return await prisma.metaData.update({
+  const meta = await prisma.metaData.update({
     where: {
       key,
     },
@@ -29,6 +36,12 @@ const updateMeta = async (key: string, value: any, isPublic: boolean) => {
       isPublic,
     },
   });
+  if (key === "homepage_gallery") {
+    revalidatePaths(["/", "/gallery"]);
+  } else if (key === "tutors") {
+    revalidatePaths(["/", "/about"]);
+  }
+  return meta;
 };
 
 const getMeta = async (key: string) => {

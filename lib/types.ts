@@ -9,6 +9,7 @@ export type CoursePreview = Prisma.CourseGetPayload<{
     category: true;
     subtitle: true;
     title: true;
+    description: true;
     summary: true;
     durationMonths: true;
     discountedPrice: true;
@@ -16,3 +17,12 @@ export type CoursePreview = Prisma.CourseGetPayload<{
     validTill: true;
   };
 }>;
+
+export type Mentor = {
+  name: string;
+  role: string;
+  exp: string;
+  degree: string;
+  degreeIcon: React.ReactNode;
+  borderRadius?: string;
+};

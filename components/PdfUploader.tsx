@@ -61,7 +61,7 @@ const PdfUploader = ({ onUploadSuccess }: PdfUploaderProps) => {
           className={`
             relative border-2 border-dashed rounded-xl p-8 
             flex flex-col items-center justify-center transition-all cursor-pointer
-            ${file ? "border-primary/50 bg-primary/5" : "border-outline-variant/50 hover:border-primary/30"}
+            ${file ? "border-primary/50 bg-primary/5" : "border-gray-200/50 hover:border-primary/30"}
             ${isUploading ? "opacity-50 cursor-not-allowed" : ""}
           `}
         >
@@ -75,11 +75,11 @@ const PdfUploader = ({ onUploadSuccess }: PdfUploaderProps) => {
 
           {!file ? (
             <>
-              <Upload className="w-8 h-8 text-on-surface-variant mb-2" />
-              <p className="text-sm font-medium text-on-surface">
+              <Upload className="w-8 h-8 text-text-muted mb-2" />
+              <p className="text-sm font-medium text-text">
                 Click to select PDF
               </p>
-              <p className="text-xs text-on-surface-variant mt-1">
+              <p className="text-xs text-text-muted mt-1">
                 Maximum file size: 10MB
               </p>
             </>
@@ -108,7 +108,7 @@ const PdfUploader = ({ onUploadSuccess }: PdfUploaderProps) => {
         <button
           type="submit"
           disabled={!file || isUploading}
-          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-primary text-on-primary rounded-xl font-semibold text-sm transition-all hover:opacity-90 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-primary text-white rounded-xl font-semibold text-sm transition-all hover:opacity-90 disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
           {isUploading ? (
             <>

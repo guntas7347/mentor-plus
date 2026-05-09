@@ -37,6 +37,7 @@ import {
 } from "@/lib/configs";
 import SectionCard from "@/components/SectionCard";
 import PdfUploader from "@/components/PdfUploader";
+import CloudinaryUploader from "@/components/CloudinaryUploader";
 
 const AVAILABLE_ICONS = {
   FileText,
@@ -58,7 +59,7 @@ const AVAILABLE_ICONS = {
 type IconName = keyof typeof AVAILABLE_ICONS;
 
 const inputClass =
-  "w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface dark:bg-[#374151] text-on-surface dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
+  "w-full px-3.5 py-2.5 rounded-xl border border-gray-200/50 bg-surface dark:bg-[#374151] text-text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
 export default function TestSeriesEditPage() {
   const { id } = useParams();
@@ -203,7 +204,7 @@ export default function TestSeriesEditPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.back()}
-            className="p-2 rounded-xl hover:bg-surface-container transition-colors"
+            className="p-2 rounded-xl hover:bg-surface transition-colors"
           >
             <ArrowLeft size={20} />
           </button>
@@ -283,7 +284,7 @@ export default function TestSeriesEditPage() {
                 return (
                   <div
                     key={index}
-                    className="p-3 bg-surface-container-lowest dark:bg-gray-800/30 rounded-xl border border-outline-variant/30 space-y-2"
+                    className="p-3 bg-background dark:bg-gray-800/30 rounded-xl border border-gray-200 space-y-2"
                   >
                     <div className="flex gap-2">
                       <select
@@ -357,7 +358,7 @@ export default function TestSeriesEditPage() {
                   { icon: "FileText", value: "", label: "", highlight: false },
                 ])
               }
-              className="w-full py-2 border-2 border-dashed border-outline-variant/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
+              className="w-full py-2 border-2 border-dashed border-gray-200/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
             >
               <Plus size={14} /> Add Stat
             </button>
@@ -372,7 +373,7 @@ export default function TestSeriesEditPage() {
                 return (
                   <div
                     key={index}
-                    className="p-3 bg-surface-container-lowest dark:bg-gray-800/30 rounded-xl border border-outline-variant/30 space-y-3"
+                    className="p-3 bg-background dark:bg-gray-800/30 rounded-xl border border-gray-200 space-y-3"
                   >
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-surface dark:bg-gray-700 rounded-lg">
@@ -440,7 +441,7 @@ export default function TestSeriesEditPage() {
                     { icon: "BrainCircuit", title: "", desc: "" },
                   ])
                 }
-                className="w-full py-3 border-2 border-dashed border-outline-variant/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-2"
+                className="w-full py-3 border-2 border-dashed border-gray-200/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-2"
               >
                 <Plus size={16} /> Add Analytics Feature
               </button>
@@ -453,7 +454,7 @@ export default function TestSeriesEditPage() {
               {form.phases.map((phase: any, index: number) => (
                 <div
                   key={index}
-                  className="p-3 bg-surface-container-lowest dark:bg-gray-800/30 rounded-xl border border-outline-variant/30 space-y-2"
+                  className="p-3 bg-background dark:bg-gray-800/30 rounded-xl border border-gray-200 space-y-2"
                 >
                   <div className="flex gap-3">
                     <span className="font-mono font-bold text-gray-400 w-6 pt-2">
@@ -499,7 +500,7 @@ export default function TestSeriesEditPage() {
                 onClick={() =>
                   set("phases", [...form.phases, { title: "", desc: "" }])
                 }
-                className="w-full py-2 border-2 border-dashed border-outline-variant/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
+                className="w-full py-2 border-2 border-dashed border-gray-200/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
               >
                 <Plus size={14} /> Add Phase
               </button>
@@ -516,7 +517,7 @@ export default function TestSeriesEditPage() {
                   <div
                     key={index}
                     // Changed to a single flex row
-                    className="p-2 bg-surface-container-lowest dark:bg-gray-800/30 rounded-xl border border-outline-variant/30 flex items-center gap-2"
+                    className="p-2 bg-background dark:bg-gray-800/30 rounded-xl border border-gray-200 flex items-center gap-2"
                   >
                     {/* Icon Preview */}
                     <div className="p-2 bg-surface dark:bg-gray-700 rounded-lg flex-shrink-0">
@@ -579,7 +580,7 @@ export default function TestSeriesEditPage() {
                     { text: "", icon: "CheckCircle" },
                   ])
                 }
-                className="w-full py-2 border-2 border-dashed border-outline-variant/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
+                className="w-full py-2 border-2 border-dashed border-gray-200/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
               >
                 <Plus size={14} /> Add Feature
               </button>
@@ -605,7 +606,7 @@ export default function TestSeriesEditPage() {
             <div className="grid grid-cols-2 gap-4 mt-4">
               <Field label="Full Price">
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-on-surface-variant dark:text-gray-400">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-text-muted dark:text-gray-400">
                     ₹
                   </span>
                   <input
@@ -622,7 +623,7 @@ export default function TestSeriesEditPage() {
 
               <Field label="Discounted Price">
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-on-surface-variant dark:text-gray-400">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-text-muted dark:text-gray-400">
                     ₹
                   </span>
                   <input
@@ -665,7 +666,11 @@ export default function TestSeriesEditPage() {
           </SectionCard>
 
           <SectionCard title="Thumbnail">
-            <Field label="Thumbnail URL">
+            <Field label="Thumbnail">
+              <CloudinaryUploader
+                onUpload={(value) => set("thumbnailUrl", value)}
+                showPreview
+              />
               <div className="relative">
                 <ImageIcon
                   size={16}
@@ -682,7 +687,7 @@ export default function TestSeriesEditPage() {
                 <img
                   src={form.thumbnailUrl}
                   alt="Preview"
-                  className="mt-3 h-32 w-full object-cover rounded-xl border border-outline-variant/30"
+                  className="mt-3 h-32 w-full object-cover rounded-xl border border-gray-200"
                   onError={(e) =>
                     ((e.target as HTMLImageElement).style.display = "none")
                   }
@@ -692,11 +697,6 @@ export default function TestSeriesEditPage() {
           </SectionCard>
 
           <SectionCard title="Access Links & PDF">
-            <PdfUploader
-              onUploadSuccess={(id) => {
-                set("accessLink", id);
-              }}
-            />
             <Field label="Access Link">
               <div className="relative">
                 <LinkIcon
@@ -799,8 +799,8 @@ export default function TestSeriesEditPage() {
               onClick={() => set("isPublished", !form.isPublished)}
               className={`w-full flex justify-between px-4 py-3 rounded-xl border transition-all ${
                 form.isPublished
-                  ? "bg-primary-container border-primary/30 dark:bg-green-900/20 text-green-600 dark:text-green-400"
-                  : "bg-surface-container-low dark:bg-[#374151] text-gray-500 dark:text-gray-300"
+                  ? "bg-primary-dark border-primary/30 dark:bg-green-900/20 text-green-600 dark:text-green-400"
+                  : "bg-surface dark:bg-[#374151] text-gray-500 dark:text-gray-300"
               }`}
             >
               <span className="font-semibold text-sm">

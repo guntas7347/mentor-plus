@@ -78,8 +78,8 @@ const STATUS_STYLES: Record<string, { bg: string; text: string; icon: any }> = {
     icon: XCircle,
   },
   CANCELLED: {
-    bg: "bg-surface-variant dark:bg-gray-800",
-    text: "text-on-surface-variant dark:text-gray-400",
+    bg: "bg-surface dark:bg-gray-800",
+    text: "text-text-muted dark:text-gray-400",
     icon: XCircle,
   },
 };
@@ -143,27 +143,27 @@ export default function PurchasesPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-headline font-bold text-on-surface dark:text-inverse-primary mb-1">
+          <h1 className="text-3xl font-headline font-bold text-text dark:text-inverse-primary mb-1">
             Purchases & Transactions
           </h1>
-          <p className="font-body text-sm text-on-surface-variant dark:text-outline">
+          <p className="font-body text-sm text-text-muted dark:text-text-muted">
             Monitor student enrollments, payments, and invoices.
           </p>
         </div>
 
-        <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container-high dark:bg-[#1f2937] text-on-surface dark:text-white font-label font-semibold text-sm border border-outline-variant/20 hover:bg-surface-container-highest transition-all shadow-sm">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface dark:bg-[#1f2937] text-text dark:text-white font-body font-semibold text-sm border border-gray-200/20 hover:bg-surface transition-all shadow-sm">
           <Download size={18} />
           Export CSV
         </button>
       </div>
 
       {/* Main Table Card */}
-      <div className="bg-surface-container-lowest dark:bg-[#1f2937] rounded-2xl shadow-sm border border-outline-variant/20 dark:border-white/5 overflow-hidden flex flex-col min-h-[500px]">
+      <div className="bg-background dark:bg-[#1f2937] rounded-2xl shadow-sm border border-gray-200/20 dark:border-white/5 overflow-hidden flex flex-col min-h-[500px]">
         {/* Toolbar (Search) */}
-        <div className="p-4 border-b border-outline-variant/15 dark:border-white/5 bg-surface-container-low/50 dark:bg-[#182030]/50 flex items-center justify-between">
+        <div className="p-4 border-b border-gray-200/15 dark:border-white/5 bg-surface/50 dark:bg-[#182030]/50 flex items-center justify-between">
           <div className="relative w-full max-w-md">
             <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-outline dark:text-gray-500"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted dark:text-gray-500"
               size={18}
             />
             <input
@@ -171,7 +171,7 @@ export default function PurchasesPage() {
               placeholder="Search by student, product, or payment ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-surface dark:bg-[#1f2937] border border-outline-variant/30 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm text-on-surface dark:text-white placeholder:dark:text-gray-500 transition-all"
+              className="w-full pl-10 pr-4 py-2.5 bg-surface dark:bg-[#1f2937] border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm text-text dark:text-white placeholder:dark:text-gray-500 transition-all"
             />
           </div>
         </div>
@@ -179,27 +179,27 @@ export default function PurchasesPage() {
         {/* Loading State or Table */}
         <div className="overflow-x-auto flex-grow">
           {loading ? (
-            <div className="flex flex-col items-center justify-center py-24 text-on-surface-variant dark:text-gray-400">
+            <div className="flex flex-col items-center justify-center py-24 text-text-muted dark:text-gray-400">
               <Receipt className="animate-pulse mb-4 text-primary" size={32} />
               <p className="font-medium text-sm">Loading transactions...</p>
             </div>
           ) : (
             <table className="w-full text-sm font-body text-left whitespace-nowrap">
               <thead>
-                <tr className="border-b border-outline-variant/15 dark:border-white/5 bg-surface-container-low dark:bg-[#182030]">
-                  <th className="px-6 py-4 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                <tr className="border-b border-gray-200/15 dark:border-white/5 bg-surface dark:bg-[#182030]">
+                  <th className="px-6 py-4 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                     Student
                   </th>
-                  <th className="px-6 py-4 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                  <th className="px-6 py-4 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                     Product Info
                   </th>
-                  <th className="px-6 py-4 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                  <th className="px-6 py-4 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                     Payment Details
                   </th>
-                  <th className="px-6 py-4 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                  <th className="px-6 py-4 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-4 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider text-right">
+                  <th className="px-6 py-4 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider text-right">
                     Amount
                   </th>
                 </tr>
@@ -209,7 +209,7 @@ export default function PurchasesPage() {
                   <tr>
                     <td
                       colSpan={5}
-                      className="px-6 py-12 text-center text-on-surface-variant dark:text-gray-500"
+                      className="px-6 py-12 text-center text-text-muted dark:text-gray-500"
                     >
                       No transactions found.
                     </td>
@@ -234,7 +234,7 @@ export default function PurchasesPage() {
                     return (
                       <tr
                         key={purchase.id}
-                        className="hover:bg-surface-container-low dark:hover:bg-[#182030] transition-colors duration-150 group"
+                        className="hover:bg-surface dark:hover:bg-[#182030] transition-colors duration-150 group"
                       >
                         {/* Student Info */}
                         <td className="px-6 py-4">
@@ -251,10 +251,10 @@ export default function PurchasesPage() {
                               )}
                             </div>
                             <div className="flex flex-col">
-                              <span className="font-bold text-on-surface dark:text-white">
+                              <span className="font-bold text-text dark:text-white">
                                 {purchase.user?.name || "Unknown User"}
                               </span>
-                              <span className="text-xs text-on-surface-variant dark:text-gray-400">
+                              <span className="text-xs text-text-muted dark:text-gray-400">
                                 {purchase.user?.email}
                               </span>
                             </div>
@@ -264,7 +264,7 @@ export default function PurchasesPage() {
                         {/* Product Info */}
                         <td className="px-6 py-4">
                           <div className="flex flex-col">
-                            <span className="font-bold text-on-surface dark:text-white whitespace-normal line-clamp-2 min-w-[200px]">
+                            <span className="font-bold text-text dark:text-white whitespace-normal line-clamp-2 min-w-[200px]">
                               {productName}
                             </span>
                             <span className="text-[10px] font-bold text-primary dark:text-[#85f8c4] uppercase tracking-widest mt-0.5">
@@ -276,20 +276,20 @@ export default function PurchasesPage() {
                         {/* Payment Details */}
                         <td className="px-6 py-4">
                           <div className="flex flex-col gap-1">
-                            <div className="flex items-center gap-1.5 text-xs font-semibold text-on-surface-variant dark:text-gray-400">
+                            <div className="flex items-center gap-1.5 text-xs font-semibold text-text-muted dark:text-gray-400">
                               <CreditCard size={14} />
                               {purchase.paymentMethod}
                             </div>
                             {purchase.paymentId ? (
-                              <span className="font-mono text-[11px] text-outline dark:text-gray-500">
+                              <span className="font-mono text-[11px] text-text-muted dark:text-gray-500">
                                 {purchase.paymentId}
                               </span>
                             ) : (
-                              <span className="font-mono text-[11px] text-outline dark:text-gray-500 italic">
+                              <span className="font-mono text-[11px] text-text-muted dark:text-gray-500 italic">
                                 {purchase.remark || "No ID"}
                               </span>
                             )}
-                            <div className="text-[11px] text-on-surface-variant dark:text-gray-500 flex items-center gap-1 mt-1">
+                            <div className="text-[11px] text-text-muted dark:text-gray-500 flex items-center gap-1 mt-1">
                               <Calendar size={12} />{" "}
                               {formatDate(purchase.createdAt.toString())}
                             </div>
@@ -308,7 +308,7 @@ export default function PurchasesPage() {
 
                         {/* Amount */}
                         <td className="px-6 py-4 text-right">
-                          <span className="font-extrabold text-on-surface dark:text-white text-base">
+                          <span className="font-extrabold text-text dark:text-white text-base">
                             {formatRupees(purchase.amount)}
                           </span>
                         </td>
@@ -323,18 +323,18 @@ export default function PurchasesPage() {
 
         {/* Pagination Footer */}
         {meta && meta.totalPages > 1 && (
-          <div className="px-6 py-4 border-t border-outline-variant/15 dark:border-white/5 bg-surface-container-low dark:bg-[#182030] flex items-center justify-between">
-            <p className="text-xs text-on-surface-variant dark:text-gray-500 font-body">
+          <div className="px-6 py-4 border-t border-gray-200/15 dark:border-white/5 bg-surface dark:bg-[#182030] flex items-center justify-between">
+            <p className="text-xs text-text-muted dark:text-gray-500 font-body">
               Showing{" "}
-              <span className="font-bold text-on-surface dark:text-white">
+              <span className="font-bold text-text dark:text-white">
                 {(meta.page - 1) * meta.limit + 1}
               </span>{" "}
               to{" "}
-              <span className="font-bold text-on-surface dark:text-white">
+              <span className="font-bold text-text dark:text-white">
                 {Math.min(meta.page * meta.limit, meta.total)}
               </span>{" "}
               of{" "}
-              <span className="font-bold text-on-surface dark:text-white">
+              <span className="font-bold text-text dark:text-white">
                 {meta.total}
               </span>{" "}
               records
@@ -344,11 +344,11 @@ export default function PurchasesPage() {
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1 || loading}
-                className="p-2 rounded-lg bg-surface dark:bg-gray-800 text-on-surface dark:text-white border border-outline-variant/30 hover:bg-surface-container disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="p-2 rounded-lg bg-surface dark:bg-gray-800 text-text dark:text-white border border-gray-200 hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <ChevronLeft size={16} />
               </button>
-              <span className="text-sm font-semibold text-on-surface dark:text-white px-2">
+              <span className="text-sm font-semibold text-text dark:text-white px-2">
                 Page {meta.page} of {meta.totalPages}
               </span>
               <button
@@ -356,7 +356,7 @@ export default function PurchasesPage() {
                   setCurrentPage((p) => Math.min(meta.totalPages, p + 1))
                 }
                 disabled={currentPage === meta.totalPages || loading}
-                className="p-2 rounded-lg bg-surface dark:bg-gray-800 text-on-surface dark:text-white border border-outline-variant/30 hover:bg-surface-container disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="p-2 rounded-lg bg-surface dark:bg-gray-800 text-text dark:text-white border border-gray-200 hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <ChevronRight size={16} />
               </button>

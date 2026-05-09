@@ -86,7 +86,7 @@ export default function TestSeriesExplorer({
       {/* Filter & Search Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
         <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto overflow-hidden">
-          <span className="font-label text-sm text-outline dark:text-gray-500 font-semibold uppercase shrink-0">
+          <span className="font-body text-sm text-text-muted dark:text-gray-500 font-semibold uppercase shrink-0">
             Filter by:
           </span>
           <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 no-scrollbar">
@@ -97,7 +97,7 @@ export default function TestSeriesExplorer({
                 className={`px-5 py-2 text-sm font-bold rounded-full whitespace-nowrap transition-all duration-200 ${
                   activeCategory === cat
                     ? "bg-primary dark:bg-[#1a56db] text-white shadow-md shadow-primary/20"
-                    : "bg-surface-container-high dark:bg-white/5 text-on-surface-variant dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-white/10"
+                    : "bg-surface dark:bg-white/5 text-text-muted dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-white/10"
                 }`}
               >
                 {cat}
@@ -108,11 +108,11 @@ export default function TestSeriesExplorer({
 
         <div className="relative w-full md:w-80 shrink-0">
           <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-outline dark:text-gray-500"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted dark:text-gray-500"
             size={18}
           />
           <input
-            className="w-full pl-11 pr-4 py-3 bg-surface-container-lowest dark:bg-[#121c28] border border-outline-variant/50 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/40 dark:focus:ring-[#1a56db]/60 transition-all text-sm text-on-surface dark:text-[#eaf1ff] placeholder:dark:text-[#434654]"
+            className="w-full pl-11 pr-4 py-3 bg-background dark:bg-[#121c28] border border-gray-200/50 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/40 dark:focus:ring-[#1a56db]/60 transition-all text-sm text-text dark:text-[#eaf1ff] placeholder:dark:text-[#434654]"
             placeholder="Search test series..."
             type="text"
             value={searchQuery}
@@ -138,10 +138,10 @@ export default function TestSeriesExplorer({
             return (
               <div
                 key={test.id}
-                className="group bg-surface-container-lowest dark:bg-[#121c28] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 flex flex-col relative border border-outline-variant/30 dark:border-white/5"
+                className="group bg-background dark:bg-[#121c28] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 flex flex-col relative border border-gray-200 dark:border-white/5"
               >
                 {/* Thumbnail & Hot Tag Header */}
-                <div className="h-48 bg-surface-container dark:bg-[#1e2a3b] relative overflow-hidden">
+                <div className="h-48 bg-surface dark:bg-[#1e2a3b] relative overflow-hidden">
                   {test.thumbnailUrl ? (
                     <img
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -149,7 +149,7 @@ export default function TestSeriesExplorer({
                       alt={test.title}
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-outline/50">
+                    <div className="w-full h-full flex items-center justify-center text-text-muted/50">
                       <BookX size={48} />
                     </div>
                   )}
@@ -170,10 +170,10 @@ export default function TestSeriesExplorer({
                   <span className="text-[10px] font-bold text-primary dark:text-[#85f8c4] tracking-widest uppercase mb-2 block">
                     {test.category || "General"}
                   </span>
-                  <h3 className="text-lg font-bold text-on-surface dark:text-[#eaf1ff] mb-2 line-clamp-2">
+                  <h3 className="text-lg font-bold text-text dark:text-[#eaf1ff] mb-2 line-clamp-2">
                     {test.title}
                   </h3>
-                  <p className="text-on-surface-variant dark:text-[#a3b1c6] text-sm flex-grow line-clamp-3">
+                  <p className="text-text-muted dark:text-[#a3b1c6] text-sm flex-grow line-clamp-3">
                     {test.summary ||
                       test.description ||
                       "Prepare efficiently with our comprehensive test series designed for your success."}
@@ -182,12 +182,12 @@ export default function TestSeriesExplorer({
 
                 {/* Card Footer: Duration, Pricing & CTA */}
                 <div className="px-6 pb-6 mt-auto">
-                  <div className="flex items-end justify-between mb-6 pt-4 border-t border-outline-variant/20 dark:border-white/10">
+                  <div className="flex items-end justify-between mb-6 pt-4 border-t border-gray-200/20 dark:border-white/10">
                     {/* Left: Duration */}
-                    <div className="flex items-center text-on-surface-variant dark:text-[#a3b1c6] text-sm font-medium">
+                    <div className="flex items-center text-text-muted dark:text-[#a3b1c6] text-sm font-medium">
                       <Clock
                         size={16}
-                        className="mr-1.5 text-outline opacity-70"
+                        className="mr-1.5 text-text-muted opacity-70"
                       />
                       {test.validityMonths || 12} Months
                     </div>
@@ -195,7 +195,7 @@ export default function TestSeriesExplorer({
                     {/* Right: Pricing & Discount Percentage */}
                     <div className="flex flex-col items-end text-right">
                       {hasDiscount && (
-                        <span className="text-xs text-on-surface-variant dark:text-gray-500 line-through mb-0.5">
+                        <span className="text-xs text-text-muted dark:text-gray-500 line-through mb-0.5">
                           {formatRupees(test.fullPrice)}
                         </span>
                       )}
@@ -206,7 +206,7 @@ export default function TestSeriesExplorer({
                             {discountPercent}% OFF
                           </span>
                         )}
-                        <span className="text-xl font-extrabold text-on-surface dark:text-[#eaf1ff]">
+                        <span className="text-xl font-extrabold text-text dark:text-[#eaf1ff]">
                           {formatRupees(test.discountedPrice)}
                         </span>
                       </div>
@@ -230,14 +230,14 @@ export default function TestSeriesExplorer({
         </div>
       ) : (
         /* Empty State */
-        <div className="bg-surface-container-low/30 dark:bg-white/5 rounded-2xl border-2 border-dashed border-outline-variant/30 dark:border-white/10 flex flex-col items-center justify-center p-12 text-center group">
-          <div className="w-16 h-16 bg-surface-container dark:bg-white/10 rounded-full flex items-center justify-center mb-4 transition-transform group-hover:rotate-12">
-            <Search className="text-outline dark:text-gray-400" size={32} />
+        <div className="bg-surface/30 dark:bg-white/5 rounded-2xl border-2 border-dashed border-gray-200 dark:border-white/10 flex flex-col items-center justify-center p-12 text-center group">
+          <div className="w-16 h-16 bg-surface dark:bg-white/10 rounded-full flex items-center justify-center mb-4 transition-transform group-hover:rotate-12">
+            <Search className="text-text-muted dark:text-gray-400" size={32} />
           </div>
-          <h4 className="font-bold text-on-surface dark:text-white text-lg">
+          <h4 className="font-bold text-text dark:text-white text-lg">
             No Test Series Found
           </h4>
-          <p className="text-sm text-on-surface-variant dark:text-gray-400 mt-2 max-w-[250px] mx-auto">
+          <p className="text-sm text-text-muted dark:text-gray-400 mt-2 max-w-[250px] mx-auto">
             We couldn't find any tests matching your search. Try adjusting your
             filters.
           </p>

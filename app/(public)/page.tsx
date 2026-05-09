@@ -1,3 +1,5 @@
+import Mentors from "@/components/Mentors";
+import { formatRupees } from "@/lib/helpers";
 import {
   PlayCircle,
   Star,
@@ -10,50 +12,17 @@ import {
   CheckCircle2,
   ChevronRight,
 } from "lucide-react";
+import Link from "next/link";
+import { getAllPublishedCourses } from "@/lib/actions/courses";
+import CourseCard from "@/components/CourseCard";
 
-export default function Home() {
+export default async function Home() {
+  const featuredCourses = await getAllPublishedCourses(3);
   const stats = [
     { value: "5000+", label: "Students Selected" },
     { value: "100+", label: "Ongoing Batches" },
     { value: "15+", label: "Expert Mentors" },
     { value: "98%", label: "Success Rate" },
-  ];
-
-  const featuredCourses = [
-    {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAb44t-ouHYyI-sMvbC53Py_WJmMGH72G8Up8Ii9WJtKDfAp6Ey78NTCklM9hXGP2r6NcQ5TynwkzDr9MkPgZU-skBMbQeauCEsehz6wxI0CHIxwOOkCSq2yFSJ_GrmPHegG7QpVww6Bbwc1GhigT112vTFTNtT_-VB0mVUNWFy6GWQMxI7gRT7daDiJmCMjR0YZHOrbwp7vyCTfLnwlyTgQRMoSjC9jTpEYSyqQtAlJRPa61jyoEvF75-vOG9BAAOWUohQ8tMwwB8S",
-      badge: "New Batch",
-      badgeClasses:
-        "bg-primary/10 dark:bg-primary/20 text-primary dark:text-inverse-primary",
-      duration: "6 Months",
-      title: "SSC CGL/CHSL Mastery",
-      description:
-        "Complete tier-1 & tier-2 coverage with daily practice sets and weekly full-length mocks.",
-    },
-    {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAkuGpk3A2LhyFCKWs272DmeBDC27oWLe1Ki6xGdqe5bD4k04JahD1DCPQtstw_EVfYdYqROxuaTDWtuKOQE8yo4k2kkWOAyiA0q9t2ATgW2qOMObI849cRpcOsf_6fVrAMZ1aeWKdgH1hTCuXLTUVUMtukUVhizWYVP-nm_F8IXai-HbPy9rHrtajjHjJj6g3GhlE22teLOq7UgR8b44buqv9o3pA8PnwZ4QLZ_Peose1oEodz5Rz9rWBlrA6gosYKOkk_6LoAIUKC",
-      badge: "Banking Special",
-      badgeClasses:
-        "bg-secondary-container/30 dark:bg-secondary/20 text-secondary dark:text-secondary-fixed-dim",
-      duration: "4 Months",
-      title: "IBPS PO & Clerk Elite",
-      description:
-        "Special focus on Data Interpretation and Logical Reasoning with shortcuts from experts.",
-    },
-    {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCYsuJ2787JA-u28z1NluMjf6cNh4pJQy9QSbM5Il4bmSiyTgZVx6uDKuQTgNURkuMq5E6h_M_0kea-w3eG7o-6yHzDyj8PjGdSmS2rlyO9xRO3CdCxPIBlLk4wE6UcxJL9HLYVih61lM9GxKrkAQ6U0siDcJSb8lbvbajfF1PK8Nm2XUtEeAoOmKpJF7YBHU2UA_2c1vP7lzfbO0Riqid-yoET4RfBUmf3T4QmsZckiUs8AL-Kehqc7tL_M49ObwjG4dz6u6CELM0R",
-      badge: "Punjab State",
-      badgeClasses:
-        "bg-tertiary-fixed dark:bg-tertiary/20 text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim",
-      duration: "Lifetime Access",
-      title: "PSSSB & PPSC Comprehensive",
-      description:
-        "Dedicated modules for Punjab GK, History, and Punjabi Language. Tailored for local exams.",
-      lineColor: "bg-secondary dark:bg-secondary-fixed-dim",
-    },
   ];
 
   const whyChooseUsFeatures = [
@@ -69,7 +38,7 @@ export default function Home() {
     {
       icon: <BookOpen size={24} />,
       iconBg:
-        "bg-secondary-container/50 dark:bg-secondary/20 text-secondary dark:text-secondary-fixed-dim",
+        "bg-secondary-dark/50 dark:bg-secondary/20 text-secondary dark:text-secondary-fixed-dim",
       title: "Premium Material",
       description:
         "Comprehensive study notes updated according to the latest 2024 exam patterns.",
@@ -78,7 +47,7 @@ export default function Home() {
     {
       icon: <MessageCircleQuestion size={24} />,
       iconBg:
-        "bg-tertiary-fixed dark:bg-tertiary/20 text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim",
+        "bg-secondary-fixed dark:bg-secondary/20 text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim",
       title: "Weekly Mock Tests",
       description:
         "Real-time exam simulations with detailed performance analytics for every student.",
@@ -87,7 +56,7 @@ export default function Home() {
     {
       icon: <Headset size={24} />,
       iconBg:
-        "bg-primary-fixed dark:bg-primary/20 text-primary dark:text-inverse-primary",
+        "bg-primary dark:bg-primary/20 text-primary dark:text-inverse-primary",
       title: "Doubt Support",
       description:
         "24/7 dedicated doubt clearing sessions via our community app and offline center.",
@@ -147,7 +116,7 @@ export default function Home() {
       name: "Aman Malik",
       achievement: "Cleared SSC CGL 2023",
       avatarBg:
-        "bg-primary-fixed dark:bg-primary/20 text-primary dark:text-inverse-primary",
+        "bg-primary dark:bg-primary/20 text-primary dark:text-inverse-primary",
     },
     {
       quote: `"Punjab Govt exams can be tricky, but the focus on Punjab GK here is unmatched. Simran ma'am makes even the toughest historical facts easy to remember."`,
@@ -155,7 +124,7 @@ export default function Home() {
       name: "Harman Kaur",
       achievement: "Selected, Punjab Revenue Dept",
       avatarBg:
-        "bg-secondary-container dark:bg-secondary/20 text-secondary dark:text-secondary-fixed-dim",
+        "bg-secondary-dark dark:bg-secondary/20 text-secondary dark:text-secondary-fixed-dim",
     },
     {
       quote: `"The study material provided for IBPS PO is excellent. I didn't need any other books. The mock interview sessions really helped me gain confidence."`,
@@ -163,7 +132,7 @@ export default function Home() {
       name: "Rahul Sharma",
       achievement: "Probationary Officer, PNB",
       avatarBg:
-        "bg-tertiary-fixed dark:bg-tertiary/20 text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim",
+        "bg-secondary-fixed dark:bg-secondary/20 text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim",
     },
   ];
 
@@ -194,16 +163,16 @@ export default function Home() {
       <section className="relative overflow-hidden py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="z-10">
-            <span className="inline-block text-primary dark:text-inverse-primary font-label text-xs tracking-[0.3em] uppercase mb-4">
+            <span className="inline-block text-primary dark:text-inverse-primary font-body text-xs tracking-[0.3em] uppercase mb-4">
               India's Premium Coaching Hub
             </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold font-headline text-on-surface dark:text-white leading-tight mb-8">
+            <h1 className="text-5xl md:text-7xl font-extrabold font-headline text-text dark:text-white leading-tight mb-8">
               Master Your Future with{" "}
               <span className="text-primary dark:text-inverse-primary">
                 MentorPlus
               </span>
             </h1>
-            <p className="text-lg text-on-surface-variant dark:text-outline-variant max-w-xl mb-10 leading-relaxed">
+            <p className="text-lg text-text-muted dark:text-gray-400 max-w-xl mb-10 leading-relaxed">
               Join the sanctuary of elite learning. We provide comprehensive
               preparation for SSC, Banking, and Punjab State Exams with a focus
               on conceptual clarity and rigorous practice.
@@ -212,16 +181,16 @@ export default function Home() {
               <button className="hero-gradient text-white px-10 py-4 rounded-md font-bold text-lg shadow-lg shadow-primary/20 dark:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] transition-all">
                 Join Now
               </button>
-              <button className="bg-surface-container-high dark:bg-white/10 text-on-primary-fixed-variant dark:text-inverse-on-surface px-10 py-4 rounded-md font-bold text-lg hover:bg-surface-container-highest dark:hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+              <button className="bg-surface dark:bg-white/10 text-white-fixed-variant dark:text-gray-100 px-10 py-4 rounded-md font-bold text-lg hover:bg-surface dark:hover:bg-white/20 transition-all flex items-center justify-center gap-2">
                 <PlayCircle />
                 Free Demo
               </button>
             </div>
           </div>
           <div className="relative">
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container/30 dark:bg-secondary/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-primary-fixed/30 dark:bg-primary/20 rounded-full blur-3xl"></div>
-            <div className="relative bg-surface-container-lowest dark:bg-white/5 rounded-3xl p-4 ambient-shadow overflow-hidden border border-transparent dark:border-white/10">
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-secondary-dark/30 dark:bg-secondary/20 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/30 dark:bg-primary/20 rounded-full blur-3xl"></div>
+            <div className="relative bg-background dark:bg-white/5 rounded-3xl p-4 ambient-shadow overflow-hidden border border-transparent dark:border-white/10">
               <img
                 alt="Academic Sanctuary"
                 className="w-full h-[500px] object-cover rounded-2xl grayscale dark:grayscale-0 dark:brightness-90"
@@ -234,7 +203,7 @@ export default function Home() {
                     <Star key={i} fill="currentColor" size={16} />
                   ))}
                 </div>
-                <p className="text-sm font-semibold text-on-surface dark:text-inverse-on-surface italic">
+                <p className="text-sm font-semibold text-text dark:text-gray-100 italic">
                   "The best decision for my Punjab Govt exam prep. The mentors
                   are unmatched."
                 </p>
@@ -245,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* Success Stats */}
-      <section className="bg-surface-container-low dark:bg-[#111827] py-16 md:py-24 transition-colors">
+      <section className="bg-surface dark:bg-[#111827] py-16 md:py-24 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
@@ -253,7 +222,7 @@ export default function Home() {
                 <div className="text-4xl font-extrabold font-headline text-primary dark:text-inverse-primary mb-2">
                   {stat.value}
                 </div>
-                <div className="text-on-surface-variant dark:text-outline-variant font-label text-xs tracking-widest uppercase">
+                <div className="text-text-muted dark:text-gray-400 font-body text-xs tracking-widest uppercase">
                   {stat.label}
                 </div>
               </div>
@@ -267,10 +236,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-16">
             <div className="max-w-xl">
-              <span className="text-secondary dark:text-secondary-fixed-dim font-label text-xs tracking-[0.3em] uppercase mb-4 block">
+              <span className="text-secondary dark:text-secondary-fixed-dim font-body text-xs tracking-[0.3em] uppercase mb-4 block">
                 Excellence in Education
               </span>
-              <h2 className="text-4xl font-extrabold font-headline text-on-surface dark:text-white">
+              <h2 className="text-4xl font-extrabold font-headline text-text dark:text-white">
                 Featured Exam Programs
               </h2>
             </div>
@@ -282,83 +251,45 @@ export default function Home() {
             </a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredCourses.map((course, idx) => (
-              <div
-                key={idx}
-                className="bg-surface-container-lowest dark:bg-white/5 rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group ambient-shadow border border-transparent dark:border-white/10"
-              >
-                <div className="h-48 overflow-hidden relative">
-                  {course.lineColor && (
-                    <div
-                      className={`absolute top-0 left-0 w-1 h-full z-10 ${course.lineColor}`}
-                    ></div>
-                  )}
-                  <img
-                    alt={course.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 brightness-95 dark:brightness-75"
-                    src={course.image}
-                  />
-                </div>
-                <div className="p-8">
-                  <div className="flex justify-between items-start mb-4">
-                    <span
-                      className={`text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full ${course.badgeClasses}`}
-                    >
-                      {course.badge}
-                    </span>
-                    <div className="flex items-center text-secondary dark:text-secondary-fixed-dim font-bold">
-                      <Clock size={16} />
-                      <span className="ml-1 text-xs">{course.duration}</span>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold font-headline mb-4 text-on-surface dark:text-white">
-                    {course.title}
-                  </h3>
-                  <p className="text-on-surface-variant dark:text-outline-variant text-sm mb-6 leading-relaxed">
-                    {course.description}
-                  </p>
-                  <button className="w-full py-3 bg-surface-container-high dark:bg-white/10 text-primary dark:text-inverse-primary font-bold rounded-md hover:bg-primary hover:text-white transition-all">
-                    Enroll Now
-                  </button>
-                </div>
-              </div>
-            ))}
+            {featuredCourses.map((course) => {
+              return <CourseCard key={course.id} course={course} />;
+            })}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-surface-container-low dark:bg-[#111827]">
+      <section className="py-16 md:py-24 bg-surface dark:bg-[#111827]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {whyChooseUsFeatures.map((feature, idx) => (
                 <div
                   key={idx}
-                  className={`bg-surface-container-lowest dark:bg-white/5 p-8 rounded-2xl ambient-shadow space-y-4 border border-transparent dark:border-white/10 ${feature.translate ? "md:translate-y-8" : ""}`}
+                  className={`bg-background dark:bg-white/5 p-8 rounded-2xl ambient-shadow space-y-4 border border-transparent dark:border-white/10 ${feature.translate ? "md:translate-y-8" : ""}`}
                 >
                   <div
                     className={`w-12 h-12 rounded-lg flex items-center justify-center ${feature.iconBg}`}
                   >
                     {feature.icon}
                   </div>
-                  <h4 className="text-lg font-bold text-on-surface dark:text-white">
+                  <h4 className="text-lg font-bold text-text dark:text-white">
                     {feature.title}
                   </h4>
-                  <p className="text-sm text-on-surface-variant dark:text-outline-variant leading-relaxed">
+                  <p className="text-sm text-text-muted dark:text-gray-400 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
               ))}
             </div>
             <div>
-              <span className="text-primary dark:text-inverse-primary font-label text-xs tracking-[0.3em] uppercase mb-4 block">
+              <span className="text-primary dark:text-inverse-primary font-body text-xs tracking-[0.3em] uppercase mb-4 block">
                 The MentorPlus Advantage
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold font-headline mb-8 leading-tight text-on-surface dark:text-white">
+              <h2 className="text-4xl md:text-5xl font-extrabold font-headline mb-8 leading-tight text-text dark:text-white">
                 Why students choose our sanctuary?
               </h2>
-              <p className="text-on-surface-variant dark:text-outline-variant text-lg leading-relaxed mb-8">
+              <p className="text-text-muted dark:text-gray-400 text-lg leading-relaxed mb-8">
                 We don't just teach subjects; we build mindsets. Our approach
                 focuses on long-term retention and the psychology of
                 exam-taking, ensuring you stay calm and focused on D-day.
@@ -370,7 +301,7 @@ export default function Home() {
                       size={18}
                       className="text-secondary dark:text-secondary-fixed-dim mt-1 flex-shrink-0"
                     />
-                    <span className="font-semibold text-on-surface dark:text-inverse-on-surface">
+                    <span className="font-semibold text-text dark:text-gray-100">
                       {adv}
                     </span>
                   </li>
@@ -388,49 +319,25 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-surface dark:bg-[#0a0f18]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-secondary dark:text-secondary-fixed-dim font-label text-xs tracking-[0.3em] uppercase mb-4 block">
+            <span className="text-secondary dark:text-secondary-fixed-dim font-body text-xs tracking-[0.3em] uppercase mb-4 block">
               Expert Educators
             </span>
-            <h2 className="text-4xl font-extrabold font-headline text-on-surface dark:text-white">
+            <h2 className="text-4xl font-extrabold font-headline text-text dark:text-white">
               Meet Your Mentors
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {mentors.map((mentor, idx) => (
-              <div key={idx} className="text-center group">
-                <div className="relative mb-6 inline-block">
-                  <div
-                    className={`absolute inset-0 rounded-2xl transition-transform duration-300 ${mentor.bgClass} ${mentor.rotateClass}`}
-                  ></div>
-                  <img
-                    alt={mentor.name}
-                    className="w-48 h-56 object-cover rounded-2xl relative z-10 grayscale group-hover:grayscale-0 dark:grayscale-0 dark:brightness-90 transition-all"
-                    src={mentor.image}
-                  />
-                </div>
-                <h4 className="text-xl font-bold font-headline text-on-surface dark:text-white">
-                  {mentor.name}
-                </h4>
-                <p className="text-primary dark:text-inverse-primary text-sm font-semibold mb-2">
-                  {mentor.role}
-                </p>
-                <p className="text-xs text-on-surface-variant dark:text-outline-variant px-4">
-                  {mentor.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+          <Mentors />
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-surface-container-low dark:bg-[#111827] overflow-hidden">
+      <section className="py-16 md:py-24 bg-surface dark:bg-[#111827] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
-            <span className="text-primary dark:text-inverse-primary font-label text-xs tracking-[0.3em] uppercase mb-4 block">
+            <span className="text-primary dark:text-inverse-primary font-body text-xs tracking-[0.3em] uppercase mb-4 block">
               Student Stories
             </span>
-            <h2 className="text-4xl font-extrabold font-headline text-on-surface dark:text-white">
+            <h2 className="text-4xl font-extrabold font-headline text-text dark:text-white">
               What our achievers say
             </h2>
           </div>
@@ -438,14 +345,14 @@ export default function Home() {
             {testimonials.map((test, idx) => (
               <div
                 key={idx}
-                className="min-w-[400px] bg-surface-container-lowest dark:bg-white/5 p-10 rounded-2xl ambient-shadow border border-transparent dark:border-white/10"
+                className="min-w-[400px] bg-background dark:bg-white/5 p-10 rounded-2xl ambient-shadow border border-transparent dark:border-white/10"
               >
                 <div className="flex gap-1 text-secondary dark:text-secondary-fixed-dim mb-6">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} fill="currentColor" size={16} />
                   ))}
                 </div>
-                <p className="text-on-surface-variant dark:text-outline-variant leading-relaxed mb-8 italic">
+                <p className="text-text-muted dark:text-gray-400 leading-relaxed mb-8 italic">
                   {test.quote}
                 </p>
                 <div className="flex items-center gap-4">
@@ -455,10 +362,10 @@ export default function Home() {
                     {test.initials}
                   </div>
                   <div>
-                    <h5 className="font-bold text-on-surface dark:text-white">
+                    <h5 className="font-bold text-text dark:text-white">
                       {test.name}
                     </h5>
-                    <p className="text-xs text-on-surface-variant dark:text-outline-variant">
+                    <p className="text-xs text-text-muted dark:text-gray-400">
                       {test.achievement}
                     </p>
                   </div>
@@ -474,18 +381,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12">
             <div className="md:w-1/3">
-              <h2 className="text-3xl font-extrabold font-headline mb-6 text-on-surface dark:text-white">
+              <h2 className="text-3xl font-extrabold font-headline mb-6 text-text dark:text-white">
                 Latest Updates
               </h2>
-              <p className="text-on-surface-variant dark:text-outline-variant mb-8">
+              <p className="text-text-muted dark:text-gray-400 mb-8">
                 Stay informed about upcoming exams, batch start dates, and
                 result announcements.
               </p>
-              <div className="p-6 bg-secondary-container/20 dark:bg-secondary/10 rounded-xl border-l-4 border-secondary dark:border-secondary-fixed-dim">
+              <div className="p-6 bg-secondary-dark/20 dark:bg-secondary/10 rounded-xl border-l-4 border-secondary dark:border-secondary-fixed-dim">
                 <h4 className="font-bold text-secondary dark:text-secondary-fixed-dim mb-2">
                   New Batch Alert!
                 </h4>
-                <p className="text-sm text-on-surface dark:text-inverse-on-surface">
+                <p className="text-sm text-text dark:text-gray-100">
                   Offline SSC CGL Crash Course starting next Monday at our
                   Ludhiana center.
                 </p>
@@ -495,9 +402,9 @@ export default function Home() {
               {updates.map((update, idx) => (
                 <div
                   key={idx}
-                  className="group flex items-center gap-6 p-6 rounded-xl hover:bg-surface-container-low dark:hover:bg-white/5 transition-all cursor-pointer border border-transparent dark:hover:border-white/10"
+                  className="group flex items-center gap-6 p-6 rounded-xl hover:bg-surface dark:hover:bg-white/5 transition-all cursor-pointer border border-transparent dark:hover:border-white/10"
                 >
-                  <div className="flex-shrink-0 w-16 h-16 bg-surface-container-highest dark:bg-white/10 rounded-lg flex flex-col items-center justify-center">
+                  <div className="flex-shrink-0 w-16 h-16 bg-surface dark:bg-white/10 rounded-lg flex flex-col items-center justify-center">
                     <span className="text-xs font-bold text-primary dark:text-inverse-primary uppercase">
                       {update.month}
                     </span>
@@ -506,14 +413,14 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="flex-grow">
-                    <h4 className="font-bold text-lg group-hover:text-primary dark:group-hover:text-inverse-primary transition-colors text-on-surface dark:text-white">
+                    <h4 className="font-bold text-lg group-hover:text-primary dark:group-hover:text-inverse-primary transition-colors text-text dark:text-white">
                       {update.title}
                     </h4>
-                    <p className="text-sm text-on-surface-variant dark:text-outline-variant">
+                    <p className="text-sm text-text-muted dark:text-gray-400">
                       {update.desc}
                     </p>
                   </div>
-                  <ChevronRight className="text-outline-variant" />
+                  <ChevronRight className="text-gray-400" />
                 </div>
               ))}
             </div>
@@ -536,7 +443,7 @@ export default function Home() {
               free counseling session today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-white text-primary px-10 py-4 rounded-md font-bold text-lg shadow-xl hover:bg-surface-bright transition-all">
+              <button className="bg-white text-primary px-10 py-4 rounded-md font-bold text-lg shadow-xl hover:bg-background transition-all">
                 Book Counseling
               </button>
               <button className="border-2 border-white/30 text-white px-10 py-4 rounded-md font-bold text-lg hover:bg-white/10 transition-all">

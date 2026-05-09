@@ -63,7 +63,7 @@ export default function Header() {
             <Link
               key={href}
               href={href}
-              className={`text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest ${
+              className={`text-text-muted dark:text-gray-400 hover:text-primary dark:hover:text-inverse-primary transition-colors font-body text-sm tracking-widest ${
                 isActive(href)
                   ? "text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary"
                   : ""
@@ -78,7 +78,7 @@ export default function Header() {
         <div className="flex items-center space-x-4">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-surface -high dark:hover:bg-white/10 transition-colors text-on-surface-variant dark:text-outline-variant"
+            className="p-2 rounded-full hover:bg-surface -high dark:hover:bg-white/10 transition-colors text-text-muted dark:text-gray-400"
             aria-label="Toggle dark mode"
           >
             {/* 4. Only render the theme icon once mounted, otherwise render a placeholder to prevent layout shift */}
@@ -95,7 +95,7 @@ export default function Header() {
 
           <button
             onClick={handleLogin}
-            className="hidden md:inline-flex bg-primary dark:bg-primary text-white px-6 py-2.5 rounded-md font-label text-sm tracking-widest active:scale-[0.98] duration-200 transition-all min-w-[100px] justify-center"
+            className="hidden md:inline-flex bg-primary dark:bg-primary text-white px-6 py-2.5 rounded-md font-body text-sm tracking-widest active:scale-[0.98] duration-200 transition-all min-w-[100px] justify-center"
           >
             {session ? "Profile" : "Login"}
           </button>
@@ -103,7 +103,7 @@ export default function Header() {
           {/* Hamburger button — mobile only */}
           <button
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="md:hidden p-2 rounded-full hover:bg-surface -high dark:hover:bg-white/10 transition-colors text-on-surface-variant dark:text-outline-variant"
+            className="md:hidden p-2 rounded-full hover:bg-surface -high dark:hover:bg-white/10 transition-colors text-text-muted dark:text-gray-400"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -123,7 +123,7 @@ export default function Header() {
               key={href}
               href={href}
               onClick={() => setMobileOpen(false)}
-              className="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest py-3 border-b border-surface -high dark:border-white/5 last:border-0"
+              className="text-text-muted dark:text-gray-400 hover:text-primary dark:hover:text-inverse-primary transition-colors font-body text-sm tracking-widest py-3 border-b border-surface -high dark:border-white/5 last:border-0"
             >
               {label}
             </Link>
@@ -131,7 +131,7 @@ export default function Header() {
           <div className="flex items-center gap-3 pt-4">
             <Link
               href="/login"
-              className="flex-1 text-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-label text-sm tracking-widest border border-surface -high dark:border-white/10 px-4 py-2.5 rounded-md"
+              className="flex-1 text-center text-text-muted dark:text-gray-400 hover:text-primary dark:hover:text-inverse-primary transition-colors font-body text-sm tracking-widest border border-surface -high dark:border-white/10 px-4 py-2.5 rounded-md"
             >
               Login
             </Link>

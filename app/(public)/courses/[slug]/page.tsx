@@ -33,7 +33,7 @@ export function CourseMedia({
   if (!url) {
     return (
       <div
-        className={`w-full h-full flex items-center justify-center bg-surface-container dark:bg-gray-800 text-on-surface-variant/30 ${className}`}
+        className={`w-full h-full flex items-center justify-center bg-surface dark:bg-gray-800 text-text-muted/30 ${className}`}
       >
         <MonitorPlay size={48} />
       </div>
@@ -156,7 +156,7 @@ export default async function CoursePage({
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface dark:text-white leading-tight tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text dark:text-white leading-tight tracking-tight">
                 {course.title}
               </h1>
               {/* Subtitle moved directly below the title */}
@@ -168,15 +168,15 @@ export default async function CoursePage({
             </div>
 
             <div className="flex flex-wrap items-center gap-6 pt-2">
-              <div className="flex items-center bg-surface-container-low dark:bg-gray-800/50 px-4 py-2 rounded-xl border border-outline-variant/20 dark:border-gray-700">
+              <div className="flex items-center bg-surface dark:bg-gray-800/50 px-4 py-2 rounded-xl border border-gray-200/20 dark:border-gray-700">
                 {/* <Star
                   className="text-amber-500 mr-2 fill-amber-500"
                   size={18}
                 />
-                <span className="font-bold text-on-surface dark:text-white">
+                <span className="font-bold text-text dark:text-white">
                   4.9
                 </span>
-                <span className="text-on-surface-variant dark:text-gray-400 ml-1.5 text-sm">
+                <span className="text-text-muted dark:text-gray-400 ml-1.5 text-sm">
                   (2.4k Reviews)
                 </span> */}
                 Course Medium: {course.medium}
@@ -194,7 +194,7 @@ export default async function CoursePage({
                       </div>
                     ))}
                   </div>
-                  <span className="text-on-surface-variant dark:text-gray-400 font-medium text-sm">
+                  <span className="text-text-muted dark:text-gray-400 font-medium text-sm">
                     By{" "}
                     <span className="text-primary dark:text-[#b5c4ff] font-bold">
                       {course.instructors[0]}
@@ -206,7 +206,7 @@ export default async function CoursePage({
               )}
             </div>
 
-            <p className="text-lg text-on-surface-variant dark:text-gray-300 leading-relaxed max-w-3xl">
+            <p className="text-lg text-text-muted dark:text-gray-300 leading-relaxed max-w-3xl">
               {course.description}
             </p>
           </section>
@@ -214,7 +214,7 @@ export default async function CoursePage({
           {/* Dynamic Learning Outcomes */}
           {outcomes.length > 0 && (
             <section className="space-y-8">
-              <h2 className="text-3xl font-bold text-on-surface dark:text-white">
+              <h2 className="text-3xl font-bold text-text dark:text-white">
                 What you'll master
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -226,7 +226,7 @@ export default async function CoursePage({
                   return (
                     <div
                       key={idx}
-                      className="p-6 bg-surface-container-lowest dark:bg-[#121c28] rounded-2xl shadow-sm border border-outline-variant/20 dark:border-white/5 flex items-start space-x-4 hover:shadow-md transition-shadow"
+                      className="p-6 bg-background dark:bg-[#121c28] rounded-2xl shadow-sm border border-gray-200/20 dark:border-white/5 flex items-start space-x-4 hover:shadow-md transition-shadow"
                     >
                       <div
                         className={`p-3 rounded-xl ${colorTheme.bg} ${colorTheme.text}`}
@@ -234,10 +234,10 @@ export default async function CoursePage({
                         <Icon size={24} />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg mb-1 text-on-surface dark:text-white">
+                        <h3 className="font-bold text-lg mb-1 text-text dark:text-white">
                           {outcome.title}
                         </h3>
-                        <p className="text-on-surface-variant dark:text-gray-400 text-sm leading-relaxed">
+                        <p className="text-text-muted dark:text-gray-400 text-sm leading-relaxed">
                           {outcome.desc}
                         </p>
                       </div>
@@ -251,11 +251,11 @@ export default async function CoursePage({
           {/* Dynamic Curriculum */}
           {curriculum.length > 0 && (
             <section className="space-y-8">
-              <div className="flex justify-between items-end border-b border-outline-variant/20 dark:border-white/10 pb-4">
-                <h2 className="text-3xl font-bold text-on-surface dark:text-white">
+              <div className="flex justify-between items-end border-b border-gray-200/20 dark:border-white/10 pb-4">
+                <h2 className="text-3xl font-bold text-text dark:text-white">
                   Curriculum
                 </h2>
-                <span className="text-on-surface-variant dark:text-gray-400 font-medium text-sm flex items-center gap-2">
+                <span className="text-text-muted dark:text-gray-400 font-medium text-sm flex items-center gap-2">
                   <Clock size={16} />
                   {course.durationMonths} Months • {curriculum.length} Modules
                 </span>
@@ -264,20 +264,20 @@ export default async function CoursePage({
                 {curriculum.map((module, idx) => (
                   <div
                     key={idx}
-                    className="group cursor-pointer border-b border-outline-variant/10 dark:border-white/5 last:border-0 pb-4"
+                    className="group cursor-pointer border-b border-gray-200 dark:border-white/5 last:border-0 pb-4"
                   >
                     <div className="flex items-center justify-between py-4 group-hover:px-4 transition-all duration-300">
                       <div className="flex items-center space-x-5">
                         <span className="text-primary/30 dark:text-white/20 font-extrabold text-2xl font-mono">
                           {(idx + 1).toString().padStart(2, "0")}
                         </span>
-                        <h3 className="text-lg font-bold text-on-surface dark:text-gray-200 group-hover:text-primary dark:group-hover:text-[#b5c4ff] transition-colors">
+                        <h3 className="text-lg font-bold text-text dark:text-gray-200 group-hover:text-primary dark:group-hover:text-[#b5c4ff] transition-colors">
                           {module.title}
                         </h3>
                       </div>
                       <Plus
                         size={20}
-                        className="text-outline dark:text-gray-500 transition-transform group-hover:rotate-90 group-hover:text-primary"
+                        className="text-text-muted dark:text-gray-500 transition-transform group-hover:rotate-90 group-hover:text-primary"
                       />
                     </div>
                     {module.lessons && module.lessons.length > 0 && (
@@ -285,7 +285,7 @@ export default async function CoursePage({
                         {module.lessons.map((lesson: any, lIdx: number) => (
                           <div
                             key={lIdx}
-                            className="flex items-center gap-3 text-sm text-on-surface-variant dark:text-gray-400"
+                            className="flex items-center gap-3 text-sm text-text-muted dark:text-gray-400"
                           >
                             <Play size={12} className="text-primary/50" />
                             {lesson.title}
@@ -304,9 +304,9 @@ export default async function CoursePage({
         <aside className="lg:col-span-4">
           <div className="lg:sticky lg:top-28 space-y-6">
             {/* Main Action Card */}
-            <div className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/20 dark:border-white/10">
+            <div className="bg-background dark:bg-[#121c28] rounded-3xl overflow-hidden shadow-2xl border border-gray-200/20 dark:border-white/10">
               {/* Media Container */}
-              <div className="relative h-56 group overflow-hidden bg-surface-container dark:bg-gray-800">
+              <div className="relative h-56 group overflow-hidden bg-surface dark:bg-gray-800">
                 <CourseMedia
                   url={course.thumbnailUrl}
                   alt={course.title}
@@ -323,12 +323,12 @@ export default async function CoursePage({
               <div className="p-8 space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span className="text-4xl font-extrabold text-on-surface dark:text-white">
+                    <span className="text-4xl font-extrabold text-text dark:text-white">
                       {formatRupees(course.discountedPrice)}
                     </span>
                     {course.fullPrice > course.discountedPrice && (
                       <>
-                        <span className="text-on-surface-variant dark:text-gray-500 line-through font-medium text-lg">
+                        <span className="text-text-muted dark:text-gray-500 line-through font-medium text-lg">
                           {formatRupees(course.fullPrice)}
                         </span>
                         <span className="text-emerald-700 dark:text-emerald-400 font-bold text-xs bg-emerald-100 dark:bg-emerald-900/30 px-2.5 py-1 rounded-md tracking-wide">
@@ -358,7 +358,7 @@ export default async function CoursePage({
                     <Link
                       href={course.brochureUrl}
                       target="_blank"
-                      className="w-full bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-gray-200 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors hover:bg-surface-container-highest dark:hover:bg-white/10 text-sm border border-outline-variant/20 dark:border-white/5"
+                      className="w-full bg-surface dark:bg-white/5 text-text dark:text-gray-200 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors hover:bg-surface dark:hover:bg-white/10 text-sm border border-gray-200/20 dark:border-white/5"
                     >
                       <Download size={18} />
                       Download Broucher
@@ -367,8 +367,8 @@ export default async function CoursePage({
                 </div>
 
                 {features.length > 0 && (
-                  <div className="space-y-4 pt-6 border-t border-outline-variant/20 dark:border-white/10">
-                    <h4 className="font-bold text-on-surface dark:text-white text-xs uppercase tracking-widest">
+                  <div className="space-y-4 pt-6 border-t border-gray-200/20 dark:border-white/10">
+                    <h4 className="font-bold text-text dark:text-white text-xs uppercase tracking-widest">
                       This Course includes:
                     </h4>
                     <ul className="space-y-3">
@@ -377,7 +377,7 @@ export default async function CoursePage({
                         return (
                           <li
                             key={idx}
-                            className="flex items-center gap-3 text-sm text-on-surface-variant dark:text-gray-300 font-medium"
+                            className="flex items-center gap-3 text-sm text-text-muted dark:text-gray-300 font-medium"
                           >
                             <Icon
                               size={18}
@@ -393,15 +393,15 @@ export default async function CoursePage({
               </div>
             </div>
 
-            {/* <div className="p-5 bg-surface-container-low dark:bg-[#1e2a3b] rounded-2xl border border-outline-variant/20 dark:border-white/5 flex items-center gap-4">
+            {/* <div className="p-5 bg-surface dark:bg-[#1e2a3b] rounded-2xl border border-gray-200/20 dark:border-white/5 flex items-center gap-4">
               <div className="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-xl text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck size={24} />
               </div>
               <div>
-                <p className="font-bold text-sm text-on-surface dark:text-white">
+                <p className="font-bold text-sm text-text dark:text-white">
                   30-Day Guarantee
                 </p>
-                <p className="text-xs text-on-surface-variant dark:text-gray-400 mt-0.5">
+                <p className="text-xs text-text-muted dark:text-gray-400 mt-0.5">
                   Not satisfied? Get a full refund, no questions asked.
                 </p>
               </div>

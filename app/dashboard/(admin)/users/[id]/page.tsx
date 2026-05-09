@@ -140,7 +140,7 @@ export default function UserProfilePage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-on-surface-variant dark:text-gray-400">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-text-muted dark:text-gray-400">
         <UserIcon className="animate-pulse mb-4 text-primary" size={48} />
         <p className="font-medium">Loading user profile...</p>
       </div>
@@ -160,14 +160,14 @@ export default function UserProfilePage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.back()}
-            className="p-2 rounded-xl hover:bg-surface-container dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-xl hover:bg-surface dark:hover:bg-gray-800 transition-colors"
           >
             <ArrowLeft
               size={20}
-              className="text-on-surface dark:text-gray-300"
+              className="text-text dark:text-gray-300"
             />
           </button>
-          <h1 className="text-3xl font-extrabold text-on-surface dark:text-white">
+          <h1 className="text-3xl font-extrabold text-text dark:text-white">
             User Profile
           </h1>
         </div>
@@ -177,7 +177,7 @@ export default function UserProfilePage() {
         {/* Left Column: Profile Card & Role Management */}
         <div className="space-y-8">
           {/* Identity Card */}
-          <div className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl p-8 border border-outline-variant/20 dark:border-white/5 shadow-sm text-center flex flex-col items-center">
+          <div className="bg-background dark:bg-[#121c28] rounded-3xl p-8 border border-gray-200/20 dark:border-white/5 shadow-sm text-center flex flex-col items-center">
             <div className="w-24 h-24 rounded-full overflow-hidden bg-primary/10 dark:bg-[#1a56db]/20 border-4 border-white dark:border-[#1e2a3b] shadow-md flex items-center justify-center text-3xl font-extrabold text-primary dark:text-[#b5c4ff] mb-4">
               {user.image ? (
                 <img
@@ -190,30 +190,30 @@ export default function UserProfilePage() {
               )}
             </div>
 
-            <h2 className="text-2xl font-bold text-on-surface dark:text-white mb-1">
+            <h2 className="text-2xl font-bold text-text dark:text-white mb-1">
               {user.name || "Unknown User"}
             </h2>
-            <div className="flex items-center gap-2 text-on-surface-variant dark:text-gray-400 text-sm mb-4">
+            <div className="flex items-center gap-2 text-text-muted dark:text-gray-400 text-sm mb-4">
               <Mail size={14} />
               {user.email}
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-semibold text-on-surface-variant dark:text-gray-500 bg-surface dark:bg-gray-800 px-3 py-1.5 rounded-full border border-outline-variant/20 dark:border-gray-700">
+            <div className="flex items-center gap-2 text-xs font-semibold text-text-muted dark:text-gray-500 bg-surface dark:bg-gray-800 px-3 py-1.5 rounded-full border border-gray-200/20 dark:border-gray-700">
               <Calendar size={12} />
               Joined {formatDate(user.createdAt)}
             </div>
           </div>
 
           {/* Role Management Card */}
-          <div className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl p-6 border border-outline-variant/20 dark:border-white/5 shadow-sm">
+          <div className="bg-background dark:bg-[#121c28] rounded-3xl p-6 border border-gray-200/20 dark:border-white/5 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <Shield className="text-primary dark:text-[#b5c4ff]" size={20} />
-              <h3 className="font-bold text-on-surface dark:text-white text-lg">
+              <h3 className="font-bold text-text dark:text-white text-lg">
                 Role & Access
               </h3>
             </div>
 
-            <p className="text-sm text-on-surface-variant dark:text-gray-400 mb-4 leading-relaxed">
+            <p className="text-sm text-text-muted dark:text-gray-400 mb-4 leading-relaxed">
               Admins have full access to the dashboard, including modifying
               courses and user data.
             </p>
@@ -222,7 +222,7 @@ export default function UserProfilePage() {
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value as Role)}
-                className="w-full px-4 py-3 bg-surface dark:bg-[#1f2937] border border-outline-variant/30 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm font-semibold text-on-surface dark:text-white transition-all"
+                className="w-full px-4 py-3 bg-surface dark:bg-[#1f2937] border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm font-semibold text-text dark:text-white transition-all"
               >
                 <option value="STUDENT">Student</option>
                 <option value="ADMIN">Administrator</option>
@@ -244,7 +244,7 @@ export default function UserProfilePage() {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl p-6 border border-outline-variant/20 dark:border-white/5 shadow-sm space-y-4">
+          <div className="bg-background dark:bg-[#121c28] rounded-3xl p-6 border border-gray-200/20 dark:border-white/5 shadow-sm space-y-4">
             <div className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
               <div className="flex items-center gap-3 text-emerald-700 dark:text-emerald-400 font-semibold text-sm">
                 <IndianRupee size={18} /> Total Spent
@@ -268,20 +268,20 @@ export default function UserProfilePage() {
         {/* Right Column: Content (Test Series & Purchases) */}
         <div className="lg:col-span-2 space-y-8">
           {/* Enrolled Test Series */}
-          <section className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl border border-outline-variant/20 dark:border-white/5 shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-outline-variant/10 dark:border-white/5 bg-surface-container-low/50 dark:bg-white/[0.02] flex items-center gap-3">
+          <section className="bg-background dark:bg-[#121c28] rounded-3xl border border-gray-200/20 dark:border-white/5 shadow-sm overflow-hidden">
+            <div className="p-6 border-b border-gray-200 dark:border-white/5 bg-surface/50 dark:bg-white/[0.02] flex items-center gap-3">
               <BookOpen
                 className="text-primary dark:text-[#b5c4ff]"
                 size={20}
               />
-              <h3 className="font-bold text-on-surface dark:text-white text-lg">
+              <h3 className="font-bold text-text dark:text-white text-lg">
                 Enrolled Test Series
               </h3>
             </div>
 
             <div className="p-6">
               {enrolledTestSeries.length === 0 ? (
-                <p className="text-center text-on-surface-variant dark:text-gray-500 py-8 italic">
+                <p className="text-center text-text-muted dark:text-gray-500 py-8 italic">
                   This user has not successfully enrolled in any test series
                   yet.
                 </p>
@@ -291,9 +291,9 @@ export default function UserProfilePage() {
                     <Link
                       key={ts.id}
                       href={`/test-series/${ts.slug}`}
-                      className="group flex items-center gap-4 p-3 bg-surface dark:bg-[#1f2937] rounded-xl border border-outline-variant/20 dark:border-gray-700 hover:border-primary/40 transition-colors"
+                      className="group flex items-center gap-4 p-3 bg-surface dark:bg-[#1f2937] rounded-xl border border-gray-200/20 dark:border-gray-700 hover:border-primary/40 transition-colors"
                     >
-                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-surface-container dark:bg-gray-800 shrink-0">
+                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-surface dark:bg-gray-800 shrink-0">
                         {ts.thumbnailUrl ? (
                           <img
                             src={ts.thumbnailUrl}
@@ -307,10 +307,10 @@ export default function UserProfilePage() {
                         )}
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-bold text-on-surface dark:text-white text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                        <span className="font-bold text-text dark:text-white text-sm line-clamp-2 group-hover:text-primary transition-colors">
                           {ts.title}
                         </span>
-                        <span className="text-[10px] text-on-surface-variant dark:text-gray-400 font-bold uppercase tracking-widest mt-1">
+                        <span className="text-[10px] text-text-muted dark:text-gray-400 font-bold uppercase tracking-widest mt-1">
                           {ts.category}
                         </span>
                       </div>
@@ -322,10 +322,10 @@ export default function UserProfilePage() {
           </section>
 
           {/* Purchase History Table */}
-          <section className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl border border-outline-variant/20 dark:border-white/5 shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-outline-variant/10 dark:border-white/5 bg-surface-container-low/50 dark:bg-white/[0.02] flex items-center gap-3">
+          <section className="bg-background dark:bg-[#121c28] rounded-3xl border border-gray-200/20 dark:border-white/5 shadow-sm overflow-hidden">
+            <div className="p-6 border-b border-gray-200 dark:border-white/5 bg-surface/50 dark:bg-white/[0.02] flex items-center gap-3">
               <Receipt className="text-primary dark:text-[#b5c4ff]" size={20} />
-              <h3 className="font-bold text-on-surface dark:text-white text-lg">
+              <h3 className="font-bold text-text dark:text-white text-lg">
                 Purchase History
               </h3>
             </div>
@@ -333,23 +333,23 @@ export default function UserProfilePage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm font-body text-left whitespace-nowrap">
                 <thead>
-                  <tr className="border-b border-outline-variant/10 dark:border-white/5 bg-surface dark:bg-[#182030]/50">
-                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                  <tr className="border-b border-gray-200 dark:border-white/5 bg-surface dark:bg-[#182030]/50">
+                    <th className="px-6 py-3 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                       Date
                     </th>
-                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                    <th className="px-6 py-3 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                       Item
                     </th>
-                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                    <th className="px-6 py-3 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                       Order ID
                     </th>
-                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                    <th className="px-6 py-3 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                       Method
                     </th>
-                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider">
+                    <th className="px-6 py-3 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 font-label font-semibold text-on-surface-variant dark:text-gray-400 text-xs uppercase tracking-wider text-right">
+                    <th className="px-6 py-3 font-body font-semibold text-text-muted dark:text-gray-400 text-xs uppercase tracking-wider text-right">
                       Amount
                     </th>
                   </tr>
@@ -359,7 +359,7 @@ export default function UserProfilePage() {
                     <tr>
                       <td
                         colSpan={4}
-                        className="px-6 py-12 text-center text-on-surface-variant dark:text-gray-500 italic"
+                        className="px-6 py-12 text-center text-text-muted dark:text-gray-500 italic"
                       >
                         No purchases found for this user.
                       </td>
@@ -383,15 +383,15 @@ export default function UserProfilePage() {
                       return (
                         <tr
                           key={purchase.id}
-                          className="hover:bg-surface-container-low dark:hover:bg-[#182030] transition-colors"
+                          className="hover:bg-surface dark:hover:bg-[#182030] transition-colors"
                         >
-                          <td className="px-6 py-4 text-on-surface-variant dark:text-gray-300">
+                          <td className="px-6 py-4 text-text-muted dark:text-gray-300">
                             {formatDate(purchase.createdAt)}
                           </td>
                           <td className="px-6 py-4">
                             <div className="flex flex-col">
                               <span
-                                className="font-bold text-on-surface dark:text-white truncate max-w-[200px]"
+                                className="font-bold text-text dark:text-white truncate max-w-[200px]"
                                 title={productName}
                               >
                                 {productName}
@@ -402,12 +402,12 @@ export default function UserProfilePage() {
                             </div>
                           </td>
                           <td className="px-6 py-4">
-                            <span className="text-xs font-mono text-on-surface-variant dark:text-gray-400">
+                            <span className="text-xs font-mono text-text-muted dark:text-gray-400">
                               {purchase.paymentId || "N/A"}
                             </span>
                           </td>
                           <td className="px-6 py-4">
-                            <span className="text-xs font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-tight">
+                            <span className="text-xs font-bold text-text-muted dark:text-gray-400 uppercase tracking-tight">
                               {purchase.paymentMethod}
                             </span>
                           </td>
@@ -419,7 +419,7 @@ export default function UserProfilePage() {
                               {purchase.status}
                             </span>
                           </td>
-                          <td className="px-6 py-4 text-right font-extrabold text-on-surface dark:text-white">
+                          <td className="px-6 py-4 text-right font-extrabold text-text dark:text-white">
                             {formatRupees(purchase.amount)}
                           </td>
                         </tr>

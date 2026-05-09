@@ -33,9 +33,9 @@ export default function Header() {
   };
 
   return (
-    <header className="h-16 glass-nav border-b border-outline-variant/30 sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between bg-surface/80 backdrop-blur-md dark:bg-[#121c28]/80">
+    <header className="h-16 glass-nav border-b border-gray-200 sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between bg-surface/80 backdrop-blur-md dark:bg-[#121c28]/80">
       <div>
-        <h2 className="text-xl font-headline font-bold text-on-surface dark:text-white">
+        <h2 className="text-xl font-headline font-bold text-text dark:text-white">
           Dashboard
         </h2>
       </div>
@@ -44,7 +44,7 @@ export default function Header() {
         {" "}
         <Link
           href="/"
-          className="p-2 sm:px-3 sm:py-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-900/20 text-on-surface-variant dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors flex items-center gap-2"
+          className="p-2 sm:px-3 sm:py-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-900/20 text-text-muted dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors flex items-center gap-2"
           title="Sign Out"
         >
           <Home size={18} />
@@ -53,7 +53,7 @@ export default function Header() {
         {/* Dark Mode Toggle */}
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-surface-variant dark:hover:bg-white/10 text-on-surface-variant dark:text-gray-300 transition-colors"
+          className="p-2 rounded-full hover:bg-surface dark:hover:bg-white/10 text-text-muted dark:text-gray-300 transition-colors"
           aria-label="Toggle Dark Mode"
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -73,7 +73,7 @@ export default function Header() {
               getInitials(session?.user?.name)
             )}
           </div>
-          <span className="text-sm font-semibold text-on-surface dark:text-white hidden md:block">
+          <span className="text-sm font-semibold text-text dark:text-white hidden md:block">
             {session?.user?.name?.split(" ")[0] || "User"}
           </span>
         </div>
@@ -85,7 +85,7 @@ export default function Header() {
               signOut({ callbackUrl: "/" });
             }
           }}
-          className="p-2 sm:px-3 sm:py-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-900/20 text-on-surface-variant dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors flex items-center gap-2"
+          className="p-2 sm:px-3 sm:py-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-900/20 text-text-muted dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors flex items-center gap-2"
           title="Sign Out"
         >
           <LogOut size={18} />

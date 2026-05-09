@@ -6,13 +6,13 @@ export default async function LoadingCoursesPage() {
         <span className="text-xs font-bold tracking-widest text-primary dark:text-[#b5c4ff] uppercase mb-4 block">
           EXPERT GUIDANCE
         </span>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface dark:text-[#eaf1ff] leading-tight mb-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text dark:text-[#eaf1ff] leading-tight mb-6">
           Master Your Future with <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container dark:from-[#b5c4ff] dark:to-[#1a56db]">
             Strategic Learning
           </span>
         </h1>
-        <p className="text-on-surface-variant dark:text-[#a3b1c6] text-base md:text-lg max-w-2xl mx-auto md:mx-0">
+        <p className="text-text-muted dark:text-[#a3b1c6] text-base md:text-lg max-w-2xl mx-auto md:mx-0">
           Choose from our expertly curated courses designed to help you crack
           competitive exams with confidence and precision.
         </p>
@@ -108,7 +108,7 @@ export default async function LoadingCoursesPage() {
             learning roadmap for your target exams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-secondary-container dark:bg-[#85f8c4] text-on-secondary-container dark:text-[#002114] font-bold rounded-xl hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+            <button className="px-8 py-4 bg-secondary-dark dark:bg-[#85f8c4] text-secondary-dark dark:text-[#002114] font-bold rounded-xl hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               Book Free Counseling
             </button>
             <button className="px-8 py-4 bg-white/10 border border-white/20 backdrop-blur-md text-white font-bold rounded-xl hover:bg-white/20 hover:-translate-y-1 transition-all duration-300">

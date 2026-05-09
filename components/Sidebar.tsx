@@ -15,6 +15,7 @@ import {
   Trophy,
   Files,
   PersonStanding,
+  GalleryHorizontal,
 } from "lucide-react";
 
 export default function Sidebar({ role = "student" }) {
@@ -26,7 +27,8 @@ export default function Sidebar({ role = "student" }) {
     { name: "Test Series", href: "/test-series", icon: FileText },
     { name: "Syllabus", href: "/syllabus", icon: Files },
     { name: "Tutors", href: "/tutors", icon: PersonStanding },
-    { name: "PDFs", href: "/pdfs", icon: Files },
+    // { name: "PDFs", href: "/pdfs", icon: Files },
+    { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },
     { name: "Users", href: "/users", icon: Users },
     { name: "Purchases", href: "/purchases", icon: DollarSign },
     { name: "My Purchases", href: "/my-purchases", icon: Trophy },

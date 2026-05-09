@@ -15,7 +15,7 @@ import { updateUserProfile } from "@/lib/actions/users";
 import { notify } from "@/lib/toast";
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl border border-outline-variant/50 bg-surface dark:bg-[#1f2937] text-on-surface dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
+  "w-full px-4 py-3 rounded-xl border border-gray-200/50 bg-surface dark:bg-[#1f2937] text-text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
 export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
@@ -99,7 +99,7 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-on-surface-variant dark:text-gray-400">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-text-muted dark:text-gray-400">
         <Loader2 className="animate-spin text-primary" size={32} />
         <p className="font-medium text-sm">Loading your profile...</p>
       </div>
@@ -110,17 +110,17 @@ export default function ProfilePage() {
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <header className="mb-10">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-on-surface dark:text-white tracking-tight mb-2">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-text dark:text-white tracking-tight mb-2">
           My Profile
         </h1>
-        <p className="text-on-surface-variant dark:text-gray-400 text-lg">
+        <p className="text-text-muted dark:text-gray-400 text-lg">
           Manage your personal information and contact details.
         </p>
       </header>
 
-      <div className="bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl border border-outline-variant/20 dark:border-white/5 shadow-sm overflow-hidden">
+      <div className="bg-background dark:bg-[#121c28] rounded-3xl border border-gray-200/20 dark:border-white/5 shadow-sm overflow-hidden">
         {/* Top Profile Banner */}
-        <div className="p-8 border-b border-outline-variant/10 dark:border-white/5 bg-surface-container-low/30 dark:bg-white/[0.02] flex flex-col sm:flex-row items-center gap-6">
+        <div className="p-8 border-b border-gray-200 dark:border-white/5 bg-surface/30 dark:bg-white/[0.02] flex flex-col sm:flex-row items-center gap-6">
           <div className="w-24 h-24 rounded-full overflow-hidden bg-primary/10 dark:bg-[#1a56db]/20 border-4 border-white dark:border-[#1e2a3b] shadow-md flex items-center justify-center text-3xl font-extrabold text-primary dark:text-[#b5c4ff] shrink-0">
             {formData.image ? (
               <img
@@ -133,10 +133,10 @@ export default function ProfilePage() {
             )}
           </div>
           <div className="text-center sm:text-left">
-            <h2 className="text-2xl font-bold text-on-surface dark:text-white mb-1">
+            <h2 className="text-2xl font-bold text-text dark:text-white mb-1">
               {formData.name || "Student"}
             </h2>
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-on-surface-variant dark:text-gray-400 font-medium">
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-text-muted dark:text-gray-400 font-medium">
               <ShieldCheck size={16} className="text-emerald-500" />
               <span>
                 {formData.role === "ADMIN"
@@ -152,7 +152,7 @@ export default function ProfilePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Full Name */}
             <div>
-              <label className="flex items-center gap-2 text-xs font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-bold text-text-muted dark:text-gray-400 uppercase tracking-wide mb-2">
                 <User size={14} /> Full Name{" "}
                 <span className="text-red-500">*</span>
               </label>
@@ -169,7 +169,7 @@ export default function ProfilePage() {
 
             {/* Email Address (Disabled) */}
             <div>
-              <label className="flex items-center gap-2 text-xs font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-bold text-text-muted dark:text-gray-400 uppercase tracking-wide mb-2">
                 <Mail size={14} /> Email Address
               </label>
               <div className="relative">
@@ -177,24 +177,24 @@ export default function ProfilePage() {
                   type="email"
                   value={formData.email}
                   disabled
-                  className={`${inputClass} bg-surface-container dark:bg-gray-800 text-on-surface-variant dark:text-gray-500 cursor-not-allowed border-dashed`}
+                  className={`${inputClass} bg-surface dark:bg-gray-800 text-text-muted dark:text-gray-500 cursor-not-allowed border-dashed`}
                 />
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase tracking-wider text-outline dark:text-gray-500">
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase tracking-wider text-text-muted dark:text-gray-500">
                   Read Only
                 </span>
               </div>
-              <p className="text-xs text-on-surface-variant dark:text-gray-500 mt-1.5">
+              <p className="text-xs text-text-muted dark:text-gray-500 mt-1.5">
                 Email cannot be changed as it is linked to your login.
               </p>
             </div>
 
             {/* Mobile Number */}
             <div>
-              <label className="flex items-center gap-2 text-xs font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-bold text-text-muted dark:text-gray-400 uppercase tracking-wide mb-2">
                 <Phone size={14} /> Mobile Number
               </label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant dark:text-gray-400 font-medium">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted dark:text-gray-400 font-medium">
                   +91
                 </span>
                 <input
@@ -208,7 +208,7 @@ export default function ProfilePage() {
                   className={`${inputClass} pl-12`}
                 />
               </div>
-              <p className="text-xs text-on-surface-variant dark:text-gray-500 mt-1.5">
+              <p className="text-xs text-text-muted dark:text-gray-500 mt-1.5">
                 10-digit mobile number without country code.
               </p>
             </div>
@@ -216,7 +216,7 @@ export default function ProfilePage() {
 
           {/* Postal Address */}
           <div>
-            <label className="flex items-center gap-2 text-xs font-bold text-on-surface-variant dark:text-gray-400 uppercase tracking-wide mb-2">
+            <label className="flex items-center gap-2 text-xs font-bold text-text-muted dark:text-gray-400 uppercase tracking-wide mb-2">
               <MapPin size={14} /> Complete Address
             </label>
             <textarea
@@ -227,13 +227,13 @@ export default function ProfilePage() {
               rows={4}
               className={`${inputClass} resize-y min-h-[100px]`}
             />
-            <p className="text-xs text-on-surface-variant dark:text-gray-500 mt-1.5">
+            <p className="text-xs text-text-muted dark:text-gray-500 mt-1.5">
               Used for shipping physical study materials or books.
             </p>
           </div>
 
           {/* Form Actions */}
-          <div className="pt-6 border-t border-outline-variant/10 dark:border-white/5 flex justify-end">
+          <div className="pt-6 border-t border-gray-200 dark:border-white/5 flex justify-end">
             <button
               type="submit"
               disabled={saving}

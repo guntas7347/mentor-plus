@@ -21,9 +21,10 @@ export const getAllCourses = async () => {
   return courses;
 };
 
-export const getAllPublishedCourses = async () => {
-  const courses = prisma.course.findMany({
+export const getAllPublishedCourses = async (limit = 0) => {
+  const courses = await prisma.course.findMany({
     where: { isPublished: true },
+    take: limit > 0 ? limit : undefined,
     select: {
       id: true,
 
@@ -34,7 +35,7 @@ export const getAllPublishedCourses = async () => {
       subtitle: true,
       title: true,
       description: true,
-
+      summary: true,
       durationMonths: true,
       discountedPrice: true,
       fullPrice: true,
@@ -63,12 +64,7 @@ export const updateCourse = async (id: string, data: any) => {
     where: { id },
     data,
   });
-  revalidatePaths([
-    "/dashboard/courses",
-    `/dashboard/courses/${id}`,
-    "/courses",
-    `/courses/${course.slug}`,
-  ]);
+  revalidatePaths(["/courses", `/courses/${course.slug}`]);
   return course;
 };
 
@@ -78,6 +74,6 @@ export const deleteCourse = async (id: string) => {
   const course = await prisma.course.delete({
     where: { id },
   });
-  revalidatePaths(["/dashboard/courses", "/courses", `/courses/${course.slug}`]);
+  revalidatePaths(["/courses", `/courses/${course.slug}`]);
   return course;
 };

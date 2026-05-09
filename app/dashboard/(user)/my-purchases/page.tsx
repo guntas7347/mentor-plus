@@ -62,16 +62,16 @@ export default function MyTestSeriesPage() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
-      <header className="mb-10 border-b border-outline-variant/20 dark:border-white/10 pb-6">
+      <header className="mb-10 border-b border-gray-200/20 dark:border-white/10 pb-6">
         <div className="flex items-center gap-4 mb-2">
           <div className="p-3 bg-primary/10 dark:bg-[#1a56db]/20 rounded-xl">
             <Trophy className="text-primary dark:text-[#b5c4ff]" size={28} />
           </div>
           <div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-on-surface dark:text-white tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-text dark:text-white tracking-tight">
               My Test Series
             </h1>
-            <p className="text-on-surface-variant dark:text-gray-400 mt-1">
+            <p className="text-text-muted dark:text-gray-400 mt-1">
               Access your enrolled mock tests, track your progress, and continue
               practicing.
             </p>
@@ -86,20 +86,23 @@ export default function MyTestSeriesPage() {
             className="animate-spin text-primary dark:text-[#1a56db] mb-4"
             size={40}
           />
-          <p className="text-on-surface-variant dark:text-gray-400 font-medium">
+          <p className="text-text-muted dark:text-gray-400 font-medium">
             Loading your test series...
           </p>
         </div>
       ) : enrollments.length === 0 ? (
         // Empty State
-        <div className="bg-surface-container-low dark:bg-[#121c28] rounded-3xl border-2 border-dashed border-outline-variant/30 dark:border-white/10 flex flex-col items-center justify-center p-16 text-center">
+        <div className="bg-surface dark:bg-[#121c28] rounded-3xl border-2 border-dashed border-gray-200 dark:border-white/10 flex flex-col items-center justify-center p-16 text-center">
           <div className="w-20 h-20 bg-surface dark:bg-gray-800 rounded-full flex items-center justify-center mb-6 shadow-sm">
-            <FileText className="text-outline dark:text-gray-500" size={40} />
+            <FileText
+              className="text-text-muted dark:text-gray-500"
+              size={40}
+            />
           </div>
-          <h3 className="text-2xl font-bold text-on-surface dark:text-white mb-2">
+          <h3 className="text-2xl font-bold text-text dark:text-white mb-2">
             No Test Series Found
           </h3>
-          <p className="text-on-surface-variant dark:text-gray-400 max-w-md mx-auto mb-8">
+          <p className="text-text-muted dark:text-gray-400 max-w-md mx-auto mb-8">
             You haven't enrolled in any test series yet. Explore our store to
             find the perfect mock tests for your exams.
           </p>
@@ -122,14 +125,14 @@ export default function MyTestSeriesPage() {
             return (
               <div
                 key={enrollment.id}
-                className={`bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col ${
+                className={`bg-background dark:bg-[#121c28] rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col ${
                   isExpired
-                    ? "border-outline-variant/20 dark:border-white/5 opacity-75 grayscale-[50%]"
-                    : "border-outline-variant/30 dark:border-white/10 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30"
+                    ? "border-gray-200/20 dark:border-white/5 opacity-75 grayscale-[50%]"
+                    : "border-gray-200 dark:border-white/10 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30"
                 }`}
               >
                 {/* Thumbnail Header */}
-                <div className="relative h-40 bg-surface-container dark:bg-gray-800 overflow-hidden">
+                <div className="relative h-40 bg-surface dark:bg-gray-800 overflow-hidden">
                   {enrollment.testSeries.thumbnailUrl ? (
                     <img
                       src={enrollment.testSeries.thumbnailUrl}
@@ -137,7 +140,7 @@ export default function MyTestSeriesPage() {
                       className="w-full h-full object-cover opacity-80"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-outline/30">
+                    <div className="w-full h-full flex items-center justify-center text-text-muted/30">
                       <FileText size={48} />
                     </div>
                   )}
@@ -161,34 +164,34 @@ export default function MyTestSeriesPage() {
 
                 {/* Card Body */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-on-surface dark:text-white leading-tight mb-4 line-clamp-2">
+                  <h3 className="text-xl font-bold text-text dark:text-white leading-tight mb-4 line-clamp-2">
                     {enrollment.testSeries.title}
                   </h3>
 
                   {/* Enrollment Details List */}
-                  <div className="space-y-3 mb-6 flex-grow bg-surface-container-low/50 dark:bg-white/5 p-4 rounded-xl border border-outline-variant/10 dark:border-white/5">
+                  <div className="space-y-3 mb-6 flex-grow bg-surface/50 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/5">
                     <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-on-surface-variant dark:text-gray-400">
+                      <div className="flex items-center gap-2 text-text-muted dark:text-gray-400">
                         <Calendar size={16} />
                         <span>Purchased:</span>
                       </div>
-                      <span className="font-semibold text-on-surface dark:text-gray-200">
+                      <span className="font-semibold text-text dark:text-gray-200">
                         {formatDate(enrollment.createdAt)}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-on-surface-variant dark:text-gray-400">
+                      <div className="flex items-center gap-2 text-text-muted dark:text-gray-400">
                         <CreditCard size={16} />
                         <span>Amount Paid:</span>
                       </div>
-                      <span className="font-semibold text-on-surface dark:text-gray-200">
+                      <span className="font-semibold text-text dark:text-gray-200">
                         {formatRupees(enrollment.amount)}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-on-surface-variant dark:text-gray-400">
+                      <div className="flex items-center gap-2 text-text-muted dark:text-gray-400">
                         <Clock
                           size={16}
                           className={isExpired ? "text-rose-500" : ""}
@@ -196,7 +199,7 @@ export default function MyTestSeriesPage() {
                         <span>Expires On:</span>
                       </div>
                       <span
-                        className={`font-semibold ${isExpired ? "text-rose-500 dark:text-rose-400" : "text-on-surface dark:text-gray-200"}`}
+                        className={`font-semibold ${isExpired ? "text-rose-500 dark:text-rose-400" : "text-text dark:text-gray-200"}`}
                       >
                         {enrollment.expiresAt
                           ? formatDate(enrollment.expiresAt)
@@ -209,13 +212,13 @@ export default function MyTestSeriesPage() {
                   {isExpired ? (
                     <Link
                       href={`/test-series/${enrollment.testSeries.slug}`}
-                      className="w-full py-3.5 bg-surface-container-high dark:bg-gray-800 text-on-surface dark:text-gray-300 font-bold rounded-xl flex items-center justify-center transition-colors hover:bg-surface-container-highest"
+                      className="w-full py-3.5 bg-surface dark:bg-gray-800 text-text dark:text-gray-300 font-bold rounded-xl flex items-center justify-center transition-colors hover:bg-surface"
                     >
                       Renew Subscription
                     </Link>
                   ) : (
                     <a
-                      href={`/dashboard/play/${enrollment.testSeries.accessLink}`}
+                      href={`/dashboard/play/${enrollment.testSeries.id}`}
                       className="w-full py-3.5 bg-primary/10 dark:bg-[#1a56db]/20 text-primary dark:text-[#b5c4ff] hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all group relative overflow-hidden"
                     >
                       <PlayCircle

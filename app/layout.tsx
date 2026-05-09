@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${publicSans.variable} h-full antialiased`}
     >
-      <body className="bg-surface dark:bg-[#0a0f18] font-body text-on-surface dark:text-inverse-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed transition-colors duration-300">
+      <body className="bg-surface dark:bg-[#0a0f18] font-body text-text dark:text-gray-100 selection:bg-primary selection:text-white-fixed transition-colors duration-300">
         <Providers>
           <main>{children}</main>
           <Script

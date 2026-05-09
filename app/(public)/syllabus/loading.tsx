@@ -4,17 +4,17 @@ export default function PublicSyllabusSkeleton() {
       {/* Hero / Header Section Skeleton */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 mb-20 pt-16">
         <div className="max-w-3xl">
-          <span className="text-primary dark:text-[#b5c4ff] font-label text-sm font-bold tracking-widest uppercase block mb-4">
+          <span className="text-primary dark:text-[#b5c4ff] font-body text-sm font-bold tracking-widest uppercase block mb-4">
             Exam Preparation Guide
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-extrabold text-on-surface dark:text-white tracking-tight leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-extrabold text-text dark:text-white tracking-tight leading-tight mb-6">
             Master the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container dark:from-[#b5c4ff] dark:to-[#1a56db]">
               Curriculum
             </span>{" "}
             with Authority.
           </h1>
-          <p className="text-lg text-on-surface-variant dark:text-gray-300 leading-relaxed mb-8">
+          <p className="text-lg text-text-muted dark:text-gray-300 leading-relaxed mb-8">
             Detailed breakdown of exam patterns and subject-wise syllabus for
             Punjab Government, Banking, and Central Government exams. Stay ahead
             with our structured learning path.

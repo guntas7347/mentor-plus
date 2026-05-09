@@ -34,6 +34,7 @@ import {
   MEDIUMS,
   STATUS_OPTIONS,
 } from "@/lib/configs";
+import CloudinaryUploader from "@/components/CloudinaryUploader";
 
 // --- Constants & Icon Mapping ---
 
@@ -53,7 +54,7 @@ type IconName = keyof typeof AVAILABLE_ICONS;
 
 // --- Reusable UI Components ---
 const inputClass =
-  "w-full px-3.5 py-2.5 rounded-xl border border-outline-variant/50 bg-surface dark:bg-[#374151] text-on-surface dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
+  "w-full px-3.5 py-2.5 rounded-xl border border-gray-200/50 bg-surface dark:bg-[#374151] text-text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
 // --- Main Page Component ---
 export default function CourseEditPage() {
@@ -191,7 +192,7 @@ export default function CourseEditPage() {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-on-surface-variant dark:text-gray-400">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-text-muted dark:text-gray-400">
         <Loader2 className="animate-spin" size={32} />
         <p className="font-medium">Loading course details...</p>
       </div>
@@ -205,12 +206,12 @@ export default function CourseEditPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.back()}
-            className="p-2 rounded-xl hover:bg-surface-container transition-colors"
+            className="p-2 rounded-xl hover:bg-surface transition-colors"
           >
             <ArrowLeft size={20} />
           </button>
           <div>
-            <h1 className="text-3xl font-bold text-on-surface dark:text-white">
+            <h1 className="text-3xl font-bold text-text dark:text-white">
               {isNew ? "New Course" : form.title || "Edit Course"}
             </h1>
           </div>
@@ -302,7 +303,7 @@ export default function CourseEditPage() {
                 return (
                   <div
                     key={index}
-                    className="flex gap-3 p-4 border border-outline-variant/30 rounded-xl bg-surface dark:bg-[#374151]/50 relative group"
+                    className="flex gap-3 p-4 border border-gray-200 rounded-xl bg-surface dark:bg-[#374151]/50 relative group"
                   >
                     <div className="pt-2">
                       <SelectedIcon size={20} className="text-primary" />
@@ -376,7 +377,7 @@ export default function CourseEditPage() {
                     { title: "", desc: "", icon: "BookOpen" },
                   ])
                 }
-                className="w-full py-3 border-2 border-dashed border-outline-variant/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 border-2 border-dashed border-gray-200/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
               >
                 <Plus size={16} /> Add Learning Outcome
               </button>
@@ -388,7 +389,7 @@ export default function CourseEditPage() {
               {form.curriculum.map((mod: any, modIndex: number) => (
                 <div
                   key={modIndex}
-                  className="p-4 border border-outline-variant/30 dark:border-white/10 rounded-2xl bg-surface dark:bg-[#374151]/30 space-y-4"
+                  className="p-4 border border-gray-200 dark:border-white/10 rounded-2xl bg-surface dark:bg-[#374151]/30 space-y-4"
                 >
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-gray-400 dark:text-gray-500 font-bold w-6 text-right">
@@ -421,7 +422,7 @@ export default function CourseEditPage() {
                     </button>
                   </div>
 
-                  <div className="pl-12 space-y-2 border-l-2 border-outline-variant/20 dark:border-gray-700 ml-6">
+                  <div className="pl-12 space-y-2 border-l-2 border-gray-200/20 dark:border-gray-700 ml-6">
                     {(mod.lessons || []).map(
                       (lesson: any, lessonIndex: number) => (
                         <div
@@ -487,7 +488,7 @@ export default function CourseEditPage() {
                     { title: "", lessons: [] },
                   ])
                 }
-                className="w-full py-3 border-2 border-dashed border-outline-variant/50 dark:border-gray-600 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 border-2 border-dashed border-gray-200/50 dark:border-gray-600 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
               >
                 <Plus size={16} /> Add Module
               </button>
@@ -503,7 +504,7 @@ export default function CourseEditPage() {
                   <div
                     key={index}
                     // Changed to a single flex row
-                    className="p-2 bg-surface-container-lowest dark:bg-gray-800/30 rounded-xl border border-outline-variant/30 flex items-center gap-2"
+                    className="p-2 bg-background dark:bg-gray-800/30 rounded-xl border border-gray-200 flex items-center gap-2"
                   >
                     {/* Icon Preview */}
                     <div className="p-2 bg-surface dark:bg-gray-700 rounded-lg flex-shrink-0">
@@ -566,7 +567,7 @@ export default function CourseEditPage() {
                     { text: "", icon: "CheckCircle" },
                   ])
                 }
-                className="w-full py-2 border-2 border-dashed border-outline-variant/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
+                className="w-full py-2 border-2 border-dashed border-gray-200/50 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex justify-center items-center gap-1"
               >
                 <Plus size={14} /> Add Feature
               </button>
@@ -592,7 +593,7 @@ export default function CourseEditPage() {
             <div className="grid grid-cols-2 gap-4 mt-4">
               <Field label="Full Price">
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-on-surface-variant dark:text-gray-400">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-text-muted dark:text-gray-400">
                     ₹
                   </span>
                   <input
@@ -609,7 +610,7 @@ export default function CourseEditPage() {
 
               <Field label="Discounted Price">
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-on-surface-variant dark:text-gray-400">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-text-muted dark:text-gray-400">
                     ₹
                   </span>
                   <input
@@ -652,7 +653,11 @@ export default function CourseEditPage() {
           </SectionCard>
 
           <SectionCard title="Thumbnail">
-            <Field label="Thumbnail URL">
+            <Field label="Thumbnail">
+              <CloudinaryUploader
+                defaultImage={form.thumbnailUrl}
+                onUpload={(value) => set("thumbnailUrl", value)}
+              />
               <div className="relative">
                 <ImageIcon
                   size={16}
@@ -692,7 +697,7 @@ export default function CourseEditPage() {
             <div className="space-y-3">
               {form.instructors.map((instructor: string, index: number) => (
                 <div key={index} className="flex items-center gap-2">
-                  <div className="p-2 bg-surface dark:bg-gray-800 rounded-lg shadow-sm border border-outline-variant/20 dark:border-gray-700 flex-shrink-0">
+                  <div className="p-2 bg-surface dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200/20 dark:border-gray-700 flex-shrink-0">
                     <Users
                       size={18}
                       className="text-primary dark:text-[#b5c4ff]"
@@ -724,7 +729,7 @@ export default function CourseEditPage() {
               ))}
               <button
                 onClick={() => set("instructors", [...form.instructors, ""])}
-                className="w-full py-3 mt-2 border-2 border-dashed border-outline-variant/50 dark:border-gray-600 rounded-xl text-sm font-semibold text-gray-500 hover:text-primary hover:bg-primary/5 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 mt-2 border-2 border-dashed border-gray-200/50 dark:border-gray-600 rounded-xl text-sm font-semibold text-gray-500 hover:text-primary hover:bg-primary/5 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
               >
                 <Plus size={16} /> Add Instructor
               </button>
@@ -792,11 +797,11 @@ export default function CourseEditPage() {
               onClick={() => set("isPublished", !form.isPublished)}
               className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all ${
                 form.isPublished
-                  ? "bg-primary-container border-primary/30 dark:bg-green-900/20 text-green-600 dark:text-green-400"
-                  : "bg-surface-container-low dark:bg-[#374151] text-gray-500 dark:text-gray-300"
+                  ? "bg-primary-dark border-primary/30 dark:bg-green-900/20 text-green-600 dark:text-green-400"
+                  : "bg-surface dark:bg-[#374151] text-gray-500 dark:text-gray-300"
               }`}
             >
-              <span className="font-label font-semibold text-sm">
+              <span className="font-body font-semibold text-sm">
                 {form.isPublished ? "Published" : "Unpublished"}
               </span>
               <BadgeCheck

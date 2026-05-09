@@ -147,7 +147,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-on-surface-variant dark:text-gray-400">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-text-muted dark:text-gray-400">
         <Loader2 className="animate-spin text-primary" size={32} />
         <p className="font-medium text-sm">Aggregating platform data...</p>
       </div>
@@ -201,17 +201,17 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h1 className="text-3xl md:text-4xl font-headline font-extrabold text-on-surface dark:text-white tracking-tight mb-2">
+          <h1 className="text-3xl md:text-4xl font-headline font-extrabold text-text dark:text-white tracking-tight mb-2">
             Hi {firstName}! 👋
           </h1>
-          <p className="font-body text-lg text-on-surface-variant dark:text-gray-400">
+          <p className="font-body text-lg text-text-muted dark:text-gray-400">
             Platform performance processed in real-time.
           </p>
         </div>
         <div className="flex gap-2">
-          <div className="flex items-center gap-2 bg-surface-container-high dark:bg-white/5 px-4 py-2 rounded-xl border border-outline-variant/20">
+          <div className="flex items-center gap-2 bg-surface dark:bg-white/5 px-4 py-2 rounded-xl border border-gray-200/20">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-bold uppercase tracking-wider text-on-surface-variant dark:text-gray-300">
+            <span className="text-xs font-bold uppercase tracking-wider text-text-muted dark:text-gray-300">
               Live Overview
             </span>
           </div>
@@ -225,7 +225,7 @@ export default function DashboardPage() {
           return (
             <div
               key={stat.title}
-              className="bg-surface-container-lowest dark:bg-[#121c28] p-6 rounded-3xl border border-outline-variant/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all group"
+              className="bg-background dark:bg-[#121c28] p-6 rounded-3xl border border-gray-200/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all group"
             >
               <div className="flex justify-between items-start mb-4">
                 <div className={`p-3 rounded-xl ${colorMap[stat.color]} group-hover:scale-110 transition-transform`}>
@@ -233,13 +233,13 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div>
-                <p className="font-label text-xs text-on-surface-variant dark:text-gray-400 font-bold uppercase tracking-widest mb-1">
+                <p className="font-body text-xs text-text-muted dark:text-gray-400 font-bold uppercase tracking-widest mb-1">
                   {stat.title}
                 </p>
-                <p className="text-2xl font-headline font-extrabold text-on-surface dark:text-white tracking-tight">
+                <p className="text-2xl font-headline font-extrabold text-text dark:text-white tracking-tight">
                   {stat.value}
                 </p>
-                <p className="text-[10px] font-bold text-on-surface-variant dark:text-gray-500 mt-2 flex items-center gap-1">
+                <p className="text-[10px] font-bold text-text-muted dark:text-gray-500 mt-2 flex items-center gap-1">
                   <TrendingUp size={12} className="text-emerald-500" />
                   {stat.trend}
                 </p>
@@ -251,22 +251,22 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
         {/* Main Growth Chart */}
-        <div className="lg:col-span-8 bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl p-8 border border-outline-variant/20 dark:border-white/5 shadow-sm">
+        <div className="lg:col-span-8 bg-background dark:bg-[#121c28] rounded-3xl p-8 border border-gray-200/20 dark:border-white/5 shadow-sm">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-xl font-headline font-bold text-on-surface dark:text-white">
+              <h2 className="text-xl font-headline font-bold text-text dark:text-white">
                 Platform Growth
               </h2>
-              <p className="text-xs text-on-surface-variant dark:text-gray-500 mt-1">
+              <p className="text-xs text-text-muted dark:text-gray-500 mt-1">
                 Activity trends for the last 30 days
               </p>
             </div>
             <div className="flex gap-4">
-               <div className="flex items-center gap-1.5 text-xs font-bold text-on-surface-variant dark:text-gray-400">
+               <div className="flex items-center gap-1.5 text-xs font-bold text-text-muted dark:text-gray-400">
                   <div className="w-3 h-3 rounded-full bg-primary/40 border border-primary/60" />
                   Students
                </div>
-               <div className="flex items-center gap-1.5 text-xs font-bold text-on-surface-variant dark:text-gray-400">
+               <div className="flex items-center gap-1.5 text-xs font-bold text-text-muted dark:text-gray-400">
                   <div className="w-3 h-3 rounded-full bg-emerald-400/40 border border-emerald-400/60" />
                   Enrollments
                </div>
@@ -332,22 +332,22 @@ export default function DashboardPage() {
         </div>
 
         {/* Recent Enrollments */}
-        <div className="lg:col-span-4 bg-surface-container-lowest dark:bg-[#121c28] rounded-3xl p-8 border border-outline-variant/20 dark:border-white/5 shadow-sm">
+        <div className="lg:col-span-4 bg-background dark:bg-[#121c28] rounded-3xl p-8 border border-gray-200/20 dark:border-white/5 shadow-sm">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-xl font-headline font-bold text-on-surface dark:text-white">
+            <h2 className="text-xl font-headline font-bold text-text dark:text-white">
               Latest Activity
             </h2>
             <Link
               href="/dashboard/purchases"
-              className="p-2 hover:bg-surface-container rounded-lg transition-colors"
+              className="p-2 hover:bg-surface rounded-lg transition-colors"
             >
-              <ArrowRight size={20} className="text-on-surface-variant" />
+              <ArrowRight size={20} className="text-text-muted" />
             </Link>
           </div>
 
           <div className="space-y-6">
             {recentPurchases.length === 0 ? (
-              <p className="text-on-surface-variant dark:text-gray-500 py-4 italic text-center text-sm">
+              <p className="text-text-muted dark:text-gray-500 py-4 italic text-center text-sm">
                 No recent activity.
               </p>
             ) : (
@@ -361,17 +361,17 @@ export default function DashboardPage() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-on-surface dark:text-white truncate">
+                    <p className="text-sm font-bold text-text dark:text-white truncate">
                       {purchase.user.name || purchase.user.email}
                     </p>
-                    <p className="text-xs text-on-surface-variant dark:text-gray-400 truncate mt-0.5">
+                    <p className="text-xs text-text-muted dark:text-gray-400 truncate mt-0.5">
                       {purchase.testSeries?.title || purchase.course?.title || "Product"}
                     </p>
                     <div className="flex items-center justify-between mt-2">
                        <span className={`text-[9px] px-2 py-0.5 rounded font-bold uppercase tracking-tighter ${purchase.status === 'SUCCESS' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-amber-500/10 text-amber-500'}`}>
                           {purchase.status}
                        </span>
-                       <span className="text-[10px] text-on-surface-variant dark:text-gray-500 font-medium">
+                       <span className="text-[10px] text-text-muted dark:text-gray-500 font-medium">
                           {timeAgo(purchase.createdAt)}
                        </span>
                     </div>
@@ -383,7 +383,7 @@ export default function DashboardPage() {
           
           <Link
             href="/dashboard/users"
-            className="mt-8 w-full py-3 rounded-xl border border-dashed border-outline-variant/30 hover:border-primary/50 text-xs font-bold text-on-surface-variant hover:text-primary transition-all flex items-center justify-center gap-2"
+            className="mt-8 w-full py-3 rounded-xl border border-dashed border-gray-200 hover:border-primary/50 text-xs font-bold text-text-muted hover:text-primary transition-all flex items-center justify-center gap-2"
           >
              <Users size={14} />
              Manage Student Base
@@ -393,33 +393,33 @@ export default function DashboardPage() {
       
       {/* Platform Inventory Quick View */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-         <div className="bg-surface-container-lowest dark:bg-[#121c28] p-6 rounded-3xl border border-outline-variant/20 flex items-center gap-6 group hover:border-primary/20 transition-all cursor-pointer">
+         <div className="bg-background dark:bg-[#121c28] p-6 rounded-3xl border border-gray-200/20 flex items-center gap-6 group hover:border-primary/20 transition-all cursor-pointer">
             <div className="p-4 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-2xl group-hover:rotate-12 transition-transform">
                <Layers size={24} />
             </div>
             <div>
-               <p className="text-2xl font-extrabold text-on-surface dark:text-white">{rawData.courses.length}</p>
-               <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant dark:text-gray-500">Total Courses</p>
+               <p className="text-2xl font-extrabold text-text dark:text-white">{rawData.courses.length}</p>
+               <p className="text-[10px] font-bold uppercase tracking-widest text-text-muted dark:text-gray-500">Total Courses</p>
             </div>
          </div>
          
-         <div className="bg-surface-container-lowest dark:bg-[#121c28] p-6 rounded-3xl border border-outline-variant/20 flex items-center gap-6 group hover:border-emerald-200 transition-all cursor-pointer">
+         <div className="bg-background dark:bg-[#121c28] p-6 rounded-3xl border border-gray-200/20 flex items-center gap-6 group hover:border-emerald-200 transition-all cursor-pointer">
             <div className="p-4 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:rotate-12 transition-transform">
                <Layout size={24} />
             </div>
             <div>
-               <p className="text-2xl font-extrabold text-on-surface dark:text-white">{rawData.testSeries.length}</p>
-               <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant dark:text-gray-500">Total Test Series</p>
+               <p className="text-2xl font-extrabold text-text dark:text-white">{rawData.testSeries.length}</p>
+               <p className="text-[10px] font-bold uppercase tracking-widest text-text-muted dark:text-gray-500">Total Test Series</p>
             </div>
          </div>
          
-         <div className="bg-surface-container-lowest dark:bg-[#121c28] p-6 rounded-3xl border border-outline-variant/20 flex items-center gap-6 group hover:border-purple-200 transition-all cursor-pointer">
+         <div className="bg-background dark:bg-[#121c28] p-6 rounded-3xl border border-gray-200/20 flex items-center gap-6 group hover:border-purple-200 transition-all cursor-pointer">
             <div className="p-4 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-2xl group-hover:rotate-12 transition-transform">
                <FileText size={24} />
             </div>
             <div>
-               <p className="text-2xl font-extrabold text-on-surface dark:text-white">{rawData.syllabus.length}</p>
-               <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant dark:text-gray-500">Syllabus Categories</p>
+               <p className="text-2xl font-extrabold text-text dark:text-white">{rawData.syllabus.length}</p>
+               <p className="text-[10px] font-bold uppercase tracking-widest text-text-muted dark:text-gray-500">Syllabus Categories</p>
             </div>
          </div>
       </div>
