@@ -12,3 +12,6 @@ export const HOT_TAG_OPTIONS = [
 ];
 
 export const MEDIUMS = ["English", "Punjabi", "Hindi", "Other"];
+
+export const CLOUDINARY_PRESET_NAME = "guntas";
+export const CLOUDINARY_CLOUD_NAME = "dfdurnxxn";

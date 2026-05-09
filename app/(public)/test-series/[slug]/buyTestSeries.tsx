@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { createTestSeriesOrder } from "@/lib/actions/createTestSeriesOrder";
 import { getMyEnrolledTestSeries } from "@/lib/actions/test-series";
 import { notify } from "@/lib/toast";
+import { useAuthModal } from "@/components/authModalContext";
 
 const BuyTestSeries = ({
   testSeriesId,
@@ -18,6 +19,8 @@ const BuyTestSeries = ({
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [purchased, setPurchased] = useState(false);
+
+  const { openLoginModal, session } = useAuthModal();
 
   useEffect(() => {
     (async () => {
@@ -36,6 +39,7 @@ const BuyTestSeries = ({
     if (purchased) return;
 
     try {
+      if (!session) return openLoginModal();
       const res = await createTestSeriesOrder(testSeriesId);
 
       if (res?.error === "Login Required") {

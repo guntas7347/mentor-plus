@@ -162,7 +162,7 @@ model Purchase {
   @@map("purchases")
 }
 
-model Config {
+model MetaData {
   id String @id @default(cuid())
 
   key   String @unique

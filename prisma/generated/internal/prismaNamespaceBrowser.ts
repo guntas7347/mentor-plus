@@ -56,7 +56,7 @@ export const ModelName = {
   TestSeries: 'TestSeries',
   Syllabus: 'Syllabus',
   Purchase: 'Purchase',
-  Config: 'Config',
+  MetaData: 'MetaData',
   Pdf: 'Pdf'
 } as const
 
@@ -184,7 +184,7 @@ export const PurchaseScalarFieldEnum = {
 export type PurchaseScalarFieldEnum = (typeof PurchaseScalarFieldEnum)[keyof typeof PurchaseScalarFieldEnum]
 
 
-export const ConfigScalarFieldEnum = {
+export const MetaDataScalarFieldEnum = {
   id: 'id',
   key: 'key',
   value: 'value',
@@ -193,7 +193,7 @@ export const ConfigScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ConfigScalarFieldEnum = (typeof ConfigScalarFieldEnum)[keyof typeof ConfigScalarFieldEnum]
+export type MetaDataScalarFieldEnum = (typeof MetaDataScalarFieldEnum)[keyof typeof MetaDataScalarFieldEnum]
 
 
 export const PdfScalarFieldEnum = {

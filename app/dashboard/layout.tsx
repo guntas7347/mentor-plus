@@ -12,11 +12,11 @@ export default async function DashboardLayout({
   const user = await getSessionUser();
 
   if (!user) {
-    redirect("/login");
+    redirect("/");
   }
 
   return (
-    <div className="flex h-screen bg-background dark:bg-inverse-surface text-on-background dark:text-inverse-on-surface transition-colors duration-300 overflow-hidden">
+    <div className="flex h-screen bg-background dark:bg-gray-950 text-text dark:text-gray-100 transition-colors duration-300 overflow-hidden font-body">
       <Sidebar role={user.role} />
 
       <div className="flex flex-col flex-1 overflow-hidden">
@@ -26,9 +26,9 @@ export default async function DashboardLayout({
           <div className="max-w-7xl mx-auto space-y-6">{children}</div>
         </main>
 
-        <footer className="bg-surface-container-low dark:bg-[#0a0f18] border-t border-outline-variant/10 dark:border-white/5 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-8 py-8 border-t border-outline-variant/10 dark:border-white/5">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant dark:text-outline-variant">
+        <footer className="bg-surface dark:bg-[#0a0f18] border-t border-gray-200 dark:border-white/5 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-8 py-8 border-t border-gray-200 dark:border-white/5">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted dark:text-gray-400">
               <p>
                 © {new Date().getFullYear()} MentorPlus Coaching. All rights
                 reserved.
@@ -36,7 +36,7 @@ export default async function DashboardLayout({
               <div className="flex items-center gap-2">
                 <BadgeCheck
                   size={16}
-                  className="text-secondary dark:text-secondary-fixed-dim"
+                  className="text-secondary dark:text-secondary"
                 />
                 <span>ISO 9001:2015 Certified Institution</span>
               </div>

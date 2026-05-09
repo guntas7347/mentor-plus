@@ -29,7 +29,7 @@ export const requireUser = async () => {
   const user = await getSessionUser();
 
   if (!user) {
-    redirect("/login");
+    redirect("/");
   }
 
   return user;

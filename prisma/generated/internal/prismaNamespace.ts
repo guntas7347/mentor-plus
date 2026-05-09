@@ -389,7 +389,7 @@ export const ModelName = {
   TestSeries: 'TestSeries',
   Syllabus: 'Syllabus',
   Purchase: 'Purchase',
-  Config: 'Config',
+  MetaData: 'MetaData',
   Pdf: 'Pdf'
 } as const
 
@@ -406,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "course" | "testSeries" | "syllabus" | "purchase" | "config" | "pdf"
+    modelProps: "user" | "course" | "testSeries" | "syllabus" | "purchase" | "metaData" | "pdf"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -780,77 +780,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Config: {
-      payload: Prisma.$ConfigPayload<ExtArgs>
-      fields: Prisma.ConfigFieldRefs
+    MetaData: {
+      payload: Prisma.$MetaDataPayload<ExtArgs>
+      fields: Prisma.MetaDataFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.ConfigFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload> | null
+          args: Prisma.MetaDataFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.ConfigFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>
+          args: Prisma.MetaDataFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>
         }
         findFirst: {
-          args: Prisma.ConfigFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload> | null
+          args: Prisma.MetaDataFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.ConfigFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>
+          args: Prisma.MetaDataFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>
         }
         findMany: {
-          args: Prisma.ConfigFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>[]
+          args: Prisma.MetaDataFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>[]
         }
         create: {
-          args: Prisma.ConfigCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>
+          args: Prisma.MetaDataCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>
         }
         createMany: {
-          args: Prisma.ConfigCreateManyArgs<ExtArgs>
+          args: Prisma.MetaDataCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.ConfigCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>[]
+          args: Prisma.MetaDataCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>[]
         }
         delete: {
-          args: Prisma.ConfigDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>
+          args: Prisma.MetaDataDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>
         }
         update: {
-          args: Prisma.ConfigUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>
+          args: Prisma.MetaDataUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>
         }
         deleteMany: {
-          args: Prisma.ConfigDeleteManyArgs<ExtArgs>
+          args: Prisma.MetaDataDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.ConfigUpdateManyArgs<ExtArgs>
+          args: Prisma.MetaDataUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.ConfigUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>[]
+          args: Prisma.MetaDataUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>[]
         }
         upsert: {
-          args: Prisma.ConfigUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfigPayload>
+          args: Prisma.MetaDataUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaDataPayload>
         }
         aggregate: {
-          args: Prisma.ConfigAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateConfig>
+          args: Prisma.MetaDataAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMetaData>
         }
         groupBy: {
-          args: Prisma.ConfigGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ConfigGroupByOutputType>[]
+          args: Prisma.MetaDataGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetaDataGroupByOutputType>[]
         }
         count: {
-          args: Prisma.ConfigCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ConfigCountAggregateOutputType> | number
+          args: Prisma.MetaDataCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetaDataCountAggregateOutputType> | number
         }
       }
     }
@@ -1075,7 +1075,7 @@ export const PurchaseScalarFieldEnum = {
 export type PurchaseScalarFieldEnum = (typeof PurchaseScalarFieldEnum)[keyof typeof PurchaseScalarFieldEnum]
 
 
-export const ConfigScalarFieldEnum = {
+export const MetaDataScalarFieldEnum = {
   id: 'id',
   key: 'key',
   value: 'value',
@@ -1084,7 +1084,7 @@ export const ConfigScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ConfigScalarFieldEnum = (typeof ConfigScalarFieldEnum)[keyof typeof ConfigScalarFieldEnum]
+export type MetaDataScalarFieldEnum = (typeof MetaDataScalarFieldEnum)[keyof typeof MetaDataScalarFieldEnum]
 
 
 export const PdfScalarFieldEnum = {
@@ -1371,7 +1371,7 @@ export type GlobalOmitConfig = {
   testSeries?: Prisma.TestSeriesOmit
   syllabus?: Prisma.SyllabusOmit
   purchase?: Prisma.PurchaseOmit
-  config?: Prisma.ConfigOmit
+  metaData?: Prisma.MetaDataOmit
   pdf?: Prisma.PdfOmit
 }
 

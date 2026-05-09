@@ -67,10 +67,10 @@ export type Syllabus = Prisma.SyllabusModel
  */
 export type Purchase = Prisma.PurchaseModel
 /**
- * Model Config
+ * Model MetaData
  * 
  */
-export type Config = Prisma.ConfigModel
+export type MetaData = Prisma.MetaDataModel
 /**
  * Model Pdf
  * 
