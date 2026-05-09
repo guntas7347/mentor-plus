@@ -129,12 +129,12 @@ export default function Header() {
             </Link>
           ))}
           <div className="flex items-center gap-3 pt-4">
-            <Link
-              href="/login"
-              className="flex-1 text-center text-text-muted dark:text-gray-400 hover:text-primary dark:hover:text-inverse-primary transition-colors font-body text-sm tracking-widest border border-surface -high dark:border-white/10 px-4 py-2.5 rounded-md"
+            <button
+              onClick={handleLogin}
+              className="flex-1 text-center bg-primary dark:bg-primary text-white px-6 py-2.5 rounded-md font-body text-sm tracking-widest active:scale-[0.98] duration-200 transition-all min-w-[100px] justify-center"
             >
-              Login
-            </Link>
+              {session ? "Profile" : "Login"}
+            </button>
           </div>
         </div>
       </div>

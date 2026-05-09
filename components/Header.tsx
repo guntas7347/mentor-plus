@@ -2,7 +2,7 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { Sun, Moon, LogOut, Home } from "lucide-react";
+import { Sun, Moon, LogOut, Home, Menu } from "lucide-react";
 import Link from "next/link";
 
 // Helper to get initials if the user doesn't have a profile image
@@ -16,7 +16,7 @@ function getInitials(name?: string | null) {
     .toUpperCase();
 }
 
-export default function Header() {
+export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
   const { data: session } = useSession();
   const [isDark, setIsDark] = useState(false);
 
@@ -34,12 +34,19 @@ export default function Header() {
 
   return (
     <header className="h-16 glass-nav border-b border-gray-200 sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between bg-surface/80 backdrop-blur-md dark:bg-[#121c28]/80">
-      <div>
-        <h2 className="text-xl font-headline font-bold text-text dark:text-white">
-          Dashboard
-        </h2>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={onMenuClick}
+          className="lg:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+        <div>
+          <h2 className="text-xl font-headline font-bold text-text dark:text-white">
+            Dashboard
+          </h2>
+        </div>
       </div>
-
       <div className="flex items-center gap-2 sm:gap-4">
         {" "}
         <Link

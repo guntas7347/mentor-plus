@@ -5,7 +5,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
   return (
-    <div className="p-5 bg-primary/20 min-h-screen">
+    <div className="p-1 rounded md:p-5 bg-primary/20 min-h-screen">
       <PdfViewer id={id} />
     </div>
   );

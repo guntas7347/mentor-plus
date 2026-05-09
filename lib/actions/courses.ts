@@ -64,7 +64,7 @@ export const updateCourse = async (id: string, data: any) => {
     where: { id },
     data,
   });
-  revalidatePaths(["/courses", `/courses/${course.slug}`]);
+  revalidatePaths(["/", "/courses", `/courses/${course.slug}`]);
   return course;
 };
 

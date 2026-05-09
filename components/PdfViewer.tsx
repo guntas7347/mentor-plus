@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
 import dynamic from "next/dynamic";
+
 import { addWatermark } from "@/lib/waterMark";
 import Link from "next/link";
 // Assuming you have 'lucide-react' for icons. If not, you can replace these with standard SVGs.
@@ -14,9 +14,14 @@ import {
   Moon,
   Sun,
 } from "lucide-react";
+const Document = dynamic(
+  () => import("react-pdf").then((mod) => mod.Document),
+  { ssr: false },
+);
 
-// Use the specific version of the worker matching your pdfjs
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+const Page = dynamic(() => import("react-pdf").then((mod) => mod.Page), {
+  ssr: false,
+});
 
 function PdfContent({ id }: { id: string }) {
   const [pdfBlob, setPdfBlob] = useState<string | null>(null);
@@ -28,6 +33,12 @@ function PdfContent({ id }: { id: string }) {
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [scale, setScale] = useState<number>(1.0);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    import("react-pdf").then(({ pdfjs }) => {
+      pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+    });
+  }, []);
 
   useEffect(() => {
     async function loadPdf() {
