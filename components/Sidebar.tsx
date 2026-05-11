@@ -50,7 +50,7 @@ export default function Sidebar({
   ];
 
   const studentNavItems = [
-    { name: "Dashboard", href: "/student", icon: LayoutDashboard },
+    // { name: "Dashboard", href: "/student", icon: LayoutDashboard },
     { name: "My Purchases", href: "/my-purchases", icon: Trophy },
     { name: "Profile", href: "/profile", icon: User },
   ];

@@ -25,7 +25,7 @@ export default function DashboardLayout({
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header onMenuClick={() => setIsMobileOpen(!isMobileOpen)} />
 
-        <main className="flex-1 overflow-y-auto no-scrollbar p-1 md:p-6 ">
+        <main className="flex-1 overflow-y-auto no-scrollbar p-1 md:px-30 ">
           <div className="mx-auto space-y-6">{children}</div>
         </main>
 
