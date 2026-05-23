@@ -94,8 +94,9 @@ const CTASection = () => (
 export default async function CoursesPage() {
   const courses = await getAllPublishedCourses();
 
-  const categories = (await getMeta("categories"))?.value as string[];
+  const rawCategories = (await getMeta("categories"))?.value;
 
+  const categories = Array.isArray(rawCategories) ? rawCategories : [];
   return (
     <main className="min-h-screen bg-background text-text transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">

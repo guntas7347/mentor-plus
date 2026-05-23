@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Search, Clock, ArrowRight, Plus, BookX } from "lucide-react";
+import { Search, Clock, ArrowRight, BookX } from "lucide-react";
 
 // Updated type to reflect the required fields and exclude raw JSON mapping
 type TestSeries = {
