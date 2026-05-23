@@ -3,11 +3,14 @@
 import prisma from "../prisma";
 import { revalidatePaths } from "../revalidatePath";
 
-const createMeta = async (key: string, value: any, isPublic = true) => {
+export const upsertMeta = async (
+  key: string,
+  value: any,
+  isPublic = true,
+  revalidatePathsList: string[] | null = null,
+) => {
   const meta = await prisma.metaData.upsert({
-    where: {
-      key,
-    },
+    where: { key },
     update: {
       value,
       isPublic,
@@ -18,38 +21,18 @@ const createMeta = async (key: string, value: any, isPublic = true) => {
       isPublic,
     },
   });
-  if (key === "homepage_gallery") {
-    revalidatePaths(["/gallery"]);
-  } else if (key === "tutors") {
-    revalidatePaths(["/", "/about"]);
+
+  if (revalidatePathsList) {
+    revalidatePaths(revalidatePathsList);
   }
+
   return meta;
 };
 
-const updateMeta = async (key: string, value: any, isPublic: boolean) => {
-  const meta = await prisma.metaData.update({
-    where: {
-      key,
-    },
-    data: {
-      value,
-      isPublic,
-    },
-  });
-  if (key === "homepage_gallery") {
-    revalidatePaths(["/", "/gallery"]);
-  } else if (key === "tutors") {
-    revalidatePaths(["/", "/about"]);
-  }
-  return meta;
-};
-
-const getMeta = async (key: string) => {
+export const getMeta = async (key: string) => {
   return await prisma.metaData.findUnique({
     where: {
       key,
     },
   });
 };
-
-export { createMeta, updateMeta, getMeta };

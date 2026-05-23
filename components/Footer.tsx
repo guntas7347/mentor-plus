@@ -137,14 +137,15 @@ export default function Footer() {
                 size={18}
                 className="text-primary dark:text-inverse-primary flex-shrink-0"
               />
-              contact@mentorplus.edu
+              Info@mentorplus.guru Mentorstudyvisa@gmail.com
             </li>
             <li className="flex items-start gap-2">
               <MapPin
                 size={18}
                 className="text-primary dark:text-inverse-primary flex-shrink-0"
               />
-              SCF 45, Model Town, Ludhiana, Punjab - 141002
+              Mentor Plus Coaching NH-7, Mar Chowk, Rampura Phul- 151103
+              District Bathinda Punjab, India
             </li>
           </ul>
         </div>

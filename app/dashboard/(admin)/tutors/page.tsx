@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createMeta, getMeta, updateMeta } from "@/lib/actions/meta";
+import { upsertMeta, getMeta } from "@/lib/actions/meta";
 import CloudinaryUploader from "@/components/CloudinaryUploader";
 import { Loader2 } from "lucide-react";
 
@@ -36,7 +36,10 @@ const TutorsPage = () => {
         if (res?.value && Array.isArray(res.value)) {
           setTutors(res.value);
         } else {
-          const created: any = await createMeta("tutors", [], true);
+          const created: any = await upsertMeta("tutors", [], true, [
+            "/",
+            "/tutors",
+          ]);
           setTutors(created.value);
         }
       } catch (error) {
@@ -77,8 +80,7 @@ const TutorsPage = () => {
 
     // Update local state and save to backend
     setTutors(updatedTutors);
-    const a = await updateMeta("tutors", updatedTutors, true);
-    console.log(a);
+    const a = await upsertMeta("tutors", updatedTutors, true);
 
     // Reset form
     setFormData(initialFormState);
@@ -102,7 +104,7 @@ const TutorsPage = () => {
 
     const updatedTutors = tutors.filter((tutor) => tutor.id !== id);
     setTutors(updatedTutors);
-    await updateMeta("tutors", updatedTutors, true);
+    await upsertMeta("tutors", updatedTutors, true, ["/", "/tutors"]);
   };
 
   // Cancel edit

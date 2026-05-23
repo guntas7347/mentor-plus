@@ -5,24 +5,52 @@
 html {
   font-size: 13px;
 }
-
 @theme {
-  --color-primary: #da3f2b;
-  --color-primary-dark: #b83222;
+  /* Map theme colors to CSS variables */
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-dark: var(--color-secondary-dark);
 
-  --color-secondary: #2596be;
-  --color-secondary-dark: #1d7697;
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
 
-  --color-background: #ffffff;
-  --color-surface: #f5f5f5;
-
-  --color-text: #111111;
-  --color-text-muted: #666666;
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
 
   --font-headline: var(--font-manrope);
   --font-body: var(--font-public-sans);
 }
+@layer base {
+  /* Light Mode (Default) */
+  :root {
+    --color-primary: #da3f2b;
+    --color-primary-dark: #b83222;
+    --color-secondary: #2596be;
+    --color-secondary-dark: #1d7697;
 
+    --color-background: #ffffff;
+    --color-surface: #f5f5f5;
+
+    --color-text: #111111;
+    --color-text-muted: #666666;
+  }
+
+  /* Dark Mode Overrides */
+  .dark {
+    --color-primary: #da3f2b;
+    --color-primary-dark: #f05a48;
+    --color-secondary: #4ab5dc;
+    --color-secondary-dark: #2596be;
+
+    /* Changed from pure black to your rich navy blue */
+    --color-background: #0a0f18;
+    --color-surface: #111827;
+
+    --color-text: #f5f5f5;
+    --color-text-muted: #9ca3af;
+  }
+}
 @utility glass-nav {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

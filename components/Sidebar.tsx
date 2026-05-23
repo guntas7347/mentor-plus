@@ -15,26 +15,28 @@ import {
   Files,
   PersonStanding,
   GalleryHorizontal,
-  Menu,
   X,
+  Settings,
 } from "lucide-react";
 
 export default function Sidebar({
   role = "STUDENT",
   isMobileOpen,
   setIsMobileOpen,
+  user,
 }: {
   role: string;
   isMobileOpen: boolean;
   setIsMobileOpen: (open: boolean) => void;
+  user?: any;
 }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile sidebar on route change
+  // Close mobile sidebar automatically on route navigation
   useEffect(() => {
     setIsMobileOpen(false);
-  }, [pathname]);
+  }, [pathname, setIsMobileOpen]);
 
   const adminNavItems = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -45,12 +47,12 @@ export default function Sidebar({
     { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },
     { name: "Users", href: "/users", icon: Users },
     { name: "Purchases", href: "/purchases", icon: DollarSign },
+    { name: "Configs", href: "/configs", icon: Settings },
     { name: "My Purchases", href: "/my-purchases", icon: Trophy },
     { name: "Profile", href: "/profile", icon: User },
   ];
 
   const studentNavItems = [
-    // { name: "Dashboard", href: "/student", icon: LayoutDashboard },
     { name: "My Purchases", href: "/my-purchases", icon: Trophy },
     { name: "Profile", href: "/profile", icon: User },
   ];
@@ -59,21 +61,10 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Mobile Toggle Header (Visible only on Mobile) */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white dark:bg-[#1f2937] border-b border-gray-200 dark:border-gray-800 flex items-center px-4 z-30 justify-between">
-        <h1 className="font-bold text-primary text-xl">Mentor Plus</h1>
-        <button
-          onClick={() => setIsMobileOpen(true)}
-          className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-      </div>
-
-      {/* Backdrop for Mobile */}
+      {/* Dimmed Backdrop for Mobile */}
       {isMobileOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm transition-opacity"
           onClick={() => setIsMobileOpen(false)}
         />
       )}
@@ -81,47 +72,47 @@ export default function Sidebar({
       {/* Sidebar Container */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 flex flex-col bg-white dark:bg-[#1f2937] border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out
+          absolute lg:relative inset-y-0 left-0 z-50 flex flex-col h-full bg-surface border-r border-gray-200 dark:border-white/5 transition-all duration-300 ease-in-out shadow-2xl lg:shadow-none
           ${isMobileOpen ? "translate-x-0 w-[280px]" : "-translate-x-full lg:translate-x-0"}
           ${isCollapsed ? "lg:w-20" : "lg:w-64"}
         `}
       >
-        {/* Desktop Collapse Toggle (Hidden on Mobile) */}
+        {/* Desktop Collapse Toggle */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="hidden lg:flex absolute -right-3.5 top-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-1.5 shadow-md z-50 hover:text-primary transition-colors"
+          className="hidden lg:flex absolute -right-3.5 top-8 bg-background border border-gray-200 dark:border-white/10 rounded-full p-1.5 shadow-md z-50 text-text-muted hover:text-primary transition-all duration-300 hover:scale-110"
         >
           <ChevronLeft
-            className={`w-4 h-4 transition-transform ${isCollapsed ? "rotate-180" : ""}`}
+            className={`w-4 h-4 transition-transform duration-300 ${isCollapsed ? "rotate-180" : ""}`}
           />
         </button>
 
         {/* Mobile Close Button */}
         <button
           onClick={() => setIsMobileOpen(false)}
-          className="lg:hidden absolute right-4 top-6 p-2 text-gray-500"
+          className="lg:hidden absolute right-4 top-5 p-2 text-text-muted hover:text-text transition-colors rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
         >
           <X className="w-6 h-6" />
         </button>
 
-        {/* Branding */}
+        {/* Branding Logo */}
         <div
-          className={`p-6 h-20 flex items-center ${isCollapsed ? "lg:justify-center" : "justify-start"}`}
+          className={`p-6 h-20 flex items-center shrink-0 ${isCollapsed ? "lg:justify-center px-0" : "justify-start"}`}
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold shrink-0">
+            <div className="w-9 h-9 bg-primary shadow-lg shadow-primary/20 rounded-xl flex items-center justify-center text-white font-headline font-bold text-lg shrink-0">
               M
             </div>
             <h1
-              className={`font-bold text-xl tracking-tight transition-opacity duration-300 ${isCollapsed ? "lg:hidden" : "block"}`}
+              className={`font-extrabold font-headline text-xl tracking-tight text-text whitespace-nowrap transition-all duration-300 ${isCollapsed ? "lg:w-0 lg:opacity-0 overflow-hidden" : "w-auto opacity-100"}`}
             >
-              Mentor <span className="text-primary">Plus</span>
+              Mentor<span className="text-primary">Plus</span>
             </h1>
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 px-3 space-y-1 overflow-y-auto mt-4 custom-scrollbar">
+        {/* Navigation Links */}
+        <nav className="flex-1 px-3 space-y-1.5 overflow-y-auto mt-2 no-scrollbar">
           {navItems.map((item) => {
             const Icon = item.icon;
             const fullPath = `/dashboard${item.href}`;
@@ -133,22 +124,27 @@ export default function Sidebar({
                 href={fullPath}
                 title={isCollapsed ? item.name : ""}
                 className={`
-                  flex items-center gap-3 py-3 rounded-xl transition-all duration-200 group
+                  flex items-center gap-3 py-3 rounded-xl transition-all duration-200 group relative overflow-hidden
                   ${isCollapsed ? "lg:justify-center px-0" : "px-4"}
                   ${
                     isActive
-                      ? "bg-primary/10 text-primary font-medium"
-                      : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
+                      ? "bg-primary/10 text-primary font-bold shadow-sm"
+                      : "text-text-muted hover:bg-black/5 dark:hover:bg-white/5 hover:text-text font-semibold"
                   }
                 `}
               >
+                {/* Active Indicator Line */}
+                {isActive && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-primary rounded-r-full" />
+                )}
+
                 <Icon
-                  className={`w-5 h-5 shrink-0 ${isActive ? "text-primary" : "group-hover:scale-110 transition-transform"}`}
+                  className={`w-5 h-5 shrink-0 transition-transform duration-300 ${isActive ? "text-primary" : "group-hover:scale-110"}`}
                 />
 
                 <span
-                  className={`whitespace-nowrap transition-all duration-300 
-                  ${isCollapsed ? "lg:hidden opacity-0" : "opacity-100"}
+                  className={`whitespace-nowrap transition-all duration-300 text-sm tracking-wide
+                  ${isCollapsed ? "lg:w-0 lg:opacity-0" : "w-auto opacity-100"}
                 `}
                 >
                   {item.name}
@@ -158,17 +154,21 @@ export default function Sidebar({
           })}
         </nav>
 
-        {/* Optional Footer/User Section */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-800">
+        {/* User Footer Profile */}
+        <div className="p-4 border-t border-gray-200 dark:border-white/5 shrink-0">
           <div
-            className={`flex items-center gap-3 ${isCollapsed ? "lg:justify-center" : ""}`}
+            className={`flex items-center gap-3 ${isCollapsed ? "lg:justify-center" : "px-2"}`}
           >
-            <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 shrink-0" />
+            <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold shrink-0">
+              {user?.name ? user.name.charAt(0).toUpperCase() : "U"}
+            </div>
             {!isCollapsed && (
-              <div className="overflow-hidden">
-                <p className="text-sm font-medium truncate">User Name</p>
-                <p className="text-xs text-gray-500 truncate capitalize">
-                  {role.toLowerCase()}
+              <div className="overflow-hidden flex-1">
+                <p className="text-sm font-bold text-text truncate">
+                  {user?.name || "User Name"}
+                </p>
+                <p className="text-xs text-text-muted truncate tracking-wider uppercase">
+                  {role}
                 </p>
               </div>
             )}

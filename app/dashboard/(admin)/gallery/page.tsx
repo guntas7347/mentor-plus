@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Trash2, Save, ImagePlus, Loader2 } from "lucide-react";
 import CloudinaryUploader from "@/components/CloudinaryUploader";
-import { createMeta, getMeta } from "@/lib/actions/meta";
+import { upsertMeta, getMeta } from "@/lib/actions/meta";
 
 const GALLERY_KEY = "gallery_images";
 
@@ -36,7 +36,7 @@ const GalleryPage = () => {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await createMeta(GALLERY_KEY, images, true);
+      await upsertMeta(GALLERY_KEY, images, true, ["/gallery"]);
       alert("Gallery updated successfully!");
     } catch (error) {
       console.error("Failed to save gallery:", error);

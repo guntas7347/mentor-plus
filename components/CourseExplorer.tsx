@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, Clock, ArrowRight, BookX } from "lucide-react";
-import Link from "next/link";
+import { Search } from "lucide-react";
 import { COURSE_CATEGORIES } from "@/lib/configs";
-import { formatRupees } from "@/lib/helpers";
 import { CoursePreview } from "@/lib/types";
 import CourseCard from "./CourseCard";
 
@@ -12,21 +10,18 @@ import CourseCard from "./CourseCard";
 
 export default function CourseExplorer({
   initialCourses,
+  categories,
 }: {
   initialCourses: CoursePreview[];
+  categories: string[];
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All Courses");
 
-  // Dynamically build categories list including the "All Courses" default option
-  const categories = useMemo(() => ["All Courses", ...COURSE_CATEGORIES], []);
-
-  // Real-time filtering logic
   const filteredCourses = useMemo(() => {
     return initialCourses.filter((course) => {
       const searchLower = searchQuery.toLowerCase().trim();
 
-      // Safely fallback to empty strings if properties are missing
       const title = course.title?.toLowerCase() || "";
       const summary = course.summary?.toLowerCase() || "";
 
@@ -34,7 +29,9 @@ export default function CourseExplorer({
         title.includes(searchLower) || summary.includes(searchLower);
 
       const matchesCategory =
-        activeCategory === "All Courses" || course.category === activeCategory;
+        activeCategory === "All Courses" ||
+        course.category?.toLowerCase().trim() ===
+          activeCategory.toLowerCase().trim();
 
       return matchesSearch && matchesCategory;
     });

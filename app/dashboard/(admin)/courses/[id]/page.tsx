@@ -28,13 +28,9 @@ import { Course } from "@/prisma/generated/client";
 import { getCourseById, updateCourse } from "@/lib/actions/courses";
 import SectionCard from "@/components/SectionCard";
 import { Field } from "@/components/Field";
-import {
-  COURSE_CATEGORIES,
-  HOT_TAG_OPTIONS,
-  MEDIUMS,
-  STATUS_OPTIONS,
-} from "@/lib/configs";
+import { HOT_TAG_OPTIONS, MEDIUMS, STATUS_OPTIONS } from "@/lib/configs";
 import CloudinaryUploader from "@/components/CloudinaryUploader";
+import { getMeta } from "@/lib/actions/meta";
 
 // --- Constants & Icon Mapping ---
 
@@ -65,6 +61,7 @@ export default function CourseEditPage() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [categories, setCategories] = useState<string[]>([]);
 
   // Prices and Duration are kept as strings in state to easily apply regex filtering
   const [form, setForm] = useState({
@@ -93,6 +90,9 @@ export default function CourseEditPage() {
   useEffect(() => {
     async function load() {
       try {
+        const categories = await getMeta("categories");
+        setCategories(categories?.value as string[]);
+
         if (!isNew) {
           const data = await getCourseById(id as string);
           if (data) {
@@ -743,7 +743,7 @@ export default function CourseEditPage() {
                 value={form.category}
                 onChange={(e) => set("category", e.target.value)}
               >
-                {COURSE_CATEGORIES.map((c) => (
+                {categories.map((c) => (
                   <option key={c} value={c}>
                     {c}
                   </option>

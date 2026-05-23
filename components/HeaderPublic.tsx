@@ -93,12 +93,21 @@ export default function Header() {
             )}
           </button>
 
-          <button
-            onClick={handleLogin}
-            className="hidden md:inline-flex bg-primary dark:bg-primary text-white px-6 py-2.5 rounded-md font-body text-sm tracking-widest active:scale-[0.98] duration-200 transition-all min-w-[100px] justify-center"
-          >
-            {session ? "Profile" : "Login"}
-          </button>
+          {session ? (
+            <Link
+              href="/dashboard/profile"
+              className="hidden md:inline-flex bg-primary dark:bg-primary text-white px-6 py-2.5 rounded-md font-body text-sm tracking-widest active:scale-[0.98] duration-200 transition-all min-w-[100px] justify-center"
+            >
+              Profile
+            </Link>
+          ) : (
+            <button
+              onClick={handleLogin}
+              className="hidden md:inline-flex bg-primary dark:bg-primary text-white px-6 py-2.5 rounded-md font-body text-sm tracking-widest active:scale-[0.98] duration-200 transition-all min-w-[100px] justify-center"
+            >
+              Login
+            </button>
+          )}
 
           {/* Hamburger button — mobile only */}
           <button

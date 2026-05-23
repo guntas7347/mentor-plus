@@ -29,15 +29,10 @@ import {
 import { notify } from "@/lib/toast";
 import { getTestSeriesById, updateTestSeries } from "@/lib/actions/test-series";
 import { Field } from "@/components/Field";
-import {
-  HOT_TAG_OPTIONS,
-  MEDIUMS,
-  STATUS_OPTIONS,
-  TEST_SERIES_CATEGORIES,
-} from "@/lib/configs";
+import { HOT_TAG_OPTIONS, MEDIUMS, STATUS_OPTIONS } from "@/lib/configs";
 import SectionCard from "@/components/SectionCard";
-import PdfUploader from "@/components/PdfUploader";
 import CloudinaryUploader from "@/components/CloudinaryUploader";
+import { getMeta } from "@/lib/actions/meta";
 
 const AVAILABLE_ICONS = {
   FileText,
@@ -68,6 +63,7 @@ export default function TestSeriesEditPage() {
 
   const [isLoading, setIsLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
+  const [categories, setCategories] = useState<string[]>([]);
 
   // Prices and Months are kept as strings in state to easily apply regex filtering
   const [form, setForm] = useState({
@@ -97,6 +93,8 @@ export default function TestSeriesEditPage() {
   useEffect(() => {
     async function load() {
       try {
+        const categories = await getMeta("categories");
+        setCategories(categories?.value as string[]);
         if (!isNew) {
           const data = await getTestSeriesById(id as string);
           if (data) {
@@ -736,7 +734,7 @@ export default function TestSeriesEditPage() {
                 value={form.category}
                 onChange={(e) => set("category", e.target.value)}
               >
-                {TEST_SERIES_CATEGORIES.map((c) => (
+                {categories.map((c: string) => (
                   <option key={c} value={c}>
                     {c}
                   </option>
