@@ -33,10 +33,6 @@ export default function RootLayout({
       <body className="bg-surface dark:bg-[#0a0f18] font-body text-text dark:text-gray-100 selection:bg-primary selection:text-white-fixed transition-colors duration-300">
         <Providers>
           <main>{children}</main>
-          <Script
-            src="https://checkout.razorpay.com/v1/checkout.js"
-            strategy="lazyOnload"
-          />
         </Providers>
       </body>
     </html>

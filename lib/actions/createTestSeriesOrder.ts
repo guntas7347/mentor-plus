@@ -3,8 +3,8 @@
 import Razorpay from "razorpay";
 import { getSessionUser } from "../auth";
 import prisma from "../prisma";
-
-import { revalidatePaths } from "../revalidatePath";
+import { revalidatePath } from "next/cache";
+import { randomUUID } from "crypto";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID!,
@@ -21,7 +21,7 @@ export const createTestSeriesOrder = async (testSeriesId: string) => {
 
   if (!testSeries) return { error: "Not found" };
 
-  // prevent duplicate purchase (only SUCCESS)
+  // Prevent duplicate purchase
   const existing = await prisma.purchase.findUnique({
     where: {
       userId_testSeriesId: {
@@ -35,35 +35,44 @@ export const createTestSeriesOrder = async (testSeriesId: string) => {
     return { error: "Already purchased" };
   }
 
-  const order = await razorpay.orders.create({
-    amount: testSeries.discountedPrice * 100, // it accepts in paisa
-    currency: "INR",
-    receipt: `ts_${testSeries.id}`,
-  });
+  // FIX: Ensure amount is a strict integer to prevent Razorpay crashes
+  const amountInPaisa = Math.round(testSeries.discountedPrice * 100);
 
-  // create or update pending purchase
-  await prisma.purchase.upsert({
-    where: {
-      userId_testSeriesId: {
+  try {
+    const order = await razorpay.orders.create({
+      amount: amountInPaisa,
+      currency: "INR",
+      receipt: `ts_${randomUUID()}}`,
+    });
+
+    // Upsert pending purchase
+    await prisma.purchase.upsert({
+      where: {
+        userId_testSeriesId: {
+          userId: user.id,
+          testSeriesId: testSeries.id,
+        },
+      },
+      update: {
+        paymentId: order.id,
+        amount: testSeries.discountedPrice,
+        status: "PENDING",
+      },
+      create: {
         userId: user.id,
         testSeriesId: testSeries.id,
+        amount: testSeries.discountedPrice,
+        paymentMethod: "RAZORPAY",
+        paymentId: order.id,
+        status: "PENDING",
       },
-    },
-    update: {
-      paymentId: order.id,
-      amount: testSeries.discountedPrice,
-      status: "PENDING",
-    },
-    create: {
-      userId: user.id,
-      testSeriesId: testSeries.id,
-      amount: testSeries.discountedPrice,
-      paymentMethod: "RAZORPAY",
-      paymentId: order.id,
-      status: "PENDING",
-    },
-  });
+    });
 
-  revalidatePaths(["/dashboard/my-purchases"]);
-  return { orderId: order.id, amount: Number(order.amount) };
+    revalidatePath("/dashboard/my-purchases");
+
+    return { orderId: order.id, amount: Number(order.amount) };
+  } catch (error) {
+    console.error("Razorpay Order Creation Failed:", error);
+    return { error: "Failed to initialize payment. Please try again." };
+  }
 };

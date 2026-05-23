@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import BuyTestSeries from "./buyTestSeries";
 import { formatRupees } from "@/lib/helpers";
+import Script from "next/script";
 
 // --- Dynamic Icon Mapping ---
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -112,6 +113,10 @@ export default async function TestSeriesPage({
 
   return (
     <main className="pt-24 pb-32 max-w-7xl mx-auto px-6 lg:px-8">
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="lazyOnload"
+      />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Main Content Area */}
         <div className="lg:col-span-8 space-y-16">
