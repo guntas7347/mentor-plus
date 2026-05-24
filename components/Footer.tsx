@@ -7,6 +7,7 @@ import {
   Mail,
   MapPin,
   BadgeCheck,
+  Code,
 } from "lucide-react";
 
 export default function Footer() {
@@ -157,11 +158,20 @@ export default function Footer() {
             reserved.
           </p>
           <div className="flex items-center gap-2">
-            <BadgeCheck
+            <Code
               size={16}
               className="text-secondary dark:text-secondary-fixed-dim"
             />
-            <span>ISO 9001:2015 Certified Institution</span>
+            <span>
+              Website made with ❤️ by{" "}
+              <a
+                className="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all"
+                href="https://guntassandhu.com"
+                target="_blank"
+              >
+                Guntas Sandhu
+              </a>
+            </span>
           </div>
         </div>
       </div>
