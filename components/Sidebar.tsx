@@ -45,6 +45,7 @@ export default function Sidebar({
     { name: "Syllabus", href: "/syllabus", icon: Files },
     { name: "Tutors", href: "/tutors", icon: PersonStanding },
     { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },
+    { name: "Pdfs", href: "/pdfs", icon: FileText },
     { name: "Users", href: "/users", icon: Users },
     { name: "Purchases", href: "/purchases", icon: DollarSign },
     { name: "Configs", href: "/configs", icon: Settings },

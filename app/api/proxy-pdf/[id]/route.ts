@@ -1,15 +1,5 @@
 import { getSessionUser } from "@/lib/auth";
-import prisma from "@/lib/prisma";
-
-function convertGoogleDriveUrl(url: string) {
-  const match = url.match(/\/file\/d\/([^/]+)/);
-
-  if (!match) return url;
-
-  const fileId = match[1];
-
-  return `https://drive.google.com/uc?export=download&id=${fileId}`;
-}
+import { decrypt } from "@/lib/encrypt";
 
 export async function GET(req: Request, { params }: any) {
   try {
@@ -21,20 +11,11 @@ export async function GET(req: Request, { params }: any) {
 
     const { id } = await params;
 
-    const testSeries = await prisma.testSeries.findFirst({
-      where: { id },
-      select: { accessLink: true },
-    });
+    const fileId = await decrypt(id);
 
-    if (!testSeries?.accessLink) {
-      return new Response("Access link not found", {
-        status: 404,
-      });
-    }
-
-    const driveUrl = convertGoogleDriveUrl(testSeries.accessLink);
-
-    const res = await fetch(driveUrl);
+    const res = await fetch(
+      `https://www.googleapis.com/drive/v3/files/${fileId}/export?mimeType=application/pdf&key=${process.env.GOOGLE_DRIVE_API}`,
+    );
 
     if (!res.ok || !res.body) {
       return new Response("Failed", { status: 500 });

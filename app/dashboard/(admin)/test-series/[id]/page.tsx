@@ -695,7 +695,7 @@ export default function TestSeriesEditPage() {
           </SectionCard>
 
           <SectionCard title="Access Links & PDF">
-            <Field label="Access Link">
+            <Field label="Access Folder Id">
               <div className="relative">
                 <LinkIcon
                   size={16}
@@ -703,7 +703,7 @@ export default function TestSeriesEditPage() {
                 />
                 <input
                   className={`${inputClass} pl-9`}
-                  placeholder="https://…"
+                  placeholder="1_kd4cs…"
                   value={form.accessLink}
                   onChange={(e) => set("accessLink", e.target.value)}
                 />

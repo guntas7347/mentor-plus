@@ -56,8 +56,7 @@ export const ModelName = {
   TestSeries: 'TestSeries',
   Syllabus: 'Syllabus',
   Purchase: 'Purchase',
-  MetaData: 'MetaData',
-  Pdf: 'Pdf'
+  MetaData: 'MetaData'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -194,17 +193,6 @@ export const MetaDataScalarFieldEnum = {
 } as const
 
 export type MetaDataScalarFieldEnum = (typeof MetaDataScalarFieldEnum)[keyof typeof MetaDataScalarFieldEnum]
-
-
-export const PdfScalarFieldEnum = {
-  id: 'id',
-  key: 'key',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
-} as const
-
-export type PdfScalarFieldEnum = (typeof PdfScalarFieldEnum)[keyof typeof PdfScalarFieldEnum]
 
 
 export const SortOrder = {

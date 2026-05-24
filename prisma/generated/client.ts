@@ -71,8 +71,3 @@ export type Purchase = Prisma.PurchaseModel
  * 
  */
 export type MetaData = Prisma.MetaDataModel
-/**
- * Model Pdf
- * 
- */
-export type Pdf = Prisma.PdfModel

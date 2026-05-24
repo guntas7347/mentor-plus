@@ -218,7 +218,7 @@ export default function MyTestSeriesPage() {
                     </Link>
                   ) : (
                     <a
-                      href={`/dashboard/play/${enrollment.testSeries.id}`}
+                      href={`/dashboard/tree/${enrollment.testSeries.id}`}
                       className="w-full py-3.5 bg-primary/10 dark:bg-[#1a56db]/20 text-primary dark:text-[#b5c4ff] hover:bg-primary hover:text-white dark:hover:bg-[#1a56db] dark:hover:text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all group relative overflow-hidden"
                     >
                       <PlayCircle

@@ -389,8 +389,7 @@ export const ModelName = {
   TestSeries: 'TestSeries',
   Syllabus: 'Syllabus',
   Purchase: 'Purchase',
-  MetaData: 'MetaData',
-  Pdf: 'Pdf'
+  MetaData: 'MetaData'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "course" | "testSeries" | "syllabus" | "purchase" | "metaData" | "pdf"
+    modelProps: "user" | "course" | "testSeries" | "syllabus" | "purchase" | "metaData"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -854,80 +853,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Pdf: {
-      payload: Prisma.$PdfPayload<ExtArgs>
-      fields: Prisma.PdfFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.PdfFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.PdfFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>
-        }
-        findFirst: {
-          args: Prisma.PdfFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.PdfFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>
-        }
-        findMany: {
-          args: Prisma.PdfFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>[]
-        }
-        create: {
-          args: Prisma.PdfCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>
-        }
-        createMany: {
-          args: Prisma.PdfCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.PdfCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>[]
-        }
-        delete: {
-          args: Prisma.PdfDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>
-        }
-        update: {
-          args: Prisma.PdfUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>
-        }
-        deleteMany: {
-          args: Prisma.PdfDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.PdfUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.PdfUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>[]
-        }
-        upsert: {
-          args: Prisma.PdfUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PdfPayload>
-        }
-        aggregate: {
-          args: Prisma.PdfAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePdf>
-        }
-        groupBy: {
-          args: Prisma.PdfGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PdfGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.PdfCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PdfCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -1085,17 +1010,6 @@ export const MetaDataScalarFieldEnum = {
 } as const
 
 export type MetaDataScalarFieldEnum = (typeof MetaDataScalarFieldEnum)[keyof typeof MetaDataScalarFieldEnum]
-
-
-export const PdfScalarFieldEnum = {
-  id: 'id',
-  key: 'key',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
-} as const
-
-export type PdfScalarFieldEnum = (typeof PdfScalarFieldEnum)[keyof typeof PdfScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1372,7 +1286,6 @@ export type GlobalOmitConfig = {
   syllabus?: Prisma.SyllabusOmit
   purchase?: Prisma.PurchaseOmit
   metaData?: Prisma.MetaDataOmit
-  pdf?: Prisma.PdfOmit
 }
 
 /* Types for Logging */

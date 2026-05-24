@@ -1,12 +1,11 @@
-// app/dashboard/play/[id]/page.tsx
 import PdfViewer from "@/components/PdfViewer";
 
-const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const { id } = await params;
+const Page = async ({ params }: { params: Promise<{ fileId: string }> }) => {
+  const { fileId } = await params;
 
   return (
     <div className="p-1 rounded md:p-5 bg-primary/20 min-h-screen">
-      <PdfViewer id={id} />
+      <PdfViewer id={fileId} />
     </div>
   );
 };
