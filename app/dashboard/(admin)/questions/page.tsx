@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { createQuestionSet, getAllQuestionSets } from "@/lib/actions/questions";
 import { title } from "process";
+import toast from "react-hot-toast";
 
 type QuestionSet = {
   id: string;
@@ -43,8 +44,8 @@ export default function QuestionSetsPage() {
       if (res) {
         setSets((prev) => [res, ...prev]);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+      toast.error(err?.message || "Error");
     }
   };
 

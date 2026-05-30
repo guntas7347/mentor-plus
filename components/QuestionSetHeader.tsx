@@ -2,8 +2,11 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, Pencil, Save, X, Upload } from "lucide-react";
-import { updateQuestionSetTitle } from "@/lib/actions/questions";
+import { BookOpen, Pencil, Save, X, Upload, Trash } from "lucide-react";
+import {
+  deleteQuestionSet,
+  updateQuestionSetTitle,
+} from "@/lib/actions/questions";
 
 type Props = {
   setId: string;
@@ -40,6 +43,22 @@ export default function QuestionSetHeader({
       alert("Failed to update title.");
     } finally {
       setIsSaving(false);
+    }
+  };
+
+  const handleDeleteSet = async () => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete this entire question set?",
+      )
+    ) {
+      try {
+        await deleteQuestionSet(setId);
+        window.location.href = "/dashboard/questions";
+      } catch (error) {
+        console.error("Failed to delete set:", error);
+        alert("Failed to delete set.");
+      }
     }
   };
 
@@ -97,6 +116,14 @@ export default function QuestionSetHeader({
           Groups: {totalGroups} &bull; Total Variations: {totalVariations}
         </p>
       </div>
+
+      <button
+        onClick={handleDeleteSet}
+        className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-danger-dark"
+      >
+        <Trash className="h-4 w-4" />
+        Delete Set
+      </button>
 
       <button
         onClick={onOpenImport}

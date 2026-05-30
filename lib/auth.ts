@@ -11,14 +11,14 @@ export const getSessionUser = async () => {
   return user;
 };
 
-export const requireAuth = async (role = "ADMIN") => {
+export const requireAuth = async (roles: string[] = ["ADMIN"]) => {
   const session = await getSessionUser();
 
   if (!session) {
     throw new Error("UNAUTHORIZED");
   }
 
-  if (session.role !== role) {
+  if (!roles.includes(session.role)) {
     throw new Error("FORBIDDEN");
   }
 
@@ -35,19 +35,12 @@ export const requireUser = async () => {
   return user;
 };
 
-export const requireStudent = async () => {
-  const user = await getSessionUser();
-
-  if (user?.role !== "STUDENT") {
-    redirect("/");
-  }
-
-  return user;
-};
-export const requireAdmin = async () => {
+export const requireRole = async (
+  allowedRoles: ("ADMIN" | "STAFF" | "STUDENT")[],
+) => {
   const user = await requireUser();
 
-  if (user.role !== "ADMIN") {
+  if (!allowedRoles.includes(user.role)) {
     redirect("/");
   }
 

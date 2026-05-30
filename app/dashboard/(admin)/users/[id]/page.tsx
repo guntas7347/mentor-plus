@@ -162,10 +162,7 @@ export default function UserProfilePage() {
             onClick={() => router.back()}
             className="p-2 rounded-xl hover:bg-surface dark:hover:bg-gray-800 transition-colors"
           >
-            <ArrowLeft
-              size={20}
-              className="text-text dark:text-gray-300"
-            />
+            <ArrowLeft size={20} className="text-text dark:text-gray-300" />
           </button>
           <h1 className="text-3xl font-extrabold text-text dark:text-white">
             User Profile
@@ -225,7 +222,8 @@ export default function UserProfilePage() {
                 className="w-full px-4 py-3 bg-surface dark:bg-[#1f2937] border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm font-semibold text-text dark:text-white transition-all"
               >
                 <option value="STUDENT">Student</option>
-                <option value="ADMIN">Administrator</option>
+                <option value="STAFF">Staff</option>
+                <option value="ADMIN">Admin</option>
               </select>
 
               <button

@@ -48,7 +48,6 @@ export default function Sidebar({
     { name: "Exams", href: "/exams", icon: FileText },
     { name: "Tutors", href: "/tutors", icon: PersonStanding },
     { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },
-    { name: "Pdfs", href: "/pdfs", icon: FileText },
     { name: "Users", href: "/users", icon: Users },
     { name: "Purchases", href: "/purchases", icon: DollarSign },
     { name: "Configs", href: "/configs", icon: Settings },
@@ -61,7 +60,22 @@ export default function Sidebar({
     { name: "Profile", href: "/profile", icon: User },
   ];
 
-  const navItems = role === "ADMIN" ? adminNavItems : studentNavItems;
+  const staffNavItems = [
+    { name: "Exams", href: "/exams", icon: FileText },
+    { name: "Questions", href: "/questions", icon: Pencil },
+    { name: "Syllabus", href: "/syllabus", icon: Files },
+    { name: "Users", href: "/users", icon: Users },
+    { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },
+    { name: "My Purchases", href: "/my-purchases", icon: Trophy },
+    { name: "Profile", href: "/profile", icon: User },
+  ];
+
+  const navItems =
+    role === "ADMIN"
+      ? adminNavItems
+      : role === "STAFF"
+        ? staffNavItems
+        : studentNavItems;
 
   return (
     <>

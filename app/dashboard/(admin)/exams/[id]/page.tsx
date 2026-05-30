@@ -11,9 +11,10 @@ import {
   ChevronLeft,
   FileQuestion,
   RefreshCcw,
+  Trash,
 } from "lucide-react";
 import Link from "next/link";
-import { getExamAdmin } from "@/lib/actions/exams";
+import { deleteExam, getExamAdmin } from "@/lib/actions/exams";
 
 // --- Types mapping to your Prisma include structure ---
 type QuestionSet = {
@@ -91,6 +92,20 @@ export default function ExamDetailsPage({
         ) / totalAttempts
       : 0;
 
+  const handleDeleteExam = async () => {
+    const confirmation = confirm("Are you sure you want to delete this exam?");
+    if (!confirmation) {
+      return;
+    }
+    try {
+      await deleteExam(examId);
+      window.location.href = "/dashboard/exams";
+    } catch (error) {
+      console.error("Failed to delete exam:", error);
+      alert("Failed to delete exam. Please try again.");
+    }
+  };
+
   return (
     <div className="mx-auto max-w-7xl p-4 md:p-8 font-body bg-background text-text min-h-screen">
       {/* Navigation & Header */}
@@ -121,6 +136,14 @@ export default function ExamDetailsPage({
               </span>
             </div>
           </div>
+
+          <button
+            onClick={handleDeleteExam}
+            className="inline-flex items-center cursor-pointer justify-center gap-2 rounded-lg bg-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-danger-dark"
+          >
+            <Trash className="h-4 w-4" />
+            Delete Exam
+          </button>
 
           <div className="flex flex-col items-end">
             <span className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-1">

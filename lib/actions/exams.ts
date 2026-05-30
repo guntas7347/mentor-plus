@@ -125,3 +125,11 @@ export async function submitExam(data: SubmitExamInput) {
     },
   });
 }
+
+export const deleteExam = async (id: string) => {
+  return prisma.exam.delete({
+    where: {
+      id,
+    },
+  });
+};

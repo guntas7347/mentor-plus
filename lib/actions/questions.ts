@@ -2,10 +2,25 @@
 
 import prisma from "../prisma";
 
-export const createQuestionSet = async () =>
-  await prisma.questionSet.create({
-    data: { title: "Untitled Question Set" },
+export const createQuestionSet = async () => {
+  const existing = await prisma.questionSet.findFirst({
+    where: {
+      title: "Untitled Question Set",
+    },
   });
+
+  if (existing) {
+    throw new Error(
+      "A question set with title 'Untitled Question Set' already exists.",
+    );
+  }
+
+  return prisma.questionSet.create({
+    data: {
+      title: "Untitled Question Set",
+    },
+  });
+};
 
 type TranslationInput = {
   lang: string;
@@ -159,6 +174,14 @@ export const deleteQuestionGroup = async (questionGroupId: string) => {
   return prisma.questionGroup.delete({
     where: {
       id: questionGroupId,
+    },
+  });
+};
+
+export const deleteQuestionSet = async (id: string) => {
+  return prisma.questionSet.delete({
+    where: {
+      id,
     },
   });
 };

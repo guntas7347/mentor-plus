@@ -1,5 +1,5 @@
 // app/(admin)/layout.tsx
-import { requireAdmin } from "@/lib/auth";
+import { requireRole } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -8,7 +8,7 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  await requireAdmin();
+  await requireRole(["ADMIN", "STAFF"]);
 
   return <>{children}</>;
 }

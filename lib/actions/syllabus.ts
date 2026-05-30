@@ -5,7 +5,7 @@ import prisma from "../prisma";
 import { revalidatePaths } from "../revalidatePath";
 
 export async function getAllSyllabus() {
-  await requireAuth();
+  await requireAuth(["ADMIN", "STAFF"]);
   return prisma.syllabus.findMany({
     orderBy: { createdAt: "desc" }, // Optional: keeps newest at the top
   });
@@ -28,7 +28,7 @@ export async function updateSyllabus(id: string | null | undefined, data: any) {
 
   // If there is no valid ID, or the ID is explicitly "new", CREATE a new record
   if (!id || id === "new") {
-    const syllabus=await prisma.syllabus.create({
+    const syllabus = await prisma.syllabus.create({
       data,
     });
     revalidatePaths(["/dashboard/syllabus"]);
@@ -36,7 +36,7 @@ export async function updateSyllabus(id: string | null | undefined, data: any) {
   }
 
   // If a valid ID exists, UPDATE the existing record
-  const syllabus=await prisma.syllabus.update({
+  const syllabus = await prisma.syllabus.update({
     where: { id },
     data,
   });
@@ -45,7 +45,7 @@ export async function updateSyllabus(id: string | null | undefined, data: any) {
 }
 export async function deleteSyllabusCategory(id: string) {
   await requireAuth();
-  const syllabus=await prisma.syllabus.delete({ where: { id } });
+  const syllabus = await prisma.syllabus.delete({ where: { id } });
   revalidatePaths(["/dashboard/syllabus", "/syllabus"]);
   return syllabus;
 }

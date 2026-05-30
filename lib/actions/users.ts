@@ -34,7 +34,7 @@ export async function getAllUsers(
   limit: number = 25,
   search: string = "",
 ) {
-  await requireAuth();
+  await requireAuth(["ADMIN", "STAFF"]);
 
   const skip = (page - 1) * limit;
 

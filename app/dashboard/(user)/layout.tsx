@@ -1,5 +1,5 @@
 // app/(student)/layout.tsx
-import { requireStudent, requireUser } from "@/lib/auth";
+import { requireUser } from "@/lib/auth";
 
 export default async function StudentLayout({
   children,
