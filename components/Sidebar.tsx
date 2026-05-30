@@ -17,6 +17,7 @@ import {
   GalleryHorizontal,
   X,
   Settings,
+  Pencil,
 } from "lucide-react";
 
 export default function Sidebar({
@@ -42,6 +43,7 @@ export default function Sidebar({
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Courses", href: "/courses", icon: BookOpen },
     { name: "Test Series", href: "/test-series", icon: FileText },
+    { name: "Questions", href: "/questions", icon: Pencil },
     { name: "Syllabus", href: "/syllabus", icon: Files },
     { name: "Tutors", href: "/tutors", icon: PersonStanding },
     { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },

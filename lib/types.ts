@@ -26,3 +26,22 @@ export type Mentor = {
   degreeIcon: React.ReactNode;
   borderRadius?: string;
 };
+
+// app/dashboard/questions/[id]/types.ts
+
+export type TranslationInput = {
+  id?: string;
+  lang: string;
+  q: string;
+  o1: string;
+  o2: string;
+  o3: string;
+  o4: string;
+  correctOptions?: number[];
+};
+
+export type QuestionGroupInput = {
+  groupId?: string; // Prisma ID for the group
+  qn: number;
+  translations: TranslationInput[];
+};

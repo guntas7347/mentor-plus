@@ -56,7 +56,10 @@ export const ModelName = {
   TestSeries: 'TestSeries',
   Syllabus: 'Syllabus',
   Purchase: 'Purchase',
-  MetaData: 'MetaData'
+  MetaData: 'MetaData',
+  QuestionSet: 'QuestionSet',
+  QuestionGroup: 'QuestionGroup',
+  Question: 'Question'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -193,6 +196,44 @@ export const MetaDataScalarFieldEnum = {
 } as const
 
 export type MetaDataScalarFieldEnum = (typeof MetaDataScalarFieldEnum)[keyof typeof MetaDataScalarFieldEnum]
+
+
+export const QuestionSetScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type QuestionSetScalarFieldEnum = (typeof QuestionSetScalarFieldEnum)[keyof typeof QuestionSetScalarFieldEnum]
+
+
+export const QuestionGroupScalarFieldEnum = {
+  id: 'id',
+  questionSetId: 'questionSetId',
+  questionNo: 'questionNo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type QuestionGroupScalarFieldEnum = (typeof QuestionGroupScalarFieldEnum)[keyof typeof QuestionGroupScalarFieldEnum]
+
+
+export const QuestionScalarFieldEnum = {
+  id: 'id',
+  questionGroupId: 'questionGroupId',
+  language: 'language',
+  question: 'question',
+  option1: 'option1',
+  option2: 'option2',
+  option3: 'option3',
+  option4: 'option4',
+  correctOptions: 'correctOptions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type QuestionScalarFieldEnum = (typeof QuestionScalarFieldEnum)[keyof typeof QuestionScalarFieldEnum]
 
 
 export const SortOrder = {

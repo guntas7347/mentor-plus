@@ -174,3 +174,54 @@ model MetaData {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model QuestionSet {
+  id    String @id @default(uuid())
+  title String
+
+  questions QuestionGroup[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model QuestionGroup {
+  id String @id @default(uuid())
+
+  questionSetId String
+  questionSet   QuestionSet @relation(fields: [questionSetId], references: [id], onDelete: Cascade)
+
+  questionNo Int
+
+  translations Question[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([questionSetId, questionNo])
+  @@index([questionSetId])
+}
+
+model Question {
+  id String @id @default(uuid())
+
+  questionGroupId String
+  questionGroup   QuestionGroup @relation(fields: [questionGroupId], references: [id], onDelete: Cascade)
+
+  language String
+
+  question String
+
+  option1 String
+  option2 String
+  option3 String
+  option4 String
+
+  correctOptions Int[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([questionGroupId, language])
+  @@index([language])
+}

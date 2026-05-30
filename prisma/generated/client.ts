@@ -71,3 +71,18 @@ export type Purchase = Prisma.PurchaseModel
  * 
  */
 export type MetaData = Prisma.MetaDataModel
+/**
+ * Model QuestionSet
+ * 
+ */
+export type QuestionSet = Prisma.QuestionSetModel
+/**
+ * Model QuestionGroup
+ * 
+ */
+export type QuestionGroup = Prisma.QuestionGroupModel
+/**
+ * Model Question
+ * 
+ */
+export type Question = Prisma.QuestionModel
