@@ -10,16 +10,23 @@ export const createQuestionSet = async () => {
   });
 
   if (existing) {
-    throw new Error(
-      "A question set with title 'Untitled Question Set' already exists.",
-    );
+    return {
+      success: false,
+      error:
+        "A question set with title 'Untitled Question Set' already exists.",
+    };
   }
 
-  return prisma.questionSet.create({
+  const questionSet = await prisma.questionSet.create({
     data: {
       title: "Untitled Question Set",
     },
   });
+
+  return {
+    success: true,
+    data: questionSet,
+  };
 };
 
 type TranslationInput = {

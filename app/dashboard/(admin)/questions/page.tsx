@@ -39,14 +39,14 @@ export default function QuestionSetsPage() {
   }, []);
 
   const handleCreateQuestionSet = async () => {
-    try {
-      const res = await createQuestionSet();
-      if (res) {
-        setSets((prev) => [res, ...prev]);
-      }
-    } catch (err: any) {
-      toast.error(err?.message || "Error");
+    const res = await createQuestionSet();
+
+    if (!res.success) {
+      toast.error(res.error);
+      return;
     }
+
+    setSets((prev) => [res.data, ...prev]);
   };
 
   return (
