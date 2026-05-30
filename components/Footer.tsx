@@ -75,9 +75,9 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary dark:hover:text-inverse-primary underline-offset-4 hover:underline transition-all"
-                href="#"
+                href="/exam"
               >
-                Exam Calendar
+                Exam
               </Link>
             </li>
           </ul>

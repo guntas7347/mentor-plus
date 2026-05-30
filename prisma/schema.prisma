@@ -181,6 +181,8 @@ model QuestionSet {
 
   questions QuestionGroup[]
 
+  exams Exam[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -224,4 +226,39 @@ model Question {
 
   @@unique([questionGroupId, language])
   @@index([language])
+}
+
+model Exam {
+  id String @id @default(uuid())
+
+  title String
+
+  examCode String @unique
+
+  isActive Boolean @default(true)
+
+  questionSets QuestionSet[]
+
+  attempts ExamAttempt[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ExamAttempt {
+  id String @id @default(uuid())
+
+  examId String
+  exam   Exam   @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  studentName String
+  rollNumber  String
+
+  totalQuestions Int
+  totalCorrect   Int
+
+  submittedAt DateTime @default(now())
+
+  @@index([examId])
+  @@index([rollNumber])
 }

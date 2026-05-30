@@ -175,6 +175,7 @@ export type QuestionSetWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"QuestionSet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QuestionSet"> | Date | string
   questions?: Prisma.QuestionGroupListRelationFilter
+  exams?: Prisma.ExamListRelationFilter
 }
 
 export type QuestionSetOrderByWithRelationInput = {
@@ -183,6 +184,7 @@ export type QuestionSetOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   questions?: Prisma.QuestionGroupOrderByRelationAggregateInput
+  exams?: Prisma.ExamOrderByRelationAggregateInput
 }
 
 export type QuestionSetWhereUniqueInput = Prisma.AtLeast<{
@@ -194,6 +196,7 @@ export type QuestionSetWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"QuestionSet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QuestionSet"> | Date | string
   questions?: Prisma.QuestionGroupListRelationFilter
+  exams?: Prisma.ExamListRelationFilter
 }, "id">
 
 export type QuestionSetOrderByWithAggregationInput = {
@@ -222,6 +225,7 @@ export type QuestionSetCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   questions?: Prisma.QuestionGroupCreateNestedManyWithoutQuestionSetInput
+  exams?: Prisma.ExamCreateNestedManyWithoutQuestionSetsInput
 }
 
 export type QuestionSetUncheckedCreateInput = {
@@ -230,6 +234,7 @@ export type QuestionSetUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   questions?: Prisma.QuestionGroupUncheckedCreateNestedManyWithoutQuestionSetInput
+  exams?: Prisma.ExamUncheckedCreateNestedManyWithoutQuestionSetsInput
 }
 
 export type QuestionSetUpdateInput = {
@@ -238,6 +243,7 @@ export type QuestionSetUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   questions?: Prisma.QuestionGroupUpdateManyWithoutQuestionSetNestedInput
+  exams?: Prisma.ExamUpdateManyWithoutQuestionSetsNestedInput
 }
 
 export type QuestionSetUncheckedUpdateInput = {
@@ -246,6 +252,7 @@ export type QuestionSetUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   questions?: Prisma.QuestionGroupUncheckedUpdateManyWithoutQuestionSetNestedInput
+  exams?: Prisma.ExamUncheckedUpdateManyWithoutQuestionSetsNestedInput
 }
 
 export type QuestionSetCreateManyInput = {
@@ -295,6 +302,16 @@ export type QuestionSetScalarRelationFilter = {
   isNot?: Prisma.QuestionSetWhereInput
 }
 
+export type QuestionSetListRelationFilter = {
+  every?: Prisma.QuestionSetWhereInput
+  some?: Prisma.QuestionSetWhereInput
+  none?: Prisma.QuestionSetWhereInput
+}
+
+export type QuestionSetOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type QuestionSetCreateNestedOneWithoutQuestionsInput = {
   create?: Prisma.XOR<Prisma.QuestionSetCreateWithoutQuestionsInput, Prisma.QuestionSetUncheckedCreateWithoutQuestionsInput>
   connectOrCreate?: Prisma.QuestionSetCreateOrConnectWithoutQuestionsInput
@@ -309,11 +326,50 @@ export type QuestionSetUpdateOneRequiredWithoutQuestionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.QuestionSetUpdateToOneWithWhereWithoutQuestionsInput, Prisma.QuestionSetUpdateWithoutQuestionsInput>, Prisma.QuestionSetUncheckedUpdateWithoutQuestionsInput>
 }
 
+export type QuestionSetCreateNestedManyWithoutExamsInput = {
+  create?: Prisma.XOR<Prisma.QuestionSetCreateWithoutExamsInput, Prisma.QuestionSetUncheckedCreateWithoutExamsInput> | Prisma.QuestionSetCreateWithoutExamsInput[] | Prisma.QuestionSetUncheckedCreateWithoutExamsInput[]
+  connectOrCreate?: Prisma.QuestionSetCreateOrConnectWithoutExamsInput | Prisma.QuestionSetCreateOrConnectWithoutExamsInput[]
+  connect?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+}
+
+export type QuestionSetUncheckedCreateNestedManyWithoutExamsInput = {
+  create?: Prisma.XOR<Prisma.QuestionSetCreateWithoutExamsInput, Prisma.QuestionSetUncheckedCreateWithoutExamsInput> | Prisma.QuestionSetCreateWithoutExamsInput[] | Prisma.QuestionSetUncheckedCreateWithoutExamsInput[]
+  connectOrCreate?: Prisma.QuestionSetCreateOrConnectWithoutExamsInput | Prisma.QuestionSetCreateOrConnectWithoutExamsInput[]
+  connect?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+}
+
+export type QuestionSetUpdateManyWithoutExamsNestedInput = {
+  create?: Prisma.XOR<Prisma.QuestionSetCreateWithoutExamsInput, Prisma.QuestionSetUncheckedCreateWithoutExamsInput> | Prisma.QuestionSetCreateWithoutExamsInput[] | Prisma.QuestionSetUncheckedCreateWithoutExamsInput[]
+  connectOrCreate?: Prisma.QuestionSetCreateOrConnectWithoutExamsInput | Prisma.QuestionSetCreateOrConnectWithoutExamsInput[]
+  upsert?: Prisma.QuestionSetUpsertWithWhereUniqueWithoutExamsInput | Prisma.QuestionSetUpsertWithWhereUniqueWithoutExamsInput[]
+  set?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  disconnect?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  delete?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  connect?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  update?: Prisma.QuestionSetUpdateWithWhereUniqueWithoutExamsInput | Prisma.QuestionSetUpdateWithWhereUniqueWithoutExamsInput[]
+  updateMany?: Prisma.QuestionSetUpdateManyWithWhereWithoutExamsInput | Prisma.QuestionSetUpdateManyWithWhereWithoutExamsInput[]
+  deleteMany?: Prisma.QuestionSetScalarWhereInput | Prisma.QuestionSetScalarWhereInput[]
+}
+
+export type QuestionSetUncheckedUpdateManyWithoutExamsNestedInput = {
+  create?: Prisma.XOR<Prisma.QuestionSetCreateWithoutExamsInput, Prisma.QuestionSetUncheckedCreateWithoutExamsInput> | Prisma.QuestionSetCreateWithoutExamsInput[] | Prisma.QuestionSetUncheckedCreateWithoutExamsInput[]
+  connectOrCreate?: Prisma.QuestionSetCreateOrConnectWithoutExamsInput | Prisma.QuestionSetCreateOrConnectWithoutExamsInput[]
+  upsert?: Prisma.QuestionSetUpsertWithWhereUniqueWithoutExamsInput | Prisma.QuestionSetUpsertWithWhereUniqueWithoutExamsInput[]
+  set?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  disconnect?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  delete?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  connect?: Prisma.QuestionSetWhereUniqueInput | Prisma.QuestionSetWhereUniqueInput[]
+  update?: Prisma.QuestionSetUpdateWithWhereUniqueWithoutExamsInput | Prisma.QuestionSetUpdateWithWhereUniqueWithoutExamsInput[]
+  updateMany?: Prisma.QuestionSetUpdateManyWithWhereWithoutExamsInput | Prisma.QuestionSetUpdateManyWithWhereWithoutExamsInput[]
+  deleteMany?: Prisma.QuestionSetScalarWhereInput | Prisma.QuestionSetScalarWhereInput[]
+}
+
 export type QuestionSetCreateWithoutQuestionsInput = {
   id?: string
   title: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  exams?: Prisma.ExamCreateNestedManyWithoutQuestionSetsInput
 }
 
 export type QuestionSetUncheckedCreateWithoutQuestionsInput = {
@@ -321,6 +377,7 @@ export type QuestionSetUncheckedCreateWithoutQuestionsInput = {
   title: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  exams?: Prisma.ExamUncheckedCreateNestedManyWithoutQuestionSetsInput
 }
 
 export type QuestionSetCreateOrConnectWithoutQuestionsInput = {
@@ -344,9 +401,81 @@ export type QuestionSetUpdateWithoutQuestionsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  exams?: Prisma.ExamUpdateManyWithoutQuestionSetsNestedInput
 }
 
 export type QuestionSetUncheckedUpdateWithoutQuestionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  exams?: Prisma.ExamUncheckedUpdateManyWithoutQuestionSetsNestedInput
+}
+
+export type QuestionSetCreateWithoutExamsInput = {
+  id?: string
+  title: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  questions?: Prisma.QuestionGroupCreateNestedManyWithoutQuestionSetInput
+}
+
+export type QuestionSetUncheckedCreateWithoutExamsInput = {
+  id?: string
+  title: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  questions?: Prisma.QuestionGroupUncheckedCreateNestedManyWithoutQuestionSetInput
+}
+
+export type QuestionSetCreateOrConnectWithoutExamsInput = {
+  where: Prisma.QuestionSetWhereUniqueInput
+  create: Prisma.XOR<Prisma.QuestionSetCreateWithoutExamsInput, Prisma.QuestionSetUncheckedCreateWithoutExamsInput>
+}
+
+export type QuestionSetUpsertWithWhereUniqueWithoutExamsInput = {
+  where: Prisma.QuestionSetWhereUniqueInput
+  update: Prisma.XOR<Prisma.QuestionSetUpdateWithoutExamsInput, Prisma.QuestionSetUncheckedUpdateWithoutExamsInput>
+  create: Prisma.XOR<Prisma.QuestionSetCreateWithoutExamsInput, Prisma.QuestionSetUncheckedCreateWithoutExamsInput>
+}
+
+export type QuestionSetUpdateWithWhereUniqueWithoutExamsInput = {
+  where: Prisma.QuestionSetWhereUniqueInput
+  data: Prisma.XOR<Prisma.QuestionSetUpdateWithoutExamsInput, Prisma.QuestionSetUncheckedUpdateWithoutExamsInput>
+}
+
+export type QuestionSetUpdateManyWithWhereWithoutExamsInput = {
+  where: Prisma.QuestionSetScalarWhereInput
+  data: Prisma.XOR<Prisma.QuestionSetUpdateManyMutationInput, Prisma.QuestionSetUncheckedUpdateManyWithoutExamsInput>
+}
+
+export type QuestionSetScalarWhereInput = {
+  AND?: Prisma.QuestionSetScalarWhereInput | Prisma.QuestionSetScalarWhereInput[]
+  OR?: Prisma.QuestionSetScalarWhereInput[]
+  NOT?: Prisma.QuestionSetScalarWhereInput | Prisma.QuestionSetScalarWhereInput[]
+  id?: Prisma.StringFilter<"QuestionSet"> | string
+  title?: Prisma.StringFilter<"QuestionSet"> | string
+  createdAt?: Prisma.DateTimeFilter<"QuestionSet"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"QuestionSet"> | Date | string
+}
+
+export type QuestionSetUpdateWithoutExamsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  questions?: Prisma.QuestionGroupUpdateManyWithoutQuestionSetNestedInput
+}
+
+export type QuestionSetUncheckedUpdateWithoutExamsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  questions?: Prisma.QuestionGroupUncheckedUpdateManyWithoutQuestionSetNestedInput
+}
+
+export type QuestionSetUncheckedUpdateManyWithoutExamsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -360,10 +489,12 @@ export type QuestionSetUncheckedUpdateWithoutQuestionsInput = {
 
 export type QuestionSetCountOutputType = {
   questions: number
+  exams: number
 }
 
 export type QuestionSetCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   questions?: boolean | QuestionSetCountOutputTypeCountQuestionsArgs
+  exams?: boolean | QuestionSetCountOutputTypeCountExamsArgs
 }
 
 /**
@@ -383,6 +514,13 @@ export type QuestionSetCountOutputTypeCountQuestionsArgs<ExtArgs extends runtime
   where?: Prisma.QuestionGroupWhereInput
 }
 
+/**
+ * QuestionSetCountOutputType without action
+ */
+export type QuestionSetCountOutputTypeCountExamsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ExamWhereInput
+}
+
 
 export type QuestionSetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -390,6 +528,7 @@ export type QuestionSetSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   createdAt?: boolean
   updatedAt?: boolean
   questions?: boolean | Prisma.QuestionSet$questionsArgs<ExtArgs>
+  exams?: boolean | Prisma.QuestionSet$examsArgs<ExtArgs>
   _count?: boolean | Prisma.QuestionSetCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["questionSet"]>
 
@@ -417,6 +556,7 @@ export type QuestionSetSelectScalar = {
 export type QuestionSetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt", ExtArgs["result"]["questionSet"]>
 export type QuestionSetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   questions?: boolean | Prisma.QuestionSet$questionsArgs<ExtArgs>
+  exams?: boolean | Prisma.QuestionSet$examsArgs<ExtArgs>
   _count?: boolean | Prisma.QuestionSetCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type QuestionSetIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -426,6 +566,7 @@ export type $QuestionSetPayload<ExtArgs extends runtime.Types.Extensions.Interna
   name: "QuestionSet"
   objects: {
     questions: Prisma.$QuestionGroupPayload<ExtArgs>[]
+    exams: Prisma.$ExamPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -827,6 +968,7 @@ readonly fields: QuestionSetFieldRefs;
 export interface Prisma__QuestionSetClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   questions<T extends Prisma.QuestionSet$questionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QuestionSet$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuestionGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  exams<T extends Prisma.QuestionSet$examsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QuestionSet$examsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1274,6 +1416,30 @@ export type QuestionSet$questionsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.QuestionGroupScalarFieldEnum | Prisma.QuestionGroupScalarFieldEnum[]
+}
+
+/**
+ * QuestionSet.exams
+ */
+export type QuestionSet$examsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Exam
+   */
+  select?: Prisma.ExamSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Exam
+   */
+  omit?: Prisma.ExamOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExamInclude<ExtArgs> | null
+  where?: Prisma.ExamWhereInput
+  orderBy?: Prisma.ExamOrderByWithRelationInput | Prisma.ExamOrderByWithRelationInput[]
+  cursor?: Prisma.ExamWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ExamScalarFieldEnum | Prisma.ExamScalarFieldEnum[]
 }
 
 /**

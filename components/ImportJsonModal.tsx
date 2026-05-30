@@ -48,51 +48,159 @@ export default function ImportJsonModal({ onClose, onImport }: Props) {
 
   const onCopy = async (topic: string) => {
     const prompt = `
-Generate multiple-choice questions about: ${topic}
+You are a quiz generation engine.
 
-Return ONLY valid JSON inside codebox.
-Do NOT wrap in markdown.
-Do NOT include explanations.
-Do NOT include any text before or after the JSON.
-Output must exactly match this schema:
+INPUT REQUIREMENTS
+
+Before generating any questions:
+
+1. NEVER assume the topic.
+2. If no topic is provided:
+
+   * Ask the user for a topic.
+   * If a PDF, DOCX, PPTX, TXT, image, or any other attachment is provided, extract the topic/content from the attachment and use it as the source.
+3. NEVER assume the language.
+4. If language(s) are not provided:
+
+   * Ask the user which language(s) should be included.
+   * Default language is English.
+5. Do not generate questions until both:
+
+   * Topic/content source is available.
+   * Language list is available.
+6. Ask number of questions to generate.
+
+QUESTION GENERATION RULES
+
+* Questions must be factually correct.
+* Questions must match the provided topic/content.
+* Avoid duplicate questions.
+* Avoid duplicate answer choices.
+* Each question must have exactly 4 options.
+* Each question must have at least 1 correct answer.
+* correctOptions must contain only option numbers (1-4).
+* qn must start from 1 and increment sequentially.
+* All translations for the same qn must represent the exact same question and answer.
+* Use proper native translations, not transliterations.
+* Preserve meaning across all languages.
+* Return questions in every requested language.
+
+OUTPUT RULES
+
+* Output MUST ALWAYS be valid JSON.
+* Root value MUST be an array.
+* Output MUST ALWAYS be enclosed inside a code block.
+* Output MUST contain ONLY JSON inside the code block.
+* No markdown outside the code block.
+* No explanations.
+* No notes.
+* No comments.
+* No prefixes.
+* No suffixes.
+* No additional text.
+
+REQUIRED JSON SCHEMA
 
 [
-  {
-    "qn": 1,
-    "translations": [
-      {
-        "lang": "English",
-        "q": "Question text",
-        "o1": "Option 1",
-        "o2": "Option 2",
-        "o3": "Option 3",
-        "o4": "Option 4",
-        "correctOptions": [1]
-      },
-      {
-        "lang": "Hindi",
-        "q": "Question text",
-        "o1": "Option 1",
-        "o2": "Option 2",
-        "o3": "Option 3",
-        "o4": "Option 4",
-        "correctOptions": [1]
-      }
-    ]
-  }
+{
+"qn": 1,
+"translations": [
+{
+"lang": "English",
+"q": "Question text",
+"o1": "Option 1",
+"o2": "Option 2",
+"o3": "Option 3",
+"o4": "Option 4",
+"correctOptions": [1]
+}
+]
+}
 ]
 
-Rules:
-- Output ONLY JSON in codebox.
-- Root value must be an array.
-- Generate at least 20 questions.
-- qn must start at 1 and increment by 1.
-- Each question must have exactly 2 translations: English and Hindi.
-- Each translation must have exactly 4 options: o1, o2, o3, o4.
-- correctOptions must contain option numbers only (1-4).
-- Use correct Hindi translations, not transliterations.
-- All translations for the same qn must represent the same question.
-- Ensure the JSON is valid and parsable.
+LANGUAGE EXAMPLES
+
+Single language:
+
+[
+{
+"qn": 1,
+"translations": [
+{
+"lang": "English",
+"q": "...",
+"o1": "...",
+"o2": "...",
+"o3": "...",
+"o4": "...",
+"correctOptions": [2]
+}
+]
+}
+]
+
+Multiple languages:
+
+[
+{
+"qn": 1,
+"translations": [
+{
+"lang": "English",
+"q": "...",
+"o1": "...",
+"o2": "...",
+"o3": "...",
+"o4": "...",
+"correctOptions": [2]
+},
+{
+"lang": "Hindi",
+"q": "...",
+"o1": "...",
+"o2": "...",
+"o3": "...",
+"o4": "...",
+"correctOptions": [2]
+}
+]
+}
+]
+
+VALIDATION CHECKLIST
+
+Before returning:
+
+* Topic exists.
+* Language list exists.
+* Root is an array.
+* At least minimum asked questions generated.
+* qn values are sequential.
+* Every question has translations for all requested languages.
+* Every translation contains:
+
+  * lang
+  * q
+  * o1
+  * o2
+  * o3
+  * o4
+  * correctOptions
+* correctOptions only contains integers 1-4.
+* JSON parses successfully.
+* Output contains only JSON inside a code block.
+
+If topic is missing:
+Ask:
+"Please provide a topic or upload a file."
+
+If language is missing:
+Ask:
+"Which language(s) should be used? Example: English, Hindi, Punjabi."
+
+Do not generate questions until both requirements are satisfied.
+
+
 `;
 
     try {

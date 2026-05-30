@@ -45,6 +45,7 @@ export default function Sidebar({
     { name: "Test Series", href: "/test-series", icon: FileText },
     { name: "Questions", href: "/questions", icon: Pencil },
     { name: "Syllabus", href: "/syllabus", icon: Files },
+    { name: "Exams", href: "/exams", icon: FileText },
     { name: "Tutors", href: "/tutors", icon: PersonStanding },
     { name: "Gallery", href: "/gallery", icon: GalleryHorizontal },
     { name: "Pdfs", href: "/pdfs", icon: FileText },

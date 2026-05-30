@@ -62,3 +62,13 @@ export type QuestionGroup = Prisma.QuestionGroupModel
  * 
  */
 export type Question = Prisma.QuestionModel
+/**
+ * Model Exam
+ * 
+ */
+export type Exam = Prisma.ExamModel
+/**
+ * Model ExamAttempt
+ * 
+ */
+export type ExamAttempt = Prisma.ExamAttemptModel

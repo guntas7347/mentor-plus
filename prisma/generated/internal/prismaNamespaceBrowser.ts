@@ -59,7 +59,9 @@ export const ModelName = {
   MetaData: 'MetaData',
   QuestionSet: 'QuestionSet',
   QuestionGroup: 'QuestionGroup',
-  Question: 'Question'
+  Question: 'Question',
+  Exam: 'Exam',
+  ExamAttempt: 'ExamAttempt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -234,6 +236,31 @@ export const QuestionScalarFieldEnum = {
 } as const
 
 export type QuestionScalarFieldEnum = (typeof QuestionScalarFieldEnum)[keyof typeof QuestionScalarFieldEnum]
+
+
+export const ExamScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  examCode: 'examCode',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExamScalarFieldEnum = (typeof ExamScalarFieldEnum)[keyof typeof ExamScalarFieldEnum]
+
+
+export const ExamAttemptScalarFieldEnum = {
+  id: 'id',
+  examId: 'examId',
+  studentName: 'studentName',
+  rollNumber: 'rollNumber',
+  totalQuestions: 'totalQuestions',
+  totalCorrect: 'totalCorrect',
+  submittedAt: 'submittedAt'
+} as const
+
+export type ExamAttemptScalarFieldEnum = (typeof ExamAttemptScalarFieldEnum)[keyof typeof ExamAttemptScalarFieldEnum]
 
 
 export const SortOrder = {
