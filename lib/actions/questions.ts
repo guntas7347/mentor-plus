@@ -114,24 +114,28 @@ export const getAllQuestions = async (questionSetId: string) => {
     throw new Error("Question set not found");
   }
 
-  return questionSet.questions.map((group) => ({
-    groupId: group.id,
-    qn: group.questionNo,
+  return {
+    id: questionSet.id,
+    title: questionSet.title,
+    questions: questionSet.questions.map((group) => ({
+      groupId: group.id,
+      qn: group.questionNo,
 
-    translations: group.translations.map((translation) => ({
-      id: translation.id,
-      lang: translation.language,
+      translations: group.translations.map((translation) => ({
+        id: translation.id,
+        lang: translation.language,
 
-      q: translation.question,
+        q: translation.question,
 
-      o1: translation.option1,
-      o2: translation.option2,
-      o3: translation.option3,
-      o4: translation.option4,
+        o1: translation.option1,
+        o2: translation.option2,
+        o3: translation.option3,
+        o4: translation.option4,
 
-      correctOptions: translation.correctOptions,
+        correctOptions: translation.correctOptions,
+      })),
     })),
-  }));
+  };
 };
 
 export const getAllQuestionSets = async () => {

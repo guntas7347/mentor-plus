@@ -1,4 +1,3 @@
-// app/dashboard/questions/[id]/components/QuestionSetHeader.tsx
 "use client";
 
 import { useState } from "react";

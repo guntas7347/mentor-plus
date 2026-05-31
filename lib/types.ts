@@ -45,3 +45,9 @@ export type QuestionGroupInput = {
   qn: number;
   translations: TranslationInput[];
 };
+
+export type QuestionSet = {
+  id: string;
+  title: string;
+  questions: QuestionGroupInput[];
+};

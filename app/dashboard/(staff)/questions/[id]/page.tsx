@@ -1,4 +1,3 @@
-// app/dashboard/questions/[id]/page.tsx
 "use client";
 
 import { useEffect, useState, use } from "react";
@@ -10,7 +9,7 @@ import {
   deleteQuestionGroup,
 } from "@/lib/actions/questions";
 
-import { QuestionGroupInput, TranslationInput } from "@/lib/types";
+import { QuestionGroupInput, QuestionSet, TranslationInput } from "@/lib/types";
 import QuestionSetHeader from "@/components/QuestionSetHeader";
 import QuestionGroupCard from "@/components/QuestionGroupCard";
 import EditQuestionModal from "@/components/EditQuestionModal";
@@ -24,9 +23,7 @@ export default function QuestionSetDetailsPage({
   const unwrappedParams = use(params);
   const setId = unwrappedParams.id;
 
-  const [questionGroups, setQuestionGroups] = useState<QuestionGroupInput[]>(
-    [],
-  );
+  const [questionSet, setQuestionSet] = useState<QuestionSet | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Modal States
@@ -38,7 +35,8 @@ export default function QuestionSetDetailsPage({
     setIsLoading(true);
     try {
       const data = await getAllQuestions(setId);
-      setQuestionGroups(data as QuestionGroupInput[]);
+
+      setQuestionSet(data as QuestionSet);
     } catch (error) {
       console.error("Failed to load questions:", error);
     } finally {
@@ -49,6 +47,13 @@ export default function QuestionSetDetailsPage({
   useEffect(() => {
     loadQuestions();
   }, [setId]);
+
+  if (isLoading || !questionSet)
+    return (
+      <div className="text-center py-12 text-text-muted animate-pulse">
+        Loading questions...
+      </div>
+    );
 
   // --- Actions ---
 
@@ -87,7 +92,7 @@ export default function QuestionSetDetailsPage({
     }
   };
 
-  const totalTranslations = questionGroups.reduce(
+  const totalTranslations = questionSet.questions.reduce(
     (acc, curr) => acc + curr.translations.length,
     0,
   );
@@ -96,8 +101,8 @@ export default function QuestionSetDetailsPage({
     <div className="mx-auto max-w-7xl p-4 md:p-8 font-body bg-background text-text min-h-screen">
       <QuestionSetHeader
         setId={setId}
-        title={`Question Set ${setId}`}
-        totalGroups={questionGroups.length}
+        title={questionSet.title}
+        totalGroups={questionSet.questions.length}
         totalVariations={totalTranslations}
         onOpenImport={() => setIsImportModalOpen(true)}
       />
@@ -108,7 +113,7 @@ export default function QuestionSetDetailsPage({
           <div className="text-center py-12 text-text-muted animate-pulse">
             Loading questions...
           </div>
-        ) : questionGroups.length === 0 ? (
+        ) : questionSet.questions.length === 0 ? (
           <div className="text-center py-16 bg-surface rounded-xl border border-dashed border-black/20 dark:border-white/20">
             <Upload className="mx-auto h-12 w-12 text-text-muted/50 mb-3" />
             <p className="text-text-muted">
@@ -116,7 +121,7 @@ export default function QuestionSetDetailsPage({
             </p>
           </div>
         ) : (
-          questionGroups.map((group) => (
+          questionSet.questions.map((group) => (
             <QuestionGroupCard
               key={group.groupId || group.qn}
               group={group}
