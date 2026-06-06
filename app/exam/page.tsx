@@ -46,6 +46,7 @@ export type UserDetails = {
 
 function CodeEntryStep({ onNext }: { onNext: (exam: ExamData) => void }) {
   const [code, setCode] = useState("");
+
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -91,7 +92,7 @@ function CodeEntryStep({ onNext }: { onNext: (exam: ExamData) => void }) {
               type="text"
               required
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => setCode(e.target.value.toUpperCase())}
               placeholder="e.g., PUNJAB26"
               className="w-full uppercase rounded-xl border border-black/20 dark:border-white/20 bg-background px-4 py-3 text-text focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/50 font-mono tracking-widest text-center transition-all"
             />
