@@ -5,6 +5,8 @@ import "./globals.css";
 import Providers from "./providers";
 import Script from "next/script";
 
+export const dynamic = "force-dynamic";
+
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
