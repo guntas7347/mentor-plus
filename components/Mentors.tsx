@@ -1,6 +1,8 @@
 import { getMeta } from "@/lib/actions/meta";
 import { BookOpen, GraduationCap } from "lucide-react"; // Using your preferred icon library
 
+export const revalidate = 3600; // 1 hour
+
 // Type definition based on your new data structure
 interface MentorData {
   id: string;
