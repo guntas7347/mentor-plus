@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+export const revalidate = 3600; // 1 hour
+
 // ==========================================
 // 1. CENTRALIZED DATA CONFIGURATION
 // ==========================================

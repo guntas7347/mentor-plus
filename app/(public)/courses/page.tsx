@@ -3,9 +3,8 @@ import CourseExplorer from "../../../components/CourseExplorer"; // Adjust path 
 import { ArrowRight, BookOpen, Compass, Download } from "lucide-react";
 import { getMeta } from "@/lib/actions/meta";
 
-// ==========================================
-// 1. CENTRALIZED DATA CONFIGURATION
-// ==========================================
+export const revalidate = 3600;
+
 const PAGE_DATA = {
   hero: {
     tagline: "Expert Guidance",

@@ -1,6 +1,8 @@
 import { getAllPublishedTestSeries } from "@/lib/actions/test-series";
 import TestSeriesExplorer from "../../../components/TestSeriesExplorer"; // Adjust import path
 
+export const revalidate = 3600; // 1 hour
+
 export default async function TestSeriesPage() {
   const testSeriesData = await getAllPublishedTestSeries();
 

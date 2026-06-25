@@ -1,6 +1,8 @@
 import { getMeta } from "@/lib/actions/meta";
 import GalleryLightbox from "./GalleryLightbox";
 
+export const revalidate = 3600;
+
 export default async function Gallery() {
   const galleryMeta = await getMeta("gallery_images");
   const galleryImagesArray = (galleryMeta?.value as string[]) || [];

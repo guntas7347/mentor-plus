@@ -15,6 +15,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+export const revalidate = 3600; // 1 hour
+
 // --- Dynamic Icon Mapping ---
 const ICON_MAP: Record<string, React.ElementType> = {
   Calculator,

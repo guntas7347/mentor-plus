@@ -21,13 +21,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npx prisma generate
-
-RUN apk add --no-cache iputils bind-tools netcat-openbsd && \
-    echo "DATABASE_URL=$DATABASE_URL" && \
-    nslookup infrastructure-postgres-zrum8q && \
-    ping -c 4 infrastructure-postgres-zrum8q && \
-    nc -vz infrastructure-postgres-zrum8q 5432
-
 RUN npm run build
 
 # Production image
