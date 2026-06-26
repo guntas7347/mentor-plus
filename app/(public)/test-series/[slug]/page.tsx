@@ -388,7 +388,7 @@ export default async function TestSeriesPage({
                   )}
                 </div>
 
-                <div className="mt-6 flex items-start gap-2 bg-surface dark:bg-white/5 p-3 rounded-lg border border-gray-200 dark:border-white/5">
+                {/* <div className="mt-6 flex items-start gap-2 bg-surface dark:bg-white/5 p-3 rounded-lg border border-gray-200 dark:border-white/5">
                   <ShieldCheck
                     size={16}
                     className="text-emerald-500 shrink-0 mt-0.5"
@@ -397,7 +397,7 @@ export default async function TestSeriesPage({
                     30-day money back guarantee if content quality is found
                     poor.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
 
